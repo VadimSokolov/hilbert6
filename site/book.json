@@ -27,6 +27,7 @@
  "date_released": "2026-10-12",
  "publisher": "Independently published",
  "doi": "10.5281/zenodo.23327515",
+ "concept_doi": "10.5281/zenodo.23327514",
  "language": "en",
  "keywords": [
   "Hilbert's sixth problem",
@@ -66,6 +67,8 @@
   "repository": "https://github.com/VadimSokolov/hilbert6",
   "source": "https://github.com/VadimSokolov/hilbert6/tree/v1.0.0",
   "doi": "https://doi.org/10.5281/zenodo.23327515",
+  "concept_doi": "https://doi.org/10.5281/zenodo.23327514",
+  "zenodo": "https://zenodo.org/records/23327515",
   "cover": "https://vsokolov.org/books/hilbert6/cover.jpg"
  },
  "citation": {

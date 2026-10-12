@@ -2,10 +2,11 @@
 
 By Nick Polson and [Vadim Sokolov](https://orcid.org/0000-0002-6618-2965).
 
-Independently published, 2026. Edition 1, version 1.0.0. DOI [10.5281/zenodo.23327515](https://doi.org/10.5281/zenodo.23327515).
+Independently published, 2026. Edition 1, version 1.0.0. DOI [10.5281/zenodo.23327515](https://doi.org/10.5281/zenodo.23327515). All versions: [10.5281/zenodo.23327514](https://doi.org/10.5281/zenodo.23327514).
 
 - The book as a PDF: [hilbert6.pdf](https://vsokolov.org/books/hilbert6/hilbert6.pdf) (548 pages, 6.3 MB)
 - LaTeX source, code and bibliography: [github.com/VadimSokolov/hilbert6](https://github.com/VadimSokolov/hilbert6/tree/v1.0.0)
+- Archived copy: [Zenodo](https://zenodo.org/records/23327515)
 - This page in Markdown: [index.html.md](https://vsokolov.org/books/hilbert6/index.html.md)
 - [How to cite](#how-to-cite)
 
