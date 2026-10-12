@@ -1,0 +1,40 @@
+\chapter{L\'evy Processes, Thorin Measures and Related Classes}
+\label{app:levy}
+
+This appendix collects the definitions and standard results on infinite divisibility used in the book. Proofs can be found in Sato~\cite{sato1999}, in Schilling, Song and Vondra\v{c}ek~\cite{schilling2012}, and in Bondesson~\cite{bondesson1992}; we give chapter or section numbers for the main facts.
+
+\section{L\'evy processes}
+
+A L\'evy process is a process $(X_t)_{t\geq0}$ with $X_0 = 0$, independent and stationary increments, and paths that are right continuous with left limits. Its law is determined by the law of $X_1$, which is infinitely divisible, and $\E e^{iuX_t} = e^{t\psi(u)}$ with $\psi$ given by the L\'evy Khintchine formula of Chapter~\ref{ch:mixtures}~\cite[Section~8]{sato1999}. The L\'evy It\^o decomposition~\cite[Chapter 4]{sato1999} writes $X$ as the sum of a drift, a Brownian motion and an independent pure jump process whose jumps form a Poisson point process with intensity $\dd t\otimes\nu(\dd x)$.
+
+\section{Bernstein, Stieltjes and complete Bernstein functions}
+
+A function $\phi:(0,\infty)\to[0,\infty)$ is a Bernstein function if it is smooth and $(-1)^{n-1}\phi^{(n)}\geq0$ for $n\geq1$. Equivalently $\phi(\lambda) = c+a\lambda+\int_0^\infty(1-e^{-\lambda x})\nu(\dd x)$ with $c,a\geq0$ and $\int(1\wedge x)\nu(\dd x)<\infty$~\cite[Chapter 3]{schilling2012}. Bernstein functions are exactly the Laplace exponents of subordinators, killed at an independent exponential time of rate $c$ when $c>0$; the constant $a$ is the drift, as in Chapter~\ref{ch:mixtures}. A function is completely monotone if $(-1)^ng^{(n)}\geq0$ for all $n\geq0$; by Bernstein's theorem it is then a Laplace transform of a positive measure~\cite[Chapter 1]{schilling2012}.
+
+A Stieltjes function has the form $g(\lambda) = \frac c\lambda+a+\int_0^\infty\frac{\sigma(\dd y)}{\lambda+y}$ with $c,a\geq0$ and $\int(1+y)^{-1}\sigma(\dd y)<\infty$~\cite[Chapter 2]{schilling2012}. A Bernstein function is complete if its L\'evy measure has a completely monotone density; complete Bernstein functions are exactly those of the form $\lambda g(\lambda)$ with $g$ Stieltjes, and they extend analytically to $\C\setminus(-\infty,0]$, mapping the upper half plane into itself~\cite[Chapters 6 and 7]{schilling2012}.
+
+\section{Thorin measures}
+
+A law on $[0,\infty)$ is a generalized Gamma convolution if its Laplace transform is $\E e^{-\lambda X} = e^{-\phi(\lambda)}$ with Laplace exponent
+\[
+\phi(\lambda) = a\lambda+\int_{(0,\infty)}\log\Big(1+\frac\lambda y\Big)U(\dd y).
+\]
+Here $a\geq0$ is the drift and $U$, the Thorin measure, is a nonnegative measure with $\int_{(0,\infty)}\log(1+1/y)\,U(\dd y)<\infty$, as in Chapter~\ref{ch:mixtures}~\cite[Chapter 3]{bondesson1992}. Then $\phi'(\lambda) = a+\int\frac{U(\dd y)}{\lambda+y}$ is a Stieltjes function, so the Thorin measure is recovered from the Laplace exponent by Stieltjes inversion:
+\[
+U\big((y_1,y_2]\big) = \lim_{\varepsilon\downarrow0}\frac1\pi\int_{y_1}^{y_2}\Im\,\phi'(-y-i\varepsilon)\dd y
+\]
+at continuity points. This is the formula used in the computational strategy of Chapter~\ref{ch:open}. The class of GGCs is closed under convolution and weak limits, contains all Gamma laws, the lognormal~\cite{thorin1977}, the positive stable laws of index at most one, the P\'olya Gamma laws and many hitting time laws of diffusions, and every GGC is self decomposable and unimodal. A law is self decomposable if for every $c\in(0,1)$ one has $X\eqd cX'+X_c$, with $X'$ a copy of $X$ and $X_c$ independent of $X'$. An infinitely divisible law is self decomposable if and only if its L\'evy measure has a density $k(x)/|x|$ with $k$ nondecreasing on $(-\infty,0)$ and nonincreasing on $(0,\infty)$~\cite{sato1999}, and every GGC qualifies, because $k(x) = \int e^{-xy}U(\dd y)$ is nonincreasing. A law is unimodal if its distribution function is convex on $(-\infty,m)$ and concave on $(m,\infty)$ for some $m$, and Yamazato~\cite{yamazato1978} proved that every self decomposable law is unimodal.
+
+The L\'evy measure of a GGC has density $x^{-1}\int e^{-xy}U(\dd y)$. Passing from a L\'evy measure to a Thorin measure is therefore an inverse Laplace transform.
+
+\section{Hyperbolically completely monotone laws}
+
+A density $f$ on $(0,\infty)$ is hyperbolically completely monotone if for each $u>0$ the function $h_u(w) = f(uv)f(u/v)$, regarded as a function of $w = v+v^{-1}$, is completely monotone in $w$. Bondesson proved~\cite[Chapter 5]{bondesson1992} that HCM laws are GGCs, that the class is closed under multiplication and division of independent variables and under powers $X^q$ with $|q|\geq1$, and that a density of the form $Cx^{\beta-1}h_1(x)h_2(1/x)$, with $h_1,h_2$ Laplace transforms of GGCs, is HCM. The Gamma, inverse Gamma, lognormal, Beta of the second kind and generalized inverse Gaussian laws are HCM, and so are the positive stable laws of index at most one half~\cite{bosch2016}.
+
+\section{Normal scale mixtures and subordination}
+
+If $T$ is a subordinator with Laplace exponent $\phi$ and $B$ an independent Brownian motion, $B_{T_t}$ is a symmetric L\'evy process with characteristic exponent $-\phi(u^2/2)$~\cite[Section~30]{sato1999}. Its marginals are normal scale mixtures with infinitely divisible mixing laws. A law on $\R$ is an extended generalized Gamma convolution (EGGC) if it belongs to the smallest class of laws that contains the laws of $c\gamma$, with $\gamma$ a Gamma variable and $c\neq0$ real, and is closed under convolution and weak limits~\cite{thorin1978},~\cite[Chapter 7]{bondesson1992}. The class contains the GGCs, their reflections and the Gaussian laws. When $T_1$ is a GGC with drift $a$ and Thorin measure $U$, $B_{T_1}$ is an EGGC: its characteristic function is $\exp\big(-au^2/2-\int\log(1+u^2/2y)\,U(\dd y)\big)$, and $(1+u^2/2y)^{-1}$ is the characteristic function of the difference of two independent exponential variables with rate $\sqrt{2y}$, so $B_{T_1}$ is the convolution of a centered Gaussian law and a weak limit of convolutions of Gamma laws of both signs. In this way the class contains the Student $t$ laws, the symmetric hyperbolic laws and the logistic law, whose mixing laws are inverse Gamma, generalized inverse Gaussian and four times a squared Kolmogorov variable, all of them GGCs.
+
+\section{Lee Yang measures}
+
+An even finite measure $\rho$ on $\R$ with $\int e^{bx^2}\rho(\dd x)<\infty$ for all $b>0$ has the Lee Yang property if $\int e^{zx}\rho(\dd x)$ has only purely imaginary zeros, that is, no zeros with $\Re z>0$; this is the class of Newman~\cite{newman1974}, treated in Section~\ref{sec:ferromagnetic}.

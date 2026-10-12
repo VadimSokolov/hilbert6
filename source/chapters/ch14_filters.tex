@@ -1,0 +1,131 @@
+\chapter{Filters, Gates and Local Rules}
+\label{ch:filters}
+
+\section{Inference in real time}
+
+A filter computes the posterior of a hidden state given observations up to the present, and updates it as each new observation arrives. Filtering is inference on the solution manifold performed sequentially, and it is also what any physical system that learns must do: a neuron, a thermostat, a trading algorithm or a language model processing a sequence holds a summary of the past and updates it recursively. The practical filters are approximations, either a Gaussian summary corrected by the score of the predictive density or a swarm of weighted samples. The stationary law of a neuron driven by Poisson input is a generalized Gamma convolution, which links the filter to the Thorin measures of Chapter~\ref{ch:mixtures}.
+
+\section{Kalman, Bucy, Zakai}
+
+For the linear Gaussian state space model $x_t = Fx_{t-1}+w_t$, $y_t = Hx_t+v_t$ with independent Gaussian noises $w_t\sim N(0,\Sigma_w)$ and $v_t\sim N(0,\Sigma_v)$, the filtering distribution is Gaussian, $x_t\mid y_{1:t}\sim N(m_t,P_t)$, and Kalman's recursion of 1960~\cite{kalman1960} gives
+\begin{gather*}
+m_t = Fm_{t-1}+K_t\big(y_t-HFm_{t-1}\big), \\
+K_t = P_{t\mid t-1}H^\top\big(HP_{t\mid t-1}H^\top+\Sigma_v\big)^{-1},
+\end{gather*}
+with $P_{t\mid t-1} = FP_{t-1}F^\top+\Sigma_w$ and $P_t = (I-K_tH)P_{t\mid t-1}$. The Kalman Bucy filter of 1961~\cite{kalmanbucy1961} is the continuous time version, with the covariance solving a Riccati equation. For nonlinear diffusions observed in white noise,
+\[
+\dd X_t = b(X_t)\dd t+\sigma(X_t)\dd W_t,\qquad\dd Y_t = h(X_t)\dd t+\dd V_t,
+\]
+the unnormalized filtering density $q_t$ satisfies the Zakai equation of 1969~\cite{zakai1969},
+\[
+\dd q_t = \mathcal{L}^*q_t\dd t+q_t\,h\,\dd Y_t,
+\]
+a linear stochastic partial differential equation, where $\mathcal{L}^*$ is the Fokker Planck operator of the signal. The filter is a Fokker Planck flow tilted by the observations, the dynamic analogue of Bayes' rule, and it is infinite dimensional except in special cases. Particle filters, introduced by Gordon, Salmond and Smith in 1993~\cite{gss1993}, approximate it by a swarm of weighted samples that are propagated through the dynamics and resampled according to the likelihood.
+
+\section{The score function filter}
+
+Between the exact Kalman filter and the fully nonparametric particle filter lies a classical approximation.
+
+\begin{theorem}[Score function update]
+\label{thm:score_update}
+Let $\theta\sim N(m,P)$ and let $y$ have conditional density $p(y\mid\theta)$, with marginal density $p_m(y) = \int p(y\mid\theta)N(\theta;m,P)\dd\theta$. Then
+\begin{gather*}
+\E[\theta\mid y] = m+P\,\nabla_m\log p_m(y), \\
+\Var(\theta\mid y) = P+P\,\nabla_m^2\log p_m(y)\,P.
+\end{gather*}
+\end{theorem}
+
+\begin{proof}
+Since $\nabla_mN(\theta;m,P) = P^{-1}(\theta-m)N(\theta;m,P)$,
+\[
+\begin{aligned}\nabla_mp_m(y) &= P^{-1}\int(\theta-m)p(y\mid\theta)N(\theta;m,P)\dd\theta\\ &= P^{-1}\big(\E[\theta\mid y]-m\big)p_m(y).\end{aligned}
+\]
+Dividing by $p_m(y)$ gives the first identity. Differentiating once more gives the second.
+\end{proof}
+
+The theorem is Tweedie's formula of Chapter~\ref{ch:gbc} with the roles of prior and likelihood exchanged: the posterior mean is the prior mean plus the prior covariance times the score of the predictive density. Masreliez used it in 1975~\cite{masreliez1975} to build robust filters for heavy tailed observation noise, approximating the prior at each step by a Gaussian and computing the score of the non Gaussian predictive exactly. West's thesis and 1981 paper~\cite{west1981} developed the same idea for Bayesian forecasting with robust likelihoods.
+
+\input{chapters/ext/ch14_pf}
+
+\section{Gates as approximate Bayes filters}
+\label{sec:gates_bayes}
+
+The long short term memory network (LSTM) of Hochreiter and Schmidhuber~\cite{hochreiter1997} carries a cell state $c_t$. In the form now in use, which includes the forget gate added by Gers, Schmidhuber and Cummins~\cite{gers2000}, the cell is updated by
+\[
+c_t = f_t\odot c_{t-1}+i_t\odot\tilde c_t,
+\]
+where $f_t$ and $i_t$, the forget and input gates, are sigmoid functions of the current input and previous hidden state, and $\tilde c_t$ is a candidate update. Compare the scalar Kalman filter for the random walk $x_t = x_{t-1}+w_t$ observed in noise, $y_t = x_t+v_t$, with $\Var(w_t) = q$ and $\Var(v_t) = r$:
+\[
+m_t = (1-K_t)\,m_{t-1}+K_t\,y_t,\qquad K_t = \frac{P_{t-1}+q}{P_{t-1}+q+r}.
+\]
+The gain is a logistic sigmoid, $K_t = 1/(1+e^{-u_t})$ with $u_t = \log\big((P_{t-1}+q)/r\big)$ the log signal to noise ratio. If the forget gate equals $1-K_t$, the input gate equals $K_t$ and the candidate is the observation $y_t$, the cell update is the Kalman update. In the Kalman filter the gain depends only on variances. In an LSTM it is a learned function of the input and the hidden state. The score function filter of Theorem~\ref{thm:score_update} lies between the two, with a gain that depends on the observation through the predictive score. Suppose the observation noise is a scale mixture of normals, as in Chapter~\ref{ch:mixtures}.
+
+\begin{proposition}[The gain of the score function filter]
+\label{prop:gates_bayes}
+Let $\theta\sim N(m,P)$ and $y = \theta+v$, where $v\mid\lambda\sim N(0,r/\lambda)$ for a positive random variable $\lambda$ with law $\pi$ that is independent of $\theta$. Write $K_\lambda = P\lambda/(P\lambda+r)$ for the Kalman gain when the noise variance is $r/\lambda$. Then
+\[
+\E[\theta\mid y] = (1-K)\,m+K\,y,\qquad K = \E[K_\lambda\mid y]\in(0,1),
+\]
+and $\Var(\theta\mid y) = (1-K)P+(y-m)^2\Var(K_\lambda\mid y)$. The gain $K$ depends on $y$ only through $|y-m|$ and is nonincreasing in $|y-m|$. If $\lambda\equiv1$ then $K = P/(P+r)$.
+\end{proposition}
+
+\begin{proof}
+Given $\lambda$ the model is linear Gaussian, so the Kalman update gives $\E[\theta\mid y,\lambda] = m+K_\lambda(y-m)$ and $\Var(\theta\mid y,\lambda) = (1-K_\lambda)P$. Averaging over the conditional law of $\lambda$ given $y$ gives the mean. The law of total variance gives $\Var(\theta\mid y) = \E[(1-K_\lambda)P\mid y]+\Var(m+K_\lambda(y-m)\mid y)$, which is the stated expression. Next, $y\mid\lambda\sim N(m,P+r/\lambda)$, so the conditional law $\mu_z$ of $\lambda$ given $|y-m| = z$ has density proportional to $(P+r/\lambda)^{-1/2}\exp\{-z^2/(2(P+r/\lambda))\}$ with respect to $\pi$, and it depends on $y$ only through $z$. For $z<z'$ the density of $\mu_{z'}$ with respect to $\mu_z$ is $g(\lambda)\big/\int g\dd\mu_z$ with $g(\lambda) = \exp\{-(z'^2-z^2)/(2(P+r/\lambda))\}$, which is decreasing in $\lambda$ because $P+r/\lambda$ decreases in $\lambda$. The gain $K_\lambda$ is increasing in $\lambda$. For two independent draws $\lambda,\lambda'$ from $\mu_z$ we have $(K_\lambda-K_{\lambda'})(g(\lambda)-g(\lambda'))\leq0$, and taking expectations gives Chebyshev's association inequality $\int K_\lambda g\dd\mu_z\leq\int K_\lambda\dd\mu_z\int g\dd\mu_z$. Hence $\int K_\lambda\dd\mu_{z'} = \int K_\lambda g\dd\mu_z\big/\int g\dd\mu_z\leq\int K_\lambda\dd\mu_z$.
+\end{proof}
+
+By Theorem~\ref{thm:score_update} the gain is the prior variance times the predictive score, divided by the innovation: $K = P\,\partial_m\log p_m(y)/(y-m)$. Each $K_\lambda = 1/(1+e^{-u})$ with $u = \log(P\lambda/r)$ is a logistic sigmoid of the log signal to noise ratio for noise variance $r/\lambda$, so the gate $K$ is a posterior average of sigmoids. It takes values in $(0,1)$, like an LSTM gate, and it falls as the innovation grows, because an observation far from the prediction is more likely to come from a large noise variance, and the filter then keeps more of its prior mean.
+
+The proposition describes the gain of a filter, and the identification with an LSTM holds under conditions. The cell has the Kalman form $(1-K)m+Ky$ only when the gates are coupled, $f_t = 1-i_t$, the candidate is the observation and the output gate is ignored. The gain above is a function of the innovation alone, whereas an LSTM gate reads the input and the whole hidden state. The filter is itself an approximation. With scale mixture noise the exact filter is a mixture of Gaussians indexed by the past values of the mixing variable, and the score function filter keeps a single Gaussian with the mean and variance of the proposition. An LSTM can therefore be read as a learned approximation to this Bayes filter. Our paper on gates~\cite{polsonsokolov2026gates} develops the reading for the LSTM, the gated recurrent unit and the ARCH and GARCH models.
+
+Autoregressive conditional heteroskedasticity has the same recursive form with a fixed gain. Engle's ARCH model~\cite{engle1982} and Bollerslev's GARCH model~\cite{bollerslev1986} estimate the variance of the next observation by
+\[
+\sigma^2_t = \omega+\alpha y^2_{t-1}+\beta\sigma^2_{t-1}.
+\]
+For $\beta<1$ iteration gives $\sigma^2_t = \omega/(1-\beta)+\alpha\sum_{j\geq1}\beta^{j-1}y^2_{t-j}$, an exponentially weighted average of past squared observations, and for $\omega = 0$ and $\alpha+\beta = 1$ it is $\sigma^2_t = (1-\alpha)\sigma^2_{t-1}+\alpha y^2_{t-1}$, the steady state update of the local level model of Section~\ref{sec:local_level} with gain $\alpha$. Read as a filter for the latent volatility of a stochastic volatility model, GARCH is therefore the analogue of the steady state Kalman filter and not of the gated filters, and Nelson~\cite{nelson1992} proved that, under conditions given in that paper, misspecified ARCH models are consistent filters for the volatility of diffusion processes in the continuous record limit.
+
+\section{The shot noise neuron}
+
+The leaky integrate and fire neuron has membrane potential obeying
+\[
+\tau\frac{\dd V}{\dd t} = -V+\tau\sum_kA_k\,\delta(t-t_k),
+\]
+where input spikes arrive at times $t_k$ with synaptic amplitudes $A_k$; in the subthreshold regime the potential is shot noise with the exponential pulse $e^{-t/\tau}\mathbb{1}_{t\geq0}$. Stein proposed this model of neuronal variability in 1965~\cite{stein1965}. Allowing each input its own time constant $\tau_k$, the potential at time $t$ is $V = \sum_{t_k\leq t}A_ke^{-(t-t_k)/\tau_k}$.
+
+\begin{theorem}[Gamma law of the shot noise neuron]
+\label{thm:shot_noise_neuron}
+Let the input spikes form a Poisson process of rate $\lambda$ on $\R$. Attach to the $k$th spike a mark $(\tau_k,\kappa_k)$, the marks being independent with a common law $M$ on $(0,\infty)^2$ and independent of the spike times, and given the marks let the amplitude $A_k$ be exponential with rate $\kappa_k$. The stationary potential $V$ satisfies
+\[
+\begin{aligned}-\log\E e^{-\theta V} &= \lambda\int\tau\log\Big(1+\frac\theta\kappa\Big)M(\dd\tau,\dd\kappa)\\ &= \int\log\Big(1+\frac\theta y\Big)U(\dd y),\qquad\theta>0,\end{aligned}
+\]
+where $U$ is the image of the measure $\lambda\tau\,M(\dd\tau,\dd\kappa)$ under $(\tau,\kappa)\mapsto\kappa$. If $\int\log(1+1/y)\,U(\dd y)<\infty$, which is the condition that $U$ be a Thorin measure, then $V$ is a generalized Gamma convolution with Thorin measure $U$ and zero drift. Otherwise $V = \infty$ almost surely. In particular, if all marks equal $(\tau,\kappa)$ then $V$ has the Gamma law with shape $\lambda\tau$ and rate $\kappa$, and if $\tau_k$ and $\kappa_k$ are independent and $\kappa_k$ has law $\nu$ then $U = \lambda\E[\tau]\,\nu$.
+\end{theorem}
+
+\begin{proof}
+Apply Campbell's theorem (Theorem~\ref{thm:campbell}) to the Poisson process of points $(s,\tau,\kappa,a)$, where $s = t-t_k>0$ is the age of the spike and $a$ its amplitude. Its intensity is $\lambda\dd s\otimes M(\dd\tau,\dd\kappa)\otimes\kappa e^{-\kappa a}\dd a$, and the function is $f = \theta ae^{-s/\tau}$. Integrating over $a$ first,
+\[
+\begin{aligned}-\log\E e^{-\theta V} &= \lambda\int M(\dd\tau,\dd\kappa)\int_0^\infty\Big(1-\frac{\kappa}{\kappa+\theta e^{-s/\tau}}\Big)\dd s\\ &= \lambda\int M(\dd\tau,\dd\kappa)\int_0^\infty\frac{\theta e^{-s/\tau}}{\kappa+\theta e^{-s/\tau}}\dd s\\ &= \lambda\int\tau\log\Big(1+\frac\theta\kappa\Big)M(\dd\tau,\dd\kappa),\end{aligned}
+\]
+using the substitution $w = \theta e^{-s/\tau}$ in the inner integral. The last expression is $\int\log(1+\theta/y)\,U(\dd y)$ by definition of $U$. Since $\min(1,\theta)\log(1+1/y)\leq\log(1+\theta/y)\leq\max(1,\theta)\log(1+1/y)$, it is finite for one $\theta>0$ if and only if it is finite for all, and then it is the Laplace exponent of a generalized Gamma convolution with Thorin measure $U$. Otherwise $\E e^{-\theta V} = 0$ for every $\theta>0$, which means $V = \infty$ almost surely. If all marks equal $(\tau,\kappa)$ then $U = \lambda\tau\,\delta_\kappa$, and the exponent $\lambda\tau\log(1+\theta/\kappa)$ is that of the Gamma law with shape $\lambda\tau$ and rate $\kappa$.
+\end{proof}
+
+The theorem gives a physical interpretation of Thorin measures: the Thorin measure of the stationary law of a leaky integrator driven by Poisson input is the distribution of the synaptic amplitude rates, weighted by the time constants. Time constants alone do not leave the Gamma family. With a common rate $\kappa$ a spread of time constants gives the Gamma law with shape $\lambda\E[\tau]$ and rate $\kappa$. A nontrivial generalized Gamma convolution needs a spread of amplitude rates, or a dependence between the rate and the time constant. Bondesson's shot noise representation, Theorem~\ref{thm:bondesson_shot}, is the same circuit read in the other direction. For a common time constant $\tau$ the ages of the spikes before time $t$ are the points $\Gamma_k/\lambda$ of a Poisson process of rate $\lambda$, with $\Gamma_k$ the points of a unit rate Poisson process, so the $k$th most recent spike contributes $E_ke^{-\Gamma_k/\beta}/\kappa_k$ to $V$, where $\beta = \lambda\tau$, $E_k$ is standard exponential and $\kappa_k\sim\nu$. This is the series of the theorem with Thorin measure $\beta\nu$. Every generalized Gamma convolution with zero drift and a Thorin measure $U$ of finite total mass $\beta$ is therefore the stationary potential of a neuron with a common time constant, $\lambda\tau = \beta$ and amplitude rates distributed as $U/\beta$. For a common time constant and amplitudes whose tail is completely monotone, that is, a mixture of exponentials, the stationary law lies in the Thorin class~\cite{polsonsokolov2026gbcshot}.
+
+\section{Local learning rules}
+
+Hebb proposed in 1949~\cite{hebb1949} that a synapse is strengthened when the presynaptic neuron repeatedly takes part in firing the postsynaptic one. In its simplest form $\Delta w = \gamma\,xa$ with postsynaptic activity $a = w^\top x$, the rule is unstable. Oja's modification of 1982~\cite{oja1982},
+\[
+\Delta w = \gamma\,a\,(x-aw),
+\]
+is a stochastic approximation (Section~\ref{sec:stoch_approx}) of the ordinary differential equation $\dot w = Cw-(w^\top Cw)w$ with $C = \E xx^\top$. Let $C$ be positive definite with eigenvalues $\ell_1>\ell_2\geq\dots\geq\ell_d>0$ and unit eigenvectors $v_1,\dots,v_d$, and write $w_i = v_i^\top w$. The equation reads $\dot w_i = (\ell_i-w^\top Cw)\,w_i$, so the ratio $w_i/w_1$ decays like $e^{-(\ell_1-\ell_i)t}$ and $w$ aligns with $\pm v_1$ whenever $w_1(0)\neq0$, while $\frac{\dd}{\dd t}|w|^2 = 2\,w^\top Cw\,(1-|w|^2)$ drives $|w|^2$ to one. The stable equilibria on the unit sphere are therefore the principal eigenvectors $\pm v_1$, and on the sphere the flow is the gradient ascent of the Rayleigh quotient. The rule is local in space, using only the activities of the two connected neurons and the weight itself, and it performs a global computation, principal component analysis, through the Robbins Monro mechanism of stochastic approximation~\cite{robbinsmonro1951}.
+
+Crick argued in 1989~\cite{crick1989} that backpropagation is biologically implausible because it requires the transport of error signals backwards along axons, and much subsequent work has sought local rules that approximate gradient descent. A rule can be local in two senses. It is recursive if it updates a summary of the past using only the current observation and the previous summary, and it is local in space if each weight is updated from quantities available at its own synapse. Oja's rule is both. The Kalman filter and the gates of an LSTM are recursive but not local in space: the Kalman gain involves the covariance of the whole state and a matrix inversion, and a gate reads the whole hidden state. Crick's objection concerns locality in space. The filters of this chapter suggest a different framing of what a local rule can compute. Learning is filtering on parameters, and the question of which global computations can be carried out by recursive rules becomes the question of which posteriors admit finite dimensional recursive summaries. For a static parameter and independent observations the answer is the Pitman Koopman Darmois theorem~\cite{pitman1936,koopman1936,darmois1935}: under regularity conditions, and when the support of the observations does not depend on the parameter, a sufficient statistic of fixed dimension exists for every sample size only for exponential families. For a hidden state that evolves in time the classical finite dimensional filters are the few listed in Section~\ref{sec:wonham}, and beyond them the score function filter is an approximation.
+
+\section{The energy budget}
+
+The human brain consumes about twenty watts. Landauer's principle (Theorem~\ref{thm:landauer}) states that erasing one bit of unknown value at temperature $T$ dissipates at least $k_BT\log2$ of heat. At body temperature, $T = 310$ K, and with $k_B = 1.38\times10^{-23}$ J/K this is $2.97\times10^{-21}$ joules, so twenty watts could pay for at most $20/(2.97\times10^{-21})\approx6.7\times10^{21}$ bit erasures per second. Neurons are far from this limit. Levy and Calvert~\cite{levycalvert2021} estimate that the energy a neuron spends per bit of computation exceeds the physical minimum by a factor of about $10^8$. Any account of learning as physics, which is what the inferential sixth problem asks for, must include an account of the thermodynamic cost of updating beliefs. That is the subject of the next chapter.
+
+\input{chapters/ext/ch14}
+
+\section*{Notes}
+
+Bain and Crisan's \emph{Fundamentals of Stochastic Filtering}~\cite{bain2009} covers the Zakai equation and particle filters. Gerstner and Kistler's \emph{Spiking Neuron Models}~\cite{gerstner2002} discusses the shot noise neuron, and shot noise processes with exponential kernel are treated in~\cite{polsonsokolov2026gbcshot}.

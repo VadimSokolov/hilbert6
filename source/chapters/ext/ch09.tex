@@ -1,0 +1,54 @@
+\section{A worked example: transport coefficients of the BGK model}
+
+The formulas of Theorem~\ref{thm:bgl} can be evaluated in closed form for the relaxation model introduced by Bhatnagar, Gross and Krook in 1954~\cite{bhatnagar1954}, in which the collision operator is replaced by relaxation toward the local Maxwellian with the same moments:
+\[
+Q_{\mathrm{BGK}}(f) = \frac{1}{\tau_c}\big(M_f-f\big).
+\]
+The model conserves mass, momentum and energy and satisfies an $H$ theorem. Linearizing at the standard Maxwellian $M$ with $f = M(1+g)$, the linearized operator is $\mathcal{L}g = \tau_c^{-1}(g-\Pi g)$, where $\Pi$ is the orthogonal projection in $L^2(M)$ onto the span of $1,v,|v|^2$. On the orthogonal complement of the kernel, $\mathcal{L} = \tau_c^{-1}I$.
+
+\begin{proposition}[BGK viscosity and conductivity]
+For the BGK model in dimension $d$, with the scaling of Theorem~\ref{thm:bgl},
+\[
+\nu = \tau_c,\qquad\kappa = \tau_c,
+\]
+so the Prandtl number $\nu/\kappa$ equals one.
+\end{proposition}
+
+\begin{proof}
+Since $A$ and $B$ are orthogonal to the kernel, $\hat A = \tau_cA$ and $\hat B = \tau_cB$. For $v$ standard Gaussian in $\R^d$, $\E|v|^2 = d$, $\E|v|^4 = d(d+2)$ and $\E|v|^6 = d(d+2)(d+4)$. First,
+\[
+\begin{aligned}A:A &= \sum_{i,j}\Big(v_iv_j-\frac{|v|^2}{d}\delta_{ij}\Big)^2\\ &= |v|^4-\frac2d|v|^4+\frac1d|v|^4 = \Big(1-\frac1d\Big)|v|^4,\end{aligned}
+\]
+so $\int A:A\,M = (1-\frac1d)d(d+2) = (d-1)(d+2)$ and $\nu = \tau_c$. Next,
+\[
+\begin{aligned}\int B\cdot B\,M &= \frac14\E\big[|v|^2(|v|^2-(d+2))^2\big]\\ &= \frac14\Big(\E|v|^6-2(d+2)\E|v|^4+(d+2)^2\E|v|^2\Big) = \frac{d(d+2)}{2},\end{aligned}
+\]
+since $d(d+2)(d+4)-2d(d+2)^2+d(d+2)^2 = 2d(d+2)$. Hence $\kappa = \frac{2}{d(d+2)}\tau_c\frac{d(d+2)}{2} = \tau_c$.
+\end{proof}
+
+Real monatomic gases have Prandtl number close to two thirds, as does the Boltzmann equation with hard sphere or Maxwell molecule collisions; the BGK model gets it wrong by a factor of one and a half, which is why the ellipsoidal statistical BGK model~\cite{holway1966} and the Shakhov model~\cite{shakhov1968} were introduced. The calculation illustrates that a cruder collision model is a cruder prior on the microscopic dynamics, visible in a measurable macroscopic ratio. The Prandtl number is a single number and does not discriminate among Boltzmann collision kernels: hard spheres and Maxwell molecules differ in the temperature dependence of the viscosity, which grows like $\sqrt\theta$ for hard spheres and like $\theta$ for Maxwell molecules.
+
+\section{The Chapman Enskog stress and Fourier's law}
+
+The first order Chapman Enskog correction makes the constitutive laws of Navier Stokes Fourier explicit. Writing $f = M_{\rho,u,\theta}(1+\varepsilon g_1+O(\varepsilon^2))$ and solving $\mathcal{L}_{\rho,u,\theta}g_1 = -(\partial_t+v\cdot\nabla_x)\log M_{\rho,u,\theta}$, where $\mathcal{L}_{\rho,u,\theta}$ is the operator linearized at the local Maxwellian, with the time derivative eliminated through the Euler equations, the right side reduces to
+\[
+-\Big(A(\xi):\nabla_xu+\sqrt\theta\,B(\xi)\cdot\nabla_x\log\theta\Big),\qquad\xi = \frac{v-u}{\sqrt\theta},
+\]
+because the parts along the collision invariants cancel exactly by the Euler equations. For hard spheres the change of variables $v = u+\sqrt\theta\,\xi$ gives $\mathcal{L}_{\rho,u,\theta} = \rho\sqrt\theta\,\mathcal{L}$ acting on functions of $\xi$, where $\mathcal{L}$ is the operator of the standard Maxwellian, so the solution is $g_1 = -(\rho\sqrt\theta)^{-1}\hat A(\xi):\nabla u-\rho^{-1}\hat B(\xi)\cdot\nabla\log\theta$, and the corresponding stress and heat flux are
+\[
+\sigma = \mu(\theta)\Big(\nabla u+\nabla u^\top-\frac2d(\nabla\cdot u)I\Big),\qquad q = -\lambda(\theta)\nabla\theta,
+\]
+Newton's law of viscosity and Fourier's law of heat conduction, with $\mu(\theta) = \nu\sqrt\theta$ and $\lambda(\theta) = \frac{d+2}{2}\kappa\sqrt\theta$, where $\nu$ and $\kappa$ are the coefficients of Theorem~\ref{thm:bgl}. They grow like $\sqrt\theta$ and are independent of density. The constitutive laws that engineers use as axioms are, in the derivational reading, theorems about the first order correction to local equilibrium.
+
+\section{Acoustic, Stokes and Euler limits}
+
+The scaling \eqref{eq:bgl_scaling} is one of a family. Writing $f_\varepsilon = M(1+\delta_\varepsilon g_\varepsilon)$ with fluctuation size $\delta_\varepsilon$ and the Boltzmann equation with Knudsen number $\varepsilon$ and time scale $\varepsilon^{-a}$, different choices produce different limits. With $a = 0$ and $\delta_\varepsilon\to0$ the limit is the acoustic system, linearized compressible Euler, which describes sound waves. With $a = 1$ and $\delta_\varepsilon = o(\varepsilon)$ the limit is the Stokes Fourier system, the linear part of Navier Stokes Fourier. With $a = 1$ and $\delta_\varepsilon = \varepsilon$ the limit is the full incompressible Navier Stokes Fourier system of Theorem~\ref{thm:bgl}. With the time scale $\delta_\varepsilon^{-1}$ in place of $\varepsilon^{-a}$ and $\delta_\varepsilon/\varepsilon\to\infty$ the viscosity drops out and the limit is the incompressible Euler equations, a regime in which dissipation must be recovered, if at all, through the anomalous mechanisms of Chapter~\ref{ch:boundary}. The Bardos, Golse and Levermore program~\cite{bgl1991,bgl1993} has justified these limits at the level of renormalized solutions, under somewhat stronger conditions on the scalings: the acoustic and Stokes Fourier limits by Golse and Levermore~\cite{golselevermore2002}, with $\delta_\varepsilon\ll\sqrt\varepsilon$ in the acoustic case, and the incompressible Euler limit by Saint Raymond~\cite{saintraymond2003}, for $\delta_\varepsilon = \varepsilon^\alpha$ with $0<\alpha<1$, well prepared data and the time interval of smooth Euler flow. Golse's survey~\cite{golse2011} tabulates the regimes. The map of scalings is a map of which macroscopic equations are visible from a given kinetic model at a given resolution, and it is the hydrodynamic analogue of the choice of a statistical model at a given sample size.
+
+\section*{Exercises}
+\begin{enumerate}
+\item Verify the Maxwellian moment formulas used in the Euler limit.
+\item Prove the $H$ theorem for the BGK model: $\int(M_f-f)\log f\dd v\leq0$.
+\item Compute $\E|v|^4$ and $\E|v|^6$ for the standard Gaussian in $\R^d$.
+\item Show that the product Bernoulli measure with constant density is invariant for the symmetric exclusion process.
+\item Determine the diffusion coefficient in Theorem~\ref{thm:ssep} when the exchange rate is $c$ instead of one.
+\end{enumerate}

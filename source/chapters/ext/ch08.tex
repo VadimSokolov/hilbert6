@@ -1,0 +1,30 @@
+\section{The Lorentz gas: a derivation valid for all times}
+
+There is one kinetic limit in which the restriction to short times disappears. In the Lorentz gas a single particle moves among fixed spherical scatterers of radius $\varepsilon$ placed at the points of a Poisson process of intensity $\varepsilon^{-(d-1)}$, reflecting elastically. Gallavotti showed in 1969~\cite{gallavotti1969}, and Spohn~\cite{spohn1978} and Boldrighini, Bunimovich and Sinai~\cite{bbs1983} extended the result, that in the Boltzmann Grad limit the law of the particle, averaged over the scatterers, converges for all times to the solution of the linear Boltzmann equation
+\[
+\partial_tf+v\cdot\nabla_xf = \int_{S^{d-1}}\big(f(v')-f(v)\big)\,|v|\,b(\omega)\dd\omega.
+\]
+The linear equation describes a particle whose velocity jumps at the times of a Poisson process, a Markov process in phase space. The difficulty of Lanford's theorem, recollisions between moving particles, is replaced by the possibility of returning to a scatterer already visited, and since the scatterers are Poisson distributed and the particle explores new territory, such returns have vanishing probability on every bounded time interval. The theorem shows that the Markov property, the essence of Boltzmann's assumption, emerges from deterministic dynamics in a random medium. Averaging over the medium is a de Finetti average, and the Poisson law of the scatterers is the prior that makes the limit Markov.
+
+For a periodic arrangement of scatterers the result fails: Golse~\cite{golse2008} showed that the limit is not described by the linear Boltzmann equation, and Marklof and Str\"ombergsson~\cite{marklof2011} identified the correct limit, a generalized kinetic equation with memory, using ergodic theory on homogeneous spaces. The randomness of the medium matters, which is another form of Poincar\'e's observation that the irreversible limit is a statement about a probability measure on initial conditions.
+
+\section{Mean field limits and the Vlasov equation}
+
+When the interaction is long range and weak rather than short range and strong, the kinetic limit is the Vlasov equation
+\[
+\partial_tf+v\cdot\nabla_xf-(\nabla W*\rho_f)\cdot\nabla_vf = 0,\qquad\rho_f = \int f\dd v,
+\]
+for particles interacting through a potential $W$ scaled by $1/N$. Braun and Hepp in 1977~\cite{braunhepp1977} and Dobrushin in 1979~\cite{dobrushin1979} proved the mean field limit for smooth $W$ by a stability estimate in Wasserstein distance: two solutions of the Vlasov equation, and in particular an empirical measure of the $N$ particle system and the true solution, separate at most exponentially in time in $W_1$. Dobrushin's estimate is the deterministic counterpart of the coupling argument of Theorem~\ref{thm:mckean}. The singular case of the Coulomb interaction, relevant to plasmas and galaxies, was long out of reach; the modulated energy method of Serfaty~\cite{serfaty2020} gives mean field limits for Coulomb and Riesz interactions, for gradient and conservative first order flows and, for Newton's law, in the monokinetic case. The Vlasov equation is reversible, and its long time behavior, Landau damping, is a mixing phenomenon in velocity space proved in the nonlinear setting by Mouhot and Villani~\cite{mouhotvillani2011}. It is a second route to irreversibility, through phase mixing rather than collisions.
+
+\section{Grad's moment method and the closure problem}
+
+Integrating the Boltzmann equation against polynomials in $v$ yields an infinite hierarchy of moment equations, each involving the next. Grad's thirteen moment method of 1949~\cite{grad1949} closes the hierarchy by assuming that $f$ is a local Maxwellian times a polynomial of degree three determined by thirteen moments: density, velocity, temperature, stress and heat flux. The resulting hyperbolic system reproduces Navier Stokes Fourier in the hydrodynamic limit and extends it into the transition regime, but it can lose hyperbolicity and produce unphysical shocks. Levermore's maximum entropy closures~\cite{levermore1996} replace the polynomial ansatz by the density maximizing entropy subject to the moment constraints, an exponential family, which guarantees hyperbolicity and an entropy inequality at the cost of nonpolynomial fluxes. Closure problems in kinetic theory, in turbulence modeling and in approximate Bayesian inference, where variational families play the role of the closure ansatz, are versions of the same question: which low dimensional family best represents a high dimensional law consistent with known averages.
+
+\section*{Exercises}
+\begin{enumerate}
+\item Verify that the pre and post collisional change of variables in Lemma~\ref{lem:weakform} has unit Jacobian.
+\item For Kac's model, derive the differential equation satisfied by the fourth moment under the normalization of Theorem~\ref{thm:kac}, and solve it.
+\item In Kac's ring with $N$ sites and $m$ marked edges, show that the configuration at time $N$ is the color reversal of the initial one when $m$ is odd and equal to it when $m$ is even.
+\item In dimension one, take $b(x,y) = Ly$ and $f_0 = N(0,s^2)$ in Theorem~\ref{thm:mckean}. Compute $\E|X^i_t-\bar X^i_t|$ exactly and show that it is at least $\sqrt{2/\pi}\,(e^{Lt}-1)s/\sqrt N$, so that $C_T$ must depend on the variance of $f_0$.
+\item Show that the linear Boltzmann equation conserves mass and kinetic energy but not momentum, and identify its equilibria.
+\end{enumerate}

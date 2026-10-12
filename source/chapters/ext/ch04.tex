@@ -1,0 +1,56 @@
+\section{Bachelier's maximum and the reflection principle}
+
+Bachelier computed in 1900~\cite{bachelier1900} the law of the maximum of his price process.
+
+\begin{theorem}[Reflection principle]
+\label{thm:reflection}
+Let $B$ be standard Brownian motion, $M_t = \sup_{s\leq t}B_s$ and $a>0$. Then $\P(M_t\geq a) = 2\P(B_t\geq a)$, so $M_t\eqd|B_t|$. More precisely, for $b\leq a$,
+\[
+\P(M_t\geq a,\,B_t\leq b) = \P(B_t\geq2a-b).
+\]
+\end{theorem}
+
+\begin{proof}
+Let $\tau_a = \inf\{s:B_s = a\}$, a stopping time. By the strong Markov property, $(B_{\tau_a+s}-a)_{s\geq0}$ is a Brownian motion independent of $\mathcal{F}_{\tau_a}$, and so is its negative. Reflecting the path after $\tau_a$ maps $\{M_t\geq a,B_t\leq b\}$ bijectively, and measure preservingly, onto $\{B_t\geq2a-b\}$. Taking $b = a$ and adding $\P(B_t\geq a)$ gives the first identity.
+\end{proof}
+
+Differentiating gives the joint density of $(M_t,B_t)$, and with it the density of the hitting time $\tau_a$:
+\[
+\P(\tau_a\in\dd t) = \frac{a}{\sqrt{2\pi t^3}}e^{-a^2/2t}\dd t,
+\]
+the L\'evy law, a positive stable law of index one half. It is an HCM law and therefore a GGC, with Laplace transform $e^{-a\sqrt{2\lambda}}$. Bachelier used the reflection argument, informally, to price barrier type contracts.
+
+\section{L\'evy's arcsine laws}
+
+Let $O_t = \int_0^t\mathbb{1}\{B_s>0\}\dd s$ be the time Brownian motion spends positive up to time $t$, and $g_t = \sup\{s\leq t:B_s = 0\}$ the last zero before $t$. L\'evy proved that $O_1$ and $g_1$ both have the arcsine law with density $\frac{1}{\pi\sqrt{x(1-x)}}$ on $(0,1)$. The law is symmetric and concentrated near the endpoints: a Brownian path typically spends most of its time on one side. The arcsine law is a Beta$(\frac12,\frac12)$ law, which reappears in Chapter~\ref{ch:mixtures} as the law of the shrinkage coefficient of the horseshoe prior. If $N_1$ and $N_2$ are independent standard normal variables, then $N_1^2$ and $N_2^2$ are independent Gamma variables with shape $\frac12$ and the same scale, so $N_2^2/(N_1^2+N_2^2)$ has the Beta$(\frac12,\frac12)$ law. The half Cauchy local scale of the horseshoe is $\lambda = |N_1|/|N_2|$, and its shrinkage coefficient $1/(1+\lambda^2)$ is exactly this ratio.
+
+\section{It\^o's formula and Girsanov's theorem}
+
+For a semimartingale $X$ and a twice continuously differentiable $f$, It\^o's formula reads
+\[
+f(X_t) = f(X_0)+\int_0^tf'(X_s)\dd X_s+\frac12\int_0^tf''(X_s)\dd\langle X\rangle_s.
+\]
+Girsanov's theorem describes how the law of Brownian motion changes under a change of drift.
+
+\begin{theorem}[Girsanov]
+Let $b$ be a bounded progressively measurable process and define $G_t = \exp\big(\int_0^tb_s\dd B_s-\frac12\int_0^t|b_s|^2\dd s\big)$. Under the measure $\dd\mathbb{Q} = G_T\dd\P$ on $\mathcal{F}_T$, the process $\tilde B_t = B_t-\int_0^tb_s\dd s$ is a Brownian motion on $[0,T]$.
+\end{theorem}
+
+We quote the theorem without proof; see Chapter VIII of~\cite{revuzyor}, or Girsanov's original paper~\cite{girsanov1960}. Since $b$ is bounded, Novikov's criterion applies, so $G$ is a martingale with $\E G_T = 1$ and $\mathbb{Q}$ is a probability measure. Girsanov's density is a likelihood ratio between path measures, and its logarithm is the log likelihood of the drift. For a diffusion $\dd X = b_\theta(X)\dd t+\dd B$ observed continuously, the likelihood of $\theta$ relative to the driftless process is
+\[
+L(\theta) = \exp\Big(\int_0^Tb_\theta(X_s)\dd X_s-\frac12\int_0^T|b_\theta(X_s)|^2\dd s\Big),
+\]
+and Bayesian inference for diffusions, as in Polson and Roberts~\cite{polsonroberts1994}, starts from this formula. Let $b$ and $b'$ be bounded progressively measurable drifts, and let $\P^b$ and $\P^{b'}$ be the laws of the solutions of $\dd X = b_s\dd t+\dd B$ and $\dd X = b'_s\dd t+\dd B$ with the same initial condition and unit diffusion coefficient. The relative entropy of $\P^b$ with respect to $\P^{b'}$ is $\frac12\E^b\int_0^T|b_s-b'_s|^2\dd s$, where $\E^b$ is the expectation under $\P^b$. This is the identity behind the Schr\"odinger bridge computations of Chapter~\ref{ch:gbc} and the Donsker Varadhan rate function of Chapter~\ref{ch:quantum}.
+
+\section{Local time and the Ray Knight theorems}
+
+Brownian motion in one dimension has a local time $L_t^x$, jointly continuous in $(t,x)$, such that $\int_0^tf(B_s)\dd s = \int f(x)L^x_t\dd x$ for all bounded measurable $f$. The Ray Knight theorems identify the local time as a function of the space variable, at suitable random times, with squared Bessel processes; see Chapter XI of~\cite{revuzyor}. For instance, if $\tau_a$ is the hitting time of $a>0$, then $(L^{a-x}_{\tau_a})_{0\leq x\leq a}$ is a squared Bessel process of dimension two started at zero, so that $L^{a-x}_{\tau_a}$ is exponential with mean $2x$, and $(L^{-y}_{\tau_a})_{y\geq0}$ is a squared Bessel process of dimension zero started at $L^0_{\tau_a}$. The additivity of squared Bessel processes then explains why local times at hitting times are infinitely divisible. They are Gamma convolutions only on the first range. For $y>0$ the law of $L^{-y}_{\tau_a}$ has Laplace transform $(1+2\lambda y)/(1+2\lambda(y+a))$ and an atom of mass $y/(a+y)$ at zero, which a Gamma convolution does not have. Biane, Pitman and Yor~\cite{bpy2001} use the Ray Knight theorems and symmetries of Brownian paths to give direct arguments for many of the coincidences in law between Brownian functionals that they tabulate. For some of the coincidences no direct argument is known, and some of these are equivalent to the functional equation of the Jacobi theta function.
+
+\section*{Exercises}
+\begin{enumerate}
+\item Show that the L\'evy Ciesielski series truncated after level $n$ agrees with the full series at the dyadic points $k2^{-(n+1)}$ and is linear in between.
+\item Use the reflection principle to derive the density of $\tau_a$ and verify that its Laplace transform is $e^{-a\sqrt{2\lambda}}$.
+\item From \eqref{eq:exit_laplace}, compute $\E T$ and $\Var T$ for the exit time from $(-1,1)$, and check them against the series of exponentials.
+\item Show that the exit time from $(-a,a)$ of Brownian motion started at zero has the law of $a^2T$, and deduce its Laplace transform.
+\item Simulate the Dufresne perpetuity by Euler discretization for $\mu = 1$ and compare with the law of $1/(2\gamma_1)$. Compare quantiles, since this law has an infinite mean.
+\end{enumerate}

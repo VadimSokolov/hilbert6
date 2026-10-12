@@ -1,0 +1,24 @@
+# Chapter 20. Filters, Gates and Local Rules
+
+<!-- cite:begin -->
+From *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation* by Nick Polson and Vadim Sokolov (2026), chapter 20. Cite as Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1, https://doi.org/10.5281/zenodo.23327515. Book page: https://vsokolov.org/books/hilbert6/. Source: https://github.com/VadimSokolov/hilbert6.
+<!-- cite:end -->
+
+A filter computes the posterior of a hidden state from the observations so far and updates it recursively. The chapter asks which recursive and local update rules compute or approximate the Bayes filter. It covers the Kalman, Kalman Bucy, Zakai and Wonham filters, the local level model, and the score function filter, a Gaussian summary corrected by the score of the predictive density. For a Gaussian prior and scale mixture of normals noise it proves that the gain is a posterior average of Kalman gains that does not increase with the size of the innovation, and it reads LSTM gates as approximate Bayes filters under conditions. It treats particle filters (sequential Monte Carlo): weight degeneracy, error bounds, path degeneracy, particle learning and a Markov switching Zakai equation. It proves that the stationary subthreshold potential of a shot noise neuron with exponential amplitudes is a generalized Gamma convolution whose Thorin measure is the law of the amplitude rates weighted by the time constants, or is infinite almost surely. It also treats local learning rules (Hebb, Oja), stochastic approximation and the energy budget of the brain.
+
+## From the literature
+
+Kalman filter (Kalman 1960); Kalman Bucy filter (Kalman and Bucy 1961); Zakai equation (Zakai 1969); Wonham filter (Wonham 1964); exponential smoothing as the optimal local level filter (Muth 1960); the particle filter (Gordon, Salmond and Smith 1993); the score function update (Masreliez 1975, West 1981); the shot noise model of the neuron (Stein 1965); the LSTM (Hochreiter and Schmidhuber 1997); ARCH (Engle 1982) and GARCH (Bollerslev 1986); Hebb's rule (Hebb 1949) and Oja's rule (Oja 1982); stochastic approximation (Robbins and Monro 1951); the Pitman Koopman Darmois theorem (Darmois 1935, Pitman 1936, Koopman 1936); importance weight variance growth (Kong, Liu and Wong 1994); particle filter error bounds (Del Moral 1998, Crisan and Doucet 2002, Del Moral and Guionnet 2001, Cérou, Del Moral and Guyader 2011); particle learning (Carvalho, Johannes, Lopes and Polson 2010); the Kurtz Xiong representation (Kurtz and Xiong 1999).
+
+## New results
+
+The common time constant case of the shot noise theorem is in the authors' paper on shot noise processes (Polson and Sokolov 2026).
+
+<!-- results:begin -->
+- [Gain of the score function filter under scale mixture noise](../RESULTS.md#the_gain_of_the_score_function_filter) (Proposition 20.8, page 421; proved): For a Gaussian prior and observation noise that is a scale mixture of normals, the posterior mean is a weighted average of the prior mean and the observation, and the weight (the gain) is a posterior average of Kalman gains that lies strictly between 0 and 1 and does not increase as the observation moves away from the prior mean. New in this book.
+- [Gamma law and Thorin measure of the shot noise neuron](../RESULTS.md#gamma_law_of_the_shot_noise_neuron) (Theorem 20.9, page 423; proved): In the subthreshold regime (no firing threshold or reset), a leaky integrate and fire neuron driven by Poisson input, where each spike has its own random time constant and an exponentially distributed amplitude with its own random rate, has a stationary potential that is a generalized Gamma convolution whose Thorin measure is the law of the amplitude rates weighted by the input rate and the time constants, or it is infinite almost surely when that measure is not a Thorin measure. New in this book.
+<!-- results:end -->
+
+## Key terms
+
+filtering, state space model, hidden Markov model, Kalman filter, Zakai equation, Wonham filter, local level model, score function filter, Tweedie formula, LSTM, GARCH, scale mixture of normals, particle filter, sequential Monte Carlo, weight degeneracy, path degeneracy, particle learning, propagation of chaos, Kurtz Xiong, Markov switching, shot noise neuron, generalized Gamma convolution, Thorin measure, Oja rule, stochastic approximation

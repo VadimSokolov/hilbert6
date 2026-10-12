@@ -1,0 +1,219 @@
+\subsection{Summary statistic selection in ABC, and partial least squares}\label{m:sec:abcpls}
+
+The problem of choosing what to condition on is the central practical problem of approximate Bayesian computation, and a substantial literature addresses it.
+
+\subsubsection{The ABC summary statistic literature} Sufficiency is unattainable outside exponential families, by the Pitman Koopman Darmois theorem, so ABC must choose an approximately sufficient summary and accept that whatever is lost at the compression step cannot be recovered by shrinking the tolerance. The proposals fall into three groups. Subset selection from a pool of candidates, by sequential likelihood ratio tests~\cite{joycemarjoram2008}, by minimum entropy and a two stage procedure~\cite{nunesbalding2010}, or by an information theoretic criterion for model choice~\cite{barnes2012}. Projection methods, which form linear or nonlinear combinations of candidates: partial least squares~\cite{wegmann2009}, boosting~\cite{aeschbacher2012}, least angle regression~\cite{sedkipudlo2012}, and the posterior mean regression of Fearnhead and Prangle~\cite{fearnheadprangle2012} and Jiang and coauthors~\cite{jiang2017}. And distance based methods that avoid explicit summaries: kernel embeddings~\cite{park2016} and the Wasserstein distance~\cite{bernton2019}. Pacchiardi, Khoo and Dutta~\cite{pacchiardi2024} define a generalized Bayesian posterior from a scoring rule evaluated on simulations, which is consistent when the model is well specified and robust to outliers. Raynal and coauthors~\cite{raynal2019} use random forests, and Raynal and coauthors~\cite{raynal2022}, with Mira, address a different scaling problem, that of models whose simulated data must match the size of a very large observed network, by extrapolated and sampled summaries. Prangle~\cite{prangle2018} reviews the area, and Hoffmann and Onnela~\cite{hoffmannonnela2026} unify these criteria by showing that minimizing expected posterior entropy, maximizing the determinant of the Fisher information, and minimizing $L^2$ Bayes risk agree in the large sample limit.
+
+The candidate pool is not a heuristic list: the model supplies a canonical family of statistics indexed by the eigenbasis, and Lemma~\ref{m:lem:adjoint} identifies which member is sufficient.
+
+\begin{proposition}[The one step summary under four ABC criteria]\label{m:prop:abcopt}
+Assume the hypotheses of Theorem~\ref{m:thm:nickl2} and of Proposition~\ref{m:prop:suff}, and Assumption~\ref{m:ass:U}, the latter both with $S_N=\hat S_N:=\hat S^{J_N}_N$ the one step summary of Definition~\ref{m:def:summary} and with $S_N=\tilde\theta_N$ the posterior mean, and assume in addition the uniform second moment bound
+\begin{equation*}\label{m:eq:momentbound}\tag{MB}
+\begin{split}
+&\sup_N\ \mathbf{E}\,\norm{\sqrt N(\theta-\hat S_N)}^{2+\varpi}_{H^{-k-2}}\\
+&\qquad+\;\sup_N\ \mathbf{E}\,\norm{\sqrt N(\theta-\tilde\theta_N)}^{2+\varpi}_{H^{-k-2}}\;<\;\infty\qquad\text{for some }\varpi>0 ,
+\end{split}
+\end{equation*}
+the expectations being under the prior predictive law $\mathbf{P}=\Pi\otimes P^\N_\vartheta$ of Theorem~\ref{m:thm:jwbvm}. Let $\mathcal S_J$ be the class of all measurable statistics $S=g(Z^{(N)})$ taking values in a $J$ dimensional subspace of $H^{-k-2}$, with $J=J_N$ as in Definition~\ref{m:def:summary}, let $P_J$ be the projection onto $\mathrm{span}\{e_j:j\le J\}$, and write $\theta^J=P_J\theta$. Write $\Wone_1=\Wone_{1,H^{-k-2}}$, and, in the first $J$ modes,
+\[
+\begin{aligned}
+\Sigma_J(\vartheta)&=\Big(T\big\langle e_j,\,(\I^*_\vartheta\I_\vartheta)^{-1}e_{j'}\big\rangle\Big)_{j,j'\le J},\\
+\mathcal J^J_N(\vartheta)&=\tfrac NT\Big(\big\langle e_j,\,\I^*_\vartheta\I_\vartheta\,e_{j'}\big\rangle\Big)_{j,j'\le J},
+\end{aligned}
+\]
+together with $V^J_N(\vartheta)=\big(\mathcal J^J_N(\vartheta)+(\Sigma^J_0)^{-1}\big)^{-1}$ and $\Sigma^J_0=\diag(\sigma^2_{0,j})_{j\le J}$, the projected prior covariance of \eqref{m:eq:prior}. Thus $\Sigma_J(\vartheta)$ is the covariance of the Bernstein von Mises limit $\Ncal_\vartheta=N\big(0,T(\I^*_\vartheta\I_\vartheta)^{-1}\big)$ read in the first $J$ modes, $\mathcal J^J_N(\vartheta)$ is the $J$ block of the Fisher information for $N$ observations, and $V^J_N(\vartheta)$ is the projected posterior covariance $V$ of Proposition~\ref{m:prop:pr}. For $S\in\mathcal S_J$ consider the four criteria
+\begin{enumerate}[label=(\roman*),nosep]
+\item the expected posterior entropy $\mathcal H_N(S)=\mathbf{E}\,H\big(\Law(\theta^J\mid S)\big)$, to be minimized;
+\item $\mathcal F_N(S)=\log\det\mathcal J_N(S)$, where $\mathcal J_N(S)$ is the efficient Fisher information carried at $\theta_0$ by the induced experiment $\{\Law_\theta(S)\}$ about the $J$ mode subparameter $(\langle e_j,\theta\rangle)_{j\le J}$, to be maximized;
+\item the $L^2$ Bayes risk $\mathcal R_N(S)=N\,\mathbf{E}\norm{\theta-\mathbf{E}[\theta\mid S]}^2_{H^{-k-2}}$, to be minimized;
+\item the expected information gain of Proposition~\ref{m:prop:pr}, $\mathcal U_N(S)=I(\theta^J;S)$, to be maximized.
+\end{enumerate}
+Then $\hat S_N\in\mathcal S_J$, and the following hold.
+\begin{enumerate}[label=(\alph*),nosep]
+\item \emph{(Comparison, exact at every $N$.)} For every $S\in\mathcal S_J$,
+\[
+\begin{aligned}
+\mathcal H_N(S)&\ge\mathcal H_N\big(Z^{(N)}\big), & \mathcal F_N(S)&\le\mathcal F_N\big(Z^{(N)}\big),\\
+\mathcal R_N(S)&\ge\mathcal R_N\big(Z^{(N)}\big), & \mathcal U_N(S)&\le\mathcal U_N\big(Z^{(N)}\big) .
+\end{aligned}
+\]
+Moreover (i) and (iv) are one criterion and not two: $\mathcal U_N(S)=H\big(\Law(\theta^J)\big)-\mathcal H_N(S)$ for every $N$ and every $S$, the subtracted term not depending on $S$, so entropy minimization and information gain maximization have identical optimizers exactly, and not merely asymptotically.
+\item \emph{($L^2$ Bayes risk: the exact finite $N$ laws.)} Under \eqref{m:eq:momentbound},
+\[
+\mathcal R_N\big(\hat S_N\big)-\mathcal R_N\big(Z^{(N)}\big)\longrightarrow0 ,
+\]
+and both terms are bounded in $N$. If moreover the weighted traces $t(\vartheta)=T\sum_{j\ge1}(1+\lambda_j)^{-k-2}\langle e_j,(\I^*_\vartheta\I_\vartheta)^{-1}e_j\rangle$ of the limits $\Ncal_\vartheta$ satisfy $\sup_N\int t^{1+\varpi/2}\,d\Pi<\infty$, as they do for the heat and Stokes equations, where $t$ is constant, then both terms equal $\varrho_N+o(1)$ with
+\[
+\varrho_N=\int t(\vartheta)\,d\Pi(\vartheta) ,
+\]
+which depends on $N$ only through the rescaled prior $\Pi$ and is bounded. So $\hat S_N$ attains the criterion (iii) optimum within $\mathcal S_J$ up to $o(1)$, for the exact posteriors and not only for their limits.
+\item \emph{(Entropy, log determinant of Fisher information, and information gain: the $J$ mode Gaussian projection.)} Let the $J$ mode Gaussian projection at $\vartheta$ be the linear Gaussian experiment with parameter $\theta^J\in\R^J$, prior $N(0,\Sigma^J_0)$ and information matrix $\mathcal J^J_N(\vartheta)$, in which the modes beyond $J$ are known; criteria (i) and (iv) are evaluated in it at the parameter $\vartheta\sim\Pi$ that generates the data, and criterion (ii) at $\vartheta=\theta_0$. For the heat and Stokes equations it does not depend on $\vartheta$, it is the experiment in which Proposition~\ref{m:prop:pr} computes the information gain, and by Theorem~\ref{m:thm:jwbvm} and Proposition~\ref{m:prop:suff} it is the limit of the exact experiment at the $\sqrt N$ scale in $\Wone_1$. When $\I^*_{\theta_0}\I_{\theta_0}$ couples the first $J$ modes with the others it is not that limit, since the posterior covariance of the first $J$ modes is then asymptotically $\Sigma_J(\theta_0)/N$ and not $\mathcal J^J_N(\theta_0)^{-1}$ (Corollary~\ref{m:cor:prreal}, for a fixed $J$). In it $\hat S_N$, read in its regularized form \eqref{m:eq:regsummary}, is \emph{exactly} sufficient, by Lemma~\ref{m:lem:exact} and Proposition~\ref{m:prop:linsuff}, so
+\[
+\Law\big(\theta^J\mid\hat S_N\big)=\Law\big(\theta^J\mid Z^{(N)}\big)=N\big(\cdot,\ V^J_N(\vartheta)\big)
+\]
+there, and all four criteria take identical values at $\hat S_N$ and at the full data, namely
+\[
+\mathcal H^\star_N=\tfrac12\int\log\det\big(2\pi e\,V^J_N(\vartheta)\big)\,d\Pi(\vartheta) ,
+\]
+\[
+\begin{aligned}
+\mathcal U^\star_N&=\tfrac12\int\log\det\big(\Sigma^J_0\,V^J_N(\vartheta)^{-1}\big)\,d\Pi(\vartheta)\\
+&=\tfrac12\sum_{j\le J}\log(1+\kappa_j),\qquad\kappa_j=N\iota_j\sigma^2_{0,j} ,
+\end{aligned}
+\]
+the last equality for the heat and Stokes equations, where $V^J_N(\vartheta)$ does not depend on $\vartheta$ and is diagonal by \eqref{m:eq:gram}, and $\mathcal F^\star_N=\log\det\mathcal J^J_N(\theta_0)$. For a nonlinear forward map the integral need not be its value at $\theta_0$: by the concavity of $\log\det$ it is at most the right side of \eqref{m:eq:prvt}, hence, for a fixed number $J$ of modes and under the hypotheses of the second part of Proposition~\ref{m:prop:prvt}, at most its value at $\vartheta=0$ up to $o(1)$, as the last step of the proof of \eqref{m:eq:prvtzero} shows, and in the example of Proposition~\ref{m:prop:prrd}(iii), where $J=1$, the value at $\theta_0$ exceeds this by an amount that does not vanish as $N\to\infty$. The bounds of (a) are therefore met in the $J$ mode Gaussian projection. In the exact experiment, where the modes beyond $J$ are unknown parameters, the efficient information for the first $J$ modes is the Schur complement
+\[
+\tfrac NT\big[P_J(\I^*_{\theta_0}\I_{\theta_0})^{-1}P_J\big]^{-1}=N\Sigma_J(\theta_0)^{-1}\preceq\mathcal J^J_N(\theta_0) ,
+\]
+and $\hat S_N$ attains $\log\det(N\Sigma_J(\theta_0)^{-1})$ asymptotically, for each fixed $J$; the two values of (ii) agree when $\I^*_{\theta_0}\I_{\theta_0}$ is diagonal in $(e_j)$, the heat and Stokes case of \eqref{m:eq:gram}.
+\end{enumerate}
+For (i), (ii) and (iv) this is a statement about the $J$ mode Gaussian projection and not about the exact finite $N$ functionals: we do not claim, and the hypotheses do not give, $\mathcal H_N(\hat S_N)-\mathcal H_N(Z^{(N)})\to0$ or $\mathcal F_N(\hat S_N)-\mathcal F_N(Z^{(N)})\to0$ for the exact laws. Differential entropy, Kullback Leibler divergence and Fisher information are not continuous along $\Wone_1$ convergence, and Theorem~\ref{m:thm:nickl2} is a $\Wone_1$ statement. Theorem~\ref{m:thm:prkl} supplies a Kullback Leibler form of it, but at a fixed truth and for the posterior given all of the data, which does not reach these functionals: (i) and (iv) are averages over the prior predictive law, which do not depend on $\theta_0$ and which, for a fixed number of modes, \eqref{m:eq:prvtzero} bounds by the information at the center of the prior and not at $\theta_0$ (Propositions~\ref{m:prop:prvt} and~\ref{m:prop:prrd}), (ii) concerns the law of the statistic, and the posterior given $\hat S_N$ alone is not covered. Criterion (iii) is the exception, because it is a second moment functional, and \eqref{m:eq:momentbound} is exactly what upgrades $\Wone_1$ convergence to convergence of second moments.
+\end{proposition}
+
+\begin{remark}[Where \eqref{m:eq:momentbound} comes from, and why something like it is unavoidable]\label{m:rem:momentbound}
+Clause (U2) of Assumption~\ref{m:ass:U} makes the $\Wone_1$ \emph{discrepancies} uniformly integrable, which is what the tower step of Theorem~\ref{m:thm:jwbvm} needs; \eqref{m:eq:momentbound} makes the \emph{squared radius} of the rescaled posterior uniformly integrable, by the de la Vall\'ee Poussin criterion, which is what a second moment criterion needs. The two are companions and neither implies the other. In the linear Gaussian model of Proposition~\ref{m:prop:linsuff} with $J$ modes, and with $\hat S_N$ read in its regularized form \eqref{m:eq:regsummary}, which there is the posterior mean by Lemma~\ref{m:lem:exact}, both terms of \eqref{m:eq:momentbound} are moments of the recentered posterior, which given the design is exactly $N(0,NV_N)$ with $NV_N=(\tfrac1N\Phi^\top\Phi+\tfrac1N\Sigma_0^{-1})^{-1}$. The moments of a Gaussian law are bounded by powers of its trace, and the trace in $H^{-k-2}$, $t_N=\sum_j(1+\lambda_j)^{-k-2}(NV_N)_{jj}$, is controlled as follows. On the event that $\diag(\iota_j)^{-1/2}(\tfrac1N\Phi^\top\Phi)\diag(\iota_j)^{-1/2}\succeq\tfrac12\Id$, $NV_N\preceq2\diag(1/\iota_j)$ and $t_N\le2\sum_j(1+\lambda_j)^{-k-2}/\iota_j$, which is finite because $1/\iota_j\lesssim1+\lambda_j$ and $k>d/2$. By the matrix Chernoff inequality~\cite{tropp2015}, applied to the $N$ independent rank one summands of $\Phi^\top\Phi$, whose mean is $N\diag(\iota_j)$ by \eqref{m:eq:gram} and whose whitened norms are at most $R_J=2\sum_{j\le J}1/\iota_j\lesssim J^{1+2/d}$ when $\norm{e_j}_\infty\le\sqrt2$, the complement has probability at most $J\exp(-cN/R_J)$ with an absolute constant $c>0$, and on it $NV_N\preceq N\Sigma_0$. Hence \eqref{m:eq:momentbound} holds for every $\varpi$ as soon as $N^pJ\exp(-cN/R_J)\to0$ for every $p$, which is the case for a fixed $J$, and for $J=J_N$ under the rescaled prior \eqref{m:eq:prior}, where $N/R_{J_N}$ grows like a positive power of $N$ and the trace of $N\Sigma_0$ grows at most polynomially. In the nonlinear case it does not follow from Theorem~\ref{m:thm:nickl2}, which controls only $\Wone_1$, and we assume it exactly as clause (U1) of Assumption~\ref{m:ass:U} is assumed (Open Question~\ref{m:op:unif}). Some such hypothesis is unavoidable: the laws $\mu_N=(1-N^{-2})\delta_0+N^{-2}\delta_N$ on the line satisfy $\Wone_1(\mu_N,\delta_0)=N^{-1}\to0$ while $\int x^2d\mu_N=1$ for every $N$, so $\Wone_1$ convergence alone never delivers a second moment.
+\end{remark}
+
+\begin{proof}
+Throughout, $\mathbf{E}$ is expectation under the prior predictive law $\mathbf{P}$, under which $\vartheta\sim\Pi$ and $Z^{(N)}\sim P^\N_\vartheta$, and all conditional laws are taken under $\mathbf{P}$, as in Theorem~\ref{m:thm:jwbvm}. That $\hat S_N\in\mathcal S_J$ is immediate: $\hat S^{J_N}_N=\sum_{j\le J_N}S_{N,j}e_j$ takes values in $\mathrm{span}\{e_j:j\le J_N\}$ by Definition~\ref{m:def:summary}.
+
+\emph{Step 0: the two discrepancies.} Write
+\[
+\begin{aligned}
+\hat\epsilon_N&=\Wone_1\Big(\Law\big(\sqrt N(\theta-\hat S_N)\mid Z^{(N)}\big),\Ncal_\vartheta\Big),\\
+\epsilon_N&=\Wone_1\Big(\Law\big(\sqrt N(\theta-\tilde\theta_N)\mid Z^{(N)}\big),\Ncal_\vartheta\Big),
+\end{aligned}
+\]
+the comparison being with the limit at the parameter that generated the data, as in Theorem~\ref{m:thm:jwbvm}. By (U1) and (U2), used once with $S_N=\hat S_N$ and once with $S_N=\tilde\theta_N$, and exactly as in the first display of the proof of Theorem~\ref{m:thm:jwbvm},
+\begin{equation}\label{m:eq:abcE}
+\mathbf{E}\hat\epsilon_N\le\bar\epsilon_N+\int_{\Theta_N^c}E^\N_\vartheta\hat\epsilon_N\,d\Pi(\vartheta)\to0,\qquad\text{and likewise}\qquad\mathbf{E}\epsilon_N\to0 .
+\end{equation}
+For $\hat S_N$ the hypothesis (U1) is Proposition~\ref{m:prop:suff} with its constants tracked uniformly over $\theta_0$, which is how Assumption~\ref{m:ass:U} is used for the one step summary in Theorem~\ref{m:thm:qnnA}.
+
+\emph{Step 1: part (a), the comparison inequalities.} For $S=g(Z^{(N)})$ the chain $\theta\to Z^{(N)}\to S$ is Markov.
+
+For (iv), the data processing inequality for mutual information, Theorem~\ref{m:thm:jw}(v) applied to $\theta^J$, gives $I(\theta^J;S)\le I(\theta^J;Z^{(N)})$.
+
+For (i), note first that under \eqref{m:eq:prior} the vector $\theta^J$ is a nondegenerate Gaussian on $\R^J$, so $H(\Law(\theta^J))$ is finite, and that $\Law(\theta^J\mid S)$ has a Lebesgue density almost surely, the likelihood being positive. The chain rule for differential entropy therefore applies and
+\[
+\begin{aligned}
+\mathcal U_N(S)&=I(\theta^J;S)=H\big(\Law(\theta^J)\big)-\mathbf{E}\,H\big(\Law(\theta^J\mid S)\big)\\
+&=H\big(\Law(\theta^J)\big)-\mathcal H_N(S) ,
+\end{aligned}
+\]
+which is the identity asserted in (a); the entropy bound $\mathcal H_N(S)\ge\mathcal H_N(Z^{(N)})$ is this identity combined with the previous paragraph. The subtracted term $H(\Law(\theta^J))$ depends on $N$ through the rescaling in \eqref{m:eq:prior} but not on $S$, so it does not affect the ordering of statistics.
+
+For (iii), apply Theorem~\ref{m:thm:jw}(i) coordinatewise in the eigenbasis: $\mathbf{E}\Var(\langle\theta,e_j\rangle\mid S)\ge\mathbf{E}\Var(\langle\theta,e_j\rangle\mid Z^{(N)})$ for each $j$, by the variance decomposition $\Var(\cdot\mid S)=\mathbf{E}[\Var(\cdot\mid Z^{(N)})\mid S]+\Var(\mathbf{E}[\cdot\mid Z^{(N)}]\mid S)$; summing against the nonnegative weights $(1+\lambda_j)^{-k-2}$ gives $\mathcal R_N(S)\ge\mathcal R_N(Z^{(N)})$.
+
+For (ii), let $\ell_\theta$ be the log likelihood of \eqref{m:eq:model}, which is differentiable in quadratic mean along the finite dimensional paths $\theta_0+th$, $h\in\mathrm{span}\{e_j:j\le J\}$, by the Gaussian noise and the quadratic remainder linearization of $\Gcal$ in Condition 2C, and let $\dot\ell$ be the corresponding score vector, which has mean zero under $P^\N_\theta$. The score of the induced experiment $\{\Law_\theta(S)\}$ is $\mathbf{E}_\theta[\dot\ell\mid S]$, so by conditional Jensen for the convex map $v\mapsto vv^\top$,
+\[
+\mathbf{E}_\theta\Big[\mathbf{E}_\theta[\dot\ell\mid S]\,\mathbf{E}_\theta[\dot\ell\mid S]^\top\Big]\ \preceq\ \mathbf{E}_\theta\big[\dot\ell\dot\ell^\top\big] ,
+\]
+that is, the information matrices satisfy $\preceq$ in the Loewner order. The efficient information for the $J$ mode subparameter is the Schur complement of the nuisance block, and the variational formula $x^\top(M/M_{22})x=\min_y(x,y)^\top M(x,y)$ exhibits the Schur complement as monotone in the Loewner order, so $\mathcal J_N(S)\preceq\mathcal J_N(Z^{(N)})$ as well. Finally $0\prec A\preceq B$ implies $\det A\le\det B$, whence $\mathcal F_N(S)\le\mathcal F_N(Z^{(N)})$.
+
+\emph{Step 2: part (b), from $\Wone_1$ to second moments.} Write $d_{BL}(\mu,\nu)=\sup\{|\int f\,d\mu-\int f\,d\nu|:\norm f_\infty\le1,\ \Lip(f)\le1\}$ for the bounded Lipschitz distance on $H^{-k-2}$. Let $\nu_N=\Law_{\mathbf{P}}\big(\sqrt N(\theta-\hat S_N)\big)$ and $\nu'_N=\Law_{\mathbf{P}}\big(\sqrt N(\theta-\tilde\theta_N)\big)$ be the unconditional laws under $\mathbf{P}$, and let $\bar\Ncal_N=\int\Ncal_\vartheta\,d\Pi(\vartheta)$, which depends on $N$ through the rescaled prior. For $f:H^{-k-2}\to\R$ with $\norm f_\infty\le1$ and $\Lip(f)\le1$, the Kantorovich Rubinstein duality and the tower property give
+\[
+\begin{aligned}
+&\Big|\int f\,d\nu_N-\int f\,d\bar\Ncal_N\Big|\\
+&\qquad=\Big|\mathbf{E}\Big[\int f\,d\Law\big(\sqrt N(\theta-\hat S_N)\mid Z^{(N)}\big)-\int f\,d\Ncal_\vartheta\Big]\Big|\\
+&\qquad\le\mathbf{E}\hat\epsilon_N ,
+\end{aligned}
+\]
+so $d_{BL}(\nu_N,\bar\Ncal_N)\le\mathbf{E}\hat\epsilon_N$, and likewise $d_{BL}(\nu'_N,\bar\Ncal_N)\le\mathbf{E}\epsilon_N$; both tend to zero by \eqref{m:eq:abcE}. Now truncate. For $R\ge2$ the function $g_R(x)=\min(\norm x^2,R^2)$ is bounded by $R^2$ and Lipschitz with constant $2R\le R^2$, so $|\int g_R\,d\nu_N-\int g_R\,d\nu'_N|\le R^2(\mathbf{E}\hat\epsilon_N+\mathbf{E}\epsilon_N)$, while $0\le\int(\norm x^2-g_R)\,d\mu\le\int_{\norm x>R}\norm x^2\,d\mu\le R^{-\varpi}\int\norm x^{2+\varpi}d\mu$ for $\mu=\nu_N,\nu'_N$. With $C$ the constant of \eqref{m:eq:momentbound},
+\[
+\begin{aligned}
+&\Big|N\,\mathbf{E}\norm{\theta-\hat S_N}^2_{H^{-k-2}}-N\,\mathbf{E}\norm{\theta-\tilde\theta_N}^2_{H^{-k-2}}\Big|\\
+&\qquad\le R^2\big(\mathbf{E}\hat\epsilon_N+\mathbf{E}\epsilon_N\big)+2R^{-\varpi}C ,
+\end{aligned}
+\]
+which tends to zero on letting $N\to\infty$ and then $R\to\infty$. Since $\tilde\theta_N=\mathbf{E}[\theta\mid Z^{(N)}]$, the second term on the left is $\mathcal R_N(Z^{(N)})$, and both terms are bounded by \eqref{m:eq:momentbound}. Under the additional condition on $t$, the Gaussian law $\Ncal_\vartheta$ has $\int\norm x^{2+\varpi}d\Ncal_\vartheta\lesssim t(\vartheta)^{1+\varpi/2}$, because the moments of a Gaussian measure are controlled by its second moment, so $\int\norm x^{2+\varpi}d\bar\Ncal_N$ is bounded in $N$; the same truncation with $\bar\Ncal_N$ in place of $\nu_N$ then gives $\mathcal R_N(Z^{(N)})-\varrho_N\to0$, since $\int\norm x^2d\bar\Ncal_N=\int t\,d\Pi=\varrho_N$.
+
+Now sandwich. The statistic $\hat S_N$ is $\sigma(\hat S_N)$ measurable and conditional expectation is the orthogonal projection in the Hilbert space $L^2(\mathbf{P};H^{-k-2})$, so $\mathbf{E}[\theta\mid\hat S_N]$ minimizes $\mathbf{E}\norm{\theta-\cdot}^2_{H^{-k-2}}$ over $\sigma(\hat S_N)$ measurable predictors, of which $\hat S_N$ is one. Combining with part (a),
+\[
+\mathcal R_N\big(Z^{(N)}\big)\ \le\ \mathcal R_N\big(\hat S_N\big)\ \le\ N\,\mathbf{E}\norm{\theta-\hat S_N}^2_{H^{-k-2}} ,
+\]
+and the two ends differ by $o(1)$ by the truncation bound of the previous paragraph. Hence the difference in (b) vanishes, and under the condition on $t$ all three terms are $\varrho_N+o(1)$.
+
+Uniform integrability cannot be replaced here by an appeal to continuity of the criterion along $\Wone_1$ convergence (Remark~\ref{m:rem:momentbound}).
+
+\emph{Step 3: part (c), the criteria computed in the $J$ mode Gaussian projection.} By \eqref{m:eq:abcE} and Markov's inequality, $\hat\epsilon_N\to0$ and $\epsilon_N\to0$ in $\mathbf{P}$ probability, and by Theorem~\ref{m:thm:jwbvm}, applied with the one step statistic as stated there, conditioning on the summary alone does not change the limit, so
+\[
+\Wone_1\Big(\Law\big(\sqrt N(\theta-\hat S_N)\mid\hat S_N\big),\Ncal_\vartheta\Big)\to0
+\]
+in $\mathbf{P}$ probability as well. This identifies the limiting experiment, which for the heat and Stokes equations is the $J$ mode Gaussian projection, and the three remaining criteria are now computed in the projection, where each is an explicit function of a covariance matrix.
+
+In the $J$ mode Gaussian projection the model for $\theta^J$ is the linear Gaussian model \eqref{m:eq:design} to \eqref{m:eq:linpost}, with $\Phi^\top\Phi/\varsigma^2=\mathcal J^J_N(\vartheta)$ and prior $N(0,\Sigma^J_0)$. There Lemma~\ref{m:lem:exact} gives
+\[
+\hat S^{\rm reg}_N=V^J_N\,\Phi^\top Y/\varsigma^2\qquad\text{identically in the linearization point }\bar\theta_N ,
+\]
+so the regularized one step summary \eqref{m:eq:regsummary}, which is the form Remark~\ref{m:rem:reg} prescribes for computation and the form in which $\hat S_N$ is read in this experiment, is a deterministic invertible linear image of the adjoint statistic $\Phi^\top Y$ of Lemma~\ref{m:lem:adjoint}. It therefore generates the same $\sigma$ field and is exactly sufficient by Proposition~\ref{m:prop:linsuff}. Hence
+\[
+\Law\big(\theta^J\mid\hat S_N\big)=\Law\big(\theta^J\mid Z^{(N)}\big)=N\big(\cdot,V^J_N\big)
+\]
+in that experiment, the two centers being $\sigma(S)$ measurable, and all four criteria take the same value at $\hat S_N$ as at the full data. It remains to evaluate them.
+
+(i) and (iv). The differential entropy of $N(m,V^J_N)$ on $\R^J$ is $\tfrac12\log\det(2\pi e\,V^J_N)$, independent of the mean $m$; averaging over $\vartheta\sim\Pi$ gives $\mathcal H^\star_N$. By the identity of part (a) the corresponding value of (iv) is
+\[
+H\big(\Law(\theta^J)\big)-\mathcal H^\star_N=\tfrac12\int\log\det\big(\Sigma^J_0\,V^J_N(\vartheta)^{-1}\big)\,d\Pi(\vartheta)=\mathcal U^\star_N ,
+\]
+which for the heat and Stokes equations, where $V^J_N(\vartheta)$ does not depend on $\vartheta$, is $\tfrac12\sum_{j\le J}\log(1+\kappa_j)$ by the diagonality \eqref{m:eq:gram}, the expected information gain of Proposition~\ref{m:prop:pr}. Equivalently, the Gaussian mutual information deficit of Theorem~\ref{m:thm:gap}(ii) is zero at $S=\hat S_N$.
+
+It matters that $V^J_N$ and not $\Sigma_J/N$ is the covariance used here. The two differ by the prior precision $(\Sigma^J_0)^{-1}$, which is negligible only in the modes with $\kappa_j\gg1$, of which there are $J^{\rm eff}_N=o(J_N)$ by Proposition~\ref{m:prop:pr}. Criteria (i) and (iv) are log determinants, which weight every retained mode equally, so the weakly informative modes near the truncation are not negligible for them: replacing $V^J_N$ by $\Sigma_J/N$ turns $\tfrac12\sum_{j\le J}\log(1+\kappa_j)$ into $\tfrac12\sum_{j\le J}\log\kappa_j$, which is negative and divergent, and which is exactly the error cataloged in Remark~\ref{m:rem:jeff}. Criterion (iii), by contrast, is a second moment functional in $H^{-k-2}$, whose weights $(1+\lambda_j)^{-k-2}$ suppress those same modes, and there the two descriptions agree: their traces differ by
+\[
+\sum_{j\le J}\frac{(1+\lambda_j)^{-k-2}}{\iota_j\,(1+\kappa_j)}\ +\sum_{j>J}\frac{(1+\lambda_j)^{-k-2}}{\iota_j}\ \longrightarrow\ 0
+\]
+by dominated convergence, since $\iota_j\asymp(2\nu\lambda_jT)^{-1}$ by \eqref{m:eq:iota} makes $\sum_j(1+\lambda_j)^{-k-1}$ finite and $\kappa_j\to\infty$ for each fixed $j$, consistently with part (b). This is also why Theorem~\ref{m:thm:nickl2} is available in $H^{-k-2}$ and in no stronger space. Criterion (ii) concerns the sampling experiment and not the posterior, so the prior does not enter it at all.
+
+(ii). In the $J$ mode Gaussian projection the information carried by the exactly sufficient $\hat S_N$ is the full $\mathcal J^J_N(\theta_0)$, so the bound of (a) is met there with equality. In the exact experiment, where the modes beyond $J$ are unknown, the corresponding quantity is the efficient information for $(\langle e_j,\theta\rangle)_{j\le J}$, namely the Schur complement of the nuisance block in the full information $\tfrac NT\I^*_{\theta_0}\I_{\theta_0}$,
+\[
+\begin{aligned}
+\Big[P_J\big(\tfrac NT\I^*_{\theta_0}\I_{\theta_0}\big)^{-1}P_J\Big]^{-1}&=\tfrac NT\big[P_J(\I^*_{\theta_0}\I_{\theta_0})^{-1}P_J\big]^{-1}\\
+&=N\Sigma_J(\theta_0)^{-1}\ \preceq\ \mathcal J^J_N(\theta_0) ,
+\end{aligned}
+\]
+and this too is attained by $\hat S_N$: by Proposition~\ref{m:prop:suff}, $\sqrt N\norm{\hat S_N-\hat\theta_N}_{H^{-k-2}}\to^P0$ with $\hat\theta_N$ the efficient centering \eqref{m:eq:thetahat}, so $\hat S_N$ is asymptotically linear with $j$th influence direction $\bar e_j=T(\I^*_{\theta_0}\I_{\theta_0})^{-1}e_j$; fixing $J$ and taking local alternatives $\theta_0+h/\sqrt N$ with $h\in\mathrm{span}\{e_j:j\le J\}$, along which the model is locally asymptotically normal, Le Cam's third lemma gives
+\[
+\sqrt N\,P_J\big(\hat S_N-\theta_0\big)\ \to^d\ N\big(P_Jh,\ \Sigma_J(\theta_0)\big) ,
+\]
+so the induced experiment of $\hat S_N$ converges, in the sense of van der Vaart~\cite[Chapter 9]{vandervaart1998}, to the $J$ dimensional Gaussian shift of covariance $\Sigma_J(\theta_0)$ and information $\Sigma_J(\theta_0)^{-1}$, which is the limit of the full data experiment for the same subparameter. The two readings, $\mathcal J^J_N(\theta_0)$ and $N\Sigma_J(\theta_0)^{-1}$, agree for every $J$ exactly when $\I^*_{\theta_0}\I_{\theta_0}$ is diagonal in the eigenbasis, which is the heat and Stokes case by \eqref{m:eq:gram}, and differ by the compact part $\Kcal$ of the Fredholm decomposition \eqref{m:eq:fredholm} in the Navier Stokes case. The efficient reading is the one a statistic in $\mathcal S_J$ can attain; the other is the information available when the modes beyond $J$ are known, it dominates strictly whenever the nuisance block is coupled, and the optimality claim would be false if the criterion were read that way in the exact experiment. Under either reading the value at $\hat S_N$ equals the value at $Z^{(N)}$, which is the assertion.
+
+Finally, parts (a) and (b) hold with $J=J_N$ as stated, the traces $t(\vartheta)$ in (b) being finite because the weights $(1+\lambda_j)^{-k-2}$ are summable against the diagonal of $T(\I^*_\vartheta\I_\vartheta)^{-1}$. In part (c) the convergence of experiments used in (ii) is a statement for each fixed $J$; everything else asserted in (c) is an identity between two evaluations of the same explicit function at the same covariance, so it holds verbatim at $J=J_N$ and needs no rate in $J$. Both $\tfrac12\log\det(2\pi e\,V^{J_N}_N)$ and $\tfrac12\sum_{j\le J_N}\log(1+\kappa_j)$ diverge as $N\to\infty$, so an $o(1)$ statement about the difference of their values at $\hat S_N$ and at $Z^{(N)}$ would require per mode rates that are not available.
+\end{proof}
+
+\begin{remark}[The affine class is an invariance class, not a comparison class]\label{m:rem:affineclass}
+It is tempting to state Proposition~\ref{m:prop:abcopt} over the class $\mathcal T_J=\{S=A\hat S_N+b:\ A\ \text{an invertible }J\times J\text{ matrix}\}$ of affine reparametrizations of the summary. Every member is a $\theta$ independent bijection of $\hat S_N$, so $\sigma(S)=\sigma(\hat S_N)$ and all four criteria are \emph{constant} on $\mathcal T_J$; optimality within it is vacuous. What the observation does say is that the summary is determined only up to affine reparametrization, so the generator may whiten, rescale or rotate it freely without changing anything the criteria see. That is what licenses the whitening $W=\mathcal D^{-1/2}R$ of Definition~\ref{m:def:gen}.
+\end{remark}
+
+\subsubsection{Partial least squares} Wegmann, Leuenberger and Excoffier~\cite{wegmann2009} propose to compress a pool of candidate statistics by partial least squares, a supervised projection that seeks directions in the space of candidates maximally covariant with the parameter. The construction of Section~\ref{m:sec:suff} is of the same type, and in the linear case it is PLS exactly.
+
+\begin{proposition}[The adjoint statistic is the PLS projection]\label{m:prop:pls}
+Consider the linear model \eqref{m:eq:design} with prior $\theta\sim N(0,\Sigma_0)$ and treat the raw data $Y\in\R^N$ as the pool of candidate statistics. The first PLS direction for predicting a coordinate $\theta_j$ from $Y$ is the vector $w\in\R^N$ maximizing $\mathrm{Cov}(\theta_j,w^\top Y)$ subject to $\norm w=1$, and
+\[
+\mathrm{Cov}(\theta_j,w^\top Y)=w^\top\mathrm{Cov}(Y,\theta_j)=w^\top\Phi\,\Sigma_0e_j ,
+\]
+so the direction is $\Phi\Sigma_0e_j/\norm{\Phi\Sigma_0e_j}$ and the corresponding score is proportional to $(\Sigma_0\Phi^\top Y)_j$. Collecting $j\le D$ and absorbing the fixed prior covariance, the PLS scores are exactly the coordinates of the adjoint statistic $\Phi^\top Y$ of Lemma~\ref{m:lem:adjoint}, which is sufficient. In particular a single PLS component per parameter coordinate suffices, and no further components add information.
+\end{proposition}
+
+\begin{proof}
+The covariance computation is immediate from $Y=\Phi\theta+\varepsilon$ with $\theta\perp\varepsilon$. Sufficiency of $\Phi^\top Y$ is Proposition~\ref{m:prop:linsuff}; a statistic that is a bijective function of a sufficient statistic is sufficient, and by the data processing inequality no further component can increase the information.
+\end{proof}
+
+\begin{remark}[Why PLS and not PCA]\label{m:rem:plspca}
+Partial least squares is one of the projection methods that Blum and coauthors~\cite{blum2013} compare with other dimension reductions in ABC. PCA of the raw data would find the directions of largest variance of $Y$, which for a dissipative equation are the low frequency modes with the largest prior variance, irrespective of how much the data say about them. PLS finds the directions of largest covariance with $\theta$, which by the display above are weighted by $\Phi$, that is, by how much each mode has survived to the observation times. The weighting $e^{-\nu\lambda_jt_i}$ of Table~\ref{m:tab:iota} is the difference between the two.
+\end{remark}
+
+\subsubsection{Deep partial least squares} For a nonlinear forward map the covariance of $\theta$ with the data is no longer $\Phi\Sigma_0$, and a linear projection of the raw data is not sufficient. Polson, Sokolov and Xu~\cite{polsonsokolovxu2021} introduce deep partial least squares, a nonlinear extension of PLS in which the output scores are predicted by a deep learner of the input scores, and Nareklishvili, Polson and Sokolov~\cite{nareklishvili2023} apply it to instrumental variable regression. The justification they give for the projection step is a theorem of Brillinger~\cite{brillinger2012} for Gaussian regressors, which Li and Duan~\cite{liduan1989} extended to elliptically distributed ones: in a single index model $Y=g(\beta^\top X)+\varepsilon$ with elliptically distributed $X$, the ordinary least squares fit recovers $\beta$ up to a proportionality constant, however nonlinear $g$ is, provided that constant is not zero (it is not zero for a strictly monotone link, and it is zero for an even one); so the linear projection step is consistent for the directions even when the link is unknown, and the network need only learn the link.
+
+\begin{proposition}[Deep PLS structure of the GBC summary]\label{m:prop:dpls}
+Let $\Gcal$ be nonlinear and let the summary be constructed as in Definition~\ref{m:def:summary}. Then:
+\begin{enumerate}[label=(\roman*),nosep]
+\item the first stage is a linear projection of the residuals onto the directions $\I_{\bar\theta_N}p_N(\bar e_j)$, that is, a PLS step with directions supplied by the linearized forward map rather than estimated from the simulations;
+\item the second stage, the map from the projected scores to the posterior, is asymptotically the identity plus a scale by Remark~\ref{m:rem:affine}, under the hypotheses of Proposition~\ref{m:prop:suff} for the posterior given all of the data and under Assumption~\ref{m:ass:U} as well for the posterior given the scores alone, so under these hypotheses the ``deep'' part of deep PLS has an asymptotically trivial link;
+\item at finite $N$ the link is not trivial and the deep PLS architecture of Polson, Sokolov and Xu~\cite{polsonsokolovxu2021} is the natural generator class: PLS scores as features, network as link.
+\end{enumerate}
+Moreover, if the linearization is unavailable, the directions can be estimated from the training simulations by PLS of $\theta^{(m)}$ on $Z^{(m)}$, and Brillinger's theorem, in the elliptical form of Li and Duan, guarantees consistency of those directions up to a nonzero scale, when the constant above is not zero, under an ellipticity assumption on the simulated data, with the scale absorbed into the learned head.
+\end{proposition}
+
+\begin{proof}
+(i) and (ii) are Definition~\ref{m:def:summary} and Remark~\ref{m:rem:affine}. (iii) is a statement about architecture, not a theorem. The last claim is the theorem of Brillinger~\cite{brillinger2012}, in the elliptical form of Li and Duan~\cite{liduan1989}, applied coordinatewise to the single index representation $\theta_j\approx g_j(w_j^\top Z)$ implied by the asymptotically affine conditional quantile map, with the ellipticity of $Z$ under the simulation joint holding approximately because $Z=\Gcal(\theta)(X)+\varepsilon$ with Gaussian $\varepsilon$ and $\theta$ Gaussian under the prior.
+\end{proof}

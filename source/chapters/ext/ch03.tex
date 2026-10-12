@@ -1,0 +1,59 @@
+\section{Laplace's rule and the binary de Finetti theorem}
+\label{sec:binary_definetti}
+
+For binary exchangeable sequences de Finetti's theorem~\cite{definetti1937} has an elementary proof through the Hausdorff moment problem. Let $p_n = \P(X_1 = \cdots = X_n = 1)$. Exchangeability implies that the probability of any particular sequence with $k$ ones in $n$ places is
+\[
+\P(x_1,\dots,x_n) = \sum_{j=0}^{n-k}(-1)^j\binom{n-k}{j}p_{k+j},
+\]
+by inclusion and exclusion over the zeros. Nonnegativity of these quantities for all $n$ and $k$ says that the sequence $(p_n)$ is completely monotone in the discrete sense, and Hausdorff's theorem gives a unique probability measure $\Pi$ on $[0,1]$ with $p_n = \int\theta^n\Pi(\dd\theta)$. Substituting back,
+\[
+\P(x_1,\dots,x_n) = \int_0^1\theta^k(1-\theta)^{n-k}\,\Pi(\dd\theta),
+\]
+which is the representation. With $\Pi$ uniform, the predictive probability of a one after $k$ ones in $n$ trials is
+\[
+\P(X_{n+1} = 1\mid x_{1:n}) = \frac{\int\theta^{k+1}(1-\theta)^{n-k}\dd\theta}{\int\theta^k(1-\theta)^{n-k}\dd\theta} = \frac{k+1}{n+2},
+\]
+Laplace's rule of succession. De Finetti's insight was that the uniform prior need not be postulated: it follows from the judgment that, before any data, every number of ones in $n$ trials is equally likely, for every $n$.
+
+\section{Consistency and the Bernstein von Mises theorem}
+
+Two theorems explain why Bayesian inference agrees with frequentist inference in large samples, and both are used in Part~\ref{part:fluids}.
+
+\begin{theorem}[Doob]
+\label{thm:doob}
+Let $\Theta$ be a standard Borel space, $\Pi$ a prior on $\Theta$, and $X_1,X_2,\dots$ independent with law $P_\theta$ given $\theta$, where $\theta\mapsto P_\theta$ is injective and measurable. Then for $\Pi$ almost every $\theta_0$, the posterior $\Pi(\cdot\mid X_{1:n})$ converges weakly to $\delta_{\theta_0}$ almost surely under $P_{\theta_0}^\infty$.
+\end{theorem}
+
+\begin{proof}[Sketch]
+For a bounded measurable function $g$ on $\Theta$, the posterior means $\E[g(\theta)\mid X_{1:n}]$ form a martingale under the joint law of $(\theta,X)$, and by the martingale convergence theorem they converge almost surely to $\E[g(\theta)\mid X_{1:\infty}]$. Injectivity and the strong law of large numbers imply that $\theta$ is a measurable function of the infinite sequence, since $P_\theta$ can be recovered from the limit of empirical measures. Hence the limit equals $g(\theta)$ almost surely under the joint law. Applying this to a countable convergence determining class gives the claim for $\Pi$ almost every $\theta_0$.
+\end{proof}
+
+Doob's theorem~\cite{doob1949} is the Bayesian law of large numbers: it holds with no regularity conditions, but only for almost every parameter under the prior. In infinite dimensional models the exceptional null set can be large in a topological sense, a phenomenon discovered by Freedman~\cite{freedman1963} and by Diaconis and Freedman~\cite{diaconisfreedman1986}, which is why posterior consistency in nonparametric and inverse problems requires the more delicate arguments used by Nickl and others.
+
+\begin{theorem}[Bernstein von Mises]
+\label{thm:bvm}
+Let $\{P_\theta:\theta\in\Theta\subset\R^d\}$ be differentiable in quadratic mean at an interior point $\theta_0$ with nonsingular Fisher information $I(\theta_0)$, and suppose there exist uniformly consistent tests of $\theta_0$ against the complements of neighborhoods. If the prior has a density continuous and positive at $\theta_0$, then
+\[
+\Big\|\Pi(\cdot\mid X_{1:n})-N\Big(\hat\theta_n,\frac{1}{n}I(\theta_0)^{-1}\Big)\Big\|_{TV}\to0
+\]
+in $P_{\theta_0}$ probability, where $\hat\theta_n$ is any efficient estimator.
+\end{theorem}
+
+We quote the theorem without proof; it is Theorem~10.1 of van der Vaart~\cite{vandervaart1998}. It says that the posterior forgets the prior and becomes the sampling distribution of an efficient estimator, so that credible sets are asymptotically confidence sets. It fails in many infinite dimensional problems, including the inverse problems of Chapter~\ref{ch:nsinference}, for the full parameter, but holds for smooth low dimensional functionals, and the distinction between the two is a recurring theme of Part~\ref{part:fluids}.
+
+\section{Large deviations beyond Sanov}
+
+Sanov's theorem is the level two large deviation principle for empirical measures. Its level one projection is Cram\'er's theorem: for independent real variables with common law $P$ and log moment generating function $\Lambda(\lambda) = \log\E e^{\lambda X_1}$ finite near zero, the sample means satisfy a large deviation principle with rate function the Legendre transform
+\[
+\Lambda^*(x) = \sup_\lambda\big(\lambda x-\Lambda(\lambda)\big).
+\]
+A direct computation with exponential tilting connects the two. For $\lambda$ with $\Lambda(\lambda)<\infty$ let $Q_\lambda(\dd y) = e^{\lambda y-\Lambda(\lambda)}P(\dd y)$. Every $Q\ll P$ with finite mean $x = \int y\,Q(\dd y)$ satisfies $\KL(Q\|P) = \KL(Q\|Q_\lambda)+\lambda x-\Lambda(\lambda)\geq\lambda x-\Lambda(\lambda)$, hence $\KL(Q\|P)\geq\Lambda^*(x)$. If $\Lambda'(\lambda) = x$, then $Q_\lambda$ has mean $x$ and $\lambda$ maximizes $\lambda x-\Lambda(\lambda)$, so $\KL(Q_\lambda\|P) = \Lambda^*(x)$. Therefore $\Lambda^*(x) = \inf\{\KL(Q\|P):\int y\,Q(\dd y) = x\}$ for such $x$, and the infimum is attained at the exponential tilt $Q_\lambda$. The contraction principle cannot be applied directly to Sanov's theorem here, because the map $Q\mapsto\int y\,Q(\dd y)$ is not continuous in the weak topology on the laws of an unbounded variable. In statistical mechanics $\Lambda$ is the free energy, $\Lambda^*$ the entropy as a function of energy, and the Legendre duality between them is the duality between the canonical and microcanonical ensembles. Varadhan's lemma, $\lim\frac1n\log\E e^{nF(L_n)} = \sup_Q\{F(Q)-\KL(Q\|P)\}$ for bounded continuous $F$, is the Gibbs variational principle of Chapter~\ref{ch:spins} and the variational representation behind variational Bayesian inference. Level three, the large deviations of the empirical process, gives the relative entropy rate of stationary processes and leads to the Donsker Varadhan theory used in Chapter~\ref{ch:quantum}.
+
+\section*{Exercises}
+\begin{enumerate}
+\item Give an exchangeable pair $(X_1,X_2)$ of binary variables that is not a mixture of independent identically distributed pairs, and explain why this does not contradict de Finetti's theorem.
+\item Prove the lower bound in Sanov's theorem for a finite alphabet in detail. Show that every $Q$ in an open set $\Gamma$ of the simplex with $\KL(Q\|P)<\infty$ is the limit of types $Q_n\in\Gamma$ with $\KL(Q_n\|P)\to\KL(Q\|P)$, and deduce the lower bound from the bound on $\P(L_n = Q_n)$.
+\item Compute the minimizer of $\KL(Q\|P)$ subject to $\E_QX = a$ when $P$ is Poisson with mean one.
+\item Verify the identity $\KL(Q\|P) = \KL(Q\|P_\beta)-\beta\E_Q\varepsilon-\log Z_\beta$ used for Gibbs conditioning.
+\item Show that the Bernstein von Mises theorem fails when the true parameter lies on the boundary of the parameter space, using the model $N(\theta,1)$ with $\theta\geq0$ and true value zero.
+\end{enumerate}

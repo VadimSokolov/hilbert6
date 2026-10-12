@@ -1,0 +1,506 @@
+\subsection{The generator that works}
+
+Write $\mathcal D=\diag(1/\iota_j)$ for the explicit Stokes (or heat) diagonal of Section~\ref{m:sec:heat}, so that $\Sigma=\mathcal D^{1/2}(\Id+\Xi)\mathcal D^{1/2}$ with $\Xi$ the compact correction of \eqref{m:eq:fredholm}, and $c_0\Id\preceq\Id+\Xi\preceq C_0\Id$ on the first $J$ modes for constants $0<c_0\le C_0<\infty$ that do not depend on $J$. Indeed $\mathcal D=T(\Lcal^*\Lcal)^{-1}$ by \eqref{m:eq:modeinfo}, so $\Id+\Xi$ is the compression to the first $J$ modes of $(\Id+K')^{-1}$, where $K'=T^{-1}\mathcal D^{1/2}\Kcal\mathcal D^{1/2}$ is compact and self adjoint on $L^2$ because $\Kcal$ gains two derivatives and $\mathcal D^{1/2}$ loses one. The operator $\Id+K'$ is positive semidefinite, since $\langle f,(\Id+K')f\rangle=T^{-1}\norm{\I_{\theta_0}\mathcal D^{1/2}f}^2$, and injective, since $\mathcal D^{1/2}f\in\Hds{-1}$ and $\I^*_{\theta_0}\I_{\theta_0}$ is a homeomorphism of $\Hds{-1}$ onto $\Hds{1}$ by Theorem 2.6 of Konen and Nickl~\cite{konennickl2026}. By the Fredholm alternative it is invertible, so its spectrum is a closed subset of $(0,\infty)$, contained in some $[c,C]$ with $c>0$, and every compression of its inverse has spectrum in $[1/C,1/c]$. For the heat and Stokes equations $\Xi=0$. For a forward map that satisfies only Conditions 1 and 2 of Nickl~\cite{nicklbvm2024}, with $\Id+\Xi$ the compression to the first $J$ modes of $\mathcal D^{-1/2}T(\I^*_{\theta_0}\I_{\theta_0})^{-1}\mathcal D^{-1/2}$, the same two bounds follow from \eqref{m:eq:infobound} at $\theta_0$, which Remark~\ref{m:rem:infobound} derives from Condition 2, because $\iota_j(1+\lambda_j)$ is bounded above and below.
+
+\begin{assumption}[Whitened training residuals, (U2$'$)]\label{m:ass:u2p}
+Let $W^{(m)}=\mathcal D^{-1/2}\sqrt N(\theta^{(m)}-\hat S^{(m)}_N)$, $m\le M$, be the whitened training residuals of Definition~\ref{m:def:gen}, and suppose that $W^{(m)}=W^{(m)}_{\rm g}+W^{(m)}_{\rm r}$, where the pairs $(W^{(m)}_{\rm g},W^{(m)}_{\rm r})$ are i.i.d.\ conditionally on the data $Z^{(N)}$. Write $\norm{\chi}_{\psi_2\mid Z^{(N)}}=\inf\{K>0:E[e^{\chi^2/K^2}\mid Z^{(N)}]\le2\}$ for the sub Gaussian Orlicz norm of the conditional law of a random variable $\chi$. We assume that
+\[
+\varkappa_N=\sup_{\norm v_2=1}\big\|\langle v,W^{(m)}_{\rm g}\rangle\big\|_{\psi_2\mid Z^{(N)}}=O_P(1)
+\]
+under $P^\N_{\theta_0}$, and that, in $P^\N_{\theta_0}$ probability,
+\[
+\begin{gathered}
+E\big[\norm{W^{(m)}_{\rm r}}^2_2\mid Z^{(N)}\big]\to0,\\
+\big\|E\big[W^{(m)}_{\rm g}W^{(m)\top}_{\rm g}\mid Z^{(N)}\big]-(\Id+\Xi)\big\|_{op}\to0 .
+\end{gathered}
+\]
+\end{assumption}
+
+\begin{remark}[Why (U2$'$) takes this form, and why it does not follow from (U1) and (U2)]\label{m:rem:u2p}
+The split cannot be avoided. When each simulated data set has its own design, as \eqref{m:eq:model} prescribes, no law of the training parameters gives the whole residual of the summary \eqref{m:eq:trainsummary} a sub Gaussian norm bounded uniformly in $J$ (Proposition~\ref{m:prop:u2pfalse}). Given the design, the noise part of $W^{(m)}$ is Gaussian with the realized Gram matrix of the whitened weights as covariance, and a sub Gaussian norm sees the designs that put all $N$ points where the weights are largest, however small their probability. In Theorem~\ref{m:thm:u2ploc} the part $W^{(m)}_{\rm g}$ keeps the noise on the designs whose Gram matrix is close to its mean, and $W^{(m)}_{\rm r}$ takes the rest. The proof of Theorem~\ref{m:thm:qnnA} uses the training pairs only through $\hat C_M$ and needs no more than this assumption, so the theorem holds for any law of the training pairs, and any summary that computes $\hat S^{(m)}_N$ from the simulated data, under which the assumption holds.
+
+Neither display follows from Assumption~\ref{m:ass:U}. For training parameters drawn from the prior, as in Algorithm~\ref{m:alg:gbc}, the moment bounds (39) of Nickl~\cite{nicklbvm2024} concern the posterior at $\theta_0$ and do not apply to the residuals directly, and they give every polynomial moment an $O_P(1)$ random constant, which is weaker than a sub Gaussian norm bounded uniformly in $J$. The $\Wone_1$ closeness of (U1) controls no second moments, still less in operator norm across $J$ dimensions.
+
+The second display also restricts the training law. It implies that $E[W^{(m)}W^{(m)\top}\mid Z^{(N)}]$ tends to $\Id+\Xi$ in operator norm, where $\Xi=\Xi_{\theta_0}$ and $\Id+\Xi_\vartheta$ denotes the compression of $\mathcal D^{-1/2}T(\I^*_\vartheta\I_\vartheta)^{-1}\mathcal D^{-1/2}$ to the first $J$ modes. For a linear map $\Xi_\vartheta$ does not depend on $\vartheta$. For a nonlinear map and a summary that is asymptotically efficient at each training parameter, training parameters drawn from the prior, which contracts to zero under \eqref{m:eq:prior}, give a second moment close to $\Id+\Xi_0$, and in general $\Xi_0\ne\Xi_{\theta_0}$. In the scalar model $Y_i=G(\theta)+\varepsilon_i$, $\varepsilon_i\sim N(0,1)$, with $G(\theta)=\theta+\theta^2/2$, the maximum likelihood summary and whitening by the information $G'(0)^2=1$ at zero, the law of $\sqrt N(\theta-\hat S_N)$ given $\theta$ tends to $N(0,G'(\theta)^{-2})$, so the second moment of $W^{(m)}$ tends to $1$ under a prior that contracts to zero, while at $\theta_0=1$ the Bernstein von Mises variance is $G'(1)^{-2}=1/4$. Theorem~\ref{m:thm:u2ploc} proves the assumption, under the other hypotheses of Theorem~\ref{m:thm:qnnA}, for training parameters drawn from a proposal localized at the preliminary estimate and the summary \eqref{m:eq:trainsummary} linearized there once: for the heat and Stokes equations, and for a nonlinear forward map under conditions (I1) to (I3) on its linearization, which Lemmas~\ref{m:lem:rdlin} and~\ref{m:lem:nslin} verify for the reaction diffusion class and for Navier Stokes.
+\end{remark}
+
+\begin{definition}[Identity skip Gaussian head quantile generator]\label{m:def:gen}
+From $M$ simulated pairs compute the whitened residuals $W^{(m)}=\mathcal D^{-1/2}R^{(m)}=\mathcal D^{-1/2}\sqrt N(\theta^{(m)}-\hat S^{(m)}_N)\in\R^J$ and the uncentered second moment matrix $\hat C_M=M^{-1}\sum_mW^{(m)}W^{(m)\top}$. The generator is
+\[
+\widehat G(s,U)=s+N^{-1/2}\mathcal D^{1/2}\hat C_M^{1/2}\,\Phi^{-1}(U),\qquad U\sim\mathrm{Unif}[0,1]^J,
+\]
+with $\Phi^{-1}$ the standard normal quantile function applied coordinatewise, so that $\Phi^{-1}(U)\sim N(0,\Id_J)$ and, conditionally on the training sample, $\widehat G(s,U)\sim N(s,N^{-1}\mathcal D^{1/2}\hat C_M\mathcal D^{1/2})$. Its marginal quantile functions are therefore
+\begin{equation}\label{m:eq:genmarg}
+\begin{aligned}
+Q_j(\tau\mid s)&=s_j+N^{-1/2}\Big[\big(\mathcal D^{1/2}\hat C_M\mathcal D^{1/2}\big)_{jj}\Big]^{1/2}z_\tau\\
+&=s_j+N^{-1/2}\iota_j^{-1/2}\big(\hat C_M\big)_{jj}^{1/2}z_\tau,\qquad z_\tau=\Phi^{-1}(\tau),
+\end{aligned}
+\end{equation}
+the second form because $\mathcal D=\diag(1/\iota_j)$ is diagonal. In network language it is a one hidden layer quantile network with identity skip connection, fixed Gaussian activation on the base noise, and a $J\times J$ linear head, but nothing about it is trained: the head is in closed form. Four points about the construction.
+
+\emph{The marginals do not determine the generator.} Equation \eqref{m:eq:genmarg} records only the coordinatewise marginals. The joint dependence is carried by the off diagonal entries of the mixing matrix $\mathcal D^{1/2}\hat C_M^{1/2}$, and coordinate $j$ of the output depends on all $J$ components of $U$, so $\widehat G$ is of the coordinatewise form $\widehat G(s,U)=\sum_j\widehat Q_j(U_j\mid s)e_j$ of the training step of Algorithm~\ref{m:alg:gbc} only when $\mathcal D^{1/2}\hat C_M^{1/2}$ is diagonal. Nothing downstream depends on that form: the proof of Theorem~\ref{m:thm:qnnA} applies Lemma~\ref{m:lem:coupling} to the vector valued map $U\mapsto\widehat G(s,U)$ driven by a common base noise and never factorizes over coordinates. The training step of Algorithm~\ref{m:alg:gbc} is to be read as the special case in which the coordinates are generated independently, which is what happens after whitening.
+
+\emph{$\hat C_M$ is uncentered.} It estimates $E[WW^\top]=\Var(W)+E[W]E[W]^\top$ and not $\Var(W)$. This is deliberate, because the target is the spread of $\theta$ about the summary $\hat S_N$ and not about the mean of that spread, and the Bernstein von Mises limit is centered; the two agree only to the order to which $\hat S_N$ is the exact conditional mean of $\theta$ given the summary, that is, to the order to which $E[W\mid\hat S_N]=0$. The second display of Assumption~\ref{m:ass:u2p} implies that $E[WW^\top]$ tends to $\Id+\Xi$ in operator norm (Remark~\ref{m:rem:u2p}), so it constrains only the sum of $\Var(W)$ and the mean term $E[W]E[W]^\top$, and the proof of Theorem~\ref{m:thm:qnnA} needs nothing else about the mean. For the summary \eqref{m:eq:trainsummary}, which carries no prior term, the mean tends to zero under a localized proposal (Theorem~\ref{m:thm:u2ploc}); for the regularized summary of Lemma~\ref{m:lem:exact}, at finite $N$ under the localized proposal of Section~\ref{m:sec:loc}, it is not negligible: Theorem~\ref{m:thm:locbias} identifies it as $P\bar\theta_N$, and Algorithm~\ref{m:alg:loc} therefore centers the residuals before whitening.
+
+\emph{Nonsingularity.} $\hat C_M$ has rank at most $M$, so $M\ge J$ is necessary for $\hat C_M\succ0$; this holds for $N$ large under the hypothesis $J_N/M_N\to0$ of Theorem~\ref{m:thm:qnnA}. In general $\hat C_M^{1/2}$ denotes the symmetric positive semidefinite square root, and when $\hat C_M$ is singular the generator is supported on a proper subspace of $\R^J$.
+
+\emph{What is trained, and what is not.} The head is the matrix $\hat C_M^{1/2}$, obtained in closed form from the simulated pairs. There is no architecture beyond that single linear layer, and no loss, optimizer or stopping rule. The generator is therefore a plug in Gaussian: a Monte Carlo estimate of the Bernstein von Mises, equivalently Laplace, approximation. Theorem~\ref{m:thm:qnnA} is to be read accordingly. Its proof shows that this plug in adds $O_P(\sqrt{J/M})$ to the Bernstein von Mises error, plus a term that tends to zero with the two quantities in the second display of Assumption~\ref{m:ass:u2p}, so what the theorem establishes is the sufficiency of the summary and the adequacy of the whitening, not the expressive power of a network; and by construction the plug in cannot beat the Laplace approximation it estimates. A generator trained by stochastic gradient descent on a quantile loss is not covered by it. Theorem~\ref{m:thm:qnnB} bounds what any such generator can achieve uniformly, and Remark~\ref{m:rem:qnnB} discusses the gap between the two.
+\end{definition}
+
+\begin{theorem}[Bernstein von Mises for the identity skip quantile generator, conditional on the uniform hypothesis]\label{m:thm:qnnA}
+\emph{This theorem is conditional on Assumption~\ref{m:ass:U}, which is open, and on Assumption~\ref{m:ass:u2p}, which holds in the setting of Theorem~\ref{m:thm:u2ploc} and, for a nonlinear forward map, fails in general for training parameters drawn from the prior (Remark~\ref{m:rem:u2p}); Open Question~\ref{m:op:unif} states what remains.} Suppose Conditions 1 and 2 of Nickl~\cite{nicklbvm2024} hold with the constants of Theorem~\ref{m:thm:nickl2}, Assumption~\ref{m:ass:U} holds with $S_N=\hat S_N$, clause (U4) included, Assumption~\ref{m:ass:u2p} holds, the hypotheses of Proposition~\ref{m:prop:suff} hold, its two conditions on the exponents included, with $\bar\gamma$ in the range of Section~\ref{m:sec:main}, the summary satisfies $\norm{\hat S_N-\theta_0}_{L^2}=o_P(\tilde\delta_N(0))$ and $\norm{\hat S_N-\theta_0}_{H^{\bar\gamma}}=o_P(1)$, and the generator is that of Definition~\ref{m:def:gen} with $M=M_N$ simulations. If
+\[
+\frac{J_N}{M_N}\to0 ,
+\]
+then (G1) holds as stated in Assumption~\ref{m:ass:G}, that is $\sqrt N\,\Wone_{1,H^{-k-2}}(\Pihat,\PiN)\to0$ in $P^\N_{\theta_0}$ probability, and (G2) holds. Consequently the conclusions of Theorem~\ref{m:thm:main} hold for the GBC posterior produced by this generator, those of parts (ii) to (iv) under the additional hypotheses stated there.
+\end{theorem}
+
+\begin{proof}
+Let $\Pi^\star=\Law(\hat S_N+N^{-1/2}\mathcal D^{1/2}(\Id+\Xi)^{1/2}\Phi^{-1}(U))=N(\hat S_N,\Sigma/N)$ be the Gaussian target and $\Pi^{S}=\Law(\theta\mid\hat S_N)$ the posterior given the summary. Then
+\[
+\begin{aligned}
+\sqrt N\,\Wone_{1,w}(\Pihat,\PiN)&\le\sqrt N\,\Wone_{1,w}(\Pihat,\Pi^\star)+\sqrt N\,\Wone_{1,w}(\Pi^\star,\Pi^S)\\
+&\quad+\sqrt N\,\Wone_{1,w}(\Pi^S,\PiN)=:\mathrm I+\mathrm{II}+\mathrm{III}.
+\end{aligned}
+\]
+Term III is $o_P(1)$ by Theorem~\ref{m:thm:jwbvm} applied with the one step statistic. Term II is $o_P(1)$ by clause (U4) of Assumption~\ref{m:ass:U} with $S_N=\hat S_N$, exactly as in the last paragraph of the proof of Theorem~\ref{m:thm:jwbvm}. By translation and scaling it is the $\Wone_{1,w}$ distance between the conditional law of $\sqrt N(\theta-\hat S_N)$ given $\hat S_N$, which is the conditional mean given $\hat S_N$ of the laws $\Law(\sqrt N(\theta-\hat S_N)\mid Z^{(N)})$, and $N(0,\Sigma)$, which is the image of $\Ncal_{\theta_0}$ under the projection onto the first $J$ modes; joint convexity of $\Wone_1$, and the equivalence of $\norm\cdot_w$ with the norm of $H^{-k-2}$ on the first $J$ modes, bound it by a constant times the left side of \eqref{m:eq:unifcond}. The three terms compare laws of the first $J$ coordinates, on which $\Pihat$ and $\Pi^\star$ live, while (G1) compares $\Pihat$ with the whole posterior. Since $p_N\hat S_N=\hat S_N$ and $x\mapsto\norm{x-p_Nx}_{H^{-k-2}}$ is Lipschitz with constant one, the difference is at most $\sqrt N\,E^{\PiN}\norm{\theta-p_N\theta}_{H^{-k-2}}\le\Wone_{1,H^{-k-2}}\big(\Law(\sqrt N(\theta-\hat S_N)\mid Z^{(N)}),\Ncal_{\theta_0}\big)+E\norm{X-p_NX}_{H^{-k-2}}$ with $X\sim\Ncal_{\theta_0}$; the first term is $o_P(1)$ by the last assertion of Proposition~\ref{m:prop:suff}, and the second tends to zero by dominated convergence, since $J_N\to\infty$.
+
+For term I, apply Lemma~\ref{m:lem:coupling} with the common base noise $U$:
+\[
+\begin{aligned}
+\mathrm I&\le E_U\Big\|\mathcal D^{1/2}\big(\hat C_M^{1/2}-(\Id+\Xi)^{1/2}\big)\Phi^{-1}(U)\Big\|_w\\
+&\le\Big\|\Lambda^{-(k+2)/2}\mathcal D^{1/2}\Big\|_{HS}\,\big\|\hat C_M^{1/2}-(\Id+\Xi)^{1/2}\big\|_{op} .
+\end{aligned}
+\]
+The step is Jensen followed by submultiplicativity: for $g\sim N(0,\Id_J)$ and any matrix $A$, $E\norm{Ag}_2\le(E\norm{Ag}_2^2)^{1/2}=\norm{A}_{HS}$, and $\norm{AB}_{HS}\le\norm{A}_{HS}\norm{B}_{op}$. Absorbing the Gaussian base noise into the Hilbert Schmidt norm, rather than bounding its length separately, is what leaves the condition on $M$ linear in $J$ rather than quadratic. The Hilbert Schmidt norm is $\big(\sum_j\lambda_j^{-k-2}/\iota_j\big)^{1/2}\lesssim\big(\sum_j\lambda_j^{-k-1}\big)^{1/2}<\infty$ because $1/\iota_j\lesssim\lambda_j$ and $k>d/2$. For the operator norm factor, $\norm{A^{1/2}-B^{1/2}}_{op}\le\norm{A-B}_{op}/\sqrt{c_0}$ whenever $A\succeq0$ and $B\succeq c_0\Id$, as the quadratic form of $A-B=A^{1/2}(A^{1/2}-B^{1/2})+(A^{1/2}-B^{1/2})B^{1/2}$ at a unit eigenvector of $A^{1/2}-B^{1/2}$ shows; we take $A=\hat C_M$ and $B=\Id+\Xi$, and $\hat C_M$ is the uncentered sample second moment matrix of the $M$ i.i.d.\ whitened training residuals. Two properties of those vectors are needed: a part with a sub Gaussian envelope uniform in $J$ and $M$ whose second moment matrix converges to $\Id+\Xi$ in operator norm, and a remainder that is small in mean square. Assumption~\ref{m:ass:U} supplies neither, since closeness in $\Wone_1$ controls neither a sub Gaussian norm nor second moments; Assumption~\ref{m:ass:u2p} imposes both (Remark~\ref{m:rem:u2p}). Work conditionally on $Z^{(N)}$, write $\hat C_{\rm g}=M^{-1}\sum_mW^{(m)}_{\rm g}W^{(m)\top}_{\rm g}$, $C_{\rm g}=E[W^{(m)}_{\rm g}W^{(m)\top}_{\rm g}\mid Z^{(N)}]$ and $\hat r_M=M^{-1}\sum_m\norm{W^{(m)}_{\rm r}}^2_2$, and let $\eta_N$ be the sum of the two quantities in the second display of Assumption~\ref{m:ass:u2p}. On the event $\{\eta_N\le c_0/2\}$, whose probability tends to one, $C_{\rm g}\succeq(c_0/2)\Id$, so the sub Gaussian norm of $\langle v,W^{(m)}_{\rm g}\rangle$ is at most $K_N=\max(1,\varkappa_N\sqrt{2/c_0})$ times its $L^2$ norm in every direction $v$. The covariance estimation bound for sub Gaussian vectors~\cite[Theorem 4.7.1 and Exercise 4.7.3]{vershynin2018}, which does not require the vectors to be centered, applied conditionally on $Z^{(N)}$ with $u=J$, gives $\norm{\hat C_{\rm g}-C_{\rm g}}_{op}\lesssim K_N^2(\sqrt{J/M}+J/M)\norm{C_{\rm g}}_{op}$ with conditional probability at least $1-2e^{-J}$, where $K_N=O_P(1)$ and $\norm{C_{\rm g}}_{op}\le C_0+\eta_N$. Since $E[\hat r_M\mid Z^{(N)}]\le\eta_N$, $\hat r_M\to0$ in probability by Markov's inequality, and by the Cauchy Schwarz inequality the cross terms of $\hat C_M=M^{-1}\sum_m(W^{(m)}_{\rm g}+W^{(m)}_{\rm r})(W^{(m)}_{\rm g}+W^{(m)}_{\rm r})^\top$ have operator norm at most $2\norm{\hat C_{\rm g}}^{1/2}_{op}\hat r_M^{1/2}$. Hence
+\[
+\begin{aligned}
+\norm{\hat C_M-(\Id+\Xi)}_{op}&\le\norm{\hat C_{\rm g}-C_{\rm g}}_{op}+\eta_N+\hat r_M+2\norm{\hat C_{\rm g}}^{1/2}_{op}\hat r_M^{1/2}\\
+&=O_P\big(\sqrt{J/M}+J/M\big)+o_P(1) ,
+\end{aligned}
+\]
+and $\mathrm I\to0$ in probability under the hypothesis $J_N/M_N\to0$ of the theorem. This proves (G1).
+
+For (G2), $\Pihat$ is Gaussian with mean $\hat S_N$ and covariance $\mathcal D^{1/2}\hat C_M\mathcal D^{1/2}/N$, and $\norm{\hat C_M}_{op}=O_P(1)$ by the bound just proved. Write $\theta-\hat S_N=N^{-1/2}\mathcal D^{1/2}\hat C_M^{1/2}g$ with $g\sim N(0,\Id_J)$ and, for $0\le s\le\bar\gamma$, $A_s=N^{-1/2}(\Id+\Lambda)^{s/2}\mathcal D^{1/2}\hat C_M^{1/2}$, so that $\norm{\theta-\hat S_N}_{H^s}=\norm{A_sg}_2$. The map $g\mapsto\norm{A_sg}_2$ is Lipschitz with constant $\norm{A_s}_{op}$, so Gaussian concentration gives $E\norm{A_sg}^q_2\le C_q\norm{A_s}^q_{HS}$ for every $q<\infty$ and $P(\norm{A_sg}_2>\norm{A_s}_{HS}+t)\le e^{-t^2/(2\norm{A_s}^2_{op})}$ for $t>0$, and, using $\mathcal D_{jj}=1/\iota_j\lesssim\lambda_j$, $\lambda_j\asymp j^{2/d}$ and $J\asymp N^{d/(2\gamma+d)}$,
+\[
+\begin{gathered}
+\norm{A_s}^2_{HS}\lesssim\norm{\hat C_M}_{op}\,r_N(s)^2,\qquad r_N(s)^2:=\frac1N\sum_{j\le J}\lambda_j^{s+1}\asymp N^{\frac{2(s+1-\gamma)}{2\gamma+d}},\\
+\norm{A_s}^2_{op}\lesssim\norm{\hat C_M}_{op}\,N^{-1}\lambda_J^{s+1} .
+\end{gathered}
+\]
+Since $\bar\gamma<\gamma-1$, $r_N(\bar\gamma)\to0$, and $r_N(0)/\tilde\delta_N(0)$ is of order $N^{-(\gamma-\bar\gamma-1)/((2\gamma+d)(\bar\gamma+1))}\to0$. The moment clause of (G2) follows at every order from $\norm\theta_{H^{\bar\gamma}}\le\norm{\hat S_N}_{H^{\bar\gamma}}+\norm{A_{\bar\gamma}g}_2$ and the hypothesis on the summary. For the first clause, the interpolation inequality $\norm f_{H^\xi}\le\norm f_{L^2}^{1-\xi/\bar\gamma}\norm f_{H^{\bar\gamma}}^{\xi/\bar\gamma}$ and the identity $\tilde\delta_N(0)^{1-\xi/\bar\gamma}=\tilde\delta_N(\xi)$ show that $\bar\Theta_{N,L}$ contains $\{\norm\theta_{H^{\bar\gamma}}\le L_1\}\cap\{\norm{\theta-\theta_0}_{L^2}\le L_1\tilde\delta_N(0)\}$ when $L=L_1+\norm{\theta_0}_{H^{\bar\gamma}}$. Take $L_1=\norm{\theta_0}_{H^{\bar\gamma}}+3$. With probability tending to one, $\norm{\hat S_N}_{H^{\bar\gamma}}\le L_1-2$ and $\norm{\hat S_N-\theta_0}_{L^2}\le\tilde\delta_N(0)/2$ by the hypothesis on the summary, and $\norm{A_{\bar\gamma}}_{HS}\le1$ and $\norm{A_0}_{HS}\le\tilde\delta_N(0)/4$ by the display. The tail bound with $(s,t)=(\bar\gamma,1)$ and with $(s,t)=(0,\tilde\delta_N(0)/4)$ then gives
+\[
+\begin{aligned}
+\Pihat\big(\bar\Theta^c_{N,L}\big)&\le e^{-cN\lambda_J^{-\bar\gamma-1}}+e^{-cN\tilde\delta_N(0)^2\lambda_J^{-1}}\\
+&=e^{-c'N\delta_N^2\,\omega_N}+e^{-c'N\delta_N^2\,\omega_N^{1/(\bar\gamma+1)}},\qquad\omega_N=N^{\frac{2(\gamma-\bar\gamma-1)}{2\gamma+d}},
+\end{aligned}
+\]
+with $c,c'>0$ depending on a bound for $\norm{\hat C_M}_{op}$, so the first clause holds for every $b>0$, since $\omega_N\to\infty$. Since Section~\ref{m:sec:main} takes $\bar\gamma<\gamma-\max(1,d/2)$, this is (G2) with the order $q$ of \eqref{m:eq:qorder}. The rest is Theorem~\ref{m:thm:main}.
+\end{proof}
+
+The hypothesis on the summary concerns the remainder of the one step correction. The leading part of $\hat S_N-\theta_0$, the efficient term $p_N(\hat\theta_N-\theta_0)$ of \eqref{m:eq:thetahat} plus the truncation $p_N\theta_0-\theta_0$, satisfies it with room to spare whenever the coordinates of the efficient term have variances $\lesssim\lambda_j/N$, as they do for the heat and Stokes equations: its $H^s$ norm is then $O_P(r_N(s))$, while $\norm{\theta_0-p_N\theta_0}_{H^s}\le\lambda_J^{-(\gamma-s)/2}\norm{\theta_0}_{H^\gamma}=o(r_N(s))$. Proposition~\ref{m:prop:sumrate} bounds the whole error $\hat S_N-\theta_0$ in every $H^s$, $-1\le s\le\gamma$, under the two sided bound \eqref{m:eq:infobound} on the linearizations and the rate \eqref{m:eq:pilotrate} in $H^{-1}$ for the preliminary estimates, and so gives the hypothesis. For the heat and Stokes equations it does so for every preliminary estimate of Definition~\ref{m:def:summary}. For the reaction diffusion class of Theorem~\ref{m:thm:nickl1} and the two dimensional Navier Stokes equations, for which Remark~\ref{m:rem:infobound} verifies \eqref{m:eq:infobound}, it does so when the preliminary estimates are, for instance, the posterior means of the two halves (Lemma~\ref{m:lem:halfmean}, which for Navier Stokes needs $\bar\gamma\le11$). For the reaction diffusion class Proposition~\ref{m:prop:sumrd} gives the hypothesis for every preliminary estimate of Definition~\ref{m:def:summary}. For other nonlinear forward maps it is open (Remark~\ref{m:rem:sumopen}).
+
+\begin{remark}[Why the requirement is so mild]
+The theorem asks only for $M\gg J_N\asymp N^{d/(2\gamma+d)}$, a small power of $N$. The center of the posterior is the summary itself to $o(N^{-1/2})$, so nothing about the center is learned: the skip connection has slope one and intercept zero by construction, and any attempt to learn a correction would only add error. And the spread is $O(N^{-1/2})$, so the scale need only be estimated to relative accuracy $o(1)$, which is a parametric problem in $J$ dimensions with $M$ samples.
+\end{remark}
+
+\begin{remark}[Non Gaussian marginals]\label{m:rem:emp}
+At finite $N$ the conditional law of $R$ is not Gaussian, and one may prefer a generator whose whitened coordinates carry empirical quantile functions, $\widehat G(s,U)=s+N^{-1/2}\mathcal D^{1/2}\hat C_M^{1/2}\big(\hat Q_1(U_1),\dots,\hat Q_J(U_J)\big)$ with $\hat Q_j$ the empirical quantile function of the $j$th coordinate of the rewhitened residuals $\hat C_M^{-1/2}W^{(m)}$. Lemma~\ref{m:lem:coupling} and the $L^1$ Wasserstein rate $E\Wone_1(\hat P_M,P)\lesssim M^{-1/2}$ for sub Gaussian laws on the line~\cite{bobkovledoux2019}, applied to the parts $W^{(m)}_{\rm g}$ of Assumption~\ref{m:ass:u2p}, give an additional error $\lesssim\sqrt{J/M}$, and the remainders $W^{(m)}_{\rm r}$ add $O_P(\hat r_M^{1/2}+\eta_N^{1/2})$, with $\hat r_M$ and $\eta_N$ as in the proof of Theorem~\ref{m:thm:qnnA}, since displacing the points of a law changes its quantile function in $L^1$ by at most the mean displacement. These bounds compare $\hat Q_j$ with the quantile function $Q_j$ of the conditional law given $Z^{(N)}$ of the $j$th coordinate of $(\Id+\Xi)^{-1/2}W^{(m)}_{\rm g}$, and not with $\Phi^{-1}$, and Assumption~\ref{m:ass:u2p}, which fixes only second moments and a sub Gaussian bound, does not make that law close to $N(0,1)$. So Theorem~\ref{m:thm:qnnA} holds for this generator under the additional hypothesis that, in $P^\N_{\theta_0}$ probability, $\norm{E[W^{(m)}_{\rm g}\mid Z^{(N)}]}_2\to0$ and the $\Wone_2$ distance of that law to $N(0,1)$ tends to zero uniformly in $j\le J$. Indeed the variables $x_j=Q_j(U_j)-\Phi^{-1}(U_j)$ are independent, $E[x_j^2]$ is that squared distance, and $\norm{E[xx^\top]}_{op}\le\max_jE[x_j^2]+c_0^{-1}\norm{E[W^{(m)}_{\rm g}\mid Z^{(N)}]}^2_2$, so the Jensen step of term I bounds the remaining error $E\norm{\mathcal D^{1/2}(\Id+\Xi)^{1/2}x}_w$ by $C_0^{1/2}\big(\sum_j\lambda_j^{-k-2}/\iota_j\big)^{1/2}\norm{E[xx^\top]}^{1/2}_{op}$, which tends to zero. Under that hypothesis the two generators coincide asymptotically, and the empirical quantile version is the one to use at moderate $N$. The coordinates need not be independent, since the coupling uses a common base noise.
+\end{remark}
+
+\subsection{The generator that cannot work}
+
+The construction above uses the Bernstein von Mises structure. The next result says that this is not a convenience but a necessity: a generator whose only guarantee is that it is accurate for every smooth conditional quantile map cannot satisfy (G1) at the observed summary with polynomially many simulations once the summary dimension grows.
+
+The rate that governs the problem is the nonparametric rate for a $\beta$ H\"older function of the $J$ summary coordinates, not of $J+1$ variables. The quantile level $\tau$ is not observed and is not a covariate: a simulated pair $(S^{(m)},\theta^{(m)})$ is drawn at the design point $S^{(m)}$ and is informative about the whole function $\tau\mapsto Q(\tau\mid S^{(m)})$ rather than about one of its values, so the design dimension is $J$ and the local sample size in a cube of side $h$ is of order $Mh^J$. Balancing the bias $h^\beta$ of a $\beta$ H\"older function in $s$ against the one dimensional Wasserstein fluctuation $(Mh^J)^{-1/2}$ of a conditional law estimated from that many pairs gives $h=M^{-1/(2\beta+J)}$ and the rate $M^{-\beta/(2\beta+J)}$. This is the same accounting as in Padilla, Tansey and Chen~\cite{padilla2022}, whose minimax rates for quantile regression with ReLU networks are stated at a fixed quantile level and carry the covariate dimension alone in the denominator.
+
+\begin{definition}[Monotone H\"older class of conditional quantile maps]\label{m:def:qclass}
+For $\beta>0$ and $J\in\N$ let $\mathcal Q_\beta(J)$ be the set of maps $(\tau,s)\mapsto Q(\tau\mid s)$ from $[0,1]\times[0,1]^J$ to $\R$ such that
+\begin{enumerate}[label=(\roman*),nosep]
+\item $\norm Q_{C^\beta([0,1]\times[0,1]^J)}\le1$, where, with $\ell$ the largest integer strictly below $\beta$, $\norm Q_{C^\beta}=\max_{|\alpha|\le\ell}\norm{\partial^\alpha Q}_\infty+\max_{|\alpha|=\ell}\sup_{z\ne z'}|\partial^\alpha Q(z)-\partial^\alpha Q(z')|/\norm{z-z'}_2^{\beta-\ell}$, the maxima running over multi indices on $\R^{1+J}$, so that for $\beta\le1$ it is $\norm Q_\infty+\sup_{z\ne z'}|Q(z)-Q(z')|/\norm{z-z'}_2^\beta$;
+\item $\tau\mapsto Q(\tau\mid s)$ is nondecreasing for every $s$.
+\end{enumerate}
+We write $P_{Q,s}=Q(\cdot\mid s)_\#\mathrm{Unif}$ for the law it encodes and $\Wone_{1,\R}$ for the Wasserstein distance of order one on the line. The maxima matter when $\beta>1$: with sums over multi indices, or with Frobenius norms of the derivative tensors, the constants below would depend on $J$.
+\end{definition}
+
+Condition (ii) is what makes $\mathcal Q_\beta(J)$ a class of conditional \emph{laws}: it says that $Q(\cdot\mid s)$ is the quantile function of $P_{Q,s}$, and hence that for $Q,Q'\in\mathcal Q_\beta(J)$
+\begin{equation}\label{m:eq:quantileW1}
+\Wone_{1,\R}\big(P_{Q,s},P_{Q',s}\big)=\int_0^1|Q(\tau\mid s)-Q'(\tau\mid s)|\,d\tau .
+\end{equation}
+
+\begin{remark}[Monotonicity is not cosmetic]\label{m:rem:mono}
+Without (ii) the identity \eqref{m:eq:quantileW1} holds only as ``$\le$'', which is Lemma~\ref{m:lem:coupling}, and that is the wrong direction: a lower bound on the right hand side then says nothing about the left hand side, and it may be an artifact of nonidentifiability rather than a statement about the difficulty of estimating a law. Take $Q_0(\tau\mid s)=\tau/4$ and $Q_1(\tau\mid s)=(1-\tau)/4$, both of Lipschitz norm $1/2$, the second decreasing in $\tau$ and so excluded by (ii). For every $s$ both push $\mathrm{Unif}$ to $\mathrm{Unif}[0,1/4]$, so the joint law of $(S^{(m)},\theta^{(m)})$ is the same under both and no procedure separates them at any $M$; yet $\int_0^1|Q_0-Q_1|\,d\tau=1/8$. Imposing (ii) on the estimator as well costs nothing, since the $\Wone_{1,\R}$ error of an arbitrary $\hat Q$ equals the $L^1$ error of its nondecreasing rearrangement, which is the quantile function of $\hat Q(\cdot\mid s)_\#\mathrm{Unif}$; below we simply let the generator report a law.
+\end{remark}
+
+Throughout this subsection and the next two, the training pairs are $M$ i.i.d.\ copies of $(S,\theta)$ with $S\sim\mu$ and $\theta\mid S\sim P_{Q,S}$, where the design law $\mu$ on $[0,1]^J$ has a Lebesgue density bounded above by $C_\mu$ and below by $c_\mu>0$; necessarily $C_\mu\ge1$. A generator is any measurable, possibly randomized, map $\hat P_M$ from the training sample and a summary value $s$ to a probability measure $\hat P_M(\cdot\mid s)$ on $\R$; a quantile network is the special case $\hat P_M(\cdot\mid s)=\hat Q_M(\cdot\mid s)_\#\mathrm{Unif}$, whose error is the $L^1$ distance between quantile functions by \eqref{m:eq:quantileW1}.
+
+\begin{theorem}[No uniform guarantee]\label{m:thm:qnnB}
+Let $\beta>0$ and $J\ge1$, let $\mu$ be as above, and let $s_0\in[0,1]^J$ be at Euclidean distance at least $1/8$ from the boundary. There is a constant $c=c(\beta)>0$, depending on $\beta$ and on two fixed profile functions only and in particular not on $J$, such that for every $M\ge1$ and every generator $\hat P_M$,
+\[
+\sup_{Q\in\mathcal Q_\beta(J)}P\Big(\Wone_{1,\R}\big(\hat P_M(\cdot\mid s_0),P_{Q,s_0}\big)\ \ge\ c\,(C_\mu M)^{-\beta/(2\beta+J)}\Big)\ \ge\ \frac18 ,
+\]
+the probability being over the $M$ training pairs, and consequently
+\[
+\inf_{\hat P_M}\ \sup_{Q\in\mathcal Q_\beta(J)}E\,\Wone_{1,\R}\big(\hat P_M(\cdot\mid s_0),P_{Q,s_0}\big)\ \ge\ \frac c8\,(C_\mu M)^{-\beta/(2\beta+J)} .
+\]
+Consequently, if a GBC generator is required to satisfy (G1) at the summary value $s_0$ uniformly over $\mathcal Q_\beta(J_N)$, that is, if $\sqrt N\,\Wone_{1,\R}(\Pihat,\Pi(\cdot\mid s_0))\to0$ in probability is to hold for every conditional quantile map in the class (Remark~\ref{m:rem:qnnB} transfers this to the $H^{-k-2}$ topology in which (G1) is stated, and reading it as (G1), which compares $\Pihat$ with the posterior given all the data, uses the asymptotic sufficiency of the summary, Corollary~\ref{m:cor:jwgbc}, and so Assumption~\ref{m:ass:U}), then necessarily $\sqrt N\,(C_\mu M_N)^{-\beta/(2\beta+J_N)}\to0$ and hence
+\[
+M_N\ \ge\ C_\mu^{-1}\,N^{(2\beta+J_N)/(2\beta)}\ =\ C_\mu^{-1}\,N^{1+J_N/(2\beta)}\qquad\text{for all large }N ,
+\]
+which grows faster than any polynomial in $N$ as soon as $J_N\to\infty$.
+\end{theorem}
+
+\begin{proof}
+Fix two profiles. Let $w\in C^\infty([0,\infty))$ with $0\le w\le1$, $w\equiv1$ on $[0,1/2]$ and $w\equiv0$ on $[1,\infty)$, and set $\varphi(x)=w(4\norm x_2)$ for $x\in\R^J$, so that $\varphi(0)=1$, $\varphi$ is supported in $\{\norm x_2\le1/4\}$ and, $\varphi$ being a radial profile, $\norm\varphi_{C^l(\R^J)}\le\kappa_l$ with $\kappa_l$ depending on $l$ and $w$ only and not on $J$. Let $g\in C^\infty([0,1])$ with $0\le g\le1$, $\mathrm{supp}\,g\subset[1/4,3/4]$ and $\bar g=\int_0^1g\,d\tau>0$. For $h\in(0,1/2]$ put
+\[
+\begin{gathered}
+Q_0(\tau\mid s)=\tfrac14\tau,\qquad Q_1(\tau\mid s)=\tfrac14\tau+\gamma(s)g(\tau),\\
+\gamma(s)=c_1h^\beta\varphi\big((s-s_0)/h\big),
+\end{gathered}
+\]
+with $c_1=c_1(\beta)>0$ fixed in Step 1. The perturbation is supported in $\{\norm{s-s_0}_2\le h/4\}\subset[0,1]^J$.
+
+\emph{Step 1: $Q_0,Q_1\in\mathcal Q_\beta(J)$.} Monotonicity: $\partial_\tau Q_1=\frac14+\gamma g'\ge\frac14-c_1\norm{g'}_\infty\ge\frac18$ as soon as $c_1\norm{g'}_\infty\le\frac18$, so $Q_1(\cdot\mid s)$ increases strictly from $0$ to $\frac14$ and is the quantile function of the law it induces. Norms: $\norm{\frac14\tau}_{C^\beta}\le\frac12$, while $u(\tau,s)=h^\beta\varphi((s-s_0)/h)g(\tau)$ satisfies $\norm u_{C^\beta}\le\Lambda$ with $\Lambda=\Lambda(\beta)$ independent of $h\in(0,1]$ and of $J$. For $\beta\le1$ this is elementary: $\norm u_\infty\le h^\beta\le1$, and splitting an increment into its $\tau$ part and its $s$ part,
+\[
+\begin{aligned}
+|u(\tau,s)-u(\tau',s')|&\le h^\beta[g]_\beta|\tau-\tau'|^\beta\\
+&\quad+\norm g_\infty\max\{4\mathrm{Lip}(w),2\}\,\norm{s-s'}_2^\beta ,
+\end{aligned}
+\]
+because $h^\beta\norm{s-s'}_2/h\le\norm{s-s'}_2^\beta$ when $\norm{s-s'}_2\le h$ while $2h^\beta\le2\norm{s-s'}_2^\beta$ otherwise, and both increments are at most $\norm{(\tau,s)-(\tau',s')}_2^\beta$; so $\Lambda=1+[g]_\beta+\max\{4\mathrm{Lip}(w),2\}$ will do. For $\beta>1$ the same bound holds with $\Lambda$ depending on $\kappa_{\lceil\beta\rceil}$ and $\norm g_{C^{\lceil\beta\rceil}}$, since $\partial^\alpha_s\partial^j_\tau u$ scales as $h^{\beta-|\alpha|}$ with $|\alpha|+j\le\beta$ and $h\le1$. Take $c_1=\min\{1/(2\Lambda),1/(8\norm{g'}_\infty)\}$; then $\norm{Q_i}_{C^\beta}\le1$ for $i=0,1$.
+
+\emph{Step 2: the cost of testing.} Write $P^{(i)}$ for the joint law of one pair $(S,\theta)$ under $Q_i$, and $T_\gamma(\tau)=\frac14\tau+\gamma g(\tau)$, so that $P_{Q_1,s}=T_{\gamma(s)\#}\mathrm{Unif}$ and $P_{Q_0,s}=\mathrm{Unif}[0,\frac14]$. By Step 1, $T'_\gamma\in[\frac18,\frac38]$, so $T_\gamma$ is an increasing $C^1$ bijection of $[0,1]$ onto $[0,\frac14]$ and $P_{Q_1,s}$ has density $p_\gamma(x)=1/T'_\gamma(T^{-1}_\gamma(x))$ there, against $p_0\equiv4$. Hence $|p_\gamma-p_0|=|1-4T'_\gamma|/T'_\gamma\le32|\gamma|\norm{g'}_\infty$ and, by $(\sqrt a-\sqrt b)^2\le(a-b)^2/b$,
+\[
+\begin{gathered}
+H^2\big(P_{Q_1,s},P_{Q_0,s}\big)\le\int_0^{1/4}\frac{(p_\gamma-p_0)^2}{4}\,dx\le C_g\,\gamma(s)^2,\\
+C_g:=64\norm{g'}_\infty^2 .
+\end{gathered}
+\]
+This is the point at which the perturbation has to be a smooth reshaping of a law with a density bounded away from zero on its support: a shift of a law with jumps at the edges of its support would be detectable at cost $|\gamma|$ rather than $\gamma^2$ and would give a weaker exponent. The two joint laws of a single pair share the marginal $\mu$, so their squared Hellinger distance is the $\mu$ average of the conditional ones; since $\gamma$ vanishes off $\{\norm{s-s_0}_2\le h/4\}$, a set of Lebesgue measure at most $2^J(h/4)^J\le h^J$,
+\[
+H^2\big(P^{(1)},P^{(0)}\big)\le C_gc_1^2h^{2\beta}\,\mu\big\{\norm{s-s_0}_2\le h/4\big\}\le C_gc_1^2C_\mu\,h^{2\beta+J} .
+\]
+
+\emph{Step 3: the balance.} Set $a_0=\log2/(2C_gc_1^2)$ and
+\[
+h=\min\Big\{\tfrac12,\ \big(a_0/(C_\mu M)\big)^{1/(2\beta+J)}\Big\} .
+\]
+Then $MH^2(P^{(1)},P^{(0)})\le\frac12\log2\le1$: if the minimum is the second term this is the definition of $a_0$, and if it is $\frac12$ then $C_\mu M2^{-(2\beta+J)}\le a_0$, which gives the same conclusion. The Hellinger affinity of the $M$ fold products is $\rho=(1-\frac12H^2)^M\ge e^{-MH^2}\ge2^{-1/2}$, so $\int\min(dP^{(1)\otimes M},dP^{(0)\otimes M})\ge\frac12\rho^2\ge\frac14$. Moreover, using $C_\mu M\ge1$ and $\beta/(2\beta+J)\le\frac12$,
+\[
+h^\beta\ \ge\ c_2\,(C_\mu M)^{-\beta/(2\beta+J)},\qquad c_2:=\min\big\{2^{-\beta},\min(1,a_0)^{1/2}\big\} .
+\]
+
+\emph{Step 4: two point testing.} By \eqref{m:eq:quantileW1} and $\varphi(0)=1$, the two hypotheses are separated at $s_0$ by
+\[
+\Delta:=\Wone_{1,\R}\big(P_{Q_1,s_0},P_{Q_0,s_0}\big)=c_1\bar g\,h^\beta .
+\]
+Let $A_i=\{\Wone_{1,\R}(\hat P_M(\cdot\mid s_0),P_{Q_i,s_0})\ge\Delta/2\}$. By the triangle inequality $A_0\cup A_1$ is the whole sample space, so
+\[
+\begin{aligned}
+\max_{i\in\{0,1\}}P^{(i)\otimes M}(A_i)&\ge\tfrac12\Big(P^{(0)\otimes M}(A_0)+P^{(1)\otimes M}(A_1)\Big)\\
+&\ge\tfrac12\int_{A_0\cup A_1}\min\big(dP^{(0)\otimes M},dP^{(1)\otimes M}\big)\ge\tfrac18 .
+\end{aligned}
+\]
+With $c=c_1\bar gc_2/2$ this is the first display of the theorem, and the second follows by Markov's inequality. Randomization of the generator changes nothing, the argument being run on the enlarged sample space.
+
+\emph{Step 5: the consequence.} The training sample is drawn independently of the data $Z^{(N)}$ and the generator is evaluated at the observed summary, so for a fixed summary value $s_0$ the law of $\hat P_M(\cdot\mid s_0)$ is the one in the theorem, and, under Assumption~\ref{m:ass:U}, the target $\Pi(\cdot\mid s_0)$ differs from $\PiN$ by $o_P(N^{-1/2})$ in $\Wone_1$ (Corollary~\ref{m:cor:jwgbc}, and for the one step summary the last statement of Theorem~\ref{m:thm:jwbvm}). Validity of (G1) at $s_0$ uniformly over the class means $\sup_QP(\sqrt N\,\Wone_{1,\R}>\epsilon)\to0$ for every $\epsilon>0$, whereas the first display produces, for each $N$, a $Q$ in the class with $P(\sqrt N\,\Wone_{1,\R}\ge c\sqrt N(C_\mu M_N)^{-\beta/(2\beta+J_N)})\ge\frac18$. Hence $\sqrt N(C_\mu M_N)^{-\beta/(2\beta+J_N)}\to0$; in particular it is at most one for large $N$, which on taking logarithms is the stated growth of $M_N$.
+\end{proof}
+
+For $\beta\le2$ the exponent is the right one and not merely a conservative one, as the matching upper bounds show: a histogram attains it for $\beta\le1$ (Proposition~\ref{m:prop:qnnUB}) and a local linear quantile regression for $1<\beta\le2$ (Proposition~\ref{m:prop:qnnUB2}), uniformly over the class and whether or not the conditional laws have densities. For $\beta>2$ see Remark~\ref{m:rem:qnnbeta} and Section~\ref{m:sec:qnnhigh}.
+
+\begin{proposition}[The exponent is attained]\label{m:prop:qnnUB}
+Let $\beta\in(0,1]$, partition $[0,1]^J$ into $m^J$ cubes of side $h=1/m$ with $m=\max\{1,\lfloor M^{1/(2\beta+J)}\rfloor\}$, and let $\hat P_M(\cdot\mid s)$ be the empirical law of $\{\theta^{(i)}:S^{(i)}\in B(s)\}$, where $B(s)$ is the cube containing $s$, and any fixed law on $[-1,1]$ if that cube is empty. Then
+\[
+\sup_{Q\in\mathcal Q_\beta(J)}\ \sup_{s\in[0,1]^J}\ E\,\Wone_{1,\R}\big(\hat P_M(\cdot\mid s),P_{Q,s}\big)\ \le\ C(\beta,c_\mu)\,J^{\beta/2}\,M^{-\beta/(2\beta+J)} .
+\]
+In particular, at fixed $\beta$ and $J$ a single explicit estimator has risk $O(M^{-\beta/(2\beta+J)})=o(M^{-\beta/(2\beta+J+1)})$, so no lower bound with the exponent $\beta/(2\beta+J+1)$ and a positive constant can hold: it is the summary dimension, and not the summary dimension plus one, that governs the problem.
+\end{proposition}
+
+\begin{proof}
+Fix $s$, write $B=B(s)$, $n_B=\#\{i:S^{(i)}\in B\}$ and $q=\mu(B)\ge c_\mu h^J$, and let $\bar P_B=\Law(\theta\mid S\in B)$, so that given $n_B=n\ge1$ the retained $\theta$'s are i.i.d.\ $\bar P_B$. Split
+\[
+\Wone_{1,\R}\big(\hat P_M(\cdot\mid s),P_{Q,s}\big)\le\Wone_{1,\R}\big(\hat P_M(\cdot\mid s),\bar P_B\big)+\Wone_{1,\R}\big(\bar P_B,P_{Q,s}\big).
+\]
+The second term is the bias: $\bar P_B$ is the $\mu(\cdot\mid B)$ mixture of the laws $P_{Q,s'}$, $s'\in B$, and $\Wone_{1,\R}$ is jointly convex, so by \eqref{m:eq:quantileW1} and the H\"older bound in $s$ it is at most $\sup_{s'\in B}\int_0^1|Q(\tau\mid s')-Q(\tau\mid s)|\,d\tau\le(\sqrt Jh)^\beta$, a cube of side $h$ in $\R^J$ having diameter $\sqrt Jh$. The first term is the variance: all the laws are supported in $[-1,1]$ because $\norm Q_\infty\le1$, so $\Wone_{1,\R}=\int_{-1}^1|\hat F-\bar F|$ and, given $n_B=n\ge1$,
+\[
+E\Big[\Wone_{1,\R}\big(\hat P_M(\cdot\mid s),\bar P_B\big)\ \Big|\ n_B=n\Big]\le\int_{-1}^1\sqrt{\bar F(1-\bar F)/n}\,dx\le n^{-1/2} ,
+\]
+which is the one dimensional empirical Wasserstein bound of Bobkov and Ledoux~\cite{bobkovledoux2019}, while on $\{n_B=0\}$ the distance is at most $2$. Since $E(1+n_B)^{-1}=\{1-(1-q)^{M+1}\}/\{(M+1)q\}\le(Mq)^{-1}$ and $(n\vee1)^{-1/2}\le\sqrt2(1+n)^{-1/2}$,
+\[
+E\,\Wone_{1,\R}\big(\hat P_M(\cdot\mid s),\bar P_B\big)\le\sqrt2\,(Mq)^{-1/2}+2e^{-Mq} .
+\]
+By the choice of $m$, $M^{-1/(2\beta+J)}\le h\le2M^{-1/(2\beta+J)}$, so $Mq\ge c_\mu Mh^J\ge c_\mu M^{2\beta/(2\beta+J)}$. Writing $t=M^{-1/(2\beta+J)}$, the three terms are at most $2^\beta J^{\beta/2}t^\beta$, $\sqrt2c_\mu^{-1/2}t^\beta$ and $2e^{-c_\mu t^{-2\beta}}\le C(\beta,c_\mu)t^\beta$, the last because $\sup_{0<t\le1}t^{-\beta}e^{-c_\mu t^{-2\beta}}<\infty$.
+\end{proof}
+
+\begin{remark}[What the theorem asserts, and in which space]\label{m:rem:qnnB}
+Four points, in order of importance.
+\begin{enumerate}[label=(\roman*),nosep]
+\item It is a worst case over $\mathcal Q_\beta(J)$: for every generator there is a conditional quantile map in the class on which it fails. It is not a statement about the conditional law that actually arises here, which under Assumption~\ref{m:ass:U} is, by Theorem~\ref{m:thm:jwbvm}, asymptotically a location scale family centered at the summary with spread of order $N^{-1/2}$, and which Theorem~\ref{m:thm:qnnA} handles with $M\gg J_N$. The distance between $M\gg J_N$ and $M\ge N^{1+J_N/(2\beta)}$ measures the value of the Bernstein von Mises structure, not a defect of quantile networks.
+\item The bound is at a fixed summary value and in probability, which is the form (G1) takes. A lower bound on a risk averaged over $s$ would not preclude accuracy at the particular summary that is observed.
+\item The construction is scalar. To read it in the $H^{-k-2}$ topology of Assumption~\ref{m:ass:G}, place the perturbation in the first mode and leave the others deterministic. The projection $x\mapsto x_1$ is Lipschitz from $(\R^J,\norm\cdot_w)$ into $\R$ with constant $\lambda_1^{(k+2)/2}$, a fixed number, so $\Wone_{1,H^{-k-2}}\ge\lambda_1^{-(k+2)/2}\Wone_{1,\R}$ for the first mode marginals and the theorem holds verbatim with $c$ replaced by $\lambda_1^{-(k+2)/2}c$.
+\item That $c$ does not depend on $J$ matters because $J=J_N\to\infty$ in the application while Assouad or Fano constants for $J$ dimensional H\"older classes usually degrade with $J$; the two point construction escapes that because a single radial bump has H\"older norm free of $J$. The design enters only through $C_\mu\ge1$, and it has to enter somewhere: a design charging a neighborhood of $s_0$ heavily makes estimation at $s_0$ easier, and one avoiding $s_0$ makes it impossible. The constant of the matching Proposition~\ref{m:prop:qnnUB} is of order $J^{\beta/2}$, so the two differ by a factor polynomial in $J$; the constants that the proofs of Propositions~\ref{m:prop:qnnUB2} and~\ref{m:prop:qnnUB3} give grow faster than any exponential in $J$, through the volume of the Euclidean window, and we have not tried to improve them.
+\end{enumerate}
+\end{remark}
+
+\begin{remark}[The $s$ averaged version]\label{m:rem:assouad}
+Replicating the perturbation over a grid gives the averaged form of the bound: for $\beta\in(0,1]$,
+\[
+\begin{aligned}
+&\inf_{\hat P_M}\sup_{Q\in\mathcal Q_\beta(J)}E\int\Wone_{1,\R}\big(\hat P_M(\cdot\mid s),P_{Q,s}\big)\,d\mu(s)\\
+&\qquad\ge c_\beta\,c_\mu\,J^{-3/2}\,(C_\mu M)^{-\beta/(2\beta+J)} .
+\end{aligned}
+\]
+One takes $Q_\omega=\frac14\tau+\sum_k\omega_k\varphi_k(s)g(\tau)$ over $\omega\in\{0,1\}^{h^{-J}}$, with $\varphi_k$ the profile rescaled to the $k$th cube of side $h$; the separation of the loss along the $k$th coordinate is $\bar g\int|\varphi_k|\,d\mu$, the corresponding Hellinger cost is the one computed in Step 2 of the proof of Theorem~\ref{m:thm:qnnB}, and Assouad's lemma~\cite[Section~2.7.2]{tsybakov2009} balances them at the same $h$. The factor $J^{-3/2}$ appears because the profile now has to be nearly flat on each cube: a product $\prod_{i\le J}w(\cdot)$ of a fixed bump has $L^1$ mass a fraction $(\int w)^J$ of the cube, exponentially small in $J$, whereas taking $w$ equal to one outside edge layers of width $1/(2J)$ loses only $(1-1/(2J))^J\ge e^{-1}$, at the price of $\mathrm{Lip}(w)=2J$, hence of a Lipschitz constant of order $J^{3/2}$ for the product in $J$ dimensions and of $c_1\asymp J^{-3/2}$. We give this form as a sketch, since only the local bound above is used.
+\end{remark}
+
+\subsection{Attaining the exponent for \texorpdfstring{$1<\beta\le2$}{1 < beta <= 2}}
+
+For $1<\beta\le2$ the histogram of Proposition~\ref{m:prop:qnnUB} is too crude to attain the exponent of Theorem~\ref{m:thm:qnnB}, because its bias is of order $h$ whatever $\beta$ is; the remedy is a fit that is linear in $s$. The estimator below fits, at each quantile level separately, a local linear quantile regression on a Euclidean window around $s_0$, after adding to each response an independent uniform jitter of size $h^\beta$, which costs nothing in the rate and breaks the ties between responses and fitted values that atoms of the conditional laws would otherwise create. The class $\mathcal Q_\beta(J)$ does allow atoms: $Q(\cdot\mid s)$ may be constant on an interval of levels.
+
+\begin{proposition}[The exponent is attained for $1<\beta\le2$]\label{m:prop:qnnUB2}
+Let $\beta\in(1,2]$, $J\ge1$, and let $\mu$ and $s_0$ be as in Theorem~\ref{m:thm:qnnB}. Put $h=\min\{1/8,M^{-1/(2\beta+J)}\}$, let $I=\{i\le M:\norm{S^{(i)}-s_0}_2\le h\}$ and $n=|I|$, and for $i\in I$ let $X_i=(S^{(i)}-s_0)/h$ and $\tilde\theta_i=\theta^{(i)}+h^\beta V_i$, where $V_1,\dots,V_M$ are i.i.d.\ uniform on $[0,1]$ and independent of the training pairs. For $\tau\in(0,1)$ let $\rho_\tau(r)=r(\tau-\mathbf 1\{r<0\})$, and let $(\hat a_\tau,\hat b_\tau)$ be the minimizer of least Euclidean norm of
+\begin{equation}\label{m:eq:llqr}
+(a,b)\ \mapsto\ \sum_{i\in I}\rho_\tau\big(\tilde\theta_i-a-b\cdot X_i\big),\qquad(a,b)\in\R\times\R^J,
+\end{equation}
+when the vectors $(1,X_i)$, $i\in I$, span $\R^{1+J}$, and $(\hat a_\tau,\hat b_\tau)=0$ otherwise. Let $\hat Q(\tau)=\max\{-1,\min\{1,\hat a_\tau\}\}$ and $\hat P_M(\cdot\mid s_0)=\hat Q_\#\mathrm{Unif}$. There is a constant $C$ depending only on $\beta$, $J$, $c_\mu$ and $C_\mu$ such that for every $M\ge1$
+\[
+\sup_{Q\in\mathcal Q_\beta(J)}E\,\Wone_{1,\R}\big(\hat P_M(\cdot\mid s_0),P_{Q,s_0}\big)\ \le\ C\,M^{-\beta/(2\beta+J)} .
+\]
+In particular the conclusion of Proposition~\ref{m:prop:qnnUB} about the exponent $\beta/(2\beta+J+1)$ holds for every $\beta\le2$.
+\end{proposition}
+
+The difficulty is the bias, and it comes from the atoms. At a level $\tau$ inside a flat part of $Q(\cdot\mid s_0)$, the fitted line at a nearby design point $s_0+hx$ sits at some level $\tilde u(x)$ of $Q(\cdot\mid s_0+hx)$ that may be far from $\tau$, and a Taylor expansion at the single level $\tau$ says nothing about it. Two facts replace it. First, levels whose quantiles at $s_0$ are close have close gradients in $s$ (Lemma~\ref{m:lem:glaeser}), so the error of the fitted line is, up to $O(h^\beta)$, comparable to the vertical gap at $s_0$ between the levels $\tilde u(x)$ and $\tau$ (Lemma~\ref{m:lem:qrep}). Second, the first order conditions of \eqref{m:eq:llqr} say that the excess level $\min\{1,\max\{0,\tilde u(x)\}\}-\tau$ has small mean and small first moments under the design, and a signed function with these properties that is nearly monotone in an affine function forces that affine function to be small (Lemma~\ref{m:lem:qbary}). Below, $\bar B=\{x\in\R^J:\norm x_2\le1\}$, $\omega_J$ is the volume of $\bar B$, $\omega_{J-1}$ that of the unit ball of $\R^{J-1}$ (with $\omega_0=1$), and $x\mapsto\min\{1,\max\{0,x\}\}$ is written $\mathrm{clip}$.
+
+\begin{lemma}[Gradients of a monotone class at an interior point]\label{m:lem:glaeser}
+Let $\beta\in(1,2]$, $Q\in\mathcal Q_\beta(J)$, and let $s_0$ be as in Theorem~\ref{m:thm:qnnB}. For $0\le u_1\le u_2\le1$,
+\[
+\begin{aligned}
+&\norm{\nabla_sQ(u_2\mid s_0)-\nabla_sQ(u_1\mid s_0)}_2\\
+&\qquad\le C_G\,\big(Q(u_2\mid s_0)-Q(u_1\mid s_0)\big)^{(\beta-1)/\beta},
+\end{aligned}
+\]
+where $C_G=2\max\{(2\sqrt J)^{1/\beta},2^{3+1/\beta}\}$.
+\end{lemma}
+
+\begin{proof}
+The argument is that of Glaeser's inequality~\cite{glaeser1963}. Let $f(s)=Q(u_2\mid s)-Q(u_1\mid s)$, which is nonnegative on $[0,1]^J$ by (ii) of Definition~\ref{m:def:qclass}. By (i) every first partial derivative of $Q$ is H\"older of order $\beta-1$ with constant at most $1$, so $\norm{\nabla f(s)-\nabla f(s')}_2\le2\sqrt J\norm{s-s'}_2^{\beta-1}$. Suppose $\nabla f(s_0)\ne0$ and let $v=\nabla f(s_0)/\norm{\nabla f(s_0)}_2$. For $0<t\le1/8$ the point $s_0-tv$ lies in $[0,1]^J$, and
+\[
+\begin{aligned}
+0\le f(s_0-tv)&=f(s_0)-t\norm{\nabla f(s_0)}_2\\
+&\quad+\int_0^t\big(\nabla f(s_0)-\nabla f(s_0-rv)\big)\cdot v\,dr\\
+&\le f(s_0)-t\norm{\nabla f(s_0)}_2+Lt^\beta,
+\end{aligned}
+\]
+with $L=2\sqrt J/\beta\le2\sqrt J$. Hence $\norm{\nabla f(s_0)}_2\le f(s_0)/t+Lt^{\beta-1}$. If $f(s_0)=0$, letting $t\downarrow0$ gives $\nabla f(s_0)=0$, a contradiction. If $0<f(s_0)\le L8^{-\beta}$ we take $t=(f(s_0)/L)^{1/\beta}$ and get $\norm{\nabla f(s_0)}_2\le2L^{1/\beta}f(s_0)^{(\beta-1)/\beta}$. Otherwise we take $t=1/8$ and get $\norm{\nabla f(s_0)}_2\le8f(s_0)+L8^{1-\beta}\le16f(s_0)\le2^{4+1/\beta}f(s_0)^{(\beta-1)/\beta}$, because $f(s_0)\le2$.
+\end{proof}
+
+From here to the end of the proof of Proposition~\ref{m:prop:qnnUB2}, $\beta\in(1,2]$, $s_0$ is as in Theorem~\ref{m:thm:qnnB}, $h\in(0,1/8]$, and
+\[
+K=2^{\beta-1}C_G^\beta,\qquad\eta=(K+\sqrt J+1)\,h^\beta .
+\]
+For $x\in\bar B$ let $F_x$ be the distribution function of $P_{Q,s_0+hx}$ and let
+\[
+\tilde F_x(y)=h^{-\beta}\int_{y-h^\beta}^{y}F_x(t)\,dt ,
+\]
+which is the distribution function of $\theta+h^\beta V$ when $\theta\sim P_{Q,s_0+hx}$ and $V\sim\mathrm{Unif}[0,1]$ are independent; it is continuous, so $\tilde F_x(y)$ is also the probability that $\theta+h^\beta V<y$. For $\tau\in(0,1)$ let $T_\tau(x)=Q(\tau\mid s_0)+h\nabla_sQ(\tau\mid s_0)\cdot x$, the first order Taylor polynomial in $s$ at the level $\tau$, written in the rescaled variable.
+
+\begin{lemma}[A quantile fit is nearly monotone in its error]\label{m:lem:qrep}
+Let $Q\in\mathcal Q_\beta(J)$, $\tau\in(0,1)$, let $p:\R^J\to\R$ be affine, and put $w=p-T_\tau$ and $\delta(x)=\tilde F_x(p(x))-\tau$. For all $x,x'\in\bar B$ and $t\ge0$:
+\begin{enumerate}[label=(\roman*),nosep]
+\item if $\delta(x)>0$ then $w(x)\ge-\eta$, and if $\delta(x)<0$ then $w(x)\le\eta$;
+\item if $w(x')\le t$ and $w(x)>3t+4\eta$ then $\delta(x')\le\delta(x)$, and if $w(x')\ge-t$ and $w(x)<-3t-4\eta$ then $\delta(x)\le\delta(x')$;
+\item if $w(x)>\eta$ then $\delta(x)\ge\min\{\frac23(w(x)-\eta),1-\tau\}$, and if $w(x)<-\eta$ then $-\delta(x)\ge\min\{\frac23(-w(x)-\eta),\tau\}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\emph{Step 1: the level reached by the fit.} For $x\in\bar B$ let $\bar Q_x(u)=Q(u\mid s_0+hx)$ for $u\in[0,1]$, $\bar Q_x(u)=\bar Q_x(0)+u$ for $u<0$ and $\bar Q_x(u)=\bar Q_x(1)+u-1$ for $u>1$. It is continuous, nondecreasing and onto $\R$, and $F_x(y)$ is the Lebesgue measure of $\{u\in[0,1]:\bar Q_x(u)\le y\}$. Fix $x$, let $y=p(x)$ and $u=\tilde F_x(y)=\tau+\delta(x)$. Since $F_x$ is nondecreasing, $F_x(y-h^\beta)\le u\le F_x(y)$. Let $y'$ be the infimum of the $t\in[y-h^\beta,y]$ with $F_x(t)\ge u$. Right continuity gives $F_x(y')\ge u$, and the definition of $y'$ with $F_x(y-h^\beta)\le u$ gives $F_x(y'-)\le u$. The set $\{v\in\R:\bar Q_x(v)=y'\}$ is a closed interval $[\alpha,\alpha']$, and since $\{v:\bar Q_x(v)\le y'\}=(-\infty,\alpha']$ and $\{v:\bar Q_x(v)<y'\}=(-\infty,\alpha)$, we have $F_x(y')=\mathrm{clip}(\alpha')$ and $F_x(y'-)=\mathrm{clip}(\alpha)$. By the intermediate value theorem there is $\tilde u(x)\in[\alpha,\alpha']$ with $\mathrm{clip}(\tilde u(x))=u$. Hence
+\[
+\begin{gathered}
+p(x)=\bar Q_x(\tilde u(x))+j(x),\qquad j(x)=y-y'\in[0,h^\beta],\\
+\mathrm{clip}(\tilde u(x))=\tau+\delta(x).
+\end{gathered}
+\]
+
+\emph{Step 2: the error of the fit against the vertical gap.} Let $D(x)=\bar Q_0(\tilde u(x))-\bar Q_0(\tau)$, the gap at $s_0$ between the level reached and the level $\tau$. We show
+\begin{equation}\label{m:eq:qgap}
+|w(x)-D(x)|\le\tfrac12|D(x)|+\eta .
+\end{equation}
+Let $u^*=\mathrm{clip}(\tilde u(x))$. Since $\bar Q_x(\tilde u)=Q(u^*\mid s_0+hx)+\tilde u-u^*$ and $\bar Q_0(\tilde u)=Q(u^*\mid s_0)+\tilde u-u^*$,
+\[
+w(x)-D(x)=h\big(\nabla_sQ(u^*\mid s_0)-\nabla_sQ(\tau\mid s_0)\big)\cdot x+R+j(x),
+\]
+where $R=Q(u^*\mid s_0+hx)-Q(u^*\mid s_0)-h\nabla_sQ(u^*\mid s_0)\cdot x$. By (i) of Definition~\ref{m:def:qclass}, $s\mapsto\nabla_sQ(u^*\mid s)$ is H\"older of order $\beta-1$ with constant $\sqrt J$, so $|R|\le\sqrt J\int_0^1(rh)^{\beta-1}h\,dr\le\sqrt Jh^\beta$. The numbers $Q(u^*\mid s_0)-Q(\tau\mid s_0)$ and $D(x)$ have the same sign and the first is the smaller in absolute value, so Lemma~\ref{m:lem:glaeser} bounds the first term by $hC_G|D(x)|^{(\beta-1)/\beta}$. For $\xi\ge0$, $hC_G\xi^{(\beta-1)/\beta}\le\frac12\xi+Kh^\beta$: if $\xi\ge(2C_Gh)^\beta$ the left side is $hC_G\xi\,\xi^{-1/\beta}\le\frac12\xi$, and otherwise it is at most $hC_G(2C_Gh)^{\beta-1}=Kh^\beta$. Adding $|R|\le\sqrt Jh^\beta$ and $0\le j(x)\le h^\beta$ gives \eqref{m:eq:qgap}.
+
+\emph{Step 3: order.} The map $\bar Q_0$ is nondecreasing and $\tau+\delta(x)=\mathrm{clip}(\tilde u(x))$. So $\delta(x)>0$ forces $\tilde u(x)>\tau$ and $D(x)\ge0$, and $\delta(x)<0$ forces $D(x)\le0$. If $D(x')<D(x)$ then $\tilde u(x')<\tilde u(x)$, hence $\delta(x')\le\delta(x)$. If $D(x)>0$ then $\tilde u(x)>\tau$, and either $\tilde u(x)\ge1$ and $\delta(x)=1-\tau$, or $\tilde u(x)<1$ and $\delta(x)=\tilde u(x)-\tau\ge Q(\tilde u(x)\mid s_0)-Q(\tau\mid s_0)=D(x)$, because $\partial_\tau Q\le1$ by (i); so $\delta(x)\ge\min\{D(x),1-\tau\}$. In the same way $D(x)<0$ gives $-\delta(x)\ge\min\{-D(x),\tau\}$.
+
+\emph{Step 4: conclusion.} By \eqref{m:eq:qgap}, $D(x)\ge0$ gives $\frac12D(x)-\eta\le w(x)\le\frac32D(x)+\eta$, and $D(x)\le0$ gives $\frac32D(x)-\eta\le w(x)\le\frac12D(x)+\eta$. Item (i) follows from Step 3. If $w(x)>\eta$ then $D(x)>0$ and $D(x)\ge\frac23(w(x)-\eta)$, and Step 3 gives the first half of (iii); the second half is symmetric. For (ii), $w(x)>3t+4\eta>\eta$ gives, as in (iii), $D(x)\ge\frac23(w(x)-\eta)>2t+2\eta$, while $w(x')\le t$ gives $D(x')\le2t+2\eta$ (if $D(x')>0$ then $\frac12D(x')-\eta\le w(x')\le t$); so $D(x')<D(x)$ and Step 3 gives $\delta(x')\le\delta(x)$. The second half of (ii) is symmetric.
+\end{proof}
+
+The function $\delta$ of Lemma~\ref{m:lem:qrep} is measurable, since $(x,y)\mapsto\tilde F_x(y)$ is measurable in $x$ and continuous in $y$. For a density $g$ on $\bar B$ with $g\le g_+$ put
+\[
+C_R=1+\tfrac{20}3\,g_+\,\omega_{J-1},\qquad c_B=12\,C_R\,(1+\sqrt J).
+\]
+
+\begin{lemma}[Moment conditions force a small fit]\label{m:lem:qbary}
+In the setting of Lemma~\ref{m:lem:qrep}, let $g$ be a probability density on $\bar B$ with $g\le g_+$, and let $\kappa\ge0$ be such that $|\int\delta g|\le\kappa$ and $|\int\delta(x)x_kg(x)\,dx|\le\kappa$ for $k=1,\dots,J$. If $\min\{\tau,1-\tau\}>5c_B\kappa$, then
+\[
+\sup_{x\in\bar B}|w(x)|\ \le\ 32\,C_R\,\eta+20\,C_R\,c_B\,\kappa .
+\]
+\end{lemma}
+
+\begin{proof}
+Write $w(x)=a+b\cdot x$, so that $A:=\sup_{\bar B}|w|=|a|+\norm b_2$, write $g(E)$ for $\int_Eg$, and let $m_\pm=\int\delta^\pm g$ and $\bar m=\max\{m_+,m_-\}$.
+
+\emph{Step 1: an affine function small on a large set is small.} If $T>0$ and $g(\{|w|\le T\})\ge\frac35$ then $A\le C_RT$. Indeed, if $b\ne0$ the set $\{x\in\bar B:|w(x)|\le T\}$ lies in a slab of width $2T/\norm b_2$ orthogonal to $b$, whose intersection with $\bar B$ has volume at most $2T\omega_{J-1}/\norm b_2$, so $\frac35\le2g_+\omega_{J-1}T/\norm b_2$ and $\norm b_2\le\frac{10}3g_+\omega_{J-1}T$; the set is not empty, so $|w(x_0)|\le T$ for some $x_0\in\bar B$, and $A\le|w(x_0)|+2\norm b_2\le C_RT$. If $b=0$ then $A=|a|\le T$.
+
+\emph{Step 2: large masses.} Suppose $m_+>0$ and $m_->0$, let $\nu_\pm$ be the probability measures $\delta^\pm g/m_\pm$ on $\bar B$, and let $\bar x_\pm$ be their barycenters. By Lemma~\ref{m:lem:qrep}(i), $\nu_+$ is carried by $\{w\ge-\eta\}$ and $\nu_-$ by $\{w\le\eta\}$, so $w(\bar x_+)=\int w\,d\nu_+\ge-\eta$ and $w(\bar x_-)\le\eta$. Since $m_+\bar x_+-m_-\bar x_-=\int\delta(x)x\,g(x)\,dx$ has Euclidean norm at most $\sqrt J\kappa$, and $|m_+-m_-|=|\int\delta g|\le\kappa$, the identities $m_\pm(\bar x_+-\bar x_-)=\int\delta(x)x\,g(x)\,dx+(m_{-}-m_{+})\bar x_\mp$ give $\norm{\bar x_+-\bar x_-}_2\le(1+\sqrt J)\kappa/\bar m$. Hence, with
+\[
+\bar\eta=2\eta+(1+\sqrt J)\norm b_2\kappa/\bar m ,
+\]
+we get $\int(w+\eta)\,d\nu_+=w(\bar x_+)+\eta\le w(\bar x_-)+\eta+\norm b_2\norm{\bar x_+-\bar x_-}_2\le\bar\eta$, and in the same way $\int(\eta-w)\,d\nu_-\le\bar\eta$. On $\{w\ge-\eta\}$ we have $w^+\le w+\eta$, so $\int w^+d\nu_+\le\bar\eta$, and Markov's inequality gives $\nu_+(\{w>2\bar\eta\})\le\frac12$. Let $d_+=\sup\{\delta^+(x'):x'\in\bar B,\ w(x')\le2\bar\eta\}\le1$. Since $\delta^+=0$ on $\{w<-\eta\}$ and $\eta\le2\bar\eta$,
+\[
+\tfrac12m_+\le\int_{\{w\le2\bar\eta\}}\delta^+g\le d_+\,g(\{|w|\le2\bar\eta\}).
+\]
+By Lemma~\ref{m:lem:qrep}(ii) with $t=2\bar\eta$, $\delta^+\ge d_+$ on $\{w>6\bar\eta+4\eta\}$, so
+\[
+\begin{aligned}
+d_+\,g(\{w>6\bar\eta+4\eta\})&\le\int_{\{w>6\bar\eta+4\eta\}}\delta^+g\le\frac{\int\delta^+w^+g}{6\bar\eta}\\
+&=\frac{m_+\int w^+d\nu_+}{6\bar\eta}\le\frac{m_+}6 .
+\end{aligned}
+\]
+The two displays give $d_+>0$ and $g(\{w>6\bar\eta+4\eta\})\le\frac13g(\{|w|\le2\bar\eta\})$. The same argument with $\nu_-$ gives $g(\{w<-6\bar\eta-4\eta\})\le\frac13g(\{|w|\le2\bar\eta\})$. With $T=6\bar\eta+4\eta$ we get $g(\{|w|>T\})\le\frac23g(\{|w|\le T\})$, hence $g(\{|w|\le T\})\ge\frac35$, and Step 1 and $\norm b_2\le A$ give
+\[
+A\le C_R\big(16\eta+6(1+\sqrt J)A\kappa/\bar m\big).
+\]
+If moreover $\bar m\ge c_B\kappa$, the last term is at most $\frac12A$ and $A\le32C_R\eta$.
+
+\emph{Step 3: small masses.} Suppose $\bar m\le c_B\kappa$ and $\min\{\tau,1-\tau\}>5c_B\kappa$, and suppose $A>8C_R\eta$. Let $T=A/(2C_R)>4\eta$. Since $A>C_RT$, Step 1 gives $g(\{|w|\le T\})<\frac35$, so $g(\{w>T\})>\frac15$ or $g(\{w<-T\})>\frac15$. In the first case, on $\{w>T\}$ we have $w-\eta>\frac34w>\frac34T$, so Lemma~\ref{m:lem:qrep}(iii) gives $\delta\ge\min\{T/2,1-\tau\}$ there, and $m_+\ge\frac15\min\{T/2,1-\tau\}$. As $m_+\le c_B\kappa<\frac15(1-\tau)$, the minimum is $T/2$, and $A=2C_RT\le20C_Rm_+\le20C_Rc_B\kappa$. The second case is the same with $m_-$ and $\tau$.
+
+\emph{Step 4: conclusion.} If $\bar m>0$ and $\bar m\ge c_B\kappa$, then $m_+$ and $m_-$ are both positive, because $|m_+-m_-|\le\kappa$ and $c_B>1$, and Step 2 gives $A\le32C_R\eta$. Otherwise $\bar m\le c_B\kappa$, and Step 3 gives $A\le\max\{8C_R\eta,20C_Rc_B\kappa\}$.
+\end{proof}
+
+The stochastic part needs a bound without a logarithmic factor for an empirical process indexed by half spaces. We use the following result of Baraud~\cite{baraud2016}, in which $Z(\mathcal F)=\sup_{f\in\mathcal F}|\sum_{i=1}^n(f(X_i)-E f(X_i))|$ for independent $X_1,\dots,X_n$, and a class $\mathcal F$ of functions on a set $\mathcal X$ is weak VC major with dimension $d$ if $d$ is the smallest integer $k$ such that, for every $u\in\R$, the class $\{\{x\in\mathcal X:f(x)>u\}:f\in\mathcal F\}$ shatters no subset of $\mathcal X$ of cardinality larger than $k$. Theorem~2.2 of~\cite{baraud2016} states: if $\mathcal F$ is a weak VC major class with dimension not larger than $d\ge1$, of functions with values in $[0,1]$, then $E[Z(\mathcal F)]\le10\sqrt n\,B(\sigma)$, where $B(\sigma)=\bar H(r)$ with $\bar H(r)=r\sqrt{d[5+\log(1/r)]}$, and $r=\sigma\log(1/\sigma)+\sigma$ if $\sigma\ge a$ and $r=\sigma\log(1/a)+a$ if $\sigma<a$, for numbers $\sigma\in[0,1]$ and $a\in(0,1]$ defined there. In both cases $r\in(0,1]$, because $r\mapsto r(1+\log(1/r))$ increases from $0$ to $1$ on $(0,1]$, and $r\mapsto5r^2+r^2\log(1/r)$ is increasing on $(0,1]$, its derivative being $r(9+2\log(1/r))$; so $B(\sigma)\le\sqrt{5d}$ whatever $\sigma$ and $a$ are, and
+\begin{equation}\label{m:eq:baraud}
+E[Z(\mathcal F)]\ \le\ 10\sqrt{5dn} .
+\end{equation}
+In~\cite{baraud2016}, $E[Z(\mathcal F)]$ means the supremum of $E[Z(\mathcal F')]$ over countable $\mathcal F'\subset\mathcal F$; below the supremum over $\mathcal F$ equals that over a fixed countable subclass for every sample, so no measurability question arises.
+
+\begin{lemma}[Empirical process over half spaces]\label{m:lem:qemp}
+Let $n\ge1$ and let $(X_1,\tilde\theta_1),\dots,(X_n,\tilde\theta_n)$ be i.i.d.\ random vectors in $\bar B\times\R$ with law $P$, let $\psi:\bar B\to[0,1]$ be measurable, and for $(a,b)\in\R\times\R^J$ let $f_{a,b}(x,y)=\mathbf 1\{y<a+b\cdot x\}\psi(x)$. Then the supremum below is a random variable and
+\[
+E\sup_{(a,b)\in\R\times\R^J}\Big|\frac1n\sum_{i=1}^n\big(f_{a,b}(X_i,\tilde\theta_i)-Pf_{a,b}\big)\Big|\ \le\ 10\sqrt{\frac{5(J+2)}n} .
+\]
+\end{lemma}
+
+\begin{proof}
+\emph{Countable reduction.} Given $(a,b)$ and $r>0$, choose rational $(a',b')$ with $\norm{b'-b}_2\le r$ and $a-2r\le a'\le a-r$. For $x\in\bar B$, $a+b\cdot x-3r\le a'+b'\cdot x\le a+b\cdot x$, so $f_{a',b'}\to f_{a,b}$ pointwise as $r\downarrow0$, and by dominated convergence $Pf_{a',b'}\to Pf_{a,b}$. So for every sample the supremum over all $(a,b)$ equals the supremum over rational $(a,b)$.
+
+\emph{Dimension.} For $u<0$ every $f_{a,b}$ exceeds $u$ everywhere, and for $u\ge1$ none exceeds $u$ anywhere, so the class of level sets consists of one set and shatters no nonempty set. For $0\le u<1$ the level sets are $H_{a,b}\cap G_u$ with $G_u=\{(x,y):\psi(x)>u\}$ and $H_{a,b}=\{(x,y):y<a+b\cdot x\}$, an open half space of $\R^{J+1}$. A finite set shattered by the sets $H_{a,b}\cap G_u$ lies in $G_u$ and is shattered by the $H_{a,b}$. No set $S$ of $J+3$ points of $\R^{J+1}$ is shattered by half spaces: the $J+3$ vectors $(z,1)\in\R^{J+2}$, $z\in S$, are linearly dependent, so $\sum_{z\in S}\lambda_zz=0$ and $\sum_{z\in S}\lambda_z=0$ with $\lambda\ne0$; with $S_+=\{z:\lambda_z>0\}$ and $S_-=S\setminus S_+$, both nonempty, and $\Lambda=\sum_{S_+}\lambda_z>0$, the point $\sum_{S_+}\lambda_zz/\Lambda=\sum_{S_-}(-\lambda_z)z/\Lambda$ lies in the convex hulls of $S_+$ and of $S_-$, whereas a half space $H$ with $H\cap S=S_+$ would contain the convex hull of $S_+$ and its complement, also convex, that of $S_-$. This is Radon's theorem. So $\{f_{a,b}\}$ is weak VC major with dimension at most $d=J+2$, its functions take values in $[0,1]$, and \eqref{m:eq:baraud} divided by $n$ is the claim.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{m:prop:qnnUB2}]
+\emph{Step 1: the window.} Since $h\le1/8$, the ball $\{s:\norm{s-s_0}_2\le h\}$ lies in $[0,1]^J$, and its $\mu$ mass $q$ satisfies $c_\mu\omega_Jh^J\le q\le C_\mu\omega_Jh^J$; so $n$ is binomial with parameters $M$ and $q$. Conditionally on $I$, the triples $(S^{(i)},\theta^{(i)},V_i)$, $i\in I$, are i.i.d., so the pairs $(X_i,\tilde\theta_i)$, $i\in I$, are i.i.d., $X_i$ has on $\bar B$ the density $g(x)=h^J\mu'(s_0+hx)/q\le g_+:=C_\mu/(c_\mu\omega_J)$, where $\mu'$ is the density of $\mu$, and given $X_i=x$, $\tilde\theta_i$ has the continuous distribution function $\tilde F_x$.
+
+\emph{Step 2: two almost sure properties.} Suppose $n\ge J+1$. Any $J+1$ of the $X_i$ are affinely independent almost surely, because they have a density and the affine hull of $J$ points of $\R^J$ is a null set; so (E1) the vectors $(1,X_i)$, $i\in I$, span $\R^{1+J}$. For distinct $i_1,\dots,i_{J+2}\in I$, on that event exactly one affine $p$ has $p(X_{i_k})=\tilde\theta_{i_k}$ for $k\le J+1$, and given these pairs and $X_{i_{J+2}}$ the variable $\tilde\theta_{i_{J+2}}$ has a continuous distribution function, so $\tilde\theta_{i_{J+2}}=p(X_{i_{J+2}})$ with probability zero. Taking the finite union over indices: (E2) almost surely, for every affine $p$ at most $J+1$ indices $i\in I$ have $\tilde\theta_i=p(X_i)$.
+
+\emph{Step 3: the fit and its first order conditions.} On (E1), $\rho_\tau(r)\ge\min\{\tau,1-\tau\}|r|$ and $(a,b)\mapsto\sum_{i\in I}|a+b\cdot X_i|$ is a norm on $\R^{1+J}$, so the objective in \eqref{m:eq:llqr} is convex, continuous and tends to infinity with $\norm{(a,b)}_2$; its minimizers form a nonempty compact convex set, which has a unique element of least norm. That element is the limit as $\lambda\downarrow0$ of the unique minimizer of the objective plus $\lambda\norm{(a,b)}_2^2$, which, for a fixed index set $I$, depends continuously on $\tau$ and on the pairs $(X_i,\tilde\theta_i)$, $i\in I$ (the regularized minimizers have norm at most that of the least norm minimizer, and each of their cluster points is a minimizer of no larger norm); so $(\tau,\text{sample})\mapsto(\hat a_\tau,\hat b_\tau)$ is measurable and $\hat P_M$ is a generator in the sense used above. Let $\hat p_\tau(x)=\hat a_\tau+\hat b_\tau\cdot x$. Since $0$ is a subgradient of the objective at $(\hat a_\tau,\hat b_\tau)$, there are numbers $c_i\in[\tau-1,\tau]$, for the $i$ with $\tilde\theta_i=\hat p_\tau(X_i)$, such that
+\[
+\sum_{i\in I}\big(\tau-\mathbf 1\{\tilde\theta_i<\hat p_\tau(X_i)\}\big)(1,X_i)=\sum_{i\in I:\ \tilde\theta_i=\hat p_\tau(X_i)}(\tau-c_i)(1,X_i).
+\]
+By (E2) the right side has at most $J+1$ terms, each with entries in $[-1,1]$. Hence, on $\{n\ge J+1\}$ and almost surely, for every $\tau\in(0,1)$ and $\psi\in\{1,x_1,\dots,x_J\}$, and so also for $\psi_0=1$ and $\psi_k(x)=(1+x_k)/2$, $k=1,\dots,J$,
+\begin{equation}\label{m:eq:qkkt}
+\Big|\frac1n\sum_{i\in I}\big(\mathbf 1\{\tilde\theta_i<\hat p_\tau(X_i)\}-\tau\big)\psi(X_i)\Big|\le\frac{J+1}n .
+\end{equation}
+
+\emph{Step 4: from the sample to the design.} Let $\delta_\tau(x)=\tilde F_x(\hat p_\tau(x))-\tau$, the function $\delta$ of Lemma~\ref{m:lem:qrep} for $p=\hat p_\tau$, let $f^k_{a,b}(x,y)=\mathbf 1\{y<a+b\cdot x\}\psi_k(x)$, whose mean under the conditional law of the pairs is $\int\tilde F_x(a+b\cdot x)\psi_k(x)g(x)\,dx$, and let $\Delta$ be the largest over $k=0,\dots,J$ of the suprema of Lemma~\ref{m:lem:qemp} for $\psi=\psi_k$, without the expectation. Because $\tilde\theta_i<3$, $f^k_{3,0}=\psi_k$ on the sample. Evaluating at $(a,b)=(\hat a_\tau,\hat b_\tau)$ and using \eqref{m:eq:qkkt},
+\[
+\Big|\int\delta_\tau\psi_kg\Big|\le\frac{J+1}n+2\Delta ,\qquad k=0,\dots,J,
+\]
+and since $x_k=2\psi_k-\psi_0$, the hypotheses of Lemma~\ref{m:lem:qbary} hold for every $\tau\in(0,1)$ with the same
+\[
+\kappa=3(J+1)/n+6\Delta .
+\]
+
+\emph{Step 5: integration over the levels.} By Lemma~\ref{m:lem:coupling}, applied conditionally on the sample with $U$ uniform, $G=\hat Q$ and $G'=Q(\cdot\mid s_0)$, and because $|Q(\tau\mid s_0)|\le1$, so that clipping $\hat a_\tau$ to $[-1,1]$ does not increase its distance to $Q(\tau\mid s_0)$,
+\[
+\begin{aligned}
+\Wone_{1,\R}\big(\hat P_M(\cdot\mid s_0),P_{Q,s_0}\big)&\le\int_0^1|\hat Q(\tau)-Q(\tau\mid s_0)|\,d\tau\\
+&\le\int_0^1\min\{2,|w_\tau(0)|\}\,d\tau ,
+\end{aligned}
+\]
+where $w_\tau=\hat p_\tau-T_\tau$, so that $w_\tau(0)=\hat a_\tau-Q(\tau\mid s_0)$. On $\{n\ge J+1\}$, Lemma~\ref{m:lem:qbary} bounds $|w_\tau(0)|$ by $32C_R\eta+20C_Rc_B\kappa$ for every $\tau$ with $\min\{\tau,1-\tau\}>5c_B\kappa$, and the remaining levels form a set of measure at most $10c_B\kappa$. Hence, using $C_R\ge1$,
+\[
+\Wone_{1,\R}\big(\hat P_M(\cdot\mid s_0),P_{Q,s_0}\big)\le32C_R\eta+40C_Rc_B\kappa\quad\text{on }\{n\ge J+1\},
+\]
+while on $\{n\le J\}$ the distance is at most $2$, both laws being carried by $[-1,1]$.
+
+\emph{Step 6: expectations.} Conditionally on $I$ with $n\ge1$, Lemma~\ref{m:lem:qemp} applied to each $\psi_k$ gives $E[\Delta\mid I]\le10(J+1)\sqrt{5(J+2)/n}$, so $E[\kappa\mid I]\le c_5n^{-1/2}$ with $c_5=3(J+1)+60(J+1)\sqrt{5(J+2)}$. For $n$ binomial, $E(1+n)^{-1}=\{1-(1-q)^{M+1}\}/\{(M+1)q\}\le(Mq)^{-1}$, so $E[n^{-1/2}\mathbf 1\{n\ge1\}]\le(E[\mathbf 1\{n\ge1\}/n])^{1/2}\le(2/(Mq))^{1/2}$, and $P(n\le J)\le(J+1)E(1+n)^{-1}\le(J+1)/(Mq)$, which together with $P(n\le J)\le1$ gives $P(n\le J)\le(J+1)(Mq)^{-1/2}$. Therefore, with $c_6=40\sqrt2\,C_Rc_Bc_5+2(J+1)$,
+\[
+\begin{aligned}
+&E\,\Wone_{1,\R}\big(\hat P_M(\cdot\mid s_0),P_{Q,s_0}\big)\\
+&\qquad\le32C_R(K+\sqrt J+1)\,h^\beta+c_6\,(c_\mu\omega_J)^{-1/2}(Mh^J)^{-1/2} .
+\end{aligned}
+\]
+If $M\ge8^{2\beta+J}$ then $h=M^{-1/(2\beta+J)}$ and $h^\beta=(Mh^J)^{-1/2}=M^{-\beta/(2\beta+J)}$. If $M<8^{2\beta+J}$ the risk is at most $2<2\cdot8^\beta M^{-\beta/(2\beta+J)}$. None of the constants depends on $Q$, which proves the proposition.
+\end{proof}
+
+\begin{remark}[Why the proof stops at $\beta=2$]\label{m:rem:qnnbeta}
+For $\beta>2$ the natural estimator replaces the affine functions in \eqref{m:eq:llqr} by polynomials of degree $\lceil\beta\rceil-1$. The stochastic part of the proof, Steps 2 to 4 and 6, carries over with $1+J$ replaced by the number of monomials, as in the proof of Proposition~\ref{m:prop:qnnUB3}. What fails is the deterministic part, already at Lemma~\ref{m:lem:glaeser}: for a nonnegative function with bounded $C^\beta$ norm and $\beta>2$, the gradient at an interior point is in general bounded only by a multiple of the square root of the value, since $f(s)=\norm{s-s_1}_2^2$ has $\norm{\nabla f(s_0)}_2=2f(s_0)^{1/2}$ while $f(s_0)\to0$ as $s_1\to s_0$. This is what happens to $Q(u_2\mid\cdot)-Q(u_1\mid\cdot)$ when $P_{Q,s_1}$ has an atom that splits quadratically as $s$ moves away from $s_1$, as for $Q(\tau\mid s)=c\int_0^\tau\{\frac14(1-\varphi(v))+\varphi(v)\norm{s-s_1}_2^2\}\,dv$ with $\varphi$ smooth, $0\le\varphi\le1$, $\varphi=1$ on $[u_1,u_2]$, which belongs to $\mathcal Q_\beta(J)$ once $c>0$ is small enough, depending on $\beta$, $J$ and $\varphi$. The error term in \eqref{m:eq:qgap} is then of order $h^2$ rather than $h^\beta$, so the near monotonicity of Lemma~\ref{m:lem:qrep} holds only at the scale $h^2$, and the argument gives the rate of $\beta=2$. The example defeats the proof and not the estimator: each $Q(\tau\mid\cdot)$ is a quadratic polynomial in $s$, so without the jitter the population version of the estimator recovers it exactly.
+\end{remark}
+
+\subsection{The case \texorpdfstring{$\beta>2$}{beta > 2}}\label{m:sec:qnnhigh}
+
+For $\beta>1$ and $\underline c\in(0,1]$ let $\mathcal Q_\beta(J;\underline c)$ be the set of $Q\in\mathcal Q_\beta(J)$ with $\partial_\tau Q\ge\underline c$ on $[0,1]\times[0,1]^J$; for such $Q$ every $P_{Q,s}$ has a density between $1$ and $1/\underline c$ on its support, and no atom. Let $\ell$ be the largest integer strictly below $\beta$, as in Definition~\ref{m:def:qclass}, let $L_\ell$ be the number of multi indices $\alpha$ on $\R^J$ with $|\alpha|\le\ell$, and let $\Psi(x)=(x^\alpha)_{|\alpha|\le\ell}\in\R^{L_\ell}$, so that the polynomials of degree at most $\ell$ on $\R^J$ are the maps $x\mapsto c\cdot\Psi(x)$, $c\in\R^{L_\ell}$.
+
+\begin{proposition}[The exponent is attained for $\beta>2$ when the densities are bounded]\label{m:prop:qnnUB3}
+Let $\beta>2$, $J\ge1$, $\underline c\in(0,1]$, let $\mu$, $s_0$, $h$, $I$, $n$ and $X_i$ be as in Proposition~\ref{m:prop:qnnUB2}, and for $\tau\in(0,1)$ let $\hat c_\tau$ be the minimizer of least Euclidean norm of $c\mapsto\sum_{i\in I}\rho_\tau(\theta^{(i)}-c\cdot\Psi(X_i))$ over $\R^{L_\ell}$ when the vectors $\Psi(X_i)$, $i\in I$, span $\R^{L_\ell}$, and $\hat c_\tau=0$ otherwise. Let $\hat Q(\tau)=\max\{-1,\min\{1,\hat c_\tau\cdot\Psi(0)\}\}$ and $\hat P_M(\cdot\mid s_0)=\hat Q_\#\mathrm{Unif}$. There is a constant $C$ depending only on $\beta$, $J$, $c_\mu$, $C_\mu$ and $\underline c$ such that for every $M\ge1$
+\[
+\sup_{Q\in\mathcal Q_\beta(J;\underline c)}E\,\Wone_{1,\R}\big(\hat P_M(\cdot\mid s_0),P_{Q,s_0}\big)\ \le\ C\,M^{-\beta/(2\beta+J)} .
+\]
+The two maps in the proof of Theorem~\ref{m:thm:qnnB} have $\partial_\tau Q\ge\frac18$, so with that theorem and Proposition~\ref{m:prop:qnnUB2} the exponent $\beta/(2\beta+J)$ is the minimax exponent over $\mathcal Q_\beta(J;\underline c)$ at an interior point for every $\beta>1$ when $\underline c\le\frac18$.
+\end{proposition}
+
+A density at most $1/\underline c$ makes the excess level at a design point at most $1/\underline c$ times the error of the fit there, which shortens the deterministic part of the proof. Let $c_\ell\in(0,1]$ be the largest number with $\int_{\bar B}u^2\ge c_\ell\,\omega_J\sup_{\bar B}u^2$ for every polynomial $u$ of degree at most $\ell$, and $K_\ell$ the smallest number with $\max_\alpha|c_\alpha|\le K_\ell\sup_{\bar B}|c\cdot\Psi|$ for every $c\in\R^{L_\ell}$; both exist because all norms on a space of finite dimension are equivalent, and they depend on $\ell$ and $J$ only. Let $K_T=J^{\ell/2}/\ell!$. If $f$ is $\ell$ times continuously differentiable on a ball around $s_0$ and its partial derivatives of order $\ell$ are H\"older of order $\beta-\ell$ with constant $L$, Taylor's formula with integral remainder and $\sum_{|\alpha|=\ell}|y^\alpha|/\alpha!=(\sum_k|y_k|)^\ell/\ell!\le(\sqrt J\norm y_2)^\ell/\ell!$ give
+\begin{equation}\label{m:eq:taylorbeta}
+\Big|f(s_0+y)-\sum_{|\alpha|\le\ell}\partial^\alpha f(s_0)\frac{y^\alpha}{\alpha!}\Big|\ \le\ LK_T\norm y_2^\beta
+\end{equation}
+for $s_0+y$ in that ball. For $\tau\in[0,1]$ let $T^\ell_\tau(x)=\sum_{|\alpha|\le\ell}\partial_s^\alpha Q(\tau\mid s_0)\,h^{|\alpha|}x^\alpha/\alpha!$, the Taylor polynomial of degree $\ell$ in $s$ written in the rescaled variable.
+
+\begin{lemma}[A polynomial quantile fit when the densities are bounded]\label{m:lem:qpoly}
+Let $\beta>1$, $\underline c\in(0,1]$, $Q\in\mathcal Q_\beta(J;\underline c)$, let $s_0$ be as in Theorem~\ref{m:thm:qnnB}, $h\in(0,1/8]$ and $\tau\in(0,1)$. Let $p$ be a polynomial of degree at most $\ell$, $w=p-T^\ell_\tau$ and $\delta(x)=F_x(p(x))-\tau$, with $F_x$ the distribution function of $P_{Q,s_0+hx}$. Let $g$ be a probability density on $\bar B$ with $g\ge g_->0$, and let $\kappa\ge0$ be such that $|\int\delta(x)x^\alpha g(x)\,dx|\le\kappa$ for $|\alpha|\le\ell$. Put
+\[
+c_7=(g_-\omega_Jc_\ell)^{1/2},\qquad\bar\kappa=L_\ell K_\ell\kappa+6K_Th^\beta/\underline c .
+\]
+If $\min\{\tau,1-\tau\}>2\sqrt2\,\bar\kappa/c_7^3$, then $\sup_{\bar B}|w|\le8\bar\kappa/c_7^4$.
+\end{lemma}
+
+\begin{proof}
+Let $q(x)=Q(\tau\mid s_0+hx)$ and $r=q-T^\ell_\tau$, so that $|r|\le\eta_T:=K_Th^\beta$ on $\bar B$ by (i) of Definition~\ref{m:def:qclass} and \eqref{m:eq:taylorbeta}; let $A=\sup_{\bar B}|w|$ and $m_\tau=\min\{\tau,1-\tau\}$. Since $\underline c\le\partial_\tau Q\le1$, the map $u\mapsto Q(u\mid s_0+hx)$ is a bijection of $[0,1]$ onto the support of $P_{Q,s_0+hx}$ with slope between $\underline c$ and $1$, and $F_x$ is continuous; hence for $t\ge0$ we have $\min\{t,1-\tau\}\le F_x(q(x)+t)-\tau\le t/\underline c$ and $\min\{t,\tau\}\le\tau-F_x(q(x)-t)\le t/\underline c$. As $p-q=w-r$, the number $\delta(x)$ has the sign of $w(x)-r(x)$ and $\min\{|w-r|,m_\tau\}\le|\delta|\le|w-r|/\underline c$. On $\{|w|\ge2\eta_T\}$ we get $|w-r|\ge|w|/2$, $w-r$ has the sign of $w$, and $\delta w\ge\min\{|w|/2,m_\tau\}|w|\ge0$; on $\{|w|<2\eta_T\}$, $|\delta w|\le2\eta_T(|w|+\eta_T)/\underline c\le6\eta_T^2/\underline c$. Writing $w=c\cdot\Psi$ with $\max_\alpha|c_\alpha|\le K_\ell A$, the hypothesis gives $|\int\delta wg|\le L_\ell K_\ell A\kappa$. Let $E=\{x\in\bar B:|w(x)|\ge c_7A/\sqrt2\}$. Since
+\[
+c_7^2A^2\le g_-\int_{\bar B}w^2\le\int w^2g\le\tfrac12c_7^2A^2+A^2g(E),
+\]
+we have $g(E)\ge c_7^2/2$; moreover $c_7\le1$, because $g_-\omega_J\le1$ and $c_\ell\le1$. Suppose $A\ge2\sqrt2\eta_T/c_7$, so that $|w|\ge2\eta_T$ on $E$. Then
+\[
+L_\ell K_\ell A\kappa\ \ge\ \int\delta wg\ \ge\ \frac{c_7^2}2\min\Big\{\frac{c_7A}{2\sqrt2},m_\tau\Big\}\frac{c_7A}{\sqrt2}-\frac{6\eta_T^2}{\underline c},
+\]
+and dividing by $c_7^3A/(2\sqrt2)$, with $\eta_T\le A$, gives $\min\{c_7A/(2\sqrt2),m_\tau\}\le2\sqrt2\,\bar\kappa/c_7^3$. If $m_\tau>2\sqrt2\,\bar\kappa/c_7^3$ the minimum is $c_7A/(2\sqrt2)$, and $A\le8\bar\kappa/c_7^4$. If $A<2\sqrt2\eta_T/c_7$, then $A\le8\bar\kappa/c_7^4$ as well, because $\bar\kappa\ge6\eta_T$ and $c_7\le1$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{m:prop:qnnUB3}]
+We follow the proof of Proposition~\ref{m:prop:qnnUB2} with $(1,X_i)$ replaced by $\Psi(X_i)$, $1+J$ by $L_\ell$, $\tilde\theta_i$ by $\theta^{(i)}$, $\tilde F_x$ by $F_x$ and $\hat p_\tau$ by $x\mapsto\hat c_\tau\cdot\Psi(x)$, and give the changes. In Step 1, also $g\ge g_-:=c_\mu/(C_\mu\omega_J)$, since $q\le C_\mu\omega_Jh^J$. In Step 2, the determinant of the matrix with columns $\Psi(x_1),\dots,\Psi(x_{L_\ell})$ is a polynomial in $(x_1,\dots,x_{L_\ell})$ that does not vanish identically, since otherwise $\Psi(\R^J)$ would lie in a hyperplane and a nonzero polynomial of degree at most $\ell$ would vanish on $\R^J$; its zero set is a null set, so (E1) holds with $\Psi(X_i)$ when $n\ge L_\ell$, and (E2) holds with $L_\ell$ in place of $J+1$ without a jitter, because every $P_{Q,s}$ has a continuous distribution function. Step 3 then gives \eqref{m:eq:qkkt} with $L_\ell$ in place of $J+1$ for $\psi\in\{x^\alpha:|\alpha|\le\ell\}$, hence for $\psi_0=1$ and $\psi_\alpha(x)=(1+x^\alpha)/2$, $1\le|\alpha|\le\ell$, which take values in $[0,1]$ on $\bar B$. In Step 4, the sets $\{(x,y):y<c\cdot\Psi(x)\}$ are the preimages of open half spaces of $\R^{L_\ell}$ under the injective map $(x,y)\mapsto((x^\alpha)_{1\le|\alpha|\le\ell},y)$, so the proof of Lemma~\ref{m:lem:qemp}, with Radon's argument in $\R^{L_\ell}$ and, in the countable reduction, the constant coefficient lowered by between $L_\ell r$ and $2L_\ell r$ and the others moved by at most $r$, bounds the expected supremum over $c\in\R^{L_\ell}$ of $|\frac1n\sum_{i\in I}(f_c(X_i,\theta^{(i)})-Pf_c)|$, $f_c(x,y)=\mathbf 1\{y<c\cdot\Psi(x)\}\psi(x)$, by $10\sqrt{5(L_\ell+1)/n}$. So the hypothesis of Lemma~\ref{m:lem:qpoly} holds for every $\tau$, with $p=\hat c_\tau\cdot\Psi$ and $\kappa=3L_\ell/n+6\Delta$. In Step 5, Lemma~\ref{m:lem:qpoly} bounds $|\hat c_\tau\cdot\Psi(0)-Q(\tau\mid s_0)|=|w(0)|$ by $8\bar\kappa/c_7^4$ for every $\tau$ with $\min\{\tau,1-\tau\}>2\sqrt2\,\bar\kappa/c_7^3$, and the other levels form a set of measure at most $4\sqrt2\,\bar\kappa/c_7^3$, so that $\Wone_{1,\R}(\hat P_M(\cdot\mid s_0),P_{Q,s_0})\le20\bar\kappa/c_7^4$ on $\{n\ge L_\ell\}$. In Step 6, $E[\kappa\mid I]\le c_5'n^{-1/2}$ with $c_5'=3L_\ell+60L_\ell\sqrt{5(L_\ell+1)}$, and $P(n<L_\ell)\le L_\ell(Mq)^{-1/2}$, so the risk is at most $120K_Th^\beta/(\underline c\,c_7^4)$ plus $(20\sqrt2L_\ell K_\ell c_5'/c_7^4+2L_\ell)(c_\mu\omega_J)^{-1/2}(Mh^J)^{-1/2}$, and the proof ends as there. None of the constants depends on $Q$.
+\end{proof}
+
+\begin{proposition}[No two point bound gives a smaller exponent]\label{m:prop:qnntwo}
+Let $\beta>0$, $J\ge1$, and let $\mu$ and $s_0$ be as in Theorem~\ref{m:thm:qnnB}. There is a constant $c_8>0$ depending only on $\beta$ and $J$ such that for all $Q_0,Q_1\in\mathcal Q_\beta(J)$, with $P^{(i)}$ the joint law of one pair under $Q_i$ and $\Delta=\Wone_{1,\R}(P_{Q_0,s_0},P_{Q_1,s_0})$,
+\[
+H^2\big(P^{(1)},P^{(0)}\big)\ \ge\ c_8\,c_\mu\,\Delta^{2+J/\beta} .
+\]
+Consequently, for every such pair and every $M\ge1$ some generator has $E\,\Wone_{1,\R}(\hat P_M(\cdot\mid s_0),P_{Q_i,s_0})\le\{2/(c_8c_\mu M)\}^{\beta/(2\beta+J)}$ for $i=0$ and $i=1$, so that no lower bound drawn from two maps in $\mathcal Q_\beta(J)$, as in Theorem~\ref{m:thm:qnnB}, has an exponent smaller than $\beta/(2\beta+J)$.
+\end{proposition}
+
+\begin{proof}
+The two joint laws share the marginal $\mu$, so $H^2(P^{(1)},P^{(0)})=\int H^2(P_{Q_1,s},P_{Q_0,s})\,\mu(ds)$. For laws $P,P'$ on $[-1,1]$, $\Wone_{1,\R}(P,P')\le2\sup_A|P(A)-P'(A)|\le2H(P,P')$, so by \eqref{m:eq:quantileW1}, $H^2(P_{Q_1,s},P_{Q_0,s})\ge\frac14f(s)^2$ with $f(s)=\int_0^1(Q_1-Q_0)(\tau\mid s)\,\mathrm{sign}\big((Q_1-Q_0)(\tau\mid s_0)\big)\,d\tau$. Differentiating under the integral, the partial derivatives of $f$ of order $\ell$ are H\"older of order $\beta-\ell$ with constant at most $2$, and $f(s_0)=\Delta\le2$. On a ball $B_r$ of radius $r\le\frac18$ around $s_0$ write $f=u+v$, with $u$ the Taylor polynomial of degree $\ell$ of $f$ at $s_0$, so that $|v|\le2K_Tr^\beta$ by \eqref{m:eq:taylorbeta}. Then $f^2\ge\frac12u^2-v^2$, and by the definition of $c_\ell$, after rescaling $B_r$ to $\bar B$, $\int_{B_r}u^2\ge c_\ell\,\omega_Jr^Ju(s_0)^2$; hence $\int_{B_r}f^2\ge\omega_Jr^J(\frac12c_\ell\Delta^2-4K_T^2r^{2\beta})$. With $r=\min\{\frac18,(c_\ell/(16K_T^2))^{1/(2\beta)}\Delta^{1/\beta}\}$ the bracket is at least $\frac14c_\ell\Delta^2$, and, as $\Delta\le2$, $\frac14\omega_Jr^Jc_\ell\Delta^2\ge4c_8\Delta^{2+J/\beta}$ with $c_8=\frac1{16}\omega_Jc_\ell\min\{(c_\ell/(16K_T^2))^{J/(2\beta)},2^{-J/\beta}8^{-J}\}$. Since $B_r\subset[0,1]^J$ and $\mu$ has density at least $c_\mu$, $H^2(P^{(1)},P^{(0)})\ge\frac14c_\mu\int_{B_r}f^2\ge c_8c_\mu\Delta^{2+J/\beta}$. For the consequence, let $\hat k=1$ if the likelihood of the $M$ pairs under $Q_1$ exceeds that under $Q_0$ and $\hat k=0$ otherwise, and let $\hat P_M(\cdot\mid s_0)=P_{Q_{\hat k},s_0}$. Under $Q_i$ its risk is $\Delta$ times the probability that $\hat k\ne i$, and the two probabilities of error add up to $\int\min(dP^{(0)\otimes M},dP^{(1)\otimes M})\le(1-\frac12H^2)^M\le e^{-t}$ with $t=\frac12c_8c_\mu M\Delta^{2+J/\beta}$. So the risk is at most $\Delta e^{-t}=\{2t/(c_8c_\mu M)\}^{\beta/(2\beta+J)}e^{-t}\le\{2/(c_8c_\mu M)\}^{\beta/(2\beta+J)}$, because $t^ae^{-t}\le1$ for $t\ge0$ and $0<a\le1$.
+\end{proof}
+
+Over the whole class $\mathcal Q_\beta(J)$ with $\beta>2$ the rate $M^{-2/(4+J)}$ is attained, by the estimator of Proposition~\ref{m:prop:qnnUB2} with $\beta=2$ applied to the responses $\theta^{(i)}/(1+\sqrt{J+1})$ and rescaled, because the second partial derivatives of $Q\in\mathcal Q_\beta(J)$ are bounded by $1$, so that its first partial derivatives are Lipschitz with constant $\sqrt{J+1}$ and $Q/(1+\sqrt{J+1})\in\mathcal Q_2(J)$. Whether the exponent $\beta/(2\beta+J)$ is attained there, where the laws may have atoms or unbounded densities, is open: by Proposition~\ref{m:prop:qnntwo} a smaller exponent cannot be proved with two maps, and an upper bound needs a version of Lemma~\ref{m:lem:qpoly} whose bound does not grow like $1/\underline c$.

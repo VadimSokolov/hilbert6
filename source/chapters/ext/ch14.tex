@@ -1,0 +1,37 @@
+\section{The local level model and the steady state gain}
+\label{sec:local_level}
+
+For the random walk plus noise model $x_t = x_{t-1}+w_t$, $y_t = x_t+v_t$, with $\Var(w_t) = q$ and $\Var(v_t) = r$, the Kalman recursion for the filtering variance is $P_t = \frac{(P_{t-1}+q)r}{P_{t-1}+q+r}$. Its fixed point solves $P^2+qP-qr = 0$, so
+\[
+P = \frac{-q+\sqrt{q^2+4qr}}{2},\qquad K = \frac{P+q}{P+q+r}.
+\]
+In steady state the filter is exponential smoothing, $m_t = (1-K)m_{t-1}+Ky_t$, and the gain depends only on the signal to noise ratio $q/r$. Muth showed in 1960~\cite{muth1960} that exponential smoothing is optimal for exactly this model, which explained the empirical success of a forecasting rule in use since the work of Brown and Holt in the 1950s~\cite{brown1959,holt2004,gardner1985} without a probabilistic justification. The example is the simplest case of the thesis of this chapter: a recursive update rule with a fixed gain is a Bayes filter for a particular model, and learning the gain from data is learning the signal to noise ratio.
+
+\section{Hidden Markov models and the Wonham filter}
+\label{sec:wonham}
+
+When the hidden state is a Markov chain on a finite set with transition matrix $T$ and the observations have densities $p(y\mid j)$, the filter is the forward algorithm
+\[
+\pi_t(j)\propto p(y_t\mid j)\sum_i\pi_{t-1}(i)T_{ij},
+\]
+a finite dimensional recursion that is exact. Its continuous time version for a chain with generator $Q$ observed in white noise, $\dd Y_t = h(X_t)\dd t+\dd V_t$, is Wonham's filter~\cite{wonham1964},
+\[
+\dd\pi_t = Q^\top\pi_t\dd t+\big(\mathrm{diag}(h)-\langle h,\pi_t\rangle\big)\pi_t\,\big(\dd Y_t-\langle h,\pi_t\rangle\dd t\big),
+\]
+a nonlinear stochastic differential equation on the simplex driven by the innovation. The Wonham filter is the Kushner Stratonovich equation for a finite state space, and it is the second of the two classical cases, with the Kalman Bucy filter, in which the filter is finite dimensional. Bene\v{s} found a further class in 1981~\cite{benes1981} for nonlinear drifts satisfying a Riccati condition. Outside these cases the filter is infinite dimensional, and every practical method, extended Kalman filter, ensemble filter, particle filter, score function filter or learned recurrent network, is an approximation.
+
+\section{Stochastic approximation and the ordinary differential equation method}
+\label{sec:stoch_approx}
+
+The Robbins Monro algorithm~\cite{robbinsmonro1951} $w_{n+1} = w_n+\gamma_n\big(h(w_n)+\xi_{n+1}\big)$ tracks the ordinary differential equation $\dot w = h(w)$ under three hypotheses: $h$ is Lipschitz, $\xi$ is a martingale difference sequence with $\E\big[|\xi_{n+1}|^2\mid\mathcal{F}_n\big]\leq C(1+|w_n|^2)$, and the step sizes satisfy $\sum\gamma_n = \infty$ and $\sum\gamma_n^2<\infty$. If the iterates are bounded almost surely, their limit set is internally chain transitive for the flow of the equation, by a theorem of Bena\"im~\cite{benaim1999}. If they return infinitely often to a compact subset of the domain of attraction of an asymptotically stable set of the equation, they converge to that set almost surely, by the theorem of Ljung~\cite{ljung1977} and of Kushner and Clark~\cite{kushnerclark1978}. Oja's rule, stochastic gradient descent and the online expectation maximization algorithm can be written in this form, with $h$ the mean update, and the hypotheses have to be checked in each case. The noise of Oja's rule is cubic in $w$, for example, so the bound on the second moment fails and boundedness of the iterates is an additional assumption.
+
+With a small constant step $\gamma$, stochastic gradient descent $w_{n+1} = w_n-\gamma\big(\nabla L(w_n)+\zeta_{n+1}\big)$ on a loss $L$ is approximated, on the time scale $t = n\gamma$, by the diffusion $\dd w = -\nabla L(w)\dd t+\sqrt\gamma\,\Sigma(w)^{1/2}\dd B_t$, where $\Sigma(w)$ is the covariance of the gradient noise $\zeta$. If the noise is approximately Gaussian, independent of $w$ and isotropic, $\Sigma = s^2I$, the stationary density of the diffusion is proportional to $e^{-L/T}$ with $T = \gamma s^2/2$. Stochastic gradient descent then samples, approximately, from a Gibbs measure on the parameters at a temperature set by the learning rate, the picture of Mandt, Hoffman and Blei~\cite{mandt2017}, who tune the step size so that the stationary law matches a posterior. When the noise depends on $w$ or is anisotropic the stationary law is in general not $e^{-L/T}$. Chaudhari and Soatto~\cite{chaudhari2018} argue that for deep networks the noise is far from isotropic, that the stationary law is not the Gibbs measure of the loss, and that the most likely trajectories are closed loops. The temperature $T$ is a property of the algorithm. It is not the temperature of the heat bath in $k_BT\log2$, and the thermodynamic considerations of Chapter~\ref{ch:kolmogorov} concern the physical device that carries out the updates, not this effective temperature.
+
+\section*{Exercises}
+\begin{enumerate}
+\item Derive the steady state Kalman gain for the local level model and show that it depends only on $q/r$.
+\item Apply the score function update with a Gaussian prior and Student $t$ observation noise, for which the mixing variable $\lambda$ of Proposition~\ref{prop:gates_bayes} has a Gamma law, and plot the effective gain against the innovation.
+\item Compute the mean and variance of the stationary voltage of the shot noise neuron with deterministic amplitudes.
+\item Show that the fixed points of Oja's equation on the unit sphere are the unit eigenvectors of $C$. Show that when $C$ is positive definite and its largest eigenvalue is simple, only the top eigenvector, up to sign, is stable.
+\item Write the forward algorithm for a two state hidden Markov model with Gaussian emissions.
+\end{enumerate}

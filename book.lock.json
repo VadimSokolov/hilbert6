@@ -1,0 +1,1110 @@
+{
+ "edition": "1",
+ "pdf": {
+  "bytes": 6253170,
+  "file": "pdf/hilbert6.pdf",
+  "pages": 548,
+  "parts": [
+   {
+    "bytes": 215167,
+    "file": "pdf/chapters/00_front_matter.pdf",
+    "first_page": "i",
+    "key": "",
+    "last_page": "xviii",
+    "pages": 18,
+    "title": "Front matter"
+   },
+   {
+    "bytes": 223968,
+    "file": "pdf/chapters/01_hilberts_sixth_problem.pdf",
+    "first_page": "3",
+    "key": "1",
+    "last_page": "12",
+    "pages": 10,
+    "title": "Chapter 1. Hilbert's Sixth Problem"
+   },
+   {
+    "bytes": 324992,
+    "file": "pdf/chapters/02_poincare_recurrence_chance_and_the_crisis_of_physics.pdf",
+    "first_page": "13",
+    "key": "2",
+    "last_page": "26",
+    "pages": 14,
+    "title": "Chapter 2. Poincaré: Recurrence, Chance and the Crisis of Physics"
+   },
+   {
+    "bytes": 230027,
+    "file": "pdf/chapters/03_axioms_of_probability_and_large_deviations.pdf",
+    "first_page": "27",
+    "key": "3",
+    "last_page": "38",
+    "pages": 12,
+    "title": "Chapter 3. Axioms of Probability and Large Deviations"
+   },
+   {
+    "bytes": 2007431,
+    "file": "pdf/chapters/04_ergodic_theory_from_boltzmanns_hypothesis_to_entropy.pdf",
+    "first_page": "39",
+    "key": "4",
+    "last_page": "52",
+    "pages": 14,
+    "title": "Chapter 4. Ergodic Theory: From Boltzmann's Hypothesis to Entropy"
+   },
+   {
+    "bytes": 466023,
+    "file": "pdf/chapters/05_the_method_of_types_and_moment_conditioning.pdf",
+    "first_page": "53",
+    "key": "5",
+    "last_page": "66",
+    "pages": 14,
+    "title": "Chapter 5. The Method of Types and Moment Conditioning"
+   },
+   {
+    "bytes": 271589,
+    "file": "pdf/chapters/06_brownian_motion_and_yors_identities_as_algorithms.pdf",
+    "first_page": "69",
+    "key": "6",
+    "last_page": "82",
+    "pages": 14,
+    "title": "Chapter 6. Brownian Motion and Yor's Identities as Algorithms"
+   },
+   {
+    "bytes": 222985,
+    "file": "pdf/chapters/07_scale_mixtures_thorin_measures_and_shot_noise.pdf",
+    "first_page": "83",
+    "key": "7",
+    "last_page": "92",
+    "pages": 10,
+    "title": "Chapter 7. Scale Mixtures, Thorin Measures and Shot Noise"
+   },
+   {
+    "bytes": 232318,
+    "file": "pdf/chapters/08_entropy_perelman_and_the_uncertainty_principle.pdf",
+    "first_page": "93",
+    "key": "8",
+    "last_page": "104",
+    "pages": 12,
+    "title": "Chapter 8. Entropy, Perelman and the Uncertainty Principle"
+   },
+   {
+    "bytes": 217013,
+    "file": "pdf/chapters/09_quantum_mechanics_von_neumann_nelson_and_wick.pdf",
+    "first_page": "105",
+    "key": "9",
+    "last_page": "114",
+    "pages": 10,
+    "title": "Chapter 9. Quantum Mechanics: von Neumann, Nelson and Wick"
+   },
+   {
+    "bytes": 337748,
+    "file": "pdf/chapters/10_kinetic_theory_boltzmann_kac_and_propagation_of_chaos.pdf",
+    "first_page": "117",
+    "key": "10",
+    "last_page": "132",
+    "pages": 16,
+    "title": "Chapter 10. Kinetic Theory: Boltzmann, Kac and Propagation of Chaos"
+   },
+   {
+    "bytes": 220522,
+    "file": "pdf/chapters/11_from_boltzmann_to_navier_stokes.pdf",
+    "first_page": "133",
+    "key": "11",
+    "last_page": "142",
+    "pages": 10,
+    "title": "Chapter 11. From Boltzmann to Navier Stokes"
+   },
+   {
+    "bytes": 741204,
+    "file": "pdf/chapters/12_navier_stokes_as_inference_on_the_solution_manifold.pdf",
+    "first_page": "143",
+    "key": "12",
+    "last_page": "170",
+    "pages": 28,
+    "title": "Chapter 12. Navier Stokes as Inference on the Solution Manifold"
+   },
+   {
+    "bytes": 251350,
+    "file": "pdf/chapters/13_the_boundary_of_the_manifold_blowup_turbulence_and_steady.pdf",
+    "first_page": "171",
+    "key": "13",
+    "last_page": "182",
+    "pages": 12,
+    "title": "Chapter 13. The Boundary of the Manifold: Blowup, Turbulence and Steady Flows"
+   },
+   {
+    "bytes": 331478,
+    "file": "pdf/chapters/14_the_inverse_problem_on_the_solution_manifold.pdf",
+    "first_page": "185",
+    "key": "14",
+    "last_page": "204",
+    "pages": 20,
+    "title": "Chapter 14. The Inverse Problem on the Solution Manifold"
+   },
+   {
+    "bytes": 769586,
+    "file": "pdf/chapters/15_adjoint_sufficient_statistics.pdf",
+    "first_page": "205",
+    "key": "15",
+    "last_page": "272",
+    "pages": 68,
+    "title": "Chapter 15. Adjoint Sufficient Statistics"
+   },
+   {
+    "bytes": 680181,
+    "file": "pdf/chapters/16_transfer_generators_and_localized_training.pdf",
+    "first_page": "273",
+    "key": "16",
+    "last_page": "330",
+    "pages": 58,
+    "title": "Chapter 16. Transfer, Generators and Localized Training"
+   },
+   {
+    "bytes": 684293,
+    "file": "pdf/chapters/17_heat_navier_stokes_and_schrodinger_examples_and_experiments.pdf",
+    "first_page": "331",
+    "key": "17",
+    "last_page": "384",
+    "pages": 54,
+    "title": "Chapter 17. Heat, Navier Stokes and Schrödinger: Examples and Experiments"
+   },
+   {
+    "bytes": 254440,
+    "file": "pdf/chapters/18_spin_systems_phase_transitions_and_inference.pdf",
+    "first_page": "387",
+    "key": "18",
+    "last_page": "396",
+    "pages": 10,
+    "title": "Chapter 18. Spin Systems, Phase Transitions and Inference"
+   },
+   {
+    "bytes": 338663,
+    "file": "pdf/chapters/19_generative_bayesian_computation_as_transport.pdf",
+    "first_page": "397",
+    "key": "19",
+    "last_page": "406",
+    "pages": 10,
+    "title": "Chapter 19. Generative Bayesian Computation as Transport"
+   },
+   {
+    "bytes": 842074,
+    "file": "pdf/chapters/20_filters_gates_and_local_rules.pdf",
+    "first_page": "407",
+    "key": "20",
+    "last_page": "428",
+    "pages": 22,
+    "title": "Chapter 20. Filters, Gates and Local Rules"
+   },
+   {
+    "bytes": 238188,
+    "file": "pdf/chapters/21_kolmogorov_cybernetics_and_the_thermodynamics_of_information.pdf",
+    "first_page": "429",
+    "key": "21",
+    "last_page": "438",
+    "pages": 10,
+    "title": "Chapter 21. Kolmogorov, Cybernetics and the Thermodynamics of Information"
+   },
+   {
+    "bytes": 461185,
+    "file": "pdf/chapters/22_open_problems_and_the_bridge_to_hilberts_eighth_problem.pdf",
+    "first_page": "439",
+    "key": "22",
+    "last_page": "450",
+    "pages": 12,
+    "title": "Chapter 22. Open Problems and the Bridge to Hilbert's Eighth Problem"
+   },
+   {
+    "bytes": 185103,
+    "file": "pdf/chapters/A_levy_processes_thorin_measures_and_related_classes.pdf",
+    "first_page": "451",
+    "key": "A",
+    "last_page": "454",
+    "pages": 4,
+    "title": "Appendix A. Lévy Processes, Thorin Measures and Related Classes"
+   },
+   {
+    "bytes": 262701,
+    "file": "pdf/chapters/B_code_and_reproducibility.pdf",
+    "first_page": "455",
+    "key": "B",
+    "last_page": "470",
+    "pages": 16,
+    "title": "Appendix B. Code and Reproducibility"
+   },
+   {
+    "bytes": 182048,
+    "file": "pdf/chapters/C_a_probability_toolkit.pdf",
+    "first_page": "471",
+    "key": "C",
+    "last_page": "474",
+    "pages": 4,
+    "title": "Appendix C. A Probability Toolkit"
+   },
+   {
+    "bytes": 144529,
+    "file": "pdf/chapters/D_a_chronology.pdf",
+    "first_page": "475",
+    "key": "D",
+    "last_page": "478",
+    "pages": 4,
+    "title": "Appendix D. A Chronology"
+   },
+   {
+    "bytes": 293990,
+    "file": "pdf/chapters/E_notation.pdf",
+    "first_page": "479",
+    "key": "E",
+    "last_page": "484",
+    "pages": 6,
+    "title": "Appendix E. Notation"
+   },
+   {
+    "bytes": 273205,
+    "file": "pdf/chapters/bibliography.pdf",
+    "first_page": "485",
+    "key": "",
+    "last_page": "530",
+    "pages": 46,
+    "title": "Bibliography"
+   }
+  ],
+  "sha256": "26563b55de58e469686b13129c44325d3cbca01f4d58abf28a8a5f361ec8ac64"
+ },
+ "results": {
+  "a_polynomial_quantile_fit_when_the_densities_are_bounded": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m3b.tex",
+   "fingerprint": "fbb987b42cfe",
+   "label": "m:lem:qpoly",
+   "number": "16.26",
+   "page": "303",
+   "printed": "Lemma 16.26",
+   "verified_fingerprint": "fbb987b42cfe",
+   "verified_on": "2026-10-12"
+  },
+  "a_quantile_fit_is_nearly_monotone_in_its_error": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m3b.tex",
+   "fingerprint": "6bc29fe2176c",
+   "label": "m:lem:qrep",
+   "number": "16.21",
+   "page": "296",
+   "printed": "Lemma 16.21",
+   "verified_fingerprint": "6bc29fe2176c",
+   "verified_on": "2026-10-12"
+  },
+  "adjoint_representation_of_the_sufficient_statistic": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "19dfb3e4b0fd",
+   "label": "m:lem:adjoint",
+   "number": "15.1",
+   "page": "206",
+   "printed": "Lemma 15.1",
+   "verified_fingerprint": "19dfb3e4b0fd",
+   "verified_on": "2026-10-12"
+  },
+  "bernstein_von_mises_for_generators": {
+   "environment": "proposition",
+   "file": "source/chapters/ch10_ns_inference.tex",
+   "fingerprint": "a177b03d05e0",
+   "label": "prop:bvm_generators",
+   "number": "12.10",
+   "page": "157",
+   "printed": "Proposition 12.10",
+   "verified_fingerprint": "a177b03d05e0",
+   "verified_on": "2026-10-12"
+  },
+  "bernstein_von_mises_for_the_identity_skip_quantile_generator": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/m3b.tex",
+   "fingerprint": "dcf4fc555d63",
+   "label": "m:thm:qnnA",
+   "number": "16.10",
+   "page": "285",
+   "printed": "Theorem 16.10",
+   "verified_fingerprint": "dcf4fc555d63",
+   "verified_on": "2026-10-12"
+  },
+  "beyond_the_plane_wave": {
+   "environment": "openquestion",
+   "file": "source/chapters/ext/m4d.tex",
+   "fingerprint": "934019c13a36",
+   "label": "m:op:planewave",
+   "number": "17.12",
+   "page": "371",
+   "printed": "Open Question 17.12",
+   "verified_fingerprint": "934019c13a36",
+   "verified_on": "2026-10-12"
+  },
+  "bogoliubov_block_determinant_trace_and_smallest_eigenvalue": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m4d.tex",
+   "fingerprint": "09739b007739",
+   "label": "m:lem:bogmin",
+   "number": "17.6",
+   "page": "359",
+   "printed": "Lemma 17.6",
+   "verified_fingerprint": "09739b007739",
+   "verified_on": "2026-10-12"
+  },
+  "bvm_for_gbc": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/m3a.tex",
+   "fingerprint": "1508c4e6b5da",
+   "label": "m:thm:main",
+   "number": "16.2",
+   "page": "275",
+   "printed": "Theorem 16.2",
+   "verified_fingerprint": "1508c4e6b5da",
+   "verified_on": "2026-10-12"
+  },
+  "centered_and_rescaled_residuals_for_a_nonlinear_forward_map": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m3c.tex",
+   "fingerprint": "4deb5d17522e",
+   "label": "m:prop:locres",
+   "number": "16.47",
+   "page": "327",
+   "printed": "Proposition 16.47",
+   "verified_fingerprint": "4deb5d17522e",
+   "verified_on": "2026-10-12"
+  },
+  "contraction_under_a_network_prior": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/m3c.tex",
+   "fingerprint": "d7045ab63c08",
+   "label": "m:thm:PR",
+   "number": "16.28",
+   "page": "306",
+   "printed": "Theorem 16.28",
+   "verified_fingerprint": "d7045ab63c08",
+   "verified_on": "2026-10-12"
+  },
+  "deep_pls_structure_of_the_gbc_summary": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2b.tex",
+   "fingerprint": "2893e2faa331",
+   "label": "m:prop:dpls",
+   "number": "15.34",
+   "page": "253",
+   "printed": "Proposition 15.34",
+   "verified_fingerprint": "2893e2faa331",
+   "verified_on": "2026-10-12"
+  },
+  "effective_dimension_under_dissipation": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/m2c.tex",
+   "fingerprint": "068981e02b2d",
+   "label": "m:thm:jeff",
+   "number": "15.46",
+   "page": "267",
+   "printed": "Theorem 15.46",
+   "verified_fingerprint": "068981e02b2d",
+   "verified_on": "2026-10-12"
+  },
+  "entropic_van_trees_bound": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "30debba59a48",
+   "label": "m:prop:prvt",
+   "number": "15.25",
+   "page": "238",
+   "printed": "Proposition 15.25",
+   "verified_fingerprint": "30debba59a48",
+   "verified_on": "2026-10-12"
+  },
+  "equivalence_with_the_efficient_centering": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "818815043f64",
+   "label": "m:prop:suff",
+   "number": "15.5",
+   "page": "210",
+   "printed": "Proposition 15.5",
+   "verified_fingerprint": "818815043f64",
+   "verified_on": "2026-10-12"
+  },
+  "exact_identities_for_any_forward_map": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "5800a0754fc6",
+   "label": "m:lem:prexact",
+   "number": "15.21",
+   "page": "233",
+   "printed": "Lemma 15.21",
+   "verified_fingerprint": "5800a0754fc6",
+   "verified_on": "2026-10-12"
+  },
+  "exact_sufficiency_linear_case": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "f3bc88bd9fb7",
+   "label": "m:prop:linsuff",
+   "number": "15.2",
+   "page": "207",
+   "printed": "Proposition 15.2",
+   "verified_fingerprint": "f3bc88bd9fb7",
+   "verified_on": "2026-10-12"
+  },
+  "exactness_of_the_one_step_summary": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m3c.tex",
+   "fingerprint": "b8754d8babd9",
+   "label": "m:lem:exact",
+   "number": "16.32",
+   "page": "310",
+   "printed": "Lemma 16.32",
+   "verified_fingerprint": "b8754d8babd9",
+   "verified_on": "2026-10-12"
+  },
+  "expected_utility_form_of_the_bernstein_von_mises_limit": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "8888cde1a215",
+   "label": "m:prop:pr",
+   "number": "15.18",
+   "page": "231",
+   "printed": "Proposition 15.18",
+   "verified_fingerprint": "8888cde1a215",
+   "verified_on": "2026-10-12"
+  },
+  "gamma_law_of_the_shot_noise_neuron": {
+   "environment": "theorem",
+   "file": "source/chapters/ch14_filters.tex",
+   "fingerprint": "30c2cab04d63",
+   "label": "thm:shot_noise_neuron",
+   "number": "20.9",
+   "page": "423",
+   "printed": "Theorem 20.9",
+   "verified_fingerprint": "30c2cab04d63",
+   "verified_on": "2026-10-12"
+  },
+  "gbc_with_the_posterior_mean_summary": {
+   "environment": "corollary",
+   "file": "source/chapters/ext/m2c.tex",
+   "fingerprint": "72c443bcd8e2",
+   "label": "m:cor:jwgbc",
+   "number": "15.40",
+   "page": "258",
+   "printed": "Corollary 15.40",
+   "verified_fingerprint": "72c443bcd8e2",
+   "verified_on": "2026-10-12"
+  },
+  "gradient_stability_initial_condition_ns2d": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/ch10_nw.tex",
+   "fingerprint": "36e1c914ff74",
+   "label": "prop:gs_ns",
+   "number": "12.8",
+   "page": "153",
+   "printed": "Proposition 12.8",
+   "verified_fingerprint": "36e1c914ff74",
+   "verified_on": "2026-10-12"
+  },
+  "gram_concentration_and_the_finite_bernstein_von_mises_error": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m4a.tex",
+   "fingerprint": "9d84efe61c04",
+   "label": "m:prop:gram",
+   "number": "17.1",
+   "page": "332",
+   "printed": "Proposition 17.1",
+   "verified_fingerprint": "9d84efe61c04",
+   "verified_on": "2026-10-12"
+  },
+  "information_operator_of_nls_about_a_plane_wave": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m4d.tex",
+   "fingerprint": "58cef7d0b7cd",
+   "label": "m:prop:bog",
+   "number": "17.5",
+   "page": "356",
+   "printed": "Proposition 17.5",
+   "verified_fingerprint": "58cef7d0b7cd",
+   "verified_on": "2026-10-12"
+  },
+  "jiang_wong_under_bernstein_von_mises": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/m2c.tex",
+   "fingerprint": "86b9bfcf9d45",
+   "label": "m:thm:jwbvm",
+   "number": "15.38",
+   "page": "256",
+   "printed": "Theorem 15.38",
+   "verified_fingerprint": "86b9bfcf9d45",
+   "verified_on": "2026-10-12"
+  },
+  "kullback_leibler_bernstein_von_mises_navier_stokes": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "c02488722503",
+   "label": "m:prop:prklns",
+   "number": "15.24",
+   "page": "236",
+   "printed": "Proposition 15.24",
+   "verified_fingerprint": "c02488722503",
+   "verified_on": "2026-10-12"
+  },
+  "kullback_leibler_form_of_the_bernstein_von_mises_theorem": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "98c1285be957",
+   "label": "m:thm:prkl",
+   "number": "15.22",
+   "page": "234",
+   "printed": "Theorem 15.22",
+   "verified_fingerprint": "98c1285be957",
+   "verified_on": "2026-10-12"
+  },
+  "linear_schrodinger_transfer": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m4d.tex",
+   "fingerprint": "7ec6f7a795f7",
+   "label": "m:prop:sch",
+   "number": "17.10",
+   "page": "366",
+   "printed": "Proposition 17.10",
+   "verified_fingerprint": "7ec6f7a795f7",
+   "verified_on": "2026-10-12"
+  },
+  "linearized_stability_and_condition_2f_analogue_for_the_defocusing_plane_wave": {
+   "environment": "corollary",
+   "file": "source/chapters/ext/m4d.tex",
+   "fingerprint": "88030ea9189d",
+   "label": "m:cor:condE",
+   "number": "17.7",
+   "page": "362",
+   "printed": "Corollary 17.7",
+   "verified_fingerprint": "88030ea9189d",
+   "verified_on": "2026-10-12"
+  },
+  "localized_design_meets_gbc_accuracy_conditions": {
+   "environment": "corollary",
+   "file": "source/chapters/ext/m3c.tex",
+   "fingerprint": "dcbaf9af4179",
+   "label": "m:cor:locG",
+   "number": "16.37",
+   "page": "315",
+   "printed": "Corollary 16.37",
+   "verified_fingerprint": "dcbaf9af4179",
+   "verified_on": "2026-10-12"
+  },
+  "lsm_gbc_dictionary_for_optimal_stopping_and_the_inverse_problem": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m4e.tex",
+   "fingerprint": "33686ed1a1b6",
+   "label": "m:prop:lsm",
+   "number": "17.13",
+   "page": "372",
+   "printed": "Proposition 17.13",
+   "verified_fingerprint": "33686ed1a1b6",
+   "verified_on": "2026-10-12"
+  },
+  "manifold_gain_for_the_heat_equation": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m1a.tex",
+   "fingerprint": "dcee3dab4729",
+   "label": "m:prop:gain",
+   "number": "14.5",
+   "page": "193",
+   "printed": "Proposition 14.5",
+   "verified_fingerprint": "dcee3dab4729",
+   "verified_on": "2026-10-12"
+  },
+  "moment_conditions_force_a_small_fit": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m3b.tex",
+   "fingerprint": "685df7856f53",
+   "label": "m:lem:qbary",
+   "number": "16.22",
+   "page": "298",
+   "printed": "Lemma 16.22",
+   "verified_fingerprint": "685df7856f53",
+   "verified_on": "2026-10-12"
+  },
+  "no_sub_gaussian_envelope_for_the_whole_residual": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m3c.tex",
+   "fingerprint": "ab086fce0b54",
+   "label": "m:prop:u2pfalse",
+   "number": "16.42",
+   "page": "319",
+   "printed": "Proposition 16.42",
+   "verified_fingerprint": "ab086fce0b54",
+   "verified_on": "2026-10-12"
+  },
+  "no_two_point_bound_gives_a_smaller_exponent": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m3b.tex",
+   "fingerprint": "05a28ac0103f",
+   "label": "m:prop:qnntwo",
+   "number": "16.27",
+   "page": "304",
+   "printed": "Proposition 16.27",
+   "verified_fingerprint": "05a28ac0103f",
+   "verified_on": "2026-10-12"
+  },
+  "no_uniform_guarantee_for_quantile_generators": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/m3b.tex",
+   "fingerprint": "4fbb895e2cab",
+   "label": "m:thm:qnnB",
+   "number": "16.15",
+   "page": "290",
+   "printed": "Theorem 16.15",
+   "verified_fingerprint": "4fbb895e2cab",
+   "verified_on": "2026-10-12"
+  },
+  "one_step_summary_under_four_abc_criteria": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2b.tex",
+   "fingerprint": "f56b86d9c5c9",
+   "label": "m:prop:abcopt",
+   "number": "15.29",
+   "page": "244",
+   "printed": "Proposition 15.29",
+   "verified_fingerprint": "f56b86d9c5c9",
+   "verified_on": "2026-10-12"
+  },
+  "open_problem_kac_entropy_production_ggc_mixtures": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "465831e3fa56",
+   "label": "prob:kinetic",
+   "number": "8",
+   "page": "446",
+   "printed": "Open Problem 8",
+   "verified_fingerprint": "465831e3fa56",
+   "verified_on": "2026-10-12"
+  },
+  "open_problem_ns_posterior_fixed_sensors": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "1ae43e21c787",
+   "label": "prob:inference",
+   "number": "10",
+   "page": "447",
+   "printed": "Open Problem 10",
+   "verified_fingerprint": "1ae43e21c787",
+   "verified_on": "2026-10-12"
+  },
+  "open_problem_yor_exact_samplers": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "e2a13ad9bcf1",
+   "label": "prob:yor",
+   "number": "4",
+   "page": "445",
+   "printed": "Open Problem 4",
+   "verified_fingerprint": "e2a13ad9bcf1",
+   "verified_on": "2026-10-12"
+  },
+  "polya_gamma_logistic_identity": {
+   "environment": "theorem",
+   "file": "source/chapters/ch05_mixtures.tex",
+   "fingerprint": "b8d61f26d3b6",
+   "label": "thm:pg_identity",
+   "number": "7.5",
+   "page": "85",
+   "printed": "Theorem 7.5",
+   "verified_fingerprint": "b8d61f26d3b6",
+   "verified_on": "2026-10-12"
+  },
+  "posterior_on_the_solution_manifold": {
+   "environment": "proposition",
+   "file": "source/chapters/ch01_hilbert.tex",
+   "fingerprint": "48957615291c",
+   "label": "prop:solution_manifold",
+   "number": "1.1",
+   "page": "7",
+   "printed": "Proposition 1.1",
+   "verified_fingerprint": "48957615291c",
+   "verified_on": "2026-10-12"
+  },
+  "preliminary_estimates_rate_in_h_minus_one": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "1e1106f00b67",
+   "label": "m:lem:halfmean",
+   "number": "15.7",
+   "page": "215",
+   "printed": "Lemma 15.7",
+   "verified_fingerprint": "1e1106f00b67",
+   "verified_on": "2026-10-12"
+  },
+  "quadratic_variation_and_the_sufficient_statistic": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "cb26428ea82d",
+   "label": "m:prop:qv",
+   "number": "15.28",
+   "page": "243",
+   "printed": "Proposition 15.28",
+   "verified_fingerprint": "cb26428ea82d",
+   "verified_on": "2026-10-12"
+  },
+  "quantile_generator_exponent_attained_for_beta_above_two_with_bounded_densities": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m3b.tex",
+   "fingerprint": "558fe9a515a4",
+   "label": "m:prop:qnnUB3",
+   "number": "16.25",
+   "page": "302",
+   "printed": "Proposition 16.25",
+   "verified_fingerprint": "558fe9a515a4",
+   "verified_on": "2026-10-12"
+  },
+  "quantile_generator_exponent_attained_for_beta_at_most_one": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m3b.tex",
+   "fingerprint": "e3ff77542ad8",
+   "label": "m:prop:qnnUB",
+   "number": "16.16",
+   "page": "293",
+   "printed": "Proposition 16.16",
+   "verified_fingerprint": "e3ff77542ad8",
+   "verified_on": "2026-10-12"
+  },
+  "quantile_generator_exponent_attained_for_beta_between_one_and_two": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m3b.tex",
+   "fingerprint": "3af08bddf154",
+   "label": "m:prop:qnnUB2",
+   "number": "16.19",
+   "page": "295",
+   "printed": "Proposition 16.19",
+   "verified_fingerprint": "3af08bddf154",
+   "verified_on": "2026-10-12"
+  },
+  "reaction_diffusion_expected_gain_at_prior_center": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "a5c43f066809",
+   "label": "m:prop:prrd",
+   "number": "15.26",
+   "page": "239",
+   "printed": "Proposition 15.26",
+   "verified_fingerprint": "a5c43f066809",
+   "verified_on": "2026-10-12"
+  },
+  "realized_information_gain_with_efficient_information": {
+   "environment": "corollary",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "708e82ed581c",
+   "label": "m:cor:prreal",
+   "number": "15.23",
+   "page": "236",
+   "printed": "Corollary 15.23",
+   "verified_fingerprint": "708e82ed581c",
+   "verified_on": "2026-10-12"
+  },
+  "regularized_summary_fixed_prior_untruncated_posteriors": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "2238978143ef",
+   "label": "m:prop:regfixed",
+   "number": "15.14",
+   "page": "225",
+   "printed": "Proposition 15.14",
+   "verified_fingerprint": "2238978143ef",
+   "verified_on": "2026-10-12"
+  },
+  "residual_law_under_a_localized_proposal": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/m3c.tex",
+   "fingerprint": "5153e3a7ad92",
+   "label": "m:thm:locbias",
+   "number": "16.33",
+   "page": "310",
+   "printed": "Theorem 16.33",
+   "verified_fingerprint": "5153e3a7ad92",
+   "verified_on": "2026-10-12"
+  },
+  "solve_then_simulate_equals_simulate_the_limit": {
+   "environment": "corollary",
+   "file": "source/chapters/ext/m3a.tex",
+   "fingerprint": "9e12db3ecd7e",
+   "label": "m:cor:commute",
+   "number": "16.4",
+   "page": "280",
+   "printed": "Corollary 16.4",
+   "verified_fingerprint": "9e12db3ecd7e",
+   "verified_on": "2026-10-12"
+  },
+  "stability_of_the_cubic_nls_solution_map": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m4d.tex",
+   "fingerprint": "7054f84a1e9a",
+   "label": "m:prop:nlsstab",
+   "number": "17.8",
+   "page": "364",
+   "printed": "Proposition 17.8",
+   "verified_fingerprint": "7054f84a1e9a",
+   "verified_on": "2026-10-12"
+  },
+  "sufficiency_gap": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/m2c.tex",
+   "fingerprint": "489d3c4743e6",
+   "label": "m:thm:gap",
+   "number": "15.41",
+   "page": "258",
+   "printed": "Theorem 15.41",
+   "verified_fingerprint": "489d3c4743e6",
+   "verified_on": "2026-10-12"
+  },
+  "sufficiency_gap_admissible_gaussian_models": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2c.tex",
+   "fingerprint": "a8a78b2683ca",
+   "label": "m:prop:gapreq",
+   "number": "15.43",
+   "page": "261",
+   "printed": "Proposition 15.43",
+   "verified_fingerprint": "a8a78b2683ca",
+   "verified_on": "2026-10-12"
+  },
+  "sufficiency_gap_beyond_the_linear_model": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2c.tex",
+   "fingerprint": "c55e940f572c",
+   "label": "m:prop:gapnl",
+   "number": "15.42",
+   "page": "260",
+   "printed": "Proposition 15.42",
+   "verified_fingerprint": "c55e940f572c",
+   "verified_on": "2026-10-12"
+  },
+  "sufficiency_gap_hypotheses_from_centering_clt": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m2c.tex",
+   "fingerprint": "0b54dd7568ee",
+   "label": "m:lem:gapred",
+   "number": "15.44",
+   "page": "263",
+   "printed": "Lemma 15.44",
+   "verified_fingerprint": "0b54dd7568ee",
+   "verified_on": "2026-10-12"
+  },
+  "sufficiency_versus_the_raw_data": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/m2c.tex",
+   "fingerprint": "b18133736f2e",
+   "label": "m:thm:raw",
+   "number": "15.47",
+   "page": "269",
+   "printed": "Theorem 15.47",
+   "verified_fingerprint": "b18133736f2e",
+   "verified_on": "2026-10-12"
+  },
+  "summary_sobolev_rate_under_centering_hypotheses": {
+   "environment": "corollary",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "876e13c157d5",
+   "label": "m:cor:sumsuff",
+   "number": "15.9",
+   "page": "217",
+   "printed": "Corollary 15.9",
+   "verified_fingerprint": "876e13c157d5",
+   "verified_on": "2026-10-12"
+  },
+  "the_adjoint_statistic_is_a_storvik_statistic": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m4e.tex",
+   "fingerprint": "ca2bc2fecdf9",
+   "label": "m:prop:storvik",
+   "number": "17.15",
+   "page": "376",
+   "printed": "Proposition 17.15",
+   "verified_fingerprint": "ca2bc2fecdf9",
+   "verified_on": "2026-10-12"
+  },
+  "the_adjoint_statistic_is_the_pls_projection": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2b.tex",
+   "fingerprint": "1ad6355cac85",
+   "label": "m:prop:pls",
+   "number": "15.32",
+   "page": "252",
+   "printed": "Proposition 15.32",
+   "verified_fingerprint": "1ad6355cac85",
+   "verified_on": "2026-10-12"
+  },
+  "the_gain_of_the_score_function_filter": {
+   "environment": "proposition",
+   "file": "source/chapters/ch14_filters.tex",
+   "fingerprint": "5780a6394f7a",
+   "label": "prop:gates_bayes",
+   "number": "20.8",
+   "page": "421",
+   "printed": "Proposition 20.8",
+   "verified_fingerprint": "5780a6394f7a",
+   "verified_on": "2026-10-12"
+  },
+  "the_gram_matrix_of_the_whitened_weights": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m3c.tex",
+   "fingerprint": "64f9e10acda6",
+   "label": "m:lem:u2pgram",
+   "number": "16.41",
+   "page": "319",
+   "printed": "Lemma 16.41",
+   "verified_fingerprint": "64f9e10acda6",
+   "verified_on": "2026-10-12"
+  },
+  "the_information_operator_of_the_reaction_diffusion_class": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "9f5f60da1d3a",
+   "label": "m:lem:rdinfo",
+   "number": "15.11",
+   "page": "219",
+   "printed": "Lemma 15.11",
+   "verified_fingerprint": "9f5f60da1d3a",
+   "verified_on": "2026-10-12"
+  },
+  "the_limit_law_is_nondegenerate": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m1a.tex",
+   "fingerprint": "19e1edbda450",
+   "label": "m:lem:nondeg",
+   "number": "14.3",
+   "page": "189",
+   "printed": "Lemma 14.3",
+   "verified_fingerprint": "19e1edbda450",
+   "verified_on": "2026-10-12"
+  },
+  "the_linearization_of_the_navier_stokes_equations": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m3c.tex",
+   "fingerprint": "7632cccb62a6",
+   "label": "m:lem:nslin",
+   "number": "16.45",
+   "page": "325",
+   "printed": "Lemma 16.45",
+   "verified_fingerprint": "7632cccb62a6",
+   "verified_on": "2026-10-12"
+  },
+  "the_linearization_of_the_reaction_diffusion_class": {
+   "environment": "lemma",
+   "file": "source/chapters/ext/m3c.tex",
+   "fingerprint": "09117a2ba5d5",
+   "label": "m:lem:rdlin",
+   "number": "16.44",
+   "page": "324",
+   "printed": "Lemma 16.44",
+   "verified_fingerprint": "09117a2ba5d5",
+   "verified_on": "2026-10-12"
+  },
+  "the_regularized_summary_on_modes_heat_and_stokes": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "8ba15740fa77",
+   "label": "m:prop:regheat",
+   "number": "15.13",
+   "page": "220",
+   "printed": "Proposition 15.13",
+   "verified_fingerprint": "8ba15740fa77",
+   "verified_on": "2026-10-12"
+  },
+  "the_regularized_summary_on_modes_reaction_diffusion": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "f422d8b873c3",
+   "label": "m:prop:regrd",
+   "number": "15.16",
+   "page": "228",
+   "printed": "Proposition 15.16",
+   "verified_fingerprint": "f422d8b873c3",
+   "verified_on": "2026-10-12"
+  },
+  "the_summary_in_sobolev_norms": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "f3e553fddf9d",
+   "label": "m:prop:sumrate",
+   "number": "15.6",
+   "page": "213",
+   "printed": "Proposition 15.6",
+   "verified_fingerprint": "f3e553fddf9d",
+   "verified_on": "2026-10-12"
+  },
+  "the_summary_in_sobolev_norms_reaction_diffusion": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2a.tex",
+   "fingerprint": "4832f88db08c",
+   "label": "m:prop:sumrd",
+   "number": "15.12",
+   "page": "219",
+   "printed": "Proposition 15.12",
+   "verified_fingerprint": "4832f88db08c",
+   "verified_on": "2026-10-12"
+  },
+  "the_transfer_theorem_for_the_linear_schrodinger_equation": {
+   "environment": "corollary",
+   "file": "source/chapters/ext/m4d.tex",
+   "fingerprint": "3582681b478c",
+   "label": "m:cor:schtransfer",
+   "number": "17.11",
+   "page": "370",
+   "printed": "Corollary 17.11",
+   "verified_fingerprint": "3582681b478c",
+   "verified_on": "2026-10-12"
+  },
+  "two_coordinate_model_sufficiency_gap_depends_on_summary": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/m2c.tex",
+   "fingerprint": "2c08aa4215c8",
+   "label": "m:prop:gaptoy",
+   "number": "15.45",
+   "page": "264",
+   "printed": "Proposition 15.45",
+   "verified_fingerprint": "2c08aa4215c8",
+   "verified_on": "2026-10-12"
+  },
+  "two_limit_convergence_of_the_regression_summary": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/m4e.tex",
+   "fingerprint": "eda7bc31d0b3",
+   "label": "m:thm:lsmgbc",
+   "number": "17.14",
+   "page": "373",
+   "printed": "Theorem 17.14",
+   "verified_fingerprint": "eda7bc31d0b3",
+   "verified_on": "2026-10-12"
+  },
+  "uniformity": {
+   "environment": "openquestion",
+   "file": "source/chapters/ext/m4e.tex",
+   "fingerprint": "44332f6af8b2",
+   "label": "m:op:unif",
+   "number": "17.18",
+   "page": "380",
+   "printed": "Open Question 17.18",
+   "verified_fingerprint": "44332f6af8b2",
+   "verified_on": "2026-10-12"
+  },
+  "whitened_residual_assumption_under_a_localized_proposal": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/m3c.tex",
+   "fingerprint": "7fb55a622cdb",
+   "label": "m:thm:u2ploc",
+   "number": "16.43",
+   "page": "320",
+   "printed": "Theorem 16.43",
+   "verified_fingerprint": "7fb55a622cdb",
+   "verified_on": "2026-10-12"
+  }
+ },
+ "updated": "2026-10-12",
+ "zenodo": {
+  "draft": {
+   "bucket": "https://zenodo.org/api/files/30c87641-ba9d-4032-bbaf-1f5bc01dc014",
+   "doi": "10.5281/zenodo.23327515",
+   "html": "https://zenodo.org/deposit/23327515",
+   "id": 23327515,
+   "reserved_on": "2026-10-12",
+   "version": "1.0.0"
+  }
+ }
+}

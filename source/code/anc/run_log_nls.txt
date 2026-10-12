@@ -1,0 +1,8 @@
+free case check, Theta_p(T) = T*Id exactly; at T = 1 this is:
+[[1. 0.]
+ [0. 1.]]
+1 defocusing eig: [0.7464 1.5106]  focusing eig: [1.09400000e-01 1.86678233e+04]
+2 defocusing eig: [0.8992 1.1263]  focusing eig: [0.8735 1.1694]
+4 defocusing eig: [0.9702 1.0316]  focusing eig: [0.9683 1.0338]
+8 defocusing eig: [0.9922 1.0079]  focusing eig: [0.9921 1.008 ]
+16 defocusing eig: [0.998 1.002]  focusing eig: [0.998 1.002]

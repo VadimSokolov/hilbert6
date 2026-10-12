@@ -1,0 +1,46 @@
+\section{Onsager's solution and the critical point}\label{sec:onsager}
+
+Onsager's 1944 solution~\cite{onsager1944} of the two dimensional Ising model on the square lattice with coupling $J$ and zero field gives the free energy per site
+\[
+\begin{multlined}-\beta f = \log2+\frac{1}{2\pi^2}\int_0^\pi\!\!\int_0^\pi\log\Big(\cosh^2(2\beta J)\\ -\sinh(2\beta J)\big(\cos k_1+\cos k_2\big)\Big)\dd k_1\dd k_2.\end{multlined}
+\]
+The integrand vanishes at $k_1 = k_2 = 0$ exactly when $\cosh^2(2\beta J) = 2\sinh(2\beta J)$, that is $\sinh(2\beta_cJ) = 1$, so the critical point is $\beta_cJ = \frac12\log(1+\sqrt2)\approx0.4407$, the value predicted earlier by Kramers and Wannier~\cite{kramers1941} from the duality between high and low temperature expansions. The specific heat diverges logarithmically at $\beta_c$. The spontaneous magnetization, announced by Onsager and proved by Yang in 1952~\cite{yang1952}, is
+\[
+m^*(\beta) = \big(1-\sinh^{-4}(2\beta J)\big)^{1/8},\qquad\beta>\beta_c,
+\]
+vanishing at $\beta_c$ with exponent $\frac18$. Mean field theory predicts the exponent $\frac12$, so the two dimensional model is a rigorous counterexample to the universality of mean field exponents. The exact solution showed for the first time that a phase transition with nonclassical exponents can follow from a microscopic model by pure mathematics, a demonstration of the derivational reading of the sixth problem in equilibrium statistical mechanics.
+
+\section{The Gibbs variational principle and variational inference}
+
+\begin{theorem}[Gibbs variational principle]
+Let $\nu$ be a probability measure on a space $\Omega$ and $H:\Omega\to\R$ measurable with $Z = \int e^{H}\dd\nu<\infty$. Then
+\[
+\log Z = \sup_Q\Big\{\int H\dd Q-\KL(Q\,\|\,\nu)\Big\},
+\]
+the supremum over probability measures $Q$ with $\int|H|\dd Q<\infty$. If in addition $\int|H|e^{H}\dd\nu<\infty$, which is equivalent to $\KL(Q^*\,\|\,\nu)<\infty$, the supremum is attained, uniquely at $Q^*(\dd\omega) = Z^{-1}e^{H(\omega)}\nu(\dd\omega)$.
+\end{theorem}
+
+\begin{proof}
+Let $Q$ be a probability measure with $\int|H|\dd Q<\infty$. If $Q$ is not absolutely continuous with respect to $\nu$, then $\KL(Q\|\nu) = \infty$ and the functional being maximized is $-\infty$. Otherwise $Q\ll Q^*$ and $\frac{\dd Q}{\dd Q^*} = Ze^{-H}\frac{\dd Q}{\dd\nu}$, so that $\KL(Q\|Q^*) = \KL(Q\|\nu)-\int H\dd Q+\log Z$. Hence $\int H\dd Q-\KL(Q\|\nu) = \log Z-\KL(Q\|Q^*)\leq\log Z$, with equality if and only if $Q = Q^*$. This gives the upper bound, the uniqueness, and the attainment whenever $Q^*$ is admissible, that is, whenever $\int|H|\dd Q^* = Z^{-1}\int|H|e^H\dd\nu<\infty$. In general let $Q_n$ be $Q^*$ conditioned on $\{|H|\leq n\}$. It is admissible, and the same computation gives $\int H\dd Q_n-\KL(Q_n\|\nu) = \log Z+\log Q^*(|H|\leq n)$, which tends to $\log Z$.
+\end{proof}
+
+The theorem is the Gibbs variational principle of statistical mechanics, in the form of the variational formula for relative entropy of Donsker and Varadhan~\cite{donsker1975}. With $\nu$ the prior, $H$ the log likelihood and $Q^*$ the posterior, it says that Bayes' rule is the solution of a variational problem and that the log marginal likelihood is a free energy. Restricting $Q$ to a tractable family gives a lower bound, the evidence lower bound of variational inference, whose gap is the Kullback Leibler divergence from the family to the posterior. Restricting to product measures gives mean field theory.
+
+For the Curie Weiss model of Section~\ref{sec:curieweiss}, take $\nu$ uniform on $\{\pm1\}^N$ and $H_N(\sigma) = \frac{\beta}{2N}\big(\sum_i\sigma_i\big)^2+h\sum_i\sigma_i$, so that $Z_N = 2^N\int e^{H_N}\dd\nu$. The product measure $Q_m$ with mean $m$ at every site has $\KL(Q_m\|\nu) = N\big(\log2-s(m)\big)$, where $s(m) = -\frac{1+m}{2}\log\frac{1+m}{2}-\frac{1-m}{2}\log\frac{1-m}{2}$ is the binary entropy, and $\int H_N\dd Q_m = N\big(\frac{\beta m^2}{2}+hm\big)+\frac\beta2(1-m^2)$. The theorem therefore gives $N^{-1}\log Z_N\geq\varphi(m)$ for every $m\in[-1,1]$, where $\varphi(m) = \frac{\beta m^2}{2}+hm+s(m)$. This is not the function $-\Psi(m)$ of the Hubbard Stratonovich computation. Since $\log(2\cosh u) = \max_{m'}\{um'+s(m')\}$, attained at $m' = \tanh u$, we have $-\Psi(m) = \max_{m'}\{(\beta m+h)m'+s(m')\}-\frac{\beta m^2}{2}$. Taking $m' = m$ gives $-\Psi(m)\geq\varphi(m)$, with equality if and only if $m = \tanh(\beta m+h)$. Maximizing over $m$ first, which gives $\frac{\beta m'^2}{2}$, shows that $\max_m(-\Psi) = \max_{m'}\varphi$. The two functions thus have the same stationary points, the solutions of the mean field equation, and the same maximum, which is the limit of $N^{-1}\log Z_N$. For the Curie Weiss model the product bound is therefore sharp. Mean field theory in physics and variational Bayes in statistics are the same approximation, with the same failure mode: a product family cannot represent the correlations that dominate near a phase transition.
+
+\section{Belief propagation and the Bethe approximation}
+
+On a tree, marginals of a Gibbs measure can be computed exactly by passing messages along edges: the message from $x$ to $y$ summarizes the effect of the subtree behind $x$, and marginals are products of incoming messages. For the Ising model with fields $h_x$ and couplings $J_{xy}$, writing messages as effective fields $u_{x\to y}$, the update is
+\[
+u_{x\to y} = \operatorname{artanh}\Big(\tanh(\beta J_{xy})\tanh\Big(h_x+\sum_{z\sim x,z\neq y}u_{z\to x}\Big)\Big).
+\]
+On graphs with cycles the same iteration, loopy belief propagation, computes stationary points of the Bethe free energy~\cite{yedidia2005}, a variational approximation that is exact on trees and accurate on locally tree like graphs. Pearl introduced belief propagation for Bayesian networks in 1982~\cite{pearl1982}, Gallager had used it for decoding in 1963~\cite{gallager1963}, and the cavity method of M\'ezard, Parisi and Virasoro is its replica symmetric physics~\cite{mezard2009}. Approximate message passing~\cite{donoho2009,bayati2011}, used earlier in this chapter for the planted clique, is its dense graph limit, and its state evolution, a one dimensional recursion for the effective signal to noise ratio, is the mechanism by which algorithmic thresholds such as $\sqrt{n/e}$ are computed.
+
+\section*{Exercises}
+\begin{enumerate}
+\item Solve the one dimensional Ising model on a ring by the transfer matrix method and show that there is no phase transition at positive temperature.
+\item Verify directly that the zeros of the partition function of a single Ising bond in a uniform field lie on the unit circle.
+\item Show that the Curie Weiss mean field equation with $h = 0$ and $\beta>1$ has three solutions, and determine which minimize $\Psi$.
+\item Prove that the Edwards Sokal measure has the Ising measure as its spin marginal.
+\item Show that ridge regression with penalty $\alpha$, the minimizer of $n^{-1}\|y-X\theta\|^2+\alpha\|\theta\|^2$, is the posterior mean under the prior $N(0,(\sigma^2/(n\alpha))I)$ and Gaussian noise of variance $\sigma^2$.
+\end{enumerate}

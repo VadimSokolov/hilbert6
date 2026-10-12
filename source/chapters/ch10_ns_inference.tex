@@ -1,0 +1,136 @@
+\chapter{Navier Stokes as Inference on the Solution Manifold}
+\label{ch:nsinference}
+
+\section{The inverse direction}
+
+The derivation of Chapter~\ref{ch:hydro} runs from particles to fluids and from the past to the future. Data run the other way. A meteorologist observes winds and pressures at scattered stations and wants the state of the atmosphere six hours ago, from which a forecast can be launched. An engineer measures velocities in a pipe by magnetic resonance and wants the inflow condition and the wall shape. A physicist observes a turbulent field and wants the forcing that maintains it. In every case the unknown is an initial or boundary condition, or a parameter, of a known evolution equation, and the observations are noisy and incomplete functions of the solution. Bayes' rule turns each of these problems into a posterior distribution for the unknown. The solution map carries that posterior to a distribution on space time fields that satisfy the equation, a measure on the solution manifold of Proposition~\ref{prop:solution_manifold}, and this is why the manifold is the right object for inference.
+
+\section{Setting}
+
+Let $\T^d = (\R/2\pi\Z)^d$ with $d\in\{2,3\}$, and let $\Phi_t$ denote the solution map of the incompressible Navier Stokes equations
+\[
+\partial_tu+u\cdot\nabla u+\nabla p = \nu\Delta u+f,\qquad\nabla\cdot u = 0,
+\]
+on a space $X$ of divergence free, mean zero fields. In two dimensions $\Phi_t$ is globally defined and smooth for initial data in $L^2$, by the classical theory of Leray, Ladyzhenskaya and Lions. In three dimensions it is defined on a maximal interval that may be finite. Observations are taken as in \eqref{eq:observation_model}, for example point values or Fourier coefficients of $u(t_j)$ with Gaussian noise of level $\delta$. The unknown $\theta = u(0)$, possibly together with $\nu$ and $f$, is given a Gaussian prior on a Sobolev space $H^\alpha$, and the posterior is defined by Bayes' rule. When the observation space is finite dimensional and the forward map grows at most polynomially in the norm of the unknown, the posterior depends Lipschitz continuously on the data in the Hellinger distance, by the theory of Stuart~\cite{stuart2010}, which we state as Theorem~\ref{thm:stuart_wellposed}.
+
+Two structural facts govern everything. The forward map is injective in two dimensions: by the backward uniqueness theorem of Bardos and Tartar~\cite{bardostartar1973}, two solutions that agree at time $T$ agree at all earlier times. And its inverse is unstable: the dissipation $\nu\Delta$ damps the Fourier mode $k$ at the rate $e^{-\nu|k|^2t}$, so high frequencies of the initial condition leave only exponentially faint traces in the data. This combination is the setting in which priors matter and in which Bayesian inference is more than a reformulation of regularization.
+
+\section{The linear case solved exactly}\label{sec:linearheat}
+
+Linearize about the zero solution and drop the nonlinearity. The heat equation $\partial_tu = \Delta u$ on $(0,\pi)$ with Dirichlet conditions diagonalizes in the sine basis $\phi_k(x) = \sqrt{2/\pi}\sin(kx)$. Writing $\theta = \sum_k\theta_k\phi_k$ for the initial condition and observing the solution at time $T$ in white noise of level $\delta$ gives the sequence model
+\[
+y_k = e^{-k^2T}\theta_k+\delta\varepsilon_k,\qquad\varepsilon_k\sim N(0,1)\text{ independent}.
+\]
+With the prior $\theta_k\sim N(0,\lambda_k)$ independently, the posterior is Gaussian and diagonal:
+\[
+\theta_k\mid y\sim N\Big(\frac{v_ke^{-k^2T}}{\delta^2}y_k,\;v_k\Big),\qquad v_k = \Big(\frac{e^{-2k^2T}}{\delta^2}+\frac1{\lambda_k}\Big)^{-1}.
+\]
+Mode $k$ is learned when $e^{-k^2T}\gg\delta/\sqrt{\lambda_k}$, that is, for $k\lesssim K_\delta = \sqrt{\log(1/\delta)/T}$ up to lower order terms, and is otherwise left at its prior. Figure~\ref{fig:heat_inverse} shows this for $T = 0.05$, $\delta = 0.002$ and $\lambda_k = k^{-3}$. Here $K_\delta\approx11.1$, but the lower order terms matter: the equation $e^{-k^2T} = \delta/\sqrt{\lambda_k}$ has the solution $k\approx7.9$, because the prior variance decays with $k$. The ratio of posterior to prior standard deviation is below $0.2$ for $k\leq6$, crosses one half near $k = 7.3$ and exceeds $0.95$ for $k\geq9$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{heat_inverse}
+\caption{Inferring the initial condition of the heat equation from observations at time $T = 0.05$ with noise level $\delta = 0.002$, prior variances $\lambda_k = k^{-3}$ and $40$ Fourier modes. The truth is a draw from the prior. Left, truth, posterior mean and pointwise $90\%$ band computed from $200$ posterior draws; right, ratio of posterior to prior standard deviation by Fourier mode.}
+\label{fig:heat_inverse}
+\end{figure}
+
+\begin{theorem}[Rates for the backward heat equation]
+\label{thm:heat_rates}
+Suppose $\lambda_k = k^{-1-2\alpha}$ with $\alpha>0$ and the true initial condition $\theta_0$ lies in a Sobolev ball of smoothness $\beta>0$. Then the posterior contracts in $L^2$ around the truth at the rate $(\log(1/\delta))^{-\min(\alpha,\beta)/2}$ up to constants, uniformly over the ball, and this is the minimax rate when $\alpha\geq\beta$. For a linear functional $L\theta = \sum_kl_k\theta_k$ whose coefficients satisfy $\sum_k|l_k|\,e^{2k^2T}k^{1+2\alpha}<\infty$ and $S = \sum_kl_k^2e^{2k^2T}>0$, let $\hat L = \sum_kl_ke^{k^2T}y_k$ be the unbiased estimator. Let $\Theta_B = \{\theta_0:\sup_k|\theta_{0,k}|\leq B\}$, a set that contains every Sobolev ball of smoothness $\beta\geq0$ and radius at most $B$, and let $\P_{\theta_0}$ be the law of the data under the truth $\theta_0$. Then for every $B>0$ and $\eta>0$, as $\delta\to0$,
+\[
+\sup_{\theta_0\in\Theta_B}\P_{\theta_0}\Big(\big\|\Pi\big((L\theta-\hat L)/\delta\in\cdot\mid y\big)-N(0,S)\big\|_{TV}>\eta\Big)\to0,
+\]
+and $(\hat L-L\theta_0)/\delta\sim N(0,S)$ exactly under the truth $\theta_0$. A Bernstein von Mises theorem therefore holds for $L\theta$, and equal tailed posterior credible intervals for $L\theta$ are asymptotically exact confidence intervals, uniformly over $\Theta_B$.
+\end{theorem}
+
+\begin{proof}
+The $L^2$ rate is Theorem~2.1 of Knapik, van der Vaart and van Zanten~\cite{knapik2013}, with their prior scale equal to one and $n = \delta^{-2}$, and we do not repeat its proof. The mechanism is that modes $k\leq K_\delta$ are estimated with error of order $\delta e^{k^2T}$ while modes $k>K_\delta$ are left at the prior, and the tail $\sum_{k>K_\delta}(\theta_{0,k}^2+\lambda_k)$ is of order $K_\delta^{-2\min(\alpha,\beta)}$ with $K_\delta\asymp(\log(1/\delta))^{1/2}$.
+
+For the functional, write $r_k = \delta^2e^{2k^2T}/(\lambda_k+\delta^2e^{2k^2T})\in[0,1]$, so that $v_k = \delta^2e^{2k^2T}(1-r_k)$ and the posterior mean of $\theta_k$ is $m_k = (1-r_k)e^{k^2T}y_k$. The posterior of $L\theta$ is Gaussian with mean $\sum_kl_km_k$ and variance $\sum_kl_k^2v_k = \delta^2\sum_kl_k^2e^{2k^2T}(1-r_k)$. Since $r_k\to0$ for each $k$ as $\delta\to0$ and $0\leq r_k\leq1$, dominated convergence gives $\sum_kl_k^2v_k = \delta^2(S+o(1))$, using $\sum_kl_k^2e^{2k^2T}\leq\sup_k|l_k|e^{k^2T}\sum_k|l_k|e^{k^2T}<\infty$. For the centering, substituting $y_k = e^{-k^2T}\theta_{0,k}+\delta\varepsilon_k$ under the truth,
+\[
+\sum_kl_km_k-\hat L = -\sum_kl_kr_k\theta_{0,k}-\delta\sum_kl_kr_ke^{k^2T}\varepsilon_k.
+\]
+The first term is bounded by $\sup_k|\theta_{0,k}|\sum_k|l_k|r_k\leq\delta^2B\sum_k|l_k|e^{2k^2T}\lambda_k^{-1} = O(\delta^2)$ uniformly over $\Theta_B$ by the summability assumption, since $\lambda_k^{-1} = k^{1+2\alpha}$. The second term is centered Gaussian with variance $\delta^2\sum_kl_k^2r_k^2e^{2k^2T} = o(\delta^2)$ by dominated convergence, a variance that does not depend on $\theta_0$. Hence $(\sum_kl_km_k-\hat L)/\delta\to0$ in $\P_{\theta_0}$ probability, uniformly over $\Theta_B$, and the posterior of $(L\theta-\hat L)/\delta$ is a Gaussian whose mean tends to zero and whose variance tends to $S>0$; convergence of Gaussian laws in total variation follows from convergence of their parameters. Under the truth, $\hat L-L\theta_0 = \delta\sum_kl_ke^{k^2T}\varepsilon_k\sim N(0,\delta^2S)$ exactly. An equal tailed credible interval for $L\theta$ therefore has endpoints $\hat L\pm z\delta\sqrt S+o(\delta)$ in probability, uniformly over $\Theta_B$, where $z$ is a normal quantile, and its coverage tends to the nominal level.
+\end{proof}
+
+The first part of the theorem is due to Knapik, van der Vaart and van Zanten~\cite{knapik2013}, who also show that credible balls for the whole initial condition have asymptotic coverage zero when the prior is smoother than the truth and coverage one, with a radius larger than that of a confidence ball by a diverging factor, when it is rougher. For linear functionals whose coefficients decay only polynomially they show that credible intervals have asymptotic coverage zero or one, so that no Bernstein von Mises theorem holds for them. The second part of the theorem is proved above. For the direct white noise model, Bernstein von Mises theorems for linear and nonlinear functionals are due to Castillo and Nickl~\cite{castillonickl2013}. The reconstruction of the whole initial condition is possible only at logarithmic rates; no method can do better uniformly over a Sobolev ball. But smooth functionals of the initial condition, those whose coefficients decay faster than the damping, are estimable at the parametric rate, and the Bayesian posterior quantifies their uncertainty correctly. Inference on the solution manifold is therefore an exercise in choosing the questions the data can answer.
+
+\section{The nonlinear theory}
+
+For nonlinear forward maps the corresponding theory was developed by Nickl and coauthors and is presented in Nickl's lectures~\cite{nickl2023book}. Its architecture has three components.
+
+The first is a \emph{forward regularity} estimate: the map $\mathcal{G}:\theta\mapsto(\mathcal{O}_j\Phi_{t_j}\theta)_j$ is Lipschitz, with polynomial growth of the constant, from the parameter space to the observation space. For Navier Stokes in two dimensions this follows from energy estimates.
+
+The second is a \emph{stability} estimate in the reverse direction: $\|\theta-\theta'\|_{H^{-s}}\leq\chi(\|\mathcal{G}(\theta)-\mathcal{G}(\theta')\|)$ for some modulus $\chi$, valid on bounded sets of a smoother space. For parabolic problems observed only at positive times $\chi$ is typically logarithmic, as in the linear case. Combined with posterior contraction in the observation space, which holds at the usual rates by general theory for Gaussian priors rescaled with the sample size, stability transfers contraction to the parameter.
+
+The third is \emph{computation}. Nickl and Wang~\cite{nicklwang2024} showed, for one model, that a lower bound on the Fisher information operator called gradient stability makes the log likelihood strongly concave near the truth, and that a Langevin type algorithm, initialized by a suitable estimator and run on a surrogate of the posterior, then samples from it to given accuracy in a number of steps polynomial in the dimension and the sample size (Section~\ref{sec:gradstab}).
+
+For time evolution equations, Nickl and Titi~\cite{nickltiti2024} proved posterior consistency for the two dimensional Navier Stokes equations, with inverse logarithmic rates for the initial condition, and showed that in general no faster rate is possible when the observation times are sampled from a window bounded away from zero. When the observations are spread over space and time starting at time zero, the stability estimate improves and the posterior contracts at a polynomial rate in the number $N$ of observations~\cite{konennickl2026}. For such observations Nickl proved a Bernstein von Mises theorem for reaction diffusion equations~\cite{nicklbvm2024}, and Konen and Nickl proved one for Navier Stokes~\cite{konennickl2026}: the posterior law of the trajectory, centered at the posterior mean and scaled by $\sqrt N$, is close to a Gaussian law in Wasserstein distance for the supremum norm over any time window bounded away from zero. Our own work~\cite{polsonsokolov2026manifold} combines this theory with simulation based computation, as we now describe and as Chapters~\ref{ch:manifold} to~\ref{ch:examples} treat in detail.
+
+\input{chapters/ext/ch10_nw}
+
+\section{Projection onto the solution manifold}
+
+Proposition~\ref{prop:solution_manifold} showed that posterior predictive fields lie on the solution manifold. The following elementary estimate quantifies the advantage.
+
+\begin{proposition}[Projection]
+\label{prop:projection_manifold}
+Let $\mathcal{M}$ be a closed subset of a Hilbert space $\mathcal{Y}$ of space time fields, let $Y\in\mathcal{M}$ be the true field, and let $\hat Y\in\mathcal{Y}$ be any estimate. If $\pi(\hat Y)$ is a nearest point of $\mathcal{M}$ to $\hat Y$, then
+\[
+\|\pi(\hat Y)-Y\|\leq2\|\hat Y-Y\|,
+\]
+and the constant $2$ cannot be improved for a general closed set. If $\mathcal{M}$ is also convex, then
+\[
+\|\pi(\hat Y)-Y\|^2\leq\|\hat Y-Y\|^2-\|\hat Y-\pi(\hat Y)\|^2,
+\]
+with equality when $\mathcal{M}$ is a closed affine subspace. In particular the error does not increase, and it decreases strictly unless $\hat Y\in\mathcal{M}$.
+\end{proposition}
+
+\begin{proof}
+Since $Y\in\mathcal{M}$, $\|\pi(\hat Y)-\hat Y\|\leq\|\hat Y-Y\|$, and the triangle inequality gives the first claim. For $\mathcal{M} = \{-1,1\}\subset\R$, $Y = 1$ and $\hat Y = -\eta$ with $\eta>0$ small, the nearest point is $-1$ and the error grows from $1+\eta$ to $2$. If $\mathcal{M}$ is convex, the nearest point is characterized by $\langle\hat Y-\pi(\hat Y),Y-\pi(\hat Y)\rangle\leq0$ for every $Y\in\mathcal{M}$, and expanding $\|\hat Y-Y\|^2 = \|(\hat Y-\pi(\hat Y))+(\pi(\hat Y)-Y)\|^2$ gives the inequality. For an affine subspace the inner product is zero, because $\hat Y-\pi(\hat Y)$ is orthogonal to the directions of $\mathcal{M}$.
+\end{proof}
+
+For linear dynamics, projecting any estimate onto the manifold of solutions can only help. If, after discretization to $D$ coordinates, the error of $\hat Y$ is isotropic noise of variance $\sigma^2$ per coordinate and $\mathcal{M}$ is a subspace of dimension $m$, then $\E\|\hat Y-Y\|^2 = D\sigma^2$ and $\E\|\pi(\hat Y)-Y\|^2 = m\sigma^2$. The gain is the factor $D/m$, which is large when the data have many more coordinates than the initial condition has parameters. For nonlinear dynamics $\mathcal{M}$ is generally not convex, and then the projection of a poor estimate can lie farther from the truth than the estimate does, by up to the factor two. What the physics supplies in that case is the constraint $\hat Y\in\mathcal{M}$, not a guaranteed gain. Inferring the initial condition and solving forward is projection onto $\mathcal{M}$ performed in the right coordinates.
+
+\section{Generative Bayesian computation for evolution equations}
+
+Markov chain Monte Carlo for a Navier Stokes posterior requires a forward solve, and usually an adjoint solve, at every step. Generative Bayesian computation, developed in Chapter~\ref{ch:gbc}, replaces this by a learning problem. One simulates pairs $(\theta_i,y_i)$ with $\theta_i$ from the prior and $y_i$ from the forward model plus noise, and trains a map $H$ such that $H(y,U)$, with $U$ uniform noise of matching dimension, has approximately the posterior law given $y$, or given a low dimensional summary of $y$ built from the adjoint equation (Chapter~\ref{ch:adjoint}). For a scalar functional $L\theta$ the map can be learned as a conditional quantile function by minimizing the check loss
+\[
+\min_H\;\frac1N\sum_{i=1}^N\rho_\tau\big(L\theta_i-H(y_i,\tau)\big),\qquad\rho_\tau(r) = r\,(\tau-\mathbb{1}\{r<0\}),
+\]
+averaged over $\tau\in(0,1)$; for vector quantities a triangular transport map, a sequence of conditional quantile maps, plays the same role. Posterior draws for the observed $y^{\mathrm{obs}}$ are then $H(y^{\mathrm{obs}},U_j)$, and pushing them through $\Phi_t$ gives posterior draws of the trajectory on the solution manifold.
+
+\begin{proposition}[Bernstein von Mises for generators]
+\label{prop:bvm_generators}
+Let $\Pi_n(\cdot\mid y)$ be posteriors for a functional $L\theta$, let $\hat L_n$ be a statistic, and write $\tilde\Pi_n$ for the law of $\sqrt n(L\theta-\hat L_n)$ when $\theta\sim\Pi_n(\cdot\mid y)$ and $\tilde G_n$ for the law of $\sqrt n(LH_n(y,U)-\hat L_n)$ when $U$ is uniform. Suppose that, in probability under the data generating law,
+\[
+d_{BL}\big(\tilde\Pi_n,N(0,\sigma^2)\big)\to0\qquad\text{and}\qquad d_{BL}\big(\tilde G_n,\tilde\Pi_n\big)\to0,
+\]
+where $d_{BL}$ is the bounded Lipschitz metric. Then $d_{BL}\big(\tilde G_n,N(0,\sigma^2)\big)\to0$ in probability: the generated law satisfies the same Bernstein von Mises theorem as the posterior.
+\end{proposition}
+
+The first condition is a Bernstein von Mises theorem for $L\theta$, and the second says that the generator is accurate at the posterior scale $n^{-1/2}$. The proof is the triangle inequality in $d_{BL}$, which is a metric: $d_{BL}(\tilde G_n,N(0,\sigma^2))\leq d_{BL}(\tilde G_n,\tilde\Pi_n)+d_{BL}(\tilde\Pi_n,N(0,\sigma^2))$, and each term on the right tends to zero in probability by the two hypotheses. Both conditions concern the variable rescaled by $\sqrt n$. Without the rescaling the first would hold for every consistent posterior, since both laws shrink to a point at the rate $n^{-1/2}$, and it would say nothing about the shape of the posterior. The second condition follows from $W_1\big(\mathrm{Law}(LH_n(y,U)),\Pi_n(L\theta\in\cdot\mid y)\big) = o_P(n^{-1/2})$, where $W_1$ is the Wasserstein distance of order one, because $d_{BL}\leq W_1$ and $W_1$ scales with the variable. The second condition is a statement about the approximation and estimation error of the learned quantile map in a neighborhood of the observed data, and smoothness of the conditional quantile function does not deliver it: a generator that must be accurate at this scale uniformly over H\"older smooth conditional quantile maps needs a number of simulations that grows faster than any polynomial in $n$ once the dimension of the summary statistic grows (Theorem~\ref{m:thm:qnnB}). A generator with an identity skip connection and a Gaussian head, whose head is estimated in closed form, reaches the scale when the number of simulations grows faster than $J$, where $J$ is the dimension of the summary, but only conditionally on a uniform Bernstein von Mises property of the posterior, left open (Theorem~\ref{m:thm:qnnA} and Assumption~\ref{m:ass:U}; see~\cite{polsonsokolov2026manifold}), on a condition on the whitened training residuals (Assumption~\ref{m:ass:u2p}), which holds for Navier Stokes in the setting of Theorem~\ref{m:thm:u2ploc} (Lemma~\ref{m:lem:nslin}), and on a bound for the error of the summary, which Proposition~\ref{m:prop:sumrate} and Lemma~\ref{m:lem:halfmean} prove for the Navier Stokes equations when the one step summary starts from the posterior means of the two halves of the data and the Sobolev index $\bar\gamma$ in Theorem~\ref{m:thm:qnnA} is at most $11$; for a nonlinear forward map the condition on the residuals fails in general when the training parameters are drawn from the prior (Remark~\ref{m:rem:u2p}). Where the generator is accurate at the posterior scale, credible intervals produced by the generator are asymptotically equivalent to those of the posterior and so inherit its coverage for $L\theta$, even though the full initial condition may be recovered only at logarithmic rates.
+
+\section{A worked nonlinear example: Fisher and Kolmogorov}
+
+The equation $\partial_tu = D\,\partial_x^2u+ru(1-u)$ was introduced in 1937 by Fisher~\cite{fisher1937}, for the spread of an advantageous gene, and by Kolmogorov, Petrovsky and Piskunov~\cite{kolmogorov1937}, who proved that fronts started from steep initial data propagate at the speed $c^* = 2\sqrt{rD}$. It is a good laboratory for the inverse problem because it combines diffusion, which destroys information, with a nonlinearity that creates a coherent structure carrying information. A traveling front $u(t,x) = U(x-ct)$ has a width proportional to $\sqrt{D/r}$. Observing the front over time therefore identifies both $rD$, through the speed, and $D/r$, through the width, so that $D=c^*w/2$ and $r=c^*/(2w)$ when $c^*=2\sqrt{rD}$ and $w=\sqrt{D/r}$. The computation below (Figure~\ref{fig:fk_posterior} and Table~\ref{tab:fk_posterior}) is for an initial condition that is known and held fixed. The posterior predictive fronts lie on the solution manifold by construction (Proposition~\ref{prop:solution_manifold}).
+
+\input{chapters/ext/ch10_post_fk}
+
+\section{Two dimensional Navier Stokes on the torus}
+
+In two dimensions the vorticity $\omega = \partial_1u_2-\partial_2u_1$ satisfies
+\[
+\partial_t\omega+u\cdot\nabla\omega = \nu\Delta\omega+\mathrm{curl}\,f,\qquad u = \nabla^\perp\Delta^{-1}\omega.
+\]
+The enstrophy $\int\omega^2$ is nonincreasing without forcing, which gives global regularity. The inverse problem of recovering $\omega(0)$ from noisy observations of $\omega(T)$ inherits the logarithmic instability of the heat equation at high frequencies, but the nonlinearity transfers energy between modes, so that information about one mode is partially encoded in others, and the posterior is no longer diagonal, as the computed example of Section~\ref{sec:simns2d} shows. As in the linear case, the posterior concentrates on large scale vortex structures and leaves small scales close to the prior in that example (Figure~\ref{fig:ns2d_posterior}). The theorems are proved for a different observation scheme. When the observations are spread over space and time starting at time zero, the information operator differs from that of the heat equation by a compact operator, smooth functionals of the state at a fixed later time have Gaussian limits at the rate $N^{-1/2}$ by the delta method, the energy and the circulation around a loop being examples, and credible bands for the trajectory have asymptotically exact coverage~\cite{konennickl2026}. The posterior can be computed by a generator trained on simulations, but the accuracy that the Gaussian statements need from the generator is a hypothesis and not a theorem (Proposition~\ref{prop:bvm_generators}). In the nonlinear experiment of Section~\ref{m:sec:expns}, a six mode truncation of the vorticity equation observed at $80$ points of space and time, a generator with an identity head trained on simulations from the prior stayed about one posterior standard deviation from a Metropolis reference as the number of simulations grew, and a generator trained near a preliminary estimate, with its residuals centered and rescaled, came to about $0.07$ posterior standard deviations~\cite{polsonsokolov2026manifold}. That is the accuracy of the Laplace approximation at the posterior mode, within the Monte Carlo error of the reference. The case for the generator in this experiment is amortization, not accuracy.
+
+\section{History: filtering, calibration and assimilation}
+
+Bayesian inference for dynamical systems has a long history in statistics and in the geosciences, developed largely independently. Carlin, Polson and Stoffer~\cite{cps1992} introduced Gibbs sampling for nonlinear and non Gaussian state space models. Polson and Roberts~\cite{polsonroberts1994} gave Bayes factors for diffusions observed at discrete times. Polson and Stroud developed simulation based inference for derivative pricing models, and the practical filter of Polson, Stroud and M\"uller~\cite{psm2008} addressed sequential parameter learning. Kennedy and O'Hagan~\cite{kennedyohagan2001} formalized the calibration of computer models with Gaussian process emulators and a model discrepancy term, and Higdon and coauthors extended the approach to high dimensional outputs. In meteorology, four dimensional variational assimilation computes the maximum a posteriori initial condition for a Gaussian prior and likelihood using an adjoint model, and Evensen's ensemble Kalman filter~\cite{evensen1994} propagates an ensemble of states through the forecast model and updates it linearly. In the language of this book, four dimensional variational assimilation is the mode of the posterior on the solution manifold, the ensemble Kalman filter is an affine transport approximation to the posterior (Chapter~\ref{ch:gbc}), and generative Bayesian computation is its nonlinear completion.
+
+\input{chapters/ext/ch10}
+
+\section*{Notes}
+
+The generative computation on the solution manifold is from our paper~\cite{polsonsokolov2026manifold}. Our earlier paper~\cite{polsonsokolov2026ns} treats the discretized Navier Stokes equations as a state space model and learns parameters by particle learning.

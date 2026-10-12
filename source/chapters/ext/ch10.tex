@@ -1,0 +1,83 @@
+\section{Gaussian measures on function spaces}
+
+The priors of this chapter are Gaussian measures on infinite dimensional spaces. Let $\mu = N(0,\mathcal{C})$ be a centered Gaussian measure on a separable Hilbert space $H$ with trace class covariance $\mathcal{C}$. Its Cameron Martin space is $E = \mathcal{C}^{1/2}H$ with norm $\|h\|_E = \|\mathcal{C}^{-1/2}h\|_H$.
+
+\begin{theorem}[Cameron Martin, Feldman and H\'ajek]
+\label{thm:cameron_martin}
+The shifted measure $\mu(\cdot-h)$ is equivalent to $\mu$ if $h\in E$ and mutually singular with it otherwise. For $h\in E$,
+\[
+\frac{\dd\mu(\cdot-h)}{\dd\mu}(x) = \exp\Big(\langle\mathcal{C}^{-1/2}h,\mathcal{C}^{-1/2}x\rangle-\frac12\|h\|_E^2\Big),
+\]
+where $\langle\mathcal{C}^{-1/2}h,\mathcal{C}^{-1/2}x\rangle$ is the Paley Wiener integral: the $L^2(\mu)$ limit of $\langle\mathcal{C}^{-1}h_n,x\rangle$ for any $h_n\in\mathcal{C}H$ with $h_n\to h$ in $E$. It is a centered Gaussian variable with variance $\|h\|_E^2$. Two Gaussian measures are either equivalent or mutually singular.
+\end{theorem}
+
+We quote the theorem without proof. The density is the Cameron Martin formula and the dichotomy is the Feldman H\'ajek theorem; both are proved in Bogachev~\cite{bogachev1998}.
+
+The Cameron Martin space has $\mu$ measure zero in infinite dimensions: draws from the prior are rougher than the functions the prior considers typical shifts. The maximum a posteriori estimator is defined through the Onsager Machlup functional
+\[
+I(\theta) = \mathcal{V}(\theta;y)+\frac12\|\theta\|_E^2,\qquad\mathcal{V}(\theta;y) = \frac{1}{2\delta^2}\|y-\mathcal{G}(\theta)\|^2,
+\]
+whose minimizer over $E$ is the Tikhonov regularized solution with penalty given by the Cameron Martin norm. Dashti, Law, Stuart and Voss~\cite{dashti2013} proved that this minimizer is the limit of the centers of small balls of maximal posterior probability, which gives the maximum a posteriori estimator a measure theoretic meaning in infinite dimensions.
+
+\section{Well posedness of the posterior}
+
+\begin{theorem}[Stuart]
+\label{thm:stuart_wellposed}
+Let $\Pi$ be a probability measure on a separable Banach space $X$ and let $\mathcal{V}:X\times\R^m\to\R$ be continuous. Suppose that for every $r>0$ there are nondecreasing functions $M_1(r,\cdot)$ and $M_2(r,\cdot)$, with $M_2$ strictly positive, such that for all $\theta\in X$ and all $y,y_1,y_2\in\R^m$ of norm at most $r$,
+\[
+\begin{gathered}
+\mathcal{V}(\theta;y)\geq-M_1(r,\|\theta\|),\\
+|\mathcal{V}(\theta;y_1)-\mathcal{V}(\theta;y_2)|\leq M_2(r,\|\theta\|)\,\|y_1-y_2\|,
+\end{gathered}
+\]
+and that, for every $r>0$, $e^{M_1(r,\|\theta\|)}\big(1+M_2(r,\|\theta\|)^2\big)$ is integrable under $\Pi$. Then $Z(y) = \int e^{-\mathcal{V}(\theta;y)}\Pi(\dd\theta)$ is positive and finite, the measure $\Pi^y$ with density $Z(y)^{-1}e^{-\mathcal{V}(\theta;y)}$ with respect to $\Pi$ is a probability measure, and for every $r>0$ there is $C$ such that
+\[
+d_{\mathrm{Hell}}\big(\Pi^y,\Pi^{y'}\big)\leq C\|y-y'\|
+\]
+for all $y,y'$ of norm at most $r$.
+\end{theorem}
+
+This is a special case of the well posedness theorems of Dashti and Stuart~\cite{dashti2017}. The theorem holds for data in a Banach space. For a Gaussian prior the integrability condition is checked with Fernique's theorem, which gives $\int e^{\varepsilon\|\theta\|^2}\Pi(\dd\theta)<\infty$ for small $\varepsilon>0$. The condition holds for the potential $\mathcal{V}(\theta;y) = \frac{1}{2\delta^2}\|y-\mathcal{G}(\theta)\|^2$ when $\mathcal{G}$ is continuous and grows at most polynomially in $\|\theta\|$, with $M_1 = 0$ and $M_2(r,s) = \delta^{-2}\big(r+\sup_{\|\theta\|\leq s}\|\mathcal{G}(\theta)\|\big)$.
+
+\begin{proof}[Sketch]
+Fix $r>0$ and write $M_i$ for $M_i(r,\|\theta\|)$. The lower bound gives $Z(y)\leq\int e^{M_1}\dd\Pi<\infty$. Take a point $\theta_0$ in the support of $\Pi$. By continuity and the Lipschitz bound in $y$, $\mathcal{V}$ is bounded above, uniformly for $\|y\|\leq r$, on a neighborhood of $\theta_0$, and the neighborhood has positive prior mass, so $Z(y)$ is bounded away from zero. For $a,b\geq-M$ one has $|e^{-a}-e^{-b}|\leq e^M|a-b|$ and $|e^{-a/2}-e^{-b/2}|\leq\frac12e^{M/2}|a-b|$. Hence
+\[
+\begin{gathered}
+|Z(y)-Z(y')|\leq\|y-y'\|\int e^{M_1}M_2\,\dd\Pi,\\
+\int\big(e^{-\mathcal{V}(\theta;y)/2}-e^{-\mathcal{V}(\theta;y')/2}\big)^2\,\dd\Pi\leq\frac14\|y-y'\|^2\int e^{M_1}M_2^2\,\dd\Pi,
+\end{gathered}
+\]
+and both integrals are finite by assumption. The squared Hellinger distance is at most a constant times the sum of the second integral and $|Z(y)-Z(y')|^2$, with a constant that depends on the lower bound for $Z$, and the claim follows.
+\end{proof}
+
+The map from data to the least squares initial condition is discontinuous, since the backward heat equation is ill posed in Hadamard's sense, but the map from data to posterior is Lipschitz in the Hellinger metric. Bayesian inversion is well posed where deterministic inversion is not, because it returns a measure that spreads its mass over the directions the data cannot determine.
+
+\section{Dimension robust sampling}\label{sec:dimrobust}
+
+Standard random walk Metropolis algorithms degenerate as the discretization of a function space problem is refined: the acceptance rate falls to zero unless the step size shrinks with the dimension. The preconditioned Crank Nicolson proposal of Cotter, Roberts, Stuart and White~\cite{cotter2013} avoids this. With prior $N(0,\mathcal{C})$, propose
+\[
+\theta' = \sqrt{1-\beta^2}\,\theta+\beta\,\xi,\qquad\xi\sim N(0,\mathcal{C}),
+\]
+and accept with probability $\min\{1,\exp(\mathcal{V}(\theta;y)-\mathcal{V}(\theta';y))\}$. The proposal is reversible with respect to the prior, so the acceptance probability involves only the likelihood, and the algorithm is well defined on the infinite dimensional space. Hairer, Stuart and Vollmer~\cite{hairer2014} proved that for a large class of target measures its Wasserstein spectral gap is bounded below independently of the discretization, and that this gap implies a spectral gap in $L^2$. The algorithm is an instance of the general principle of this book: a Markov chain that preserves the reference measure exactly, here the Gaussian prior, and corrects only for the tilt, mirrors the structure of Gibbs conditioning, in which the reference measure is fixed and only the constraint changes.
+
+\section{A simulated example in two dimensions}\label{sec:simns2d}
+
+Figure~\ref{fig:ns2d} shows a pseudospectral solution of the two dimensional vorticity equation, started from ten Gaussian vortices of random sign and strength. Isolated vortices persist, vortices of opposite sign close to one another are sheared into filaments, and viscosity thins the filaments. Kraichnan, Leith and Batchelor~\cite{kraichnan1967,leith1968,batchelor1969} predicted that in two dimensions energy moves to large scales and enstrophy to small scales, a dual cascade. The lower panels of the figure show the energy and enstrophy spectra, summed over shells of the wavenumber (the caption gives the definition). They show the two directions of the dual cascade only in part within $t=5$. The energy at $k=1$ rises from $0.0265$ to $0.0315$, which viscosity alone cannot do, while the total energy falls by $11$ percent, and the share of the energy at $k\le3$ rises from $0.82$ to $0.87$, so energy moves to large scales. The share of the enstrophy at $k\ge16$ grows from $5\times10^{-7}$ to $2.4\times10^{-3}$, so some enstrophy moves to small scales, but the total enstrophy falls by $32$ percent and its mean wavenumber does not rise, from $3.9$ to $3.8$. Three times of one flow do not show an inertial range.
+
+\begin{figure}[t]
+\centering
+\includegraphics{ns2d}
+\caption{Top: vorticity of a two dimensional Navier Stokes flow on the torus $[0,2\pi]^2$ with viscosity $\nu = 2\times10^{-3}$ at times $t = 0$, $1.5$ and $5$, started from ten Gaussian vortices of random sign. Red is positive and blue is negative vorticity (both print dark in grayscale), on one symmetric color scale for the three panels, with limits $\pm5.87$, the largest absolute value of the initial vorticity. Bottom: the energy spectrum $E(k)$ and the enstrophy spectrum $Z(k)$ per unit area at the same times, on logarithmic axes; with $\hat\omega_j$ the Fourier coefficients of the vorticity, $E(k)$ is the sum of $\frac12|\hat\omega_j|^2/|j|^2$ and $Z(k)$ the sum of $\frac12|\hat\omega_j|^2$ over the wavenumbers $j$ with $|j|$ rounded to $k$. The solution is computed by a dealiased pseudospectral method with fourth order Runge Kutta time stepping on a $96\times96$ grid.}
+\label{fig:ns2d}
+\end{figure}
+
+\input{chapters/ext/ch10_post_ns}
+
+\section*{Exercises}
+\begin{enumerate}
+\item In the heat equation sequence model, derive the posterior mean and variance of $\theta_k$.
+\item Show that the functional $L\theta = \theta_1$ satisfies the summability condition of Theorem~\ref{thm:heat_rates} and compute its asymptotic variance.
+\item Prove that the preconditioned Crank Nicolson proposal is reversible with respect to $N(0,\mathcal{C})$.
+\item Show that a traveling front $U(x-ct)$ of the Fisher Kolmogorov equation satisfies $DU''+cU'+rU(1-U) = 0$, and that rescaling the variable by $\sqrt{D/r}$ leaves the single parameter $c/\sqrt{rD}$.
+\item Compute the Cameron Martin norm of a smooth function $h$ with $h(0) = 0$ under the Brownian motion prior on $[0,1]$.
+\end{enumerate}

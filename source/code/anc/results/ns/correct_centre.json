@@ -1,0 +1,9 @@
+{
+ "laplace": 0.07846102472413462,
+ "laplace_corrected": 0.08114473881631647,
+ "gbc_centred": 0.0909595381829973,
+ "gbc_centred_corrected_deflated": 0.0720072405490059,
+ "gbc_corrected_only": 0.09239424661584628,
+ "offset_MAP": 0.060556612320335684,
+ "offset_corrected": 0.06379608881780141
+}

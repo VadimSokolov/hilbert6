@@ -1,0 +1,36 @@
+\section{A worked example: the harmonic oscillator}
+
+Nelson's mechanics is easiest to see in the ground state of the harmonic oscillator $H = \frac{p^2}{2m}+\frac12m\omega^2x^2$. The ground state is
+\[
+\psi_0(x) = \Big(\frac{m\omega}{\pi\hbar}\Big)^{1/4}\exp\Big(-\frac{m\omega x^2}{2\hbar}\Big),\qquad E_0 = \frac{\hbar\omega}{2},
+\]
+so $\rho = |\psi_0|^2$ is the Gaussian law with variance $\hbar/(2m\omega)$ and the phase $S$ is constant. The current velocity vanishes, $v = 0$, and the osmotic velocity is
+\[
+u = \frac{\hbar}{2m}\,\frac{\dd}{\dd x}\log\rho = -\omega x.
+\]
+Hence the forward drift is $b = v+u = -\omega x$, and Nelson's process is
+\[
+\dd X_t = -\omega X_t\dd t+\sqrt{\frac\hbar m}\,\dd W_t,
+\]
+an Ornstein Uhlenbeck process whose stationary variance $\frac{\hbar/m}{2\omega} = \frac{\hbar}{2m\omega}$ agrees with $|\psi_0|^2$. The quantum ground state of the oscillator is the stationary Ornstein Uhlenbeck process, the same process that underlies the Gaussian Poincar\'e inequality of Chapter~\ref{ch:poincare} and Langevin's equation of Chapter~\ref{ch:brownian}. The energy is recovered from the Madelung decomposition: the potential energy is $\frac12m\omega^2\E X^2 = \frac{\hbar\omega}{4}$ and the quantum potential contributes $\frac{\hbar^2}{8m}J(\rho) = \frac{\hbar^2}{8m}\cdot\frac{2m\omega}{\hbar} = \frac{\hbar\omega}{4}$, for a total of $\frac{\hbar\omega}2$. The uncertainty product is $\Var(X)\Var(P) = \frac{\hbar}{2m\omega}\cdot\frac{m\hbar\omega}{2} = \frac{\hbar^2}{4}$, the Gaussian equality case of Chapter~\ref{ch:entropy}.
+
+Excited states make the difficulties of the theory visible. The first excited state $\psi_1\propto xe^{-m\omega x^2/2\hbar}$ vanishes at the origin, and the osmotic drift $\frac{\hbar}{2m}\frac{\dd}{\dd x}\log\rho$ has a singularity of the form $\hbar/(mx)$ there, strong enough to prevent the process from crossing zero. Multitime correlations of the process therefore differ from the quantum mechanical correlation functions: the process stays on one side of the origin, so $\E[X_0X_t]\geq0$ for all $t$, whereas the symmetrized quantum correlation $\frac12\langle\psi_1|x(0)x(t)+x(t)x(0)|\psi_1\rangle = \frac{3\hbar}{2m\omega}\cos\omega t$ is negative for some $t$.
+
+\section{Quantum entropy and Bayesian updating}
+
+The von Neumann entropy of a density operator is $S(\rho) = -\tr(\rho\log\rho)$ and the quantum relative entropy is $S(\rho\|\sigma) = \tr\big(\rho(\log\rho-\log\sigma)\big)$. Klein's inequality~\cite{klein1931} states that $S(\rho\|\sigma)\geq0$ with equality only when $\rho = \sigma$, and Lindblad~\cite{lindblad1975} and Uhlmann~\cite{uhlmann1977} proved that it is monotone under completely positive trace preserving maps, the quantum data processing inequality. For commuting $\rho$ and $\sigma$ these reduce to Shannon entropy and Kullback Leibler divergence. Measurement with a projection valued measure $\{E_k\}$ maps a state $\rho$ to the classical distribution $p_k = \tr(\rho E_k)$, and L\"uders' rule~\cite{luders1950} $\rho\mapsto E_k\rho E_k/p_k$ is the quantum analogue of conditioning. When the observable commutes with the state, L\"uders' rule reduces to Bayes' rule; when it does not, it disturbs the state.
+
+Petz recovery and the theory of quantum sufficiency~\cite{petz1986,petz1988} extend the classical theory of sufficient statistics: a channel preserves the relative entropy of a pair of states exactly when it can be reversed on them. Quantum state tomography and quantum Bayesian experimental design based on expected relative entropy are therefore close analogues of the classical methods. The prior must be built on the set of density operators, which is constrained by positivity and unit trace, and the measurements must be informationally complete for the state to be identifiable.
+
+\section{Path integrals and diffusion Monte Carlo}
+
+The Feynman Kac formula of Theorem~\ref{thm:feynmankac} gives a practical method for ground states. Write $\phi(\tau,x)$ for the solution of $\partial_\tau\phi = \frac12\Delta\phi-(V-E)\phi$. As $\tau\to\infty$, $\phi$ converges, after normalization, to the ground state $\psi_0$ when $E = E_0$, and grows or decays exponentially otherwise. Diffusion Monte Carlo simulates a population of Brownian walkers, kills or duplicates each walker at rate $V-E$, and adjusts $E$ to keep the population stable; the stable value estimates $E_0$ and the walker density estimates $\psi_0$. With importance sampling by a trial function $\psi_T$, the walkers follow the drift $\nabla\log\psi_T$, which is Nelson's osmotic velocity for the trial state, and the branching rate becomes the local energy $(H\psi_T)/\psi_T$. The method is a particle filter (Chapter~\ref{ch:filters}) in imaginary time, with the potential playing the role of the likelihood, and its convergence theory is the propagation of chaos theory of interacting particle systems developed by Del Moral~\cite{delmoral2004}.
+
+\section*{Exercises}
+\begin{enumerate}
+\item Find measurement directions for which the singlet state attains $2\sqrt2$ in the CHSH combination.
+\item Derive the Madelung equations by substituting $\psi = \sqrt\rho\,e^{iS/\hbar}$ into the Schr\"odinger equation.
+\item Verify that the Ornstein Uhlenbeck process of the harmonic oscillator has stationary law $|\psi_0|^2$ by solving the stationary Fokker Planck equation.
+\item Using the Cameron Martin formula $\E\exp(-\frac{c^2}{2}\int_0^tB_s^2\dd s) = (\cosh ct)^{-1/2}$, recover the ground state energy $\frac12$ of $-\frac12\frac{\dd^2}{\dd x^2}+\frac12x^2$ from Theorem~\ref{thm:feynmankac}.
+\item Show that L\"uders' rule reduces to Bayes' rule when the state commutes with the measured projections.
+\end{enumerate}

@@ -1,0 +1,187 @@
+\chapter{Brownian Motion and Yor's Identities as Algorithms}
+\label{ch:brownian}
+
+\section{From pollen to paths}
+
+Robert Brown observed in 1827~\cite{brown1828} the irregular motion of particles ejected from pollen grains and showed that it persisted in inorganic dust, ruling out a vital origin. For seventy years the phenomenon had no theory. Bachelier in 1900~\cite{bachelier1900} gave the mathematics without the physics. Einstein in 1905~\cite{einstein1905} and Smoluchowski in 1906~\cite{smoluchowski1906} gave the physics: the motion is caused by the thermal agitation of the molecules of the fluid, the mean squared displacement grows linearly in time, and the constant of proportionality is related to temperature and viscosity by
+\begin{equation}
+D = \frac{k_B T}{6\pi\eta a},
+\label{eq:einstein_relation}
+\end{equation}
+for a sphere of radius $a$ in a fluid of viscosity $\eta$. Since $k_B = R/N_A$, a measurement of $D$ is a measurement of Avogadro's number. Perrin's experiments of 1908 and 1909~\cite{perrin1908,perrin1909} did exactly this and convinced the remaining skeptics, Ostwald among them, of the reality of atoms. Langevin in 1908~\cite{langevin1908} rederived Einstein's result from Newton's law with a random force, introducing the first stochastic differential equation. Wiener in 1923~\cite{wiener1923} constructed the process as a probability measure on continuous paths. Kolmogorov in 1931~\cite{kolmogorov1931} wrote down the forward and backward equations for general diffusions. L\'evy, Feller, It\^o and Doob completed the theory.
+
+Einstein's argument is the sixth problem in miniature. A macroscopic law, diffusion with coefficient $D$, is derived from microscopic collisions; the derivation passes through a probability distribution on the motion of a single particle; and the macroscopic constant encodes a microscopic quantity, the size of molecules, that can be inferred from macroscopic observations.
+
+\section{Construction}
+
+\begin{definition}
+A standard Brownian motion is a process $(B_t)_{t\geq0}$ with $B_0 = 0$, continuous paths, and independent Gaussian increments $B_t - B_s\sim N(0,t-s)$.
+\end{definition}
+
+The most algorithmic construction is due to L\'evy and Ciesielski. Let $h_{0}=\mathbb{1}_{[0,1]}$ and, for $n\geq0$ and $0\leq k<2^n$, let $h_{n,k} = 2^{n/2}\big(\mathbb{1}_{[k2^{-n},(k+\frac12)2^{-n})} - \mathbb{1}_{[(k+\frac12)2^{-n},(k+1)2^{-n})}\big)$ be the Haar functions, an orthonormal basis of $L^2[0,1]$. Their integrals $S_{n,k}(t) = \int_0^t h_{n,k}$ are the Schauder tent functions, of height $2^{-n/2-1}$ and support of length $2^{-n}$.
+
+\begin{theorem}[L\'evy, Ciesielski]
+\label{thm:levy_ciesielski}
+Let $N_0$ and $N_{n,k}$ be independent standard normal variables. The series
+\[
+B_t = N_0\,t + \sum_{n=0}^\infty\sum_{k=0}^{2^n-1} N_{n,k}\,S_{n,k}(t)
+\]
+converges uniformly on $[0,1]$ almost surely, and its sum is a standard Brownian motion on $[0,1]$.
+\end{theorem}
+
+\begin{proof}
+For fixed $n$ the tents $S_{n,k}$ have disjoint supports, so $\sup_t\big|\sum_k N_{n,k}S_{n,k}(t)\big|\leq 2^{-n/2-1}\max_k|N_{n,k}|$. Since $\P(\max_k|N_{n,k}|>2\sqrt{n})\leq 2^n e^{-2n}$, which is summable, Borel Cantelli shows that the $n$th level is eventually bounded by $\sqrt{n}2^{-n/2}$, a summable sequence. The limit is therefore continuous. It is a centered Gaussian process with covariance
+\[
+\E B_sB_t = \sum_{\phi}\int_0^s\phi\int_0^t\phi = \langle\mathbb{1}_{[0,s]},\mathbb{1}_{[0,t]}\rangle_{L^2} = s\wedge t,
+\]
+by Parseval's identity for the Haar basis.
+\end{proof}
+
+Truncating the series of Theorem~\ref{thm:levy_ciesielski} after level $n$ gives an exact sample of Brownian motion at the dyadic points $k2^{-(n+1)}$, linearly interpolated in between.
+
+\section{The heat equation and the generator}
+
+The transition density $p_t(x,y) = (2\pi t)^{-1/2}e^{-(y-x)^2/2t}$ solves $\partial_t p = \frac12\partial_y^2 p$. For a diffusion $\dd X_t = b(X_t)\dd t + \sigma(X_t)\dd B_t$, It\^o's formula shows that $u(t,x) = \E_x f(X_t)$ solves the backward equation $\partial_t u = \mathcal{L}u$ with $\mathcal{L} = b\,\partial_x + \frac12\sigma^2\partial_x^2$, and the law $\rho_t$ of $X_t$ solves the forward, or Fokker Planck, equation $\partial_t\rho = \mathcal{L}^*\rho$. The Ornstein Uhlenbeck process $\dd X_t = -X_t\dd t+\sqrt2\dd B_t$ has the standard Gaussian as invariant law and the semigroup used in the proof of Theorem~\ref{thm:gaussian_poincare}.
+
+\section{Langevin, Ornstein Uhlenbeck and the high friction limit}
+
+Langevin's equation for a particle of mass $m$ subject to friction $\zeta$ and thermal noise reads
+\[
+\dd X_t = V_t\dd t,\qquad m\,\dd V_t = -\zeta V_t\dd t + \sqrt{2\zeta k_BT}\,\dd B_t.
+\]
+The velocity is an Ornstein Uhlenbeck process with stationary law $N(0,k_BT/m)$, the one dimensional Maxwellian. The position is not Markov. Integrating,
+\[
+X_t - X_0 = \frac{\sqrt{2\zeta k_B T}}{\zeta}B_t + \frac{m}{\zeta}(V_0 - V_t),
+\]
+so in the limit $m/\zeta\to0$ (high friction, the Smoluchowski Kramers limit) the position converges to a Brownian motion with diffusion coefficient $D = k_BT/\zeta$, which is Einstein's relation \eqref{eq:einstein_relation} once Stokes's law $\zeta = 6\pi\eta a$ is used. This is a rigorous passage from a mechanical model with friction to diffusion. The deeper question, whether Langevin's friction and noise can themselves be derived from deterministic collisions, is a genuine instance of the sixth problem. Bodineau, Gallagher and Saint Raymond~\cite{bgs2016} proved a version of it for $N$ identical hard spheres of diameter $\varepsilon$ in dimension $d$: in the limit $N\to\infty$, $\varepsilon\to0$ with $N\varepsilon^{d-1}\to\infty$ and a suitable diffusive scaling of the observation time, a tagged particle converges to Brownian motion. All particles have the same mass, so this derives a Brownian limit from deterministic collisions but does not derive Langevin's friction for a heavy particle in a bath of light ones.
+
+\section{Bessel processes and time change}
+
+For $\delta\geq0$ the squared Bessel process of dimension $\delta$ is the solution of
+\[
+\dd Z_t = \delta\dd t + 2\sqrt{Z_t}\dd B_t,\qquad Z_t\geq0.
+\]
+For integer $\delta$ it is the squared norm of a $\delta$ dimensional Brownian motion. Two structural facts make it central.
+
+\begin{theorem}[Additivity, Shiga and Watanabe]
+If $Z$ and $Z'$ are independent squared Bessel processes of dimensions $\delta,\delta'$ started at $z,z'$, then $Z+Z'$ is a squared Bessel process of dimension $\delta+\delta'$ started at $z+z'$.
+\end{theorem}
+
+\begin{proof}
+$\dd(Z+Z') = (\delta+\delta')\dd t + 2\sqrt{Z}\dd B + 2\sqrt{Z'}\dd B'$, and the martingale part has quadratic variation $4(Z+Z')\dd t$, so it equals $2\sqrt{Z+Z'}\dd W$ for a Brownian motion $W$ by L\'evy's characterization. Pathwise uniqueness for the squared Bessel equation, which holds by the Yamada Watanabe criterion, identifies the law.
+\end{proof}
+
+Additivity means the laws form a convolution semigroup in both $\delta$ and the starting point: squared Bessel laws are infinitely divisible, and their Laplace transforms are
+\[
+\E_z e^{-\lambda Z_t} = (1+2\lambda t)^{-\delta/2}\exp\Big(-\frac{\lambda z}{1+2\lambda t}\Big).
+\]
+At $z=0$ this is the Laplace transform of a Gamma law with shape $\delta/2$ and scale $2t$, the first appearance of the Gamma family that pervades the companion volume on Hilbert's eighth problem.
+
+The square root of a squared Bessel process of dimension $\delta$ is a Bessel process of dimension $\delta$, and it is convenient to index it by $\nu = \delta/2-1$. For every real $\nu$, the Bessel process of index $\nu$ started at $r>0$ is the solution of
+\[
+\dd R_u = \dd\beta_u + \Big(\nu+\frac12\Big)\frac{\dd u}{R_u},\qquad R_0 = r,
+\]
+with $\beta$ a Brownian motion, run until it first hits zero. By Itô's formula $R^2$ solves the squared Bessel equation of dimension $2\nu+2$. For $\nu\geq0$ the process never reaches zero, and for $\nu<0$ it reaches zero in finite time.
+
+\begin{theorem}[Lamperti~\cite{lamperti1972}]
+\label{thm:lamperti}
+For $\nu\in\R$ let $A_t = \int_0^t e^{2(B_s+\nu s)}\dd s$. There is a Bessel process $R$ of index $\nu$ (dimension $2\nu+2$) started at $1$ such that
+\[
+e^{B_t + \nu t} = R_{A_t},\qquad t\geq0.
+\]
+If $\nu<0$, then $A_\infty = \lim_{t\to\infty}A_t$ is finite and is the time at which $R$ hits zero.
+\end{theorem}
+
+\begin{proof}
+Put $X_t = B_t+\nu t$. The map $t\mapsto A_t$ is a $C^1$ bijection of $[0,\infty)$ onto $[0,A_\infty)$ with derivative $e^{2X_t}>0$. Let $C$ be its inverse and set $R_u = e^{X_{C_u}}$ for $u<A_\infty$, so that $R_{A_t} = e^{X_t}$. Itô's formula gives $e^{X_t} = 1+M_t+(\nu+\frac12)\int_0^te^{X_s}\dd s$, where $M_t = \int_0^te^{X_s}\dd B_s$ is a continuous local martingale with $\langle M\rangle_t = A_t$. By the Dambis, Dubins and Schwarz theorem, $\beta_u = M_{C_u}$ is a Brownian motion (on an enlarged probability space if $A_\infty<\infty$). The substitution $s = C_v$, $\dd s = e^{-2X_{C_v}}\dd v$, gives $\int_0^{C_u}e^{X_s}\dd s = \int_0^uR_v^{-1}\dd v$, so $R_u = 1+\beta_u+(\nu+\frac12)\int_0^uR_v^{-1}\dd v$, which is the equation of a Bessel process of index $\nu$ started at $1$. If $\nu<0$, then $X_t\to-\infty$ linearly in $t$, so $e^{2X_t}$ is integrable and $A_\infty<\infty$, while $R_u = e^{X_{C_u}}\to0$ as $u\uparrow A_\infty$ because $C_u\to\infty$.
+\end{proof}
+
+Lamperti's relation converts questions about geometric Brownian motion, the model of Black and Scholes and the descendant of Bachelier's model, into questions about Bessel processes, and conversely. Combined with time reversal and the theory of last exit times, it generates a large family of identities in law.
+
+\begin{theorem}[Dufresne~\cite{dufresne1990}]
+\label{thm:dufresne}
+For $\mu>0$,
+\[
+\int_0^\infty e^{2(B_s - \mu s)}\dd s \eqd \frac{1}{2\gamma_\mu},
+\]
+where $\gamma_\mu$ has the Gamma law with shape $\mu$ and unit scale.
+\end{theorem}
+
+The identity and its relatives are surveyed in~\cite{matsumotoyor2005}.
+
+\begin{proof}
+By Theorem~\ref{thm:lamperti} with $\nu=-\mu$, the integral is the time $T_0$ at which a Bessel process of index $-\mu$ started at $1$ hits zero. For $\lambda>0$ let $u(x) = \E_xe^{-\lambda T_0}$ be the Laplace transform of this hitting time when the process starts at $x>0$. By scaling, $T_0$ under $\P_x$ has the law of $x^2T_0$ under $\P_1$, so $0\leq u\leq1$ and $u(0+)=1$. Since $e^{-\lambda t}u(R_t)$ is a martingale up to $T_0$, $u$ solves $\frac12u''+\frac{1-2\mu}{2x}u' = \lambda u$. The substitution $u(x) = x^\mu w(x)$ turns this into $x^2w''+xw'-(2\lambda x^2+\mu^2)w=0$, the modified Bessel equation of order $\mu$ in the variable $cx$ with $c = \sqrt{2\lambda}$, and the solutions with $u$ bounded are the multiples of $x^\mu K_\mu(cx)$. Since $K_\mu(z)\sim\frac12\Gamma(\mu)(z/2)^{-\mu}$ as $z\downarrow0$, the condition $u(0+)=1$ gives $u(x) = (cx)^\mu K_\mu(cx)/(2^{\mu-1}\Gamma(\mu))$. On the other hand, $K_\mu(z) = \frac12(z/2)^{-\mu}\int_0^\infty e^{-g-z^2/4g}g^{\mu-1}\dd g$~\cite[10.32.10]{dlmf}, and with $z=c$ this gives $\E e^{-\lambda/(2\gamma_\mu)} = \Gamma(\mu)^{-1}\int_0^\infty e^{-g-\lambda/2g}g^{\mu-1}\dd g = u(1)$. Laplace transforms determine laws.
+\end{proof}
+
+\section{Yor's identities as algorithms}
+
+Marc Yor and his school produced hundreds of identities of the form $X\eqd F(Y_1,\dots,Y_m)$ where $X$ is a functional of Brownian motion and the $Y_i$ are elementary independent variables, Gamma, Beta, normal or exponential. In our paper \emph{Yor's Identities as Algorithms}~\cite{polsonsokolovyor} we read each such identity as an exact simulation algorithm: to sample $X$, sample the $Y_i$ and apply $F$. No discretization, no Markov chain and no rejection step is required. The identity is a proof of correctness for the algorithm, and the algorithm is a numerical certificate for the identity.
+
+Theorem~\ref{thm:dufresne} is an example: the perpetuity $\int_0^\infty e^{2(B_s-\mu s)}\dd s$, which arises in the pricing of perpetual Asian options and in the theory of diffusions in random environments, is sampled exactly by one Gamma draw. A second example is Pitman's theorem~\cite{pitman1975}, $2M_t - B_t\eqd R_t$ as processes, where $M$ is the running maximum and $R$ a three dimensional Bessel process; it converts a path functional into a Markov process that can be sampled by summing three independent Brownian motions in quadrature.
+
+\input{chapters/ext/ch04_yor}
+
+\section{Exit times and infinite sums of exponentials}
+
+Let $T = \inf\{t: |B_t| = 1\}$ be the exit time of standard Brownian motion from $(-1,1)$. Since $e^{\sqrt{2\lambda}B_t - \lambda t}$ and $e^{-\sqrt{2\lambda}B_t-\lambda t}$ are martingales, their average $\cosh(\sqrt{2\lambda}B_t)e^{-\lambda t}$ is a martingale, and optional stopping at $T$ gives
+\begin{equation}
+\E e^{-\lambda T} = \frac{1}{\cosh\sqrt{2\lambda}}.
+\label{eq:exit_laplace}
+\end{equation}
+The Weierstrass product $\cosh z = \prod_{n\geq1}\big(1 + \frac{4z^2}{(2n-1)^2\pi^2}\big)$ then yields a structure theorem for $T$.
+
+\begin{theorem}[Exit time as a series of exponentials]
+\label{thm:exit_series}
+Let $E_1,E_2,\dots$ be independent standard exponential variables. Then
+\[
+T\eqd\sum_{n=1}^\infty\frac{8}{(2n-1)^2\pi^2}E_n.
+\]
+Equivalently $T\eqd 4\,\omega$ where $\omega$ has the P\'olya Gamma law $PG(1,0)$ of Polson, Scott and Windle~\cite{psw2013}. The density of $T$ is
+\[
+f_T(t) = \frac{\pi}{2}\sum_{n=0}^\infty(-1)^n(2n+1)\exp\Big(-\frac{(2n+1)^2\pi^2}{8}t\Big),\qquad t>0.
+\]
+\end{theorem}
+
+\begin{proof}
+The Laplace transform of the series is $\prod_n(1+8\lambda/((2n-1)^2\pi^2))^{-1}$, which equals $1/\cosh\sqrt{2\lambda}$ by the product formula with $z^2 = 2\lambda$. The series converges almost surely since its mean $\sum 8/((2n-1)^2\pi^2) = 1$ is finite, consistent with $\E T = 1$. The P\'olya Gamma law $PG(1,0)$ is defined by $\omega = \frac{1}{2\pi^2}\sum_n E_n/(n-\frac12)^2$, and $4\omega$ has coefficients $\frac{2}{\pi^2(n-\frac12)^2} = \frac{8}{\pi^2(2n-1)^2}$. For the density, $1/\cosh\sqrt{2\lambda}$ has simple poles at $\lambda_n = -(2n+1)^2\pi^2/8$ with residues $(-1)^n(2n+1)\pi/2$, obtained by differentiating $\cosh\sqrt{2\lambda}$ at the poles; partial fractions and Laplace inversion give the series.
+\end{proof}
+
+Figure~\ref{fig:exit} compares three computations of the law of $T$. The series algorithm is exact up to truncation, and the truncation error after $K$ terms has mean $\sum_{n>K}8/((2n-1)^2\pi^2)\approx 2/(\pi^2K)$, which can be corrected by a single Gamma variable matched in mean and variance.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{exit_time}
+\caption{The exit time of Brownian motion from $(-1,1)$. Histograms of 6000 paths simulated by the Euler scheme with step $2\times10^{-4}$ and of 60000 draws of the series of exponentials of Theorem~\ref{thm:exit_series} truncated at 200 terms, and the density of the theorem summed over 200 terms.}
+\label{fig:exit}
+\end{figure}
+
+The theorem is a special case of a general principle due to Kent~\cite{kent1980}. For a regular one dimensional diffusion started at a reflecting or entrance boundary $a$, the hitting time of a level $b$ is distributed as $\sum_n E_n/\lambda_n$, where $0<\lambda_1<\lambda_2<\cdots$ are the eigenvalues of minus the generator on $(a,b)$ with Dirichlet condition at $b$ and the natural condition at $a$. Hitting times are therefore infinitely divisible, indeed generalized Gamma convolutions in the sense of Chapter~\ref{ch:mixtures}, and their L\'evy measures are determined by the spectrum. Krein's theory of strings, in the form given by Kotani and Watanabe~\cite{kotani1982}, runs the other way: a diffusion in natural scale with given boundary conditions is determined by its spectral measure, which records the eigenvalues together with their norming constants. The companion volume~\cite{polsonh8} uses this inverse spectral correspondence for the Riemann $\xi$ function of Section~\ref{sec:excursions_xi}.
+
+\section{Brownian excursions and the Riemann \texorpdfstring{$\xi$}{xi} function}
+\label{sec:excursions_xi}
+
+One identity of the Yor school connects Brownian motion with the Riemann zeta function. Let $\xi(s) = \frac12 s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$ be the Riemann $\xi$ function, entire and symmetric under $s\mapsto1-s$, and let $\Xi(x) = \xi(\frac12+ix)$ be its restriction to the critical line, an even entire function that is real for real $x$.
+
+\begin{theorem}[Biane, Pitman and Yor]
+\label{thm:bpy}
+Let $m$ be the maximum of a standard Brownian excursion of unit length and $Y = \sqrt{2/\pi}\,m$. Then for all $s\in\C$,
+\[
+\E\big[Y^s\big] = 2\,\xi(s).
+\]
+\end{theorem}
+
+We quote the theorem without proof; the proof in~\cite{bpy2001} expresses the law of $m$ through the Jacobi theta function, whose functional equation is the source of the functional equation of $\xi$. The identity says that the Riemann hypothesis, the statement that the zeros of $\xi$ lie on $\Re s = \frac12$, is a statement about the Mellin transform of a Brownian functional. It is the bridge between the two Hilbert problems of this book and its companion, and we return to it in Chapter~\ref{ch:open}.
+
+\section{Matrix Brownian motion and Wick rotation}
+
+Let $X_t$ be Brownian motion on the space of $n\times n$ Hermitian matrices, with independent Brownian diagonal entries of variance $t$ and independent real and imaginary parts of the off diagonal entries, each of variance $t/2$. Dyson showed in 1962~\cite{dyson1962} that its eigenvalues $x_1<\cdots<x_n$ evolve as
+\[
+\dd x_i = \dd W_i + \sum_{j\neq i}\frac{\dd t}{x_i-x_j},
+\]
+where $W_1,\dots,W_n$ are independent standard Brownian motions, a system of Brownian particles with logarithmic repulsion that never collide. Biane~\cite{biane2009} gives a geometric description, by a Doob transform, of the motion of the eigenvalues or singular values of Brownian motions on Hermitian, complex invertible and unitary matrices. In a second, largely independent part Biane looks again at a paper of P\'olya of 1926~\cite{polya1926}, which introduces a function close to the Riemann $\xi$ function and shows that it satisfies the Riemann hypothesis, and observes that both functions have an interpretation through Mellin transforms of first passage times of diffusions. Replacing the time $t$ by the imaginary time $it$, the Wick rotation, turns the heat semigroup $e^{t\Delta/2}$ into the Schr\"odinger group $e^{it\Delta/2}$. Chapter~\ref{ch:quantum} uses this rotation to pass between Brownian motion and quantum mechanics.
+
+\input{chapters/ext/ch04}
+
+\section*{Notes}
+
+Nelson's \emph{Dynamical Theories of Brownian Motion}~\cite{nelson1967} remains the best short account of Einstein, Langevin and Ornstein Uhlenbeck. Revuz and Yor~\cite{revuzyor} is the standard reference for Bessel processes and time change.

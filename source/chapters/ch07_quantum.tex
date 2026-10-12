@@ -1,0 +1,136 @@
+\chapter{Quantum Mechanics: von Neumann, Nelson and Wick}
+\label{ch:quantum}
+
+\section{The second axiomatization}
+
+The sixth problem was posed before quantum mechanics existed, but no modern reading of it can ignore the quantum theory. Within three years of Heisenberg's matrix mechanics of 1925 and Schr\"odinger's wave mechanics of 1926, Hilbert, von Neumann and Nordheim had attempted an axiomatization~\cite{hilbertvnn1928}, and in 1932 von Neumann's \emph{Mathematische Grundlagen der Quantenmechanik}~\cite{vonneumann1932} gave the framework still in use. Von Neumann had introduced the density matrix and the entropy $-\tr(\rho\log\rho)$ in papers of 1927~\cite{vonneumann1927a,vonneumann1927b} and the spectral theorem for unbounded self adjoint operators in 1930~\cite{vonneumann1930}; the book assembles these, together with the measurement postulate, into one framework. It is the quantum counterpart of Kolmogorov's \emph{Grundbegriffe}, published a year later.
+
+This chapter sets out the axioms, explains in what sense quantum probability is and is not Kolmogorov probability, and describes two bridges from quantum mechanics back to Brownian motion: Nelson's stochastic mechanics and the Feynman Kac formula.
+
+\section{The axioms}
+
+\begin{definition}[Quantum system]
+A quantum system is described by a separable complex Hilbert space $\mathcal{H}$.
+\begin{enumerate}
+\item A state is a density operator $\rho$: a positive trace class operator with $\tr\rho = 1$. Pure states are rank one projections $\rho = |\psi\rangle\langle\psi|$.
+\item An observable is a self adjoint operator $A$ with spectral measure $E_A$, so that $A = \int\lambda\,E_A(\dd\lambda)$.
+\item The Born rule: the probability that a measurement of $A$ in state $\rho$ yields a value in a Borel set $B$ is $\tr(\rho\,E_A(B))$.
+\item Closed dynamics is unitary: $\rho_t = U_t\rho U_t^*$ with $U_t = e^{-itH/\hbar}$ for a self adjoint Hamiltonian $H$.
+\end{enumerate}
+\end{definition}
+
+For each fixed observable the Born rule defines a Kolmogorov probability measure on the spectrum. What fails is the existence of a single probability space on which all observables are simultaneously random variables with the prescribed joint laws: noncommuting projections do not admit a joint distribution. The axioms are therefore a noncommutative generalization of Kolmogorov's, with the commutative case recovered when all observables commute, in which case they are multiplication operators on an $L^2$ space and the state is a probability density.
+
+Is the Born rule itself derivable? Gleason's theorem of 1957~\cite{gleason1957} restricts the form of the answer: given the Hilbert space structure, any assignment of probabilities to projections that is additive and does not depend on the context in which a projection is measured has the Born form.
+
+\begin{theorem}[Gleason]
+Let $\dim\mathcal{H}\geq3$ and let $\mu$ assign to each orthogonal projection $P$ a number $\mu(P)\in[0,1]$ such that $\sum_i\mu(P_i) = 1$ whenever $\sum_iP_i = I$ for a countable family of mutually orthogonal projections. Then there is a unique density operator $\rho$ with $\mu(P) = \tr(\rho P)$ for all $P$.
+\end{theorem}
+
+We quote the theorem without proof; see Gleason~\cite[Theorem~4.1]{gleason1957}. The assumption $\dim\mathcal{H}\geq3$ cannot be dropped. On a two dimensional space the projections onto lines correspond to the unit vectors $v$ of the Bloch sphere, orthogonal projections correspond to antipodal vectors, and every function $g$ on the sphere with values in $[0,1]$ and $g(v)+g(-v) = 1$ satisfies the additivity condition, whereas only $g(v) = \frac12(1+r\cdot v)$ with $|r|\leq1$ has the form $\tr(\rho P)$.
+
+Gleason's theorem is to quantum probability what de Finetti's coherence theorem (Theorem~\ref{thm:coherence}) is to classical probability: it derives the form of probability assignments from a minimal consistency requirement. A Bayesian reading of quantum mechanics takes the density operator as a state of belief and Gleason's theorem as its coherence condition.
+
+\section{Bell's theorem and the limits of classical probability}
+
+That quantum probabilities cannot be classical in general is made sharp by Bell's theorem~\cite{bell1964}. Consider two parties, each choosing one of two binary measurements, $A_0,A_1$ and $B_0,B_1$, with outcomes $\pm1$. If there is a single probability space carrying all four outcomes as random variables, then
+\[
+A_0B_0+A_0B_1+A_1B_0-A_1B_1 = A_0(B_0+B_1)+A_1(B_0-B_1)\in\{-2,2\},
+\]
+since one of $B_0\pm B_1$ vanishes and the other equals $\pm2$. Taking expectations gives the inequality of Clauser, Horne, Shimony and Holt~\cite{clauser1969},
+\[
+|\E A_0B_0+\E A_0B_1+\E A_1B_0-\E A_1B_1|\leq2.
+\]
+Fine~\cite{fine1982} showed that for these four pairs of measurements the converse holds: if the four measured correlations satisfy the inequality, and the three inequalities obtained by moving the minus sign to each of the other terms, then a single probability space carrying all four outcomes and reproducing the measured joint laws exists. In quantum mechanics, with the singlet state of two spins and suitable measurement directions, the same combination equals $2\sqrt2$, the maximum allowed by Tsirelson's bound~\cite{tsirelson1980}. Experiments since Aspect in 1982~\cite{aspect1982}, and loophole free experiments in 2015~\cite{hensen2015,giustina2015,shalm2015}, observe violations of the inequality in agreement with quantum mechanics. The lesson for the sixth problem is that the observables of two entangled spins cannot all be realized as random variables on one classical probability space in such a way that every pair that can be measured together has its quantum mechanical joint law. The lesson for inference is narrower and positive: for any \emph{fixed} experimental arrangement the Born rule gives a classical likelihood, and Bayesian inference about the state, quantum state tomography, proceeds in Kolmogorov's framework.
+
+\section{Madelung and the quantum potential}\label{sec:madelung}
+
+Write a solution of the Schr\"odinger equation
+\[
+i\hbar\,\partial_t\psi = -\frac{\hbar^2}{2m}\Delta\psi+V\psi
+\]
+in polar form $\psi = \sqrt\rho\,e^{iS/\hbar}$. Separating real and imaginary parts gives, as Madelung observed~\cite{madelung1927}, a continuity equation and a Hamilton Jacobi equation with an extra term:
+\begin{align*}
+\partial_t\rho+\nabla\cdot\Big(\rho\frac{\nabla S}{m}\Big) &= 0,\\
+\partial_tS+\frac{|\nabla S|^2}{2m}+V+Q &= 0,\qquad Q = -\frac{\hbar^2}{2m}\frac{\Delta\sqrt\rho}{\sqrt\rho}.
+\end{align*}
+The term $Q$ is Bohm's quantum potential. Its average is a Fisher information:
+\[
+\int\rho\,Q\dd x = -\frac{\hbar^2}{2m}\int\sqrt\rho\,\Delta\sqrt\rho\dd x = \frac{\hbar^2}{2m}\int|\nabla\sqrt\rho|^2\dd x = \frac{\hbar^2}{8m}J(\rho).
+\]
+The quantum energy is the classical energy of the probability fluid plus a Fisher information penalty, the same quantity that appeared in de Bruijn's identity and in the uncertainty principle of Chapter~\ref{ch:entropy}. Ground states minimize $\int V\rho+\frac{\hbar^2}{8m}J(\rho)$, which is the variational principle behind both Schr\"odinger's equation and, with $J$ replaced by entropy, Gibbs measures.
+
+\section{Nelson's stochastic mechanics}
+
+In 1966 Edward Nelson~\cite{nelson1966} asked whether the Schr\"odinger equation could be derived from a classical diffusion. Suppose a particle of mass $m$ moves as
+\[
+\dd X_t = b(X_t,t)\dd t+\sqrt{\frac\hbar m}\,\dd W_t,
+\]
+a Brownian motion with diffusion coefficient $\hbar/(2m)$ and a forward drift $b$. Nelson defined also a backward drift $b_*$ by the time reversal of the diffusion, and the current and osmotic velocities
+\[
+v = \frac{b+b_*}{2},\qquad u = \frac{b-b_*}{2} = \frac{\hbar}{2m}\nabla\log\rho,
+\]
+the second identity being a consequence of Nelson's time reversal formula for diffusions. He then postulated a stochastic analogue of Newton's law, the mean acceleration defined by the average of forward and backward mean derivatives equals $-\nabla V/m$.
+
+\begin{theorem}[Nelson]
+Let $\rho>0$ and $S$ be smooth functions on $\R^n\times(0,T)$, and let $X_t$ be a diffusion with diffusion constant $\nu = \hbar/2m$, forward drift $b = \frac1m\nabla S+\nu\nabla\log\rho$ and density $\rho(\cdot,t)$ at time $t$. Then $X$ satisfies Nelson's stochastic Newton law if and only if $\psi = \sqrt\rho\,e^{iS/\hbar}$ satisfies the Schr\"odinger equation, after $S$ has been changed by a function of $t$ alone, which changes $\psi$ only by a phase.
+\end{theorem}
+
+\begin{proof}[Derivation]
+Nelson's mean forward and backward derivatives are $DX_t = b(X_t,t)$ and $D_*X_t = b_*(X_t,t)$, and his acceleration is $a = \frac12(DD_*+D_*D)X_t$. For a diffusion with these drifts a computation with It\^o's formula gives
+\[
+a = \partial_tv+(v\cdot\nabla)v-(u\cdot\nabla)u-\nu\Delta u.
+\]
+The Fokker Planck equation for $\rho$ with forward drift $b = v+u$ and the time reversal formula $u = \nu\nabla\log\rho$ reduce to the continuity equation $\partial_t\rho+\nabla\cdot(\rho v) = 0$. With $u = \nu\nabla\log\rho$ one has the identity
+\[
+\begin{aligned}(u\cdot\nabla)u+\nu\Delta u &= \nabla\Big(\frac12|u|^2+\nu\nabla\cdot u\Big)\\ &= \nu^2\nabla\Big(\frac12|\nabla\log\rho|^2+\Delta\log\rho\Big) = 2\nu^2\nabla\frac{\Delta\sqrt\rho}{\sqrt\rho},\end{aligned}
+\]
+since $\Delta\sqrt\rho/\sqrt\rho = \frac12\Delta\log\rho+\frac14|\nabla\log\rho|^2$. As $2\nu^2 = \hbar^2/2m^2$, this equals $-\nabla Q/m$. Nelson's law $a = -\nabla V/m$ with $v = \nabla S/m$ therefore reads
+\[
+\frac1m\nabla\Big(\partial_tS+\frac{|\nabla S|^2}{2m}+V+Q\Big) = 0,
+\]
+and absorbing the spatially constant integration term, a function of $t$ alone, into $S$ gives the Madelung system, which is equivalent to the Schr\"odinger equation for $\psi = \sqrt\rho\,e^{iS/\hbar}$ because $\rho>0$. Every step is reversible, which gives the converse.
+\end{proof}
+
+Nelson's mechanics reproduces all predictions of quantum mechanics for position measurements at a single time. The existence of the diffusion for a given solution $\psi$ is a separate question: the drift is singular where $\rho$ vanishes, and Carlen~\cite{carlen1984} gave conditions under which the diffusion exists. Within these limits it can be read as a realization of Hilbert's program in a direction Hilbert did not anticipate: quantum mechanics as a theory of Brownian motion with a particular drift.
+
+The theory has difficulties. Wallstrom~\cite{wallstrom1994} observed that the condition that $\psi$ be single valued, which forces the quantization of angular momentum, does not follow from Nelson's equations, which only involve $\rho$ and $\nabla S$; it must be added by hand. Multitime correlations of Nelson's process differ from those predicted by quantum mechanics, for example for two entangled oscillators that do not interact~\cite{nelson2012}. Nelson himself surveyed its successes and failures in 2012~\cite{nelson2012} and took the natural explanation to be that it approximates a correct theory in which quantum mechanics is emergent. Its value for us is structural: it identifies the quantum contribution to the kinetic energy with the osmotic energy, a multiple of the Fisher information.
+
+\section{Imaginary time: Feynman Kac}
+
+Replacing $t$ by $-i\tau$ in the Schr\"odinger equation, with $\hbar = m = 1$, produces the heat equation with potential, $\partial_\tau\phi = \frac12\Delta\phi-V\phi$. Its solution has a probabilistic representation.
+
+\begin{theorem}[Feynman Kac]
+\label{thm:feynmankac}
+Let $V$ be bounded below and locally H\"older continuous and let $f$ be bounded and continuous. The function
+\[
+\phi(\tau,x) = \E_x\Big[f(B_\tau)\exp\Big(-\int_0^\tau V(B_s)\dd s\Big)\Big]
+\]
+is bounded on $[0,T]\times\R^n$ for every $T$, continuous on $[0,\infty)\times\R^n$ and of class $C^{1,2}$ for $\tau>0$, and it solves $\partial_\tau\phi = \frac12\Delta\phi-V\phi$ with $\phi(0,\cdot) = f$. It is the only function with these properties.
+\end{theorem}
+
+\begin{proof}[Sketch]
+Let $\phi$ be a function with these properties and fix $\tau>0$ and $x$. For $0<\varepsilon<\tau$ apply It\^o's formula to $M_s = \phi(\tau-s,B_s)\exp(-\int_0^sV(B_r)\dd r)$, $0\leq s\leq\tau-\varepsilon$. The drift vanishes by the equation, so $M$ is a local martingale. It is bounded, because $\phi$ is bounded on $[\varepsilon,\tau]\times\R^n$ and $V$ is bounded below, so it is a martingale and $\phi(\tau,x) = \E_xM_0 = \E_xM_{\tau-\varepsilon}$. Letting $\varepsilon\to0$, the continuity of $\phi$ at time zero and bounded convergence give the stated expectation. That the expectation is itself a classical solution, which is where the H\"older continuity of $V$ is used, is treated in Chapter 6 of Friedman's book~\cite{friedman1975} and in Section 5.7 of Karatzas and Shreve~\cite{karatzas1991}.
+\end{proof}
+
+Feynman's path integral for the Schr\"odinger propagator is the formal analytic continuation of this formula; Kac's insight in 1949~\cite{kac1949} was that in imaginary time the formal measure becomes Wiener measure and everything is rigorous. The ground state energy of $H = -\frac12\Delta+V$ is the exponential decay rate of $\phi$, and by the Donsker Varadhan theory it is a large deviation rate:
+\[
+E_0 = \inf_{\rho}\Big\{\int V\rho+\frac18J(\rho)\Big\},
+\]
+the infimum over probability densities, where $\frac18J(\rho) = \frac12\int|\nabla\sqrt\rho|^2$ is the Donsker Varadhan rate function of the occupation measure of Brownian motion. The ground state of quantum mechanics is the most probable occupation measure of a Brownian path, penalized by the potential. This is the Madelung energy of Section~\ref{sec:madelung} at $\hbar = m = 1$.
+
+Wick rotation underlies Euclidean quantum field theory. Osterwalder and Schrader gave in 1973~\cite{osterwalder1973} axioms for Euclidean Green functions, including reflection positivity. Their reconstruction theorem, corrected in 1975~\cite{osterwalder1975} by the addition of a linear growth condition, says that such Green functions can be continued to a relativistic quantum field theory satisfying Wightman's axioms~\cite{streater1964}. Nelson~\cite{nelson1973} showed that Euclidean free fields are Markov fields. Constructive quantum field theory, the program of Glimm and Jaffe, built interacting theories in two and three dimensions this way. In this sense the axiomatization of quantum field theory, one of the most demanding modern forms of the sixth problem, runs through probability measures on spaces of paths and fields.
+
+\section{Schr\"odinger's own probabilistic question}
+
+In 1931 Schr\"odinger posed a problem~\cite{schrodinger1931} motivated by the analogy between his equation and diffusion. Suppose a cloud of independent Brownian particles is observed at time zero with empirical distribution close to $\mu$ and at time one with empirical distribution close to $\nu$, an observation of exponentially small probability if $\nu$ is not the heat evolution of $\mu$. Given this observation, what is the most likely evolution of the cloud in between? By Sanov's theorem (Theorem~\ref{thm:sanov}) at the level of path measures, the answer is the law on paths that minimizes relative entropy with respect to Wiener measure subject to the marginal constraints. Schr\"odinger noticed that the solution has a product structure reminiscent of $\psi\bar\psi$ in quantum mechanics: the marginal at time $t$ factors as $\phi_t\hat\phi_t$, with $\phi$ solving the backward heat equation and $\hat\phi$ the forward one. Schr\"odinger left open the question whether the two factors exist. Fortet~\cite{fortet1940} gave a partial solution in 1940, Beurling~\cite{beurling1960} a more general one in 1960, and Jamison~\cite{jamison1975} the complete solution in 1975, together with the proof that the solution is a Markov process; F\"ollmer~\cite{follmer1988} formulated the problem as the entropy minimization above in 1988, and L\'eonard~\cite{leonard2014} surveys the history. The Schr\"odinger bridge problem is now the mathematical core of entropic optimal transport and of diffusion based generative modeling, and we take it up in Chapter~\ref{ch:gbc}.
+
+\section{Inference in the quantum setting}
+
+Three points connect this chapter with the inferential reading. First, Poincar\'e's 1912 argument~\cite{poincare1912quanta} for the necessity of quanta (Chapter~\ref{ch:poincare}) was an inverse problem. Second, quantum state tomography is Bayesian inference with the Born rule as likelihood and a prior on density operators, and the positivity constraint $\rho\geq0$ is exactly the kind of physical constraint that the solution manifold idea of Proposition~\ref{prop:solution_manifold} imposes automatically when one parametrizes the state rather than the data. Third, Nelson's and Kac's constructions show that quantum ground states are large deviation objects for Brownian motion, so that the simulation methods of Part~\ref{part:statmech}, diffusion and transport based sampling, apply to them directly. Diffusion Monte Carlo, a standard method of computational quantum chemistry, is the Feynman Kac formula of Theorem~\ref{thm:feynmankac} implemented by particles. Variational Monte Carlo, the other standard method, samples $|\psi_T|^2$ for a trial function $\psi_T$ by Metropolis moves and has no imaginary time evolution.
+
+\input{chapters/ext/ch07}
+
+\section*{Notes}
+
+Mackey~\cite{mackey1963} and Varadarajan~\cite{varadarajan1985} give the classical mathematical treatments of the quantum axioms. Nelson's \emph{Quantum Fluctuations}~\cite{nelson1985} develops stochastic mechanics. Glimm and Jaffe~\cite{glimmjaffe} is the standard reference for the Euclidean approach.

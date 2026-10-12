@@ -1,0 +1,357 @@
+\section{The posterior mean as a summary}\label{m:sec:jw}
+
+Fearnhead and Prangle~\cite{fearnheadprangle2012} showed that among summaries used in approximate Bayesian computation, the posterior mean minimizes quadratic risk for estimating $\theta$, and Jiang and coauthors~\cite{jiang2017} used a deep network to estimate the posterior mean from simulations and proved that ABC with that summary recovers the posterior mean. Throughout, $(\theta,Z)$ has the joint law of prior and model, $m(Z)=E[\theta\mid Z]$ is the posterior mean, $V(Z)=\Var(\theta\mid Z)$ the posterior covariance, and $S=S(Z)$ any statistic.
+
+\begin{theorem}[Posterior mean summary]\label{m:thm:jw}
+\begin{enumerate}[label=(\roman*),nosep]
+\item For any statistic $S$, $E[\theta\mid S]=E[m(Z)\mid S]$, and the Bayes risk of $E[\theta\mid S]$ under quadratic loss is $E\,\Var(\theta\mid S)\ge E\,V(Z)$, with equality if and only if $m(Z)$ is $\sigma(S)$ measurable. In particular $S=m(Z)$ attains the minimum.
+\item If $S=m(Z)$ then $E[\theta\mid S]=S$: conditioning on the posterior mean preserves the posterior mean exactly, for every $N$.
+\item If $S=m(Z)$ then $\Var(\theta\mid S)=E[V(Z)\mid S]$: the conditional variance given the posterior mean is the conditional expectation of the true posterior variance given the posterior mean.
+\item If $S=m(Z)$ and $V(Z)$ is a deterministic function of $m(Z)$, then $\Law(\theta\mid S)$ and $\Law(\theta\mid Z)$ have the same mean and covariance. If moreover the posterior is Gaussian, they coincide.
+\item For any statistic $S$, the mutual informations satisfy $I(\theta;S)\le I(\theta;Z)$, with equality if and only if $S$ is Bayes sufficient, i.e.\ $\Law(\theta\mid S)=\Law(\theta\mid Z)$ almost surely. Consequently $S=m(Z)$ is Bayes sufficient exactly when the posterior is a function of its mean.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) is the tower property and the variance decomposition $\Var(\theta\mid S)=E[V(Z)\mid S]+\Var(m(Z)\mid S)$, whose second term vanishes exactly when $m(Z)$ is $\sigma(S)$ measurable. (ii) is the tower property with $S=m(Z)$, since $m(Z)$ is then $\sigma(S)$ measurable. (iii) is the same decomposition. (iv) follows from (ii) and (iii) and, for the Gaussian case, from the fact that a Gaussian law is determined by its first two moments, which here are functions of $S$: $\Law(\theta\mid Z)$ is then $\sigma(S)$ measurable, and the tower property gives $\Law(\theta\mid S)=E[\Law(\theta\mid Z)\mid S]=\Law(\theta\mid Z)$. (v) is the data processing inequality for the Markov chain $\theta\to Z\to S$; equality holds if and only if $\theta\to S\to Z$ is also Markov, i.e.\ $\theta\perp Z\mid S$, which is Bayes sufficiency.
+\end{proof}
+
+Part (iv) is the linear Gaussian case of Proposition~\ref{m:prop:linsuff}. Its assumption that $V(Z)$ is a function of $m(Z)$ fails in general nonlinear models at finite $N$: the posterior spread depends on the data beyond the posterior mean, and Jiang Wong ABC is exact for the first moment but not for the law. The Bernstein von Mises theorem restores it asymptotically, because it says the posterior covariance is asymptotically the deterministic matrix $T(\I^*_{\theta_0}\I_{\theta_0})^{-1}/N$.
+
+\begin{assumption}[Uniform Bernstein von Mises]\label{m:ass:U}
+Let $S_N$ be a summary statistic and $\Ncal_\vartheta=N(0,T(\I^*_\vartheta\I_\vartheta)^{-1})$. There is a set $\Theta_N$ with:
+\begin{enumerate}[label=(U\arabic*),nosep]
+\item $\Pi(\Theta_N)\to1$ and $\theta_0\in\Theta_N$ for all $N$ large, and
+\begin{equation}\label{m:eq:unifbvm}
+\bar\epsilon_N:=\sup_{\vartheta\in\Theta_N}E^\N_\vartheta\,\Wone_{1,H^{-k-2}}\Big(\Law\big(\sqrt N(\theta-S_N)\mid Z^{(N)}\big),\ \Ncal_\vartheta\Big)\to0 ;
+\end{equation}
+\item the discrepancies in \eqref{m:eq:unifbvm} are uniformly integrable under the prior predictive law;
+\item $\vartheta\mapsto T(\I^*_\vartheta\I_\vartheta)^{-1}$ is Lipschitz from $(\Theta_N,\norm{\cdot}_{H^\zeta})$ into bounded operators $H^{-k-2}\to H^{-k-4}$, and $\vartheta\mapsto\Ncal_\vartheta$ is Lipschitz from $(\Theta_N,\norm{\cdot}_{H^\zeta})$ into the probability measures on $H^{-k-2}$ with the distance $\Wone_{1,H^{-k-2}}$, both with constants that do not depend on $N$; the first moments $\mathrm m_1(\vartheta)=\int\norm x_{H^{-k-2}}\,d\Ncal_\vartheta(x)$ satisfy $\int_{\Theta_N^c}\mathrm m_1\,d\Pi\to0$ and $\Pi(\Theta_N^c)\sup_{\Theta_N}\mathrm m_1\to0$; and both $S_N\in\Theta_N$ with probability tending to one and $E^\Pi[\norm{\theta-S_N}_{H^\zeta}\mid S_N]\to0$;
+\item for every $\theta_0\in\Theta_N$, the conditional discrepancy is small at the observed summary and not merely on average over the prior:
+\begin{equation}\label{m:eq:unifcond}
+\begin{aligned}
+&E\Big[\Wone_{1,H^{-k-2}}\Big(\Law\big(\sqrt N(\theta-S_N)\mid Z^{(N)}\big),\ \Ncal_{\theta_0}\Big)\,\Big|\,S_N\Big]\to0\\
+&\qquad\text{in }P^\N_{\theta_0}\text{ probability.}
+\end{aligned}
+\end{equation}
+\end{enumerate}
+\end{assumption}
+
+\begin{remark}[Why clause (U4) of Assumption~\ref{m:ass:U} is not implied by clause (U1)]\label{m:rem:u4}
+The supremum in \eqref{m:eq:unifbvm} bounds \emph{unconditional} expectations under each data law, whereas every use of it needs the conditional expectation given the summary, and a conditioning event of vanishing prior predictive mass can carry all of the $P^\N_{\theta_0}$ mass: under \eqref{m:eq:prior} the rescaled prior contracts to zero while $\theta_0$ is fixed and of order one, so the neighborhood of $\theta_0$ in which $S_N$ concentrates is prior predictively negligible. Smallness prior predictively almost everywhere therefore gives no control at the truth, and the bound $E_\vartheta[\epsilon_N\mid A]\le\bar\epsilon_N/P_\vartheta(A)$ is vacuous when $P_\vartheta(A)\to0$. This is the mirror image of the measure trap recorded in Remark~\ref{m:rem:jwmeasure}: there a fixed truth hypothesis cannot deliver a prior predictive conclusion, here a prior predictive hypothesis cannot deliver a fixed truth one. Open Question~\ref{m:op:unif} asks for a proof of the whole of Assumption~\ref{m:ass:U}, clause (U4) included.
+\end{remark}
+
+Requirement (U1) is Theorem~\ref{m:thm:nickl2} with the constants tracked uniformly over $\theta_0$ in the localization sets of Nickl~\cite[Theorem 3]{nicklbvm2024}; Konen and Nickl~\cite{konennickl2026} remark after their Corollary 1.3 that the exact coverage of credible bands can also be shown to hold uniformly in $\theta_0$, and omit the details. The ball must be taken in a space the prior charges: under \eqref{m:eq:prior} the reproducing kernel space is $H^\gamma$ but the sample paths lie in $H^{\gamma'}$ only for $\gamma'<\gamma-d/2$, so $\Pi(\{\norm{\theta}_{H^\gamma}\le\varrho\})=0$ for every $\varrho$ and the $H^\gamma$ ball is unavailable. Fixing such a $\gamma'$ and taking $\Theta_N=\{\norm{\theta}_{H^{\gamma'}}\le\varrho_N\}$ with $\varrho_N\to\infty$ slowly gives $\Pi(\Theta_N)\to1$, and $\theta_0\in H^\gamma\subset H^{\gamma'}$ lies in $\Theta_N$ for $N$ large, as (U1) requires. For the heat and Stokes equations (U3) holds with Lipschitz constants zero, since $\I_\vartheta$ and $\Ncal_\vartheta$ do not depend on $\vartheta$, and its moment clause then follows from $\Pi(\Theta_N^c)\to0$. For a nonlinear forward map (U3) is a hypothesis: Condition 2D bounds $\Gcal(\vartheta)-\Gcal(\theta_0)$ and says nothing about how $\I_\vartheta$ depends on $\vartheta$. Its $\Wone_1$ clause does not follow from the operator clause alone, because a Lipschitz bound in operator norm does not control the Hilbert Schmidt norms that Gaussian transport involves, but it follows from a factorization of the kind used in Section~\ref{m:sec:qnn}. If $T(\I^*_\vartheta\I_\vartheta)^{-1}=\mathcal D^{1/2}(\Id+\Xi_\vartheta)\mathcal D^{1/2}$ with $\mathcal D=\diag(1/\iota_j)$, $\Id+\Xi_\vartheta\succeq c_0\Id$ on $\Theta_N$ and $\vartheta\mapsto\Xi_\vartheta$ Lipschitz in operator norm, then coupling $\Ncal_\vartheta$ and $\Ncal_{\vartheta'}$ through a common white noise, as in Lemma~\ref{m:lem:coupling}, and using that the operator square root is Lipschitz with constant $1/(2\sqrt{c_0})$ on $\{C\succeq c_0\Id\}$ gives
+\[
+\Wone_{1,H^{-k-2}}(\Ncal_\vartheta,\Ncal_{\vartheta'})\le\Big(\sum_j\frac{(1+\lambda_j)^{-k-2}}{\iota_j}\Big)^{1/2}\frac{\norm{\Xi_\vartheta-\Xi_{\vartheta'}}_{op}}{2\sqrt{c_0}} ,
+\]
+where the sum is finite because $1/\iota_j\lesssim1+\lambda_j$ and $k>d/2$; if moreover $\norm{\Xi_\vartheta}_{op}$ is bounded on the support of the prior, then $\mathrm m_1$ is bounded and the moment clause again follows from $\Pi(\Theta_N^c)\to0$. The requirement $S_N\in\Theta_N$ in (U3) is there because the Lipschitz bound is used at the summary and not only at parameters, in the proof of Theorem~\ref{m:thm:jwbvm} at $\tilde\theta_N$ and in Corollary~\ref{m:cor:commute} at the mean of the GBC posterior. For the posterior mean and the set above, with $\gamma'\le\bar\gamma$, it holds under $P^\N_{\theta_0}$ because the posterior moment bound of Nickl~\cite[equation (39)]{nicklbvm2024} makes $\norm{\tilde\theta_N}_{H^{\bar\gamma}}$ bounded with probability tending to one, and under $\mathbf{P}$ because $\norm{\tilde\theta_N}_{H^{\gamma'}}\le E^\Pi[\norm\theta_{H^{\gamma'}}\mid Z^{(N)}]$, whose $\mathbf{P}$ expectation is the prior mean $E^\Pi\norm\theta_{H^{\gamma'}}$, which is finite and tends to zero because the rescaled prior contracts to zero, so that Markov's inequality gives $\mathbf{P}(\tilde\theta_N\notin\Theta_N)\le\varrho_N^{-1}E^\Pi\norm\theta_{H^{\gamma'}}\to0$. For the mean of the GBC posterior it holds in $P^\N_{\theta_0}$ probability by Jensen's inequality and the moment clause of (G2), as noted after Assumption~\ref{m:ass:G}. For the one step summary of Definition~\ref{m:def:summary}, with $\gamma'\le\bar\gamma$, it holds under $P^\N_{\theta_0}$ in the cases listed after Theorem~\ref{m:thm:qnnA}, where $\norm{\hat S^{J_N}_N-\theta_0}_{H^{\bar\gamma}}=o_P(1)$ bounds $\norm{\hat S^{J_N}_N}_{H^{\gamma'}}$ in probability; under $\mathbf{P}$ we do not derive it, and when Assumption~\ref{m:ass:U} is applied with $S_N=\hat S^{J_N}_N$ the requirement under $\mathbf{P}$ is part of the hypothesis.
+
+\begin{theorem}[Jiang Wong under Bernstein von Mises]\label{m:thm:jwbvm}
+Let Theorem~\ref{m:thm:nickl2} and Assumption~\ref{m:ass:U} hold with $S_N=\tilde\theta_N$ the posterior mean. Let $\tau_N=\Law(\sqrt N(\theta-\tilde\theta_N)\mid Z^{(N)})$ be the exact recentered posterior and $\tau^{\rm S}_N=\Law(\sqrt N(\theta-\tilde\theta_N)\mid\tilde\theta_N)$ the recentered posterior given the posterior mean statistic alone. Both are conditional laws under the joint law $\mathbf{P}=\Pi\otimes P^\N_\vartheta$ of $(\vartheta,Z^{(N)})$, which is also the law under which the GBC training pairs are simulated. Then
+\[
+\Wone_{1,H^{-k-2}}\big(\tau^{\rm S}_N,\Ncal_{\tilde\theta_N}\big)\to0\qquad\text{and}\qquad\Wone_{1,H^{-k-2}}(\tau_N,\tau^{\rm S}_N)\to0
+\]
+in $\mathbf{P}$ probability, and, because $\theta_0\in\Theta_N$, both also hold in $P^\N_{\theta_0}$ probability with $\Ncal_{\tilde\theta_N}$ replaced by $\Ncal_{\theta_0}$. The same holds with $\tilde\theta_N$ replaced by the one step statistic $\hat S^{J_N}_N$ of Definition~\ref{m:def:summary} when Assumption~\ref{m:ass:U} holds with $S_N=\hat S^{J_N}_N$ and the hypotheses of Proposition~\ref{m:prop:suff} hold. In words: whenever a Bernstein von Mises theorem holds uniformly over prior typical truths, the posterior mean summary, or any summary $\sqrt N$ equivalent to it in $H^{-k-2}$, is asymptotically sufficient in Wasserstein distance of order one at the $\sqrt N$ scale.
+\end{theorem}
+
+\begin{proof}
+All conditional laws are taken under $\mathbf{P}$. This is forced rather than chosen: $\tau^{\rm S}_N$ conditions the random parameter on a statistic, and is not defined when $\theta$ is held fixed at $\theta_0$.
+
+Write $\epsilon_N=\Wone_{1,H^{-k-2}}(\tau_N,\Ncal_\vartheta)$ for the discrepancy against the limit at the parameter that generated the data, and abbreviate $\Wone_{1,H^{-k-2}}$ to $\Wone_1$ in the rest of the proof. By (U1) and (U2),
+\[
+\mathbf{E}\epsilon_N=\int E^\N_\vartheta\epsilon_N\,d\Pi(\vartheta)\le\bar\epsilon_N+\int_{\Theta_N^c}E^\N_\vartheta\epsilon_N\,d\Pi(\vartheta)\to0 ,
+\]
+the second term because $\Pi(\Theta_N^c)\to0$ and the family is uniformly integrable. That $\epsilon_N$ compares $\tau_N$ with $\Ncal_\vartheta$ rather than with the fixed $\Ncal_{\theta_0}$ is essential: under $\mathbf{P}$ the data are generated from a prior draw, and $E^\N_\vartheta\Wone_1(\tau_N,\Ncal_{\theta_0})\to\Wone_1(\Ncal_\vartheta,\Ncal_{\theta_0})$, which is bounded away from zero for $\vartheta$ away from $\theta_0$, so the prior predictive average of that quantity does not vanish.
+
+Since $\tau^{\rm S}_N=\mathbf{E}[\tau_N\mid\tilde\theta_N]$ as a mixture and $\Wone_1$ is jointly convex,
+\[
+\Wone_1\big(\tau^{\rm S}_N,\mathbf{E}[\Ncal_\vartheta\mid\tilde\theta_N]\big)\le\mathbf{E}[\epsilon_N\mid\tilde\theta_N] .
+\]
+Now $\mathbf{E}\big[\mathbf{E}[\epsilon_N\mid\tilde\theta_N]\big]=\mathbf{E}\epsilon_N\to0$ and $\mathbf{E}[\epsilon_N\mid\tilde\theta_N]\ge0$, so Markov's inequality gives $\mathbf{E}[\epsilon_N\mid\tilde\theta_N]\to0$ in $\mathbf{P}$ probability. By convexity again,
+\[
+\Wone_1\big(\mathbf{E}[\Ncal_\vartheta\mid\tilde\theta_N],\Ncal_{\tilde\theta_N}\big)\le\mathbf{E}\big[\Wone_1(\Ncal_\vartheta,\Ncal_{\tilde\theta_N})\mid\tilde\theta_N\big] .
+\]
+On the event $\{\tilde\theta_N\in\Theta_N\}$, whose probability tends to one by (U3), split the right side according to whether $\vartheta\in\Theta_N$. Where it is, the $\Wone_1$ clause of (U3) bounds the integrand by a constant times $\norm{\vartheta-\tilde\theta_N}_{H^\zeta}$, whose conditional expectation given $\tilde\theta_N$ tends to zero in $\mathbf{P}$ probability by the last clause of (U3). Where it is not, $\Wone_1(\Ncal_\vartheta,\Ncal_{\tilde\theta_N})\le\mathrm m_1(\vartheta)+\mathrm m_1(\tilde\theta_N)\le\mathrm m_1(\vartheta)+\sup_{\Theta_N}\mathrm m_1$, and the conditional expectation of $(\mathrm m_1(\vartheta)+\sup_{\Theta_N}\mathrm m_1)\mathbf 1\{\vartheta\notin\Theta_N\}$ given $\tilde\theta_N$ has $\mathbf{P}$ expectation $\int_{\Theta_N^c}\mathrm m_1\,d\Pi+\Pi(\Theta_N^c)\sup_{\Theta_N}\mathrm m_1\to0$ by the moment clause of (U3), so it tends to zero in $\mathbf{P}$ probability by Markov's inequality. So $\mathbf{E}[\Wone_1(\Ncal_\vartheta,\Ncal_{\tilde\theta_N})\mid\tilde\theta_N]\to0$ in $\mathbf{P}$ probability, and the triangle inequality gives the first claim. For the second, $\Wone_1(\tau_N,\tau^{\rm S}_N)\le\epsilon_N+\Wone_1(\Ncal_\vartheta,\Ncal_{\tilde\theta_N})+\Wone_1(\Ncal_{\tilde\theta_N},\tau^{\rm S}_N)$; the first term tends to zero in $\mathbf{P}$ probability because $\mathbf{E}\epsilon_N\to0$, the second because its conditional expectation given $\tilde\theta_N$ does, and the third by the first claim.
+
+For a fixed $\theta_0\in\Theta_N$ the supremum in \eqref{m:eq:unifbvm} is not enough (Remark~\ref{m:rem:u4}); this is what clause (U4) of Assumption~\ref{m:ass:U} supplies. Since $\tau^{\rm S}_N=\mathbf{E}[\tau_N\mid\tilde\theta_N]$ and $\Wone_1$ is jointly convex, $\Wone_1(\tau^{\rm S}_N,\Ncal_{\theta_0})\le\mathbf{E}[\Wone_1(\tau_N,\Ncal_{\theta_0})\mid\tilde\theta_N]$, and the right side tends to zero in $P^\N_{\theta_0}$ probability by \eqref{m:eq:unifcond}. This is the first claim with $\Ncal_{\theta_0}$. The second follows from the triangle inequality and Theorem~\ref{m:thm:nickl2}, which gives $\Wone_1(\tau_N,\Ncal_{\theta_0})\to0$ in $P^\N_{\theta_0}$ probability. Moreover $\Wone_1(\Ncal_{\tilde\theta_N},\Ncal_{\theta_0})\to0$ in $P^\N_{\theta_0}$ probability by the $\Wone_1$ clause of (U3), since $\theta_0\in\Theta_N$, $\tilde\theta_N\in\Theta_N$ with probability tending to one and $\tilde\theta_N$ is consistent in $H^\zeta$, so the first claim also holds with $\Ncal_{\tilde\theta_N}$. For $\hat S^{J_N}_N$, replace $\tilde\theta_N$ by $\hat S^{J_N}_N$ throughout and use Proposition~\ref{m:prop:suff} for the recentering.
+\end{proof}
+
+\begin{remark}[Why a fixed truth hypothesis will not do]\label{m:rem:jwmeasure}
+Assumption~\ref{m:ass:U} cannot be replaced by the requirement that the discrepancy converge in $L^1(P^\N_{\theta_0})$ for the single truth $\theta_0$. The tower step runs under $\mathbf{P}$, where $\theta$ is random, and a hypothesis under $P^\N_{\theta_0}$, in which $\theta$ is degenerate, does not control $\mathbf{E}\epsilon_N$. Nor can such an $L^1$ bound be extracted from the second moment bound of Nickl~\cite[equation (39)]{nicklbvm2024} together with $\sqrt N\,\tilde\delta_N\to0$, because that rate condition is false for every admissible parameter:
+\[
+\sqrt N\,\tilde\delta_N(\xi)=N^{\frac12-\frac{\gamma}{2\gamma+d}\cdot\frac{\bar\gamma-\xi}{\bar\gamma+1}}\longrightarrow\infty ,
+\]
+the exponent being strictly positive since $\gamma/(2\gamma+d)<\tfrac12$ and $(\bar\gamma-\xi)/(\bar\gamma+1)<1$.
+\end{remark}
+
+\begin{corollary}[GBC with the posterior mean summary]\label{m:cor:jwgbc}
+Let $\Pi^{\rm S}_N=\Law(\theta\mid\tilde\theta_N)$ be the GBC target with the posterior mean summary and an exact generator. Then for every $N$ its mean equals the true posterior mean and its covariance is $E[V(Z)\mid\tilde\theta_N]$, and under Theorem~\ref{m:thm:nickl2} and Assumption~\ref{m:ass:U}, $\sqrt N\,\Wone_{1,H^{-k-2}}(\Pi^{\rm S}_N,\PiN)\to^P0$, which is assumption (G1) of Section~\ref{m:sec:main}.
+\end{corollary}
+
+\begin{proof}
+The two finite $N$ statements are Theorem~\ref{m:thm:jw}(ii) and (iii) applied with $S=m(Z)=\tilde\theta_N$. For the third, let $T_N(x)=\sqrt N(x-\tilde\theta_N)$, so that $T_{N\#}\Pi^{\rm S}_N=\tau^{\rm S}_N$ and $T_{N\#}\PiN=\tau_N$ in the notation of Theorem~\ref{m:thm:jwbvm}. A translation followed by a dilation leaves $\Wone_1$ translation invariant and scales it by the dilation factor, so
+\[
+\sqrt N\,\Wone_{1,H^{-k-2}}\big(\Pi^{\rm S}_N,\PiN\big)=\Wone_{1,H^{-k-2}}\big(\tau^{\rm S}_N,\tau_N\big),
+\]
+which is the second display of Theorem~\ref{m:thm:jwbvm} and tends to zero in probability under its hypotheses. That is (G1) with $\Pihat=\Pi^{\rm S}_N$.
+\end{proof}
+
+\section{Does sufficiency improve the bounds?}\label{m:sec:suffbounds}
+
+A separate question is whether sufficiency improves the \emph{bounds}, so that a GBC built on the adjoint statistic has provably smaller error or needs provably fewer simulations than one built on another summary or on the raw data. The answer is yes in three senses; one of them is specific to dissipative dynamics. Throughout, $V_Z=\Var(\theta\mid Z)$ and $V_S=\Var(\theta\mid S)$ denote posterior covariances, $\Delta I=I(\theta;Z)-I(\theta;S)\ge0$ the mutual information deficit of Theorem~\ref{m:thm:jw}(v), and $\Wone_1$ the Wasserstein distance of order one on $\R^D$ with the Euclidean norm.
+
+\subsection{The sufficiency gap is bracketed by two computable quantities}
+
+\begin{theorem}[Sufficiency gap]\label{m:thm:gap}
+In the linear Gaussian model $Y=\Phi\theta+\varepsilon$, $\theta\sim N(0,\Sigma_0)$, $\varepsilon\sim N(0,\varsigma^2\Id)$, let $S=AY$ be any linear statistic. Then the conditional laws $\Pi(\cdot\mid Z)$ and $\Pi(\cdot\mid S)$ are Gaussian with covariances $V_Z\preceq V_S$ not depending on the data, and
+\begin{enumerate}[label=(\roman*),nosep]
+\item (lower bound, Rao Blackwell) $\Wone_1\big(\Pi(\cdot\mid S),\Pi(\cdot\mid Z)\big)\ge\norm\xi$, where $\xi=E[\theta\mid S]-E[\theta\mid Z]$ is a centered Gaussian vector with covariance $V_S-V_Z$, so that $E\norm\xi^2=\tr(V_S-V_Z)$ and
+\[
+\sqrt{\tr(V_S-V_Z)-\norm{V_S-V_Z}_{op}}\ \le\ E\norm\xi\ \le\ \sqrt{\tr(V_S-V_Z)} ;
+\]
+\item (upper bound, transport entropy) $E_Z\,\Wone_1\big(\Pi(\cdot\mid Z),\Pi(\cdot\mid S)\big)\le\sqrt{2\norm{V_S}_{op}\,\Delta I}$, where $\Delta I=\tfrac12\log\det\big(V_SV_Z^{-1}\big)$;
+\item the lower bound $\norm\xi$ of (i) vanishes almost surely, and the upper bound of (ii) vanishes, if and only if $V_S=V_Z$, if and only if $S$ is Bayes sufficient; and for the adjoint statistic $S=\Phi^\top Y$ both vanish identically.
+\end{enumerate}
+Consequently, in expectation over the data, for any GBC posterior $\Pihat$ built on $S$ with generator error $\epsilon_{\rm gen}=\Wone_1(\Pihat,\Pi(\cdot\mid S))$,
+\[
+\begin{aligned}
+E\,\Wone_1\big(\Pihat,\Pi(\cdot\mid Z)\big)&\ge\sqrt{\tr(V_S-V_Z)-\norm{V_S-V_Z}_{op}}-E\,\epsilon_{\rm gen},\\
+E\,\Wone_1\big(\Pihat,\Pi(\cdot\mid Z)\big)&\le E\,\epsilon_{\rm gen}+\sqrt{2\norm{V_S}_{op}\Delta I}.
+\end{aligned}
+\]
+\end{theorem}
+
+\begin{proof}
+Gaussianity of both conditional laws with data independent covariances is the standard linear Gaussian computation; $V_Z\preceq V_S$ is the variance decomposition $V_S=V_Z+\Var(E[\theta\mid Z]\mid S)$, which is Theorem~\ref{m:thm:jw}(iii) with $E[\theta\mid Z]$ in place of $m(Z)$.
+
+(i) For any $\psi$ in the unit ball of the dual, $x\mapsto\langle x,\psi\rangle$ is Lipschitz with constant $1$, so $\Wone_1(\mu,\nu)\ge\sup_\psi|\langle E_\mu X-E_\nu X,\psi\rangle|=\norm{E_\mu X-E_\nu X}$. Taking $\mu=\Pi(\cdot\mid S)$, $\nu=\Pi(\cdot\mid Z)$ and using the tower property $E[E[\theta\mid Z]\mid S]=E[\theta\mid S]$, the squared expected difference is $E\,\Var(E[\theta\mid Z]\mid S)=\tr(V_S-V_Z)$. The vector $\xi=E[\theta\mid S]-E[\theta\mid Z]$ is a linear function of the Gaussian vector $Y$, hence centered Gaussian, and its covariance is $V_S-V_Z$ by the variance decomposition. Jensen's inequality gives $E\norm\xi\le(E\norm\xi^2)^{1/2}$. In the other direction $x\mapsto\norm x$ is Lipschitz with constant $1$, so the Gaussian Poincar\'e inequality gives $\Var\norm\xi\le\norm{V_S-V_Z}_{op}$, and $(E\norm\xi)^2=E\norm\xi^2-\Var\norm\xi\ge\tr(V_S-V_Z)-\norm{V_S-V_Z}_{op}$.
+
+(ii) A Gaussian measure $N(m,V)$ on $\R^D$ satisfies the transport entropy inequality $\Wone_1(\nu,N(m,V))\le\sqrt{2\norm V_{op}\,\mathrm{KL}(\nu\,\|\,N(m,V))}$ for every $\nu$, by the inequality of Talagrand~\cite{talagrand1996} for the standard Gaussian measure, an affine change of variables and $\Wone_1\le\Wone_2$. Apply it with $\nu=\Pi(\cdot\mid Z)$ and $N(m,V)=\Pi(\cdot\mid S)$: since $S$ is a function of $Z$, $\Pi(\cdot\mid Z)\ll\Pi(\cdot\mid S)$. Then take expectations over $Z$ and use Jensen's inequality for the concave square root together with the chain rule
+\[
+\begin{aligned}
+E_Z\,\mathrm{KL}\big(\Pi(\cdot\mid Z)\,\|\,\Pi(\cdot\mid S)\big)&=E\log\frac{p(\theta\mid Z)}{p(\theta\mid S)}\\
+&=E\log\frac{p(\theta\mid Z)}{p(\theta)}-E\log\frac{p(\theta\mid S)}{p(\theta)}\\
+&=I(\theta;Z)-I(\theta;S).
+\end{aligned}
+\]
+For Gaussians with a common mean structure the mutual information is $\tfrac12\log\det(\Sigma_0V^{-1})$, whence $\Delta I=\tfrac12\log\det(V_SV_Z^{-1})$.
+
+(iii) If $\xi=0$ almost surely then $\tr(V_S-V_Z)=E\norm\xi^2=0$, which with $V_S\succeq V_Z$ forces $V_S=V_Z$; $\log\det(V_SV_Z^{-1})=0$ forces the same; conversely $V_S=V_Z$ makes the covariance of $\xi$ vanish, so $\xi=0$ almost surely, and gives $\Delta I=0$. Further, $V_S=V_Z$ means $\Var(E[\theta\mid Z]\mid S)=0$, i.e.\ $E[\theta\mid Z]$ is $S$ measurable, which for Gaussian laws is sufficiency. For $S=\Phi^\top Y$ sufficiency is Proposition~\ref{m:prop:linsuff}. The final displays are the triangle inequality applied to (i) and (ii), with the Poincar\'e bound of (i) for the lower one.
+\end{proof}
+
+Neither bound of the theorem requires the generator to be trained; both are computable from the model before any simulation is run, so they can be used to decide in advance whether a proposed summary is adequate.
+
+\begin{proposition}[Sufficiency gap beyond the linear model]\label{m:prop:gapnl}
+Let $S=S(Z^{(N)})$ be a statistic, fix $D$, and write $\Wone_{1,w}$ for the Wasserstein distance of order one between laws of the first $D$ coordinates of $\theta$ in the norm $\norm x_w^2=\sum_{j\le D}(1+\lambda_j)^{-k-2}x_j^2$ that $H^{-k-2}$ induces on them. Suppose that there are a linear Gaussian model $Y_G=\Phi_G\theta+\varepsilon_G$ on $\R^D$, with prior $N(0,\Sigma_0)$, $\varepsilon_G\sim N(0,\Id)$ and posterior $\Pi_G$, a linear statistic $S_G=AY_G$, and a coupling of $(Z^{(N)},S)$ under the joint law $\mathbf P$ with $(Y_G,S_G)$ under the Gaussian model, such that
+\[
+\begin{aligned}
+\sqrt N\,E\,\Wone_{1,w}\big(\Pi(\cdot\mid Z^{(N)}),\Pi_G(\cdot\mid Y_G)\big)&\to0,\\
+\sqrt N\,E\,\Wone_{1,w}\big(\Pi(\cdot\mid S),\Pi_G(\cdot\mid S_G)\big)&\to0 .
+\end{aligned}
+\]
+Let $V_Z\preceq V_S$ be the posterior covariances of the Gaussian model given $Y_G$ and given $S_G$, $\Delta I=\tfrac12\log\det(V_SV_Z^{-1})$, and take traces and operator norms in $\norm\cdot_w$, that is, of $\Lambda_wV\Lambda_w$ with $\Lambda_w=\diag((1+\lambda_j)^{-(k+2)/2})$. Then the sufficiency gap at the $\sqrt N$ scale, $\Upsilon_N=\sqrt N\,E\,\Wone_{1,w}\big(\Pi(\cdot\mid S),\Pi(\cdot\mid Z^{(N)})\big)$, satisfies
+\[
+\begin{aligned}
+\Upsilon_N&\ge\sqrt{N\tr_w(V_S-V_Z)-N\norm{V_S-V_Z}_{op,w}}-o(1),\\
+\Upsilon_N&\le\sqrt{2N\norm{V_S}_{op,w}\,\Delta I}+o(1).
+\end{aligned}
+\]
+In the Gaussian experiment of Proposition~\ref{m:prop:pr} for the heat and Stokes equations, with $S$ its first $J'$ coordinates, the hypotheses hold with no error, $N(V_S-V_Z)$ is diagonal with entries $0$ for $j\le J'$ and $N\sigma_{0,j}^2\kappa_j/(1+\kappa_j)$ for $J'<j\le D$, and $\Delta I=\tfrac12\sum_{J'<j\le D}\log(1+\kappa_j)$; with $a_j=(1+\lambda_j)^{-k-2}N\sigma_{0,j}^2\kappa_j/(1+\kappa_j)$ the lower bound is $\big(\sum_{J'<j\le D}a_j-\max_{J'<j\le D}a_j\big)^{1/2}$, the maximum being the correction of Theorem~\ref{m:thm:gap}(i).
+\end{proposition}
+
+\begin{proof}
+The map $x\mapsto\Lambda_wx$ is an isometry from $(\R^D,\norm\cdot_w)$ onto $\R^D$ with the Euclidean norm. It carries the Gaussian model to the linear Gaussian model with parameter $\Lambda_w\theta$, prior $N(0,\Lambda_w\Sigma_0\Lambda_w)$ and posterior covariances $\Lambda_wV_Z\Lambda_w\preceq\Lambda_wV_S\Lambda_w$, and it leaves $\Delta I$ unchanged, since mutual information is invariant under invertible maps of the parameter. Theorem~\ref{m:thm:gap}, applied to that model and multiplied by $\sqrt N$, gives the two bounds for $\sqrt N\,E\,\Wone_{1,w}(\Pi_G(\cdot\mid S_G),\Pi_G(\cdot\mid Y_G))$, and the triangle inequality with the two hypotheses moves them to $\Upsilon_N$ at the cost of the two $o(1)$ terms. In the experiment of Proposition~\ref{m:prop:pr} the coordinates are independent under the prior and the likelihood, so the posterior given the first $J'$ coordinates leaves every mode $j>J'$ at its prior variance $\sigma^2_{0,j}$, while the posterior given all of them gives it the variance $\sigma^2_{0,j}/(1+\kappa_j)$; this gives $V_S-V_Z$ and $\Delta I$, and since $\Lambda_w(V_S-V_Z)\Lambda_w$ is diagonal its trace is $N^{-1}\sum_ja_j$ and its operator norm $N^{-1}\max_ja_j$.
+\end{proof}
+
+Both hypotheses of the proposition are expectations under the joint law $\mathbf P$, in which the data are generated by a parameter drawn from the prior, and not under $P^\N_{\theta_0}$. This decides which Gaussian model can satisfy the first, and it makes the second a property of the summary. For a symmetric positive semidefinite $D\times D$ matrix $V$ and a unit vector $u\in\R^D$ write $\sigma_u(V)=(u^\top\Lambda_wV\Lambda_wu)^{1/2}$, the standard deviation of $\langle u,\Lambda_wx\rangle$ under $N(0,V)$, and $\mathrm{dist}_w(V,V')=\max_{|u|=1}|\sigma_u(V)-\sigma_u(V')|$, a metric on such matrices; and let $\Sigma_D(\vartheta)$ be the covariance matrix of the first $D$ coordinates under $\Ncal_\vartheta$, that is, $\Sigma_J(\vartheta)$ of Proposition~\ref{m:prop:abcopt} with $J=D$.
+
+\begin{proposition}[The Gaussian model that the first hypothesis admits]\label{m:prop:gapreq}
+Let clauses (U1) and (U2) of Assumption~\ref{m:ass:U} hold for some summary $S_N$, and let $\vartheta\mapsto\Sigma_D(\vartheta)$ be measurable. For every linear Gaussian model and every coupling as in Proposition~\ref{m:prop:gapnl},
+\[
+\begin{aligned}
+&\sqrt N\,E\,\Wone_{1,w}\big(\Pi(\cdot\mid Z^{(N)}),\Pi_G(\cdot\mid Y_G)\big)\\
+&\qquad\ge\sqrt{2/\pi}\int\mathrm{dist}_w\big(\Sigma_D(\vartheta),NV_Z\big)\,d\Pi(\vartheta)-o(1),
+\end{aligned}
+\]
+with an $o(1)$ that depends neither on the model nor on the coupling. Consequently:
+\begin{enumerate}[label=(\roman*),nosep]
+\item if the prior does not depend on $N$, the first hypothesis of Proposition~\ref{m:prop:gapnl} holds for some Gaussian model only if $\Sigma_D$ is $\Pi$ almost surely constant;
+\item if $E^\Pi\norm\theta_{H^\zeta}\to0$, as under \eqref{m:eq:prior} with $\gamma$ as in Theorem~\ref{m:thm:nickl2}, and clause (U3) holds with $0\in\Theta_N$ for all $N$, then $\int\mathrm{dist}_w(\Sigma_D(\vartheta),\Sigma_D(0))\,d\Pi(\vartheta)\to0$, and the first hypothesis forces $NV_Z\to\Sigma_D(0)$, the inverse information at the prior mean read in the first $D$ coordinates. In particular a Gaussian model with $NV_Z\to\Sigma_D(\theta_0)$, the covariance of the Bernstein von Mises limit at the truth, satisfies it only if $\Sigma_D(\theta_0)=\Sigma_D(0)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For a law $\mu$ on $\R$ with a first moment let $\mathrm{md}(\mu)=\min_c\int|x-c|\,d\mu(x)$. It is invariant under translations, it satisfies $|\mathrm{md}(\mu)-\mathrm{md}(\nu)|\le\Wone_1(\mu,\nu)$ because $x\mapsto|x-c|$ is Lipschitz with constant one for each $c$, and $\mathrm{md}(N(m,\sigma^2))=\sigma\sqrt{2/\pi}$. Let $P_D$ take the first $D$ coordinates, fix a unit vector $u\in\R^D$ and let $\ell_u(x)=\langle u,\Lambda_wP_Dx\rangle$. Since $\norm{P_Dx}_w\le\norm x_{H^{-k-2}}$, the map $\ell_u$ is Lipschitz with constant one on $H^{-k-2}$, as $y\mapsto\langle u,\Lambda_wy\rangle$ is on $(\R^D,\norm\cdot_w)$, and it carries $\Ncal_\vartheta$ to $N(0,\sigma_u(\Sigma_D(\vartheta))^2)$. Let $\epsilon_N=\Wone_{1,H^{-k-2}}\big(\Law(\sqrt N(\theta-S_N)\mid Z^{(N)}),\Ncal_\vartheta\big)$, with $\vartheta$ the parameter that generated the data. The image of $\Law(\sqrt N\theta\mid Z^{(N)})$ under $\ell_u$ is a translate of the image of $\Law(\sqrt N(\theta-S_N)\mid Z^{(N)})$, so its mean absolute deviation is within $\epsilon_N$ of $\sigma_u(\Sigma_D(\vartheta))\sqrt{2/\pi}$, while the image of $\Law(\sqrt N\theta_G\mid Y_G)=N(\sqrt NE[\theta_G\mid Y_G],NV_Z)$ under $y\mapsto\langle u,\Lambda_wy\rangle$ has mean absolute deviation $\sigma_u(NV_Z)\sqrt{2/\pi}$. Hence, for every realization of the coupling and every $\vartheta$,
+\[
+\begin{aligned}
+&\sqrt N\,\Wone_{1,w}\big(\Pi(\cdot\mid Z^{(N)}),\Pi_G(\cdot\mid Y_G)\big)\\
+&\qquad\ge\sqrt{2/\pi}\,\big|\sigma_u(\Sigma_D(\vartheta))-\sigma_u(NV_Z)\big|-\epsilon_N ,
+\end{aligned}
+\]
+and we maximize over $u$. The left side does not involve $\vartheta$, so we may average the right side over the conditional law of $\vartheta$ given $Z^{(N)}$ under $\mathbf P$, and then take expectations over the coupling; the pair $(\vartheta,Z^{(N)})$ then has the law $\mathbf P$, and the matrix $V_Z$ does not depend on the data. This gives the display with $o(1)=\mathbf E\epsilon_N$, which tends to zero by (U1) and (U2), as in the first display of the proof of Theorem~\ref{m:thm:jwbvm}.
+
+(i) If the first hypothesis holds then $\int\mathrm{dist}_w(\Sigma_D(\vartheta),NV_Z)\,d\Pi(\vartheta)\to0$, and by the triangle inequality
+\[
+\begin{aligned}
+&\iint\mathrm{dist}_w\big(\Sigma_D(\vartheta),\Sigma_D(\vartheta')\big)\,d\Pi(\vartheta)\,d\Pi(\vartheta')\\
+&\qquad\le2\int\mathrm{dist}_w\big(\Sigma_D(\vartheta),NV_Z\big)\,d\Pi(\vartheta) .
+\end{aligned}
+\]
+The left side does not depend on $N$, so it vanishes, and $\Sigma_D(\vartheta)=\Sigma_D(\vartheta')$ for $\Pi\otimes\Pi$ almost every pair, which by Fubini's theorem is the claim.
+
+(ii) The argument of the first paragraph applied to $\Ncal_\vartheta$ and $\Ncal_0$ gives $\mathrm{dist}_w(\Sigma_D(\vartheta),\Sigma_D(0))\le\sqrt{\pi/2}\,\Wone_{1,H^{-k-2}}(\Ncal_\vartheta,\Ncal_0)$. For $\vartheta\in\Theta_N$, which contains $0$, the $\Wone_1$ clause of (U3) bounds the right side by a constant times $\norm\vartheta_{H^\zeta}$; for $\vartheta\notin\Theta_N$ it is at most $\mathrm m_1(\vartheta)+\mathrm m_1(0)\le\mathrm m_1(\vartheta)+\sup_{\Theta_N}\mathrm m_1$. So
+\[
+\begin{aligned}
+&\int\Wone_{1,H^{-k-2}}(\Ncal_\vartheta,\Ncal_0)\,d\Pi(\vartheta)\\
+&\qquad\lesssim E^\Pi\norm\theta_{H^\zeta}+\int_{\Theta_N^c}\mathrm m_1\,d\Pi+\Pi(\Theta_N^c)\sup_{\Theta_N}\mathrm m_1\to0
+\end{aligned}
+\]
+by the moment clause of (U3). Under \eqref{m:eq:prior} the first term is at most $(\sqrt N\delta_N)^{-1}$ times $(E\norm{\theta'}^2_{H^\zeta})^{1/2}$, and this second moment is finite because $\zeta<\gamma-d/2$, which the condition on $\gamma$ in Theorem~\ref{m:thm:nickl2} implies. The triangle inequality for $\mathrm{dist}_w$ then gives $\int\mathrm{dist}_w(\Sigma_D(\vartheta),NV_Z)\,d\Pi(\vartheta)\ge\mathrm{dist}_w(\Sigma_D(0),NV_Z)-o(1)$, so the first hypothesis forces $\mathrm{dist}_w(\Sigma_D(0),NV_Z)\to0$. For fixed $D$ this is $NV_Z\to\Sigma_D(0)$, because the quadratic forms $u\mapsto\sigma_u(NV_Z)^2$ then converge to $u\mapsto\sigma_u(\Sigma_D(0))^2$ uniformly on the unit sphere.
+\end{proof}
+
+For the heat and Stokes equations $\Sigma_D$ does not depend on $\vartheta$ and the restriction of Proposition~\ref{m:prop:gapreq} is empty. For Navier Stokes with $f=0$ the linearization at the prior mean is the Stokes equation (Section~\ref{m:sec:ns}), so under the hypotheses of part (ii) the first hypothesis admits only Gaussian models whose posterior covariance is asymptotically the Stokes one, whatever the truth, while at the Taylor Green truth Remark~\ref{m:rem:advection} finds the correction to the Stokes information to be of order one at $\nu=0.01$. Under a prior that does not depend on $N$, as in Theorem~\ref{m:thm:jeff} and Table~\ref{m:tab:gap} but with a nonlinear forward map, and if clauses (U1) and (U2) hold for it, part (i) excludes every Gaussian model unless $\Sigma_D$ is $\Pi$ almost surely constant.
+
+\begin{lemma}[A sufficient condition in terms of the centering]\label{m:lem:gapred}
+Let clauses (U1) to (U3) of Assumption~\ref{m:ass:U} hold with $0\in\Theta_N$ for all $N$, and let $E^\Pi\norm\theta_{H^\zeta}\to0$. Then for every statistic $S=S(Z^{(N)})$
+\[
+\mathbf E\,\Wone_{1,H^{-k-2}}\big(\Law(\sqrt N\theta\mid S),\Law(\sqrt NS_N\mid S)*\Ncal_0\big)\to0 .
+\]
+Let a linear Gaussian model as in Proposition~\ref{m:prop:gapnl} satisfy $NV_Z\to\Sigma_D(0)$, write $m_G=E[\theta_G\mid Y_G]$, and let a coupling of $S$ under $\mathbf P$ with $S_G$ under the Gaussian model satisfy
+\[
+E\,\Wone_{1,w}\big(\Law(\sqrt NP_DS_N\mid S),\Law(\sqrt Nm_G\mid S_G)\big)\to0 .
+\]
+Then it extends to a coupling of $(Z^{(N)},S)$ with $(Y_G,S_G)$ under which both hypotheses of Proposition~\ref{m:prop:gapnl} hold.
+\end{lemma}
+
+\begin{proof}
+By the tower property $\Law(\sqrt N\theta\mid S)=\mathbf E[\delta_{\sqrt NS_N}*\tau'_N\mid S]$, where $\tau'_N=\Law(\sqrt N(\theta-S_N)\mid Z^{(N)})$, and $\Law(\sqrt NS_N\mid S)*\Ncal_0=\mathbf E[\delta_{\sqrt NS_N}*\Ncal_0\mid S]$. Since $\Wone_1$ is jointly convex and invariant under a common translation, the distance in the first display is at most $\mathbf E[\Wone_1(\tau'_N,\Ncal_0)\mid S]\le\mathbf E[\epsilon_N+\Wone_1(\Ncal_\vartheta,\Ncal_0)\mid S]$, whose expectation $\mathbf E\epsilon_N+\int\Wone_1(\Ncal_\vartheta,\Ncal_0)\,d\Pi(\vartheta)$ tends to zero by the proof of Proposition~\ref{m:prop:gapreq}. Given $(S,S_G)$, draw $(a,b)$ from an optimal coupling, chosen measurably, of $\Law(\sqrt NP_DS_N\mid S)$ and $\Law(\sqrt Nm_G\mid S_G)$, then $Z^{(N)}$ from its conditional law given $S$ and $\sqrt NP_DS_N=a$, and $Y_G$ from its conditional law given $S_G$ and $\sqrt Nm_G=b$. This extends the coupling, and under it $E\norm{\sqrt NP_DS_N-\sqrt Nm_G}_w$ is the expectation in the condition. In the Gaussian model $\theta_G-m_G$ is $N(0,V_Z)$ and independent of $Y_G$, so $\Law(\sqrt N\theta_G\mid S_G)=\Law(\sqrt Nm_G\mid S_G)*N(0,NV_Z)$, and $P_D$ is linear, Lipschitz with constant one from $H^{-k-2}$ to $(\R^D,\norm\cdot_w)$, and carries $\Ncal_0$ to $N(0,\Sigma_D(0))$. The triangle inequality, the bounds $\Wone_1(\mu*\varphi,\nu*\varphi)\le\Wone_1(\mu,\nu)$ and $\Wone_1(\mu*\varphi,\mu*\varphi')\le\Wone_1(\varphi,\varphi')$, and $\Wone_{1,w}(N(0,\Sigma_D(0)),N(0,NV_Z))\to0$, by continuity of the matrix square root, give
+\[
+\begin{aligned}
+&E\,\Wone_{1,w}\big(\Law(\sqrt NP_D\theta\mid S),\Law(\sqrt N\theta_G\mid S_G)\big)\\
+&\qquad\le o(1)+E\,\Wone_{1,w}\big(\Law(\sqrt NP_DS_N\mid S),\Law(\sqrt Nm_G\mid S_G)\big),
+\end{aligned}
+\]
+which is the second hypothesis. With $Z^{(N)}$ and $Y_G$ in place of $S$ and $S_G$ the two conditional laws on the right are point masses, the last term is $E\norm{\sqrt NP_DS_N-\sqrt Nm_G}_w\to0$, and the display gives the first hypothesis.
+\end{proof}
+
+The condition is a central limit theorem for the conditional law of the centering given the summary, under $\mathbf P$. Assumption~\ref{m:ass:U} concerns the posterior given all of the data and says nothing about the law of $S_N$ given $S$, and for a nonlinear forward map the second hypothesis can fail for every Gaussian model at once, as the following example shows. Its forward map is a polynomial on $\R^2$ whose information depends on the parameter.
+
+\begin{proposition}[A two coordinate model]\label{m:prop:gaptoy}
+Let $\theta\in\R^2$ have the prior $N(0,s_N^2\Id)$, with $s_N\to0$ and $Ns_N^2\to\infty$, the analogue of \eqref{m:eq:prior}, and let $Y_i=G(\theta)+\varepsilon_i$, $i\le N$, with independent $\varepsilon_i\sim N(0,\Id)$ and $G(\theta)=(\theta_1+\theta_2^2,\theta_2)$. The mean $X$ of the $Y_i$ is sufficient, $DG(\theta)$ has rows $(1,2\theta_2)$ and $(0,1)$, and the inverse information $(DG(\theta)^\top DG(\theta))^{-1}$ has first diagonal entry $1+4\theta_2^2$. Take $\Wone_1$ on $\R^2$ with the Euclidean norm, for which Proposition~\ref{m:prop:gapnl} holds with the same proof, write $\mathrm{dist}$ for $\mathrm{dist}_w$ with $\Lambda_w=\Id$, and for $\theta_\ast\in\R^2$ let the Gaussian model at $\theta_\ast$ be $Y_G=\sqrt N\,DG(\theta_\ast)\theta_G+\varepsilon_G$ with the prior $N(0,s_N^2\Id)$.
+\begin{enumerate}[label=(\alph*),nosep]
+\item Coupled through $\theta_G=\theta$ and $\varepsilon_G=\sqrt N(X-G(\theta))$, the Gaussian model at the prior mean $\theta_\ast=0$ satisfies the first hypothesis of Proposition~\ref{m:prop:gapnl}.
+\item For every linear Gaussian model on $\R^2$ and every coupling,
+\[
+\begin{aligned}
+&\liminf_N\sqrt N\,E\,\Wone_1\big(\Pi(\cdot\mid X),\Pi_G(\cdot\mid Y_G)\big)\\
+&\qquad\ge\sqrt{2/\pi}\,\liminf_N\mathrm{dist}(NV_Z,\Id) .
+\end{aligned}
+\]
+The Gaussian model at $\theta_\ast=\theta_0$ has $NV_Z\to(DG(\theta_0)^\top DG(\theta_0))^{-1}$, so it fails the first hypothesis whenever $\theta_{0,2}\ne0$, by at least $\sqrt{2/\pi}\,((1+4\theta_{0,2}^2)^{1/2}-1)$.
+\item Let $S=X_1$, the first coordinate of the adjoint statistic $DG(0)^\top X$ at the prior mean, which is also the one step summary $\bar\theta+DG(\bar\theta)^{-1}(X-G(\bar\theta))$ from $\bar\theta=0$. If $\sqrt Ns_N^2\to\infty$, then for every linear Gaussian model on $\R^2$, every linear statistic $S_G$ and every coupling, $\sqrt N\,E\,\Wone_1(\Pi(\cdot\mid S),\Pi_G(\cdot\mid S_G))\to\infty$, and its ratio to $\sqrt Ns_N^2$ has $\liminf$ at least $c_\ast=\sup_{0<\tau\le1/2}\kappa_\tau/(2(1-\tau))$, with $\kappa_\tau$ given in the proof.
+\item Let $S'=X_1-X_2^2$, the first coordinate of the maximum likelihood estimator $G^{-1}(X)$, which is also the one step summary from any preliminary estimate with $\bar\theta_2=X_2$, and let $S_G=Y_{G,1}/\sqrt N$ in the Gaussian model at $\theta_\ast=0$, coupled as in (a). Then $\sqrt N\,E\,\Wone_1(\Pi(\cdot\mid S'),\Pi_G(\cdot\mid S_G))\to0$, so both hypotheses of Proposition~\ref{m:prop:gapnl} hold for $S'$ with this model and coupling.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Write $s=s_N$, $\bar s^2=s^2+1/N$, $\omega=Ns^2/(1+Ns^2)$, $v=\omega/N$, $\eta=\sqrt N(X-G(\theta))$, which is $N(0,\Id)$ and independent of $\theta$, $W=\theta_1+\eta_1/\sqrt N$ and $B=\theta_2^2-X_2^2=-2\theta_2\eta_2/\sqrt N-\eta_2^2/N$; expectations are under $\mathbf P$. Then $X_1=W+\theta_2^2$, $W\sim N(0,\bar s^2)$ is independent of $(\theta_2,\eta_2)$, $\mathbf EB^2=4s^2/N+3/N^2$, so that $\sqrt N\,\mathbf E|B|\le(4s^2+3/N)^{1/2}\to0$, and the law of $\theta_2$ given $X_2$ is $\gamma_X=N(\omega X_2,v)$. Given $\theta_2$ and $W$, $\theta_1$ is $N(\omega W,v)$; so given $\theta_2$ and $X$, and equally given $\theta_2$ and $X_1$ alone, $\theta_1$ is $N(\omega(X_1-\theta_2^2),v)$. Let $\pi_X$ be the law of $\theta_2$ given $X$. Two facts are used: the transport entropy inequality $\Wone_1(\nu,N(m,\sigma^2))\le(2\sigma^2\,\mathrm{KL}(\nu\,\|\,N(m,\sigma^2)))^{1/2}$ of the proof of Theorem~\ref{m:thm:gap}, and the bound $I(U;U+U')\le\Var(U)/(2\Var(U'))$ for a Gaussian $U'$ independent of $U$, which holds because a Gaussian law maximizes entropy for a given variance.
+
+\emph{Part (a).} Let $Q_X=N(m(X),v\Id)$ with $m(X)=\omega(X_1-X_2^2,X_2)$. Given $X$, couple $t\sim\pi_X$ with $t'\sim\gamma_X$ optimally and take $g\sim N(0,1)$ independent of both; then $(\omega(X_1-t^2)+\sqrt v\,g,t)$ has law $\Pi(\cdot\mid X)$ and $(\omega(X_1-X_2^2)+\sqrt v\,g,t')$ has law $Q_X$, so
+\[
+\sqrt N\,\Wone_1(\Pi(\cdot\mid X),Q_X)\le\sqrt N\omega\,E_{\pi_X}|t^2-X_2^2|+\sqrt N\,\Wone_1(\pi_X,\gamma_X).
+\]
+By the tower property the first term has expectation $\sqrt N\omega\,\mathbf E|B|\to0$. For the second, $\gamma_X$ is the law of $\theta_2$ given $X_2$ alone, so the transport entropy inequality, Jensen's inequality and the identity $\mathbf E\,\mathrm{KL}(\pi_X\,\|\,\gamma_X)=I(\theta_2;X_1\mid X_2)$ give $\mathbf E\,\Wone_1(\pi_X,\gamma_X)\le(2v\,I(\theta_2;X_1\mid X_2))^{1/2}$. Given $X_2$, $X_1=\theta_2^2+W$ with $W$ independent of $(\theta_2,X_2)$, and $\theta_2^2$ has conditional variance $4\omega^2X_2^2v+2v^2$; so the second fact, applied given $X_2$, with $\mathbf EX_2^2=\bar s^2$ and $v\le1/N\le\bar s^2$ gives $I(\theta_2;X_1\mid X_2)\le2\omega^2v+v^2/\bar s^2\le3v$ and $\sqrt N\,\mathbf E\,\Wone_1(\pi_X,\gamma_X)\le\sqrt6\,\omega/\sqrt N$. Hence $\sqrt N\,\mathbf E\,\Wone_1(\Pi(\cdot\mid X),Q_X)\to0$. In the Gaussian model at $0$ the coupling gives $Y_G/\sqrt N=\theta+\eta/\sqrt N=(W,X_2)$, so $\Pi_G(\cdot\mid Y_G)=N(\omega(W,X_2),v\Id)$ is a translate of $Q_X$ by a vector of length $\omega|B|$, and (a) follows.
+
+\emph{Part (b).} Projecting two Gaussian laws on a unit vector $u$ and comparing mean absolute deviations, as in the proof of Proposition~\ref{m:prop:gapreq}, gives $\sqrt N\,\Wone_1(Q_X,N(m,V_Z))\ge\sqrt{2/\pi}\,\mathrm{dist}(\omega\Id,NV_Z)$ for every $m$. Since every $\Pi_G(\cdot\mid Y_G)$ is of the form $N(m,V_Z)$, the triangle inequality, the limit $\sqrt N\,\mathbf E\,\Wone_1(\Pi(\cdot\mid X),Q_X)\to0$ and $\mathrm{dist}(\omega\Id,\Id)=1-\sqrt\omega\to0$ give the inequality. For the model at $\theta_0$, $NV_Z=(DG(\theta_0)^\top DG(\theta_0)+(Ns^2)^{-1}\Id)^{-1}$ tends to $(DG(\theta_0)^\top DG(\theta_0))^{-1}$, whose first diagonal entry is $1+4\theta_{0,2}^2$, and $u=e_1$ gives the bound.
+
+\emph{Part (c).} For a law $\mu$ on $\R$ with a first moment and $0<\tau\le1/2$ let $R_\tau(\mu)=\min_c\int\rho_\tau(x-c)\,d\mu(x)$, with the check loss $\rho_\tau(x)=x(\tau-\mathbf 1\{x<0\})$, and $\mathrm{sk}_\tau(\mu)=|R_\tau(\mu)-R_{1-\tau}(\mu)|$. Since $\rho_\tau$ and $\rho_{1-\tau}$ are Lipschitz with constant $1-\tau$, $|\mathrm{sk}_\tau(\mu)-\mathrm{sk}_\tau(\nu)|\le2(1-\tau)\Wone_1(\mu,\nu)$; since $\rho_\tau(-x)=\rho_{1-\tau}(x)$, $\mathrm{sk}_\tau$ is invariant under translations and scales by $|b|$ under $x\mapsto bx$; and $R_\tau(N(m,\sigma^2))=\sigma\phi(\Phi^{-1}(\tau))$, with $\phi$ and $\Phi$ the standard normal density and distribution function, is unchanged under $\tau\mapsto1-\tau$, so $\mathrm{sk}_\tau$ vanishes on every Gaussian law, degenerate ones included. Hence $\Wone_1(\mu,\gamma)\ge\mathrm{sk}_\tau(\mu)/(2(1-\tau))$ for every Gaussian law $\gamma$ on $\R$. For the $\chi^2_1$ law, with density $f_1$ and $\tau$ quantile $x_\tau$, the minimum is attained at $x_\tau$ and equals $\tau-\int_0^{x_\tau}yf_1(y)\,dy=2x_\tau f_1(x_\tau)$, because $2yf_1(y)$ has derivative $f_1(y)-yf_1(y)$; so
+\[
+\kappa_\tau=\mathrm{sk}_\tau(\chi^2_1)=\Big|\sqrt{2x_\tau/\pi}\,e^{-x_\tau/2}-\sqrt{2x_{1-\tau}/\pi}\,e^{-x_{1-\tau}/2}\Big| ,
+\]
+and numerically $c_\ast=0.1588$, attained near $\tau=0.204$.
+
+Given $S$, write $T=\theta_2^2/s^2$ and $c=\sqrt N\omega s^2$. Then $\sqrt N\theta_1=\sqrt N\omega S-cT+\sqrt\omega\,g$ with $g\sim N(0,1)$ independent of $T$, and the change of variables $y=t^2/s^2$ in the density $\phi_s(t)\phi_{\bar s}(S-t^2)$ of $\theta_2$ given $S$, with $\phi_\sigma$ the $N(0,\sigma^2)$ density, shows that $T$ given $S$ has the law $\mu_{\beta,q}$ with density proportional to $y^{-1/2}\exp(-\beta y/2-qy^2/2)$ on $(0,\infty)$, where $\beta=1-2Ss^2/\bar s^2$ and $q=s^4/\bar s^2\le s^2$. Every $\Pi_G(\cdot\mid S_G)$ is Gaussian, and so is its first marginal. Projecting on the first coordinate, and using the properties of $\mathrm{sk}_\tau$ and that adding $\sqrt\omega\,g$ moves a law by at most $\sqrt\omega\,E|g|$ in $\Wone_1$,
+\[
+\begin{aligned}
+&\sqrt N\,\Wone_1\big(\Pi(\cdot\mid S),\Pi_G(\cdot\mid S_G)\big)\\
+&\qquad\ge c\Big(\frac{\kappa_\tau}{2(1-\tau)}-\Wone_1\big(\mu_{\beta,q},\chi^2_1\big)\Big)-\sqrt{2\omega/\pi} .
+\end{aligned}
+\]
+For $(\beta,q)\in[1/2,3/2]\times[0,1]$ the normalized densities of $\mu_{\beta,q}$ depend continuously on $(\beta,q)$ and are bounded by a constant times $y^{-1/2}e^{-y/4}$, so by dominated convergence $\int y\,d|\mu_{\beta,q}-\chi^2_1|(y)$, which bounds $\Wone_1(\mu_{\beta,q},\chi^2_1)$, tends to zero as $(\beta,q)\to(1,0)$, and $\mu_{1,0}=\chi^2_1$. Since $|\beta-1|\le2|S|$, $q\le s^2\to0$ and $\mathbf E|S|\le s+s^2+N^{-1/2}\to0$, $\Wone_1(\mu_{\beta,q},\chi^2_1)\to0$ in $\mathbf P$ probability. The left side of the display is nonnegative, $c/(\sqrt Ns^2)=\omega\to1$ and $\sqrt Ns^2\to\infty$, so the ratio of its expectation to $\sqrt Ns^2$ has $\liminf$ at least $\kappa_\tau/(2(1-\tau))$; take the supremum over $\tau$.
+
+\emph{Part (d).} Given $(\theta_2,\eta_2)$ and $S'=W+B$, $\theta_1$ is $N(\omega(S'-B),v)$, so $\Pi(\cdot\mid S')$ is the law of $(\omega(S'-\tilde B)+\sqrt v\,g,\tilde\theta_2)$, where $(\tilde\theta_2,\tilde\eta_2)$ has the conditional law of $(\theta_2,\eta_2)$ given $S'$, $\tilde B$ is the corresponding value of $B$ and $g\sim N(0,1)$ is independent. In the coupling of (a), $S_G=W$ and $\Pi_G(\cdot\mid S_G)=N(\omega W,v)\otimes N(0,s^2)$, because $S_G$ carries no information on $\theta_{G,2}$. Keeping $g$ and coupling $\tilde\theta_2$ optimally with a draw from $N(0,s^2)=\Law(\theta_2)$,
+\[
+\begin{aligned}
+&\Wone_1\big(\Pi(\cdot\mid S'),\Pi_G(\cdot\mid S_G)\big)\\
+&\qquad\le\omega\,E\big[|B-\tilde B|\,\big|\,S',B\big]+\Wone_1\big(\Law(\theta_2\mid S'),\Law(\theta_2)\big).
+\end{aligned}
+\]
+Since $\tilde B$ given $S'$ has the conditional law of $B$, the first term has expectation at most $2\omega\,\mathbf E|B|$. For the second, the transport entropy inequality for $\Law(\theta_2)=N(0,s^2)$ and Jensen's inequality bound its expectation by $(2s^2I(\theta_2;S'))^{1/2}$, and $I(\theta_2;S')\le I(B;W+B)\le\mathbf EB^2/(2\bar s^2)$, because $S'$ depends on $(\theta_2,\eta_2)$ only through $B$, so the expectation of the second term is at most $(s^2\mathbf EB^2/\bar s^2)^{1/2}\le(\mathbf EB^2)^{1/2}$. Hence $\sqrt N\,\mathbf E\,\Wone_1(\Pi(\cdot\mid S'),\Pi_G(\cdot\mid S_G))\le(2\omega+1)(4s^2+3/N)^{1/2}\to0$, which proves (d); part (a) gives the first hypothesis for the same model and coupling.
+\end{proof}
+
+In the example the adjoint statistic at the prior mean keeps the curvature term $\theta_2^2$ in its first coordinate, and given that coordinate the term is $s_N^2$ times a variable whose law is close to $\chi^2_1$, which is visible at the $\sqrt N$ scale as soon as $\sqrt Ns_N^2\to\infty$. Under \eqref{m:eq:prior} the prior scale of the coefficients is $r_N\lambda_j^{-\gamma/2}$ with $r_N=(\sqrt N\delta_N)^{-1}$, and $\sqrt Nr_N^2=N^{(2\gamma-d)/(2(2\gamma+d))}$ tends to infinity because $\gamma>d/2$; this is why part (c) takes $\sqrt Ns_N^2\to\infty$. By parts (c) and (d), the preliminary estimate decides the second hypothesis here: from the prior mean it fails, and from any estimate whose second coordinate is $X_2$ it holds. The prior mean is not a preliminary estimate of the kind Proposition~\ref{m:prop:suff} requires: its error under $\mathbf P$ is of order $s_N$, and $\sqrt Ns_N^2\to\infty$ is the failure of the analogue of the condition $\sqrt N\,\tilde\delta_N(0)\tilde\delta_N(\zeta)\to0$ there. The condition of Lemma~\ref{m:lem:gapred} is verified for no summary of a nonlinear partial differential equation, the one step summary of Definition~\ref{m:def:summary} included (Open Question~\ref{m:op:unif}).
+
+\begin{table}[tp]\centering\small
+\caption{The sufficiency gap for a truncated adjoint statistic in the two dimensional heat model, $N=2000$, $\nu=0.01$, $T=1$, $\alpha=3$, $\rho=1$ with the prior variances $\rho^2(\lambda_j/\lambda_1)^{-\alpha}$ of Theorem~\ref{m:thm:jeff}, $D=288$ modes, $J_{\rm eff}=20$. The summary keeps the first $J'$ coordinates of $\Phi^\top Y$, and the entries are computed from the population information $\diag(N\iota_j)$, not from a realized design. Columns: mutual information deficit; Rao Blackwell displacement $\sqrt{\tr(V_S-V_Z)}$, the root mean square distance between the posterior means given $S$ and given the full data, from which the lower bound $\sqrt{\tr(V_S-V_Z)-\norm{V_S-V_Z}_{op}}$ of Theorem~\ref{m:thm:gap} differs by at most 11 percent in every row; transport entropy upper bound $\sqrt{2\norm{V_S}\Delta I}$; and the penalty of a generator that reproduces the exact center but copies the prior spread beyond $J'$. All in units of the mean posterior standard deviation.}\label{m:tab:gap}
+\begin{tabular}{rrrrr}
+\toprule
+$J'$ & $\Delta I$ (nats) & RB rms & T1 upper & prior spread penalty\\
+\midrule
+4 & 24.08 & 95.8 & 300.8 & 208.2\\
+8 & 14.40 & 41.4 & 82.2 & 82.1\\
+16 & 6.49 & 22.0 & 39.5 & 29.0\\
+20 $(=J_{\rm eff})$ & 3.28 & 9.9 & 13.9 & 9.7\\
+32 & 1.21 & 4.3 & 7.7 & 2.5\\
+48 & 0.35 & 1.2 & 4.1 & 0.37\\
+288 $(=D)$ & 0 & 0 & 0 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{m:tab:gap} evaluates the bounds for the heat equation: dropping coordinates of the adjoint statistic below $J_{\rm eff}$ costs from tens to hundreds of posterior standard deviations, dropping them above $2J_{\rm eff}$ costs between one and about four in the bracket and a fraction of one for a generator that reproduces the exact center, and the upper bound is within a factor of four of the Rao Blackwell column throughout.
+
+\subsection{Dissipation reduces the effective dimension}
+
+The adjoint statistic has $D$ coordinates, but the posterior differs from the prior in only a few of them.
+
+\begin{theorem}[Effective dimension under dissipation]\label{m:thm:jeff}
+Consider the heat or Stokes model of Section~\ref{m:sec:heat} on $\T^d$ with prior variances $\sigma_{0,j}^2=\rho^2(\lambda_j/\lambda_1)^{-\alpha}$ and observations uniform on $[0,T]\times\T^d$. Define the effective dimension
+\[
+J_{\rm eff}:=\#\{j:\ N\iota_j\sigma_{0,j}^2\ge1\},
+\]
+the number of modes in which the data at least halve the prior variance. Then:
+\begin{enumerate}[label=(\roman*),nosep]
+\item $J_{\rm eff}=\#\{j:\lambda_j^{\alpha+1}\le c_j\,N\rho^2\lambda_1^\alpha/(2\nu T)\}$ with $c_j=1-e^{-2\nu\lambda_jT}\in[1-e^{-2\nu\lambda_1T},1]$, hence, as $\Lambda=(N\rho^2\lambda_1^\alpha/(2\nu T))^{1/(\alpha+1)}\to\infty$ with $\nu T\Lambda\ge1$, and with constants that depend only on $\alpha$, $d$ and $\rho$,
+\[
+J_{\rm eff}\ \asymp\ \Big(\frac{N\rho^2}{\nu T}\Big)^{\frac{d}{2(\alpha+1)}}\asymp N^{\frac{d}{2\alpha+2}}\,(\nu T)^{-\frac{d}{2\alpha+2}} ;
+\]
+for $d=2$ this is $N^{1/(\alpha+1)}$, which for $\alpha=\gamma$ is the order of the dimension $J_N=N\delta_N^2=N^{1/(\gamma+1)}$ of the summary in Theorem~\ref{m:thm:nickl2}; at fixed $N$, viscosity or observation time reduces the effective dimension polynomially once $\nu T\ge\lambda_1^{-1}(2/(N\rho^2))^{1/\alpha}$, and for every $\nu T$ the count is at most $\#\{j:\lambda_j\le\lambda_1(N\rho^2)^{1/\alpha}\}$, because $\iota_j\le1$.
+\item In the linear model the identity skip generator with the analytic scale $(N\iota_j+\sigma_{0,j}^{-2})^{-1/2}$ is exact to leading order, and exact with the scale $V_N^{1/2}$ of Proposition~\ref{m:prop:linsuff}, and requires no training. For a nonlinear forward map with information operator $\Lcal^*\Lcal+\Kcal$ as in \eqref{m:eq:fredholm}, assume the hypotheses of Theorem~\ref{m:thm:qnnA}, Assumptions~\ref{m:ass:U} and~\ref{m:ass:u2p} included, write $\Sigma=\mathcal D^{1/2}(\Id+\Xi)\mathcal D^{1/2}$ as there, and recall from Section~\ref{m:sec:qnn} that $\Xi$ is the compression to the first $J_N$ modes of the compact operator $\Xi_\infty=(\Id+K')^{-1}-\Id$, so that $\norm{\Xi P_{>J}}_{op}\le\norm{\Xi_\infty P_{>J}}_{op}\to0$ as $J\to\infty$ uniformly in $N$, with $P_{>J}$ the projection onto the modes $j>J$. Given a cut $J'=J'_N\le J_N$ with $J'\to\infty$, the hybrid generator differs from the generator of Definition~\ref{m:def:gen} only in its head $(\hat C^{\rm hyb}_M)^{1/2}$, where $\hat C^{\rm hyb}_M=\diag(\hat C^{J'}_M,\Id)$, with $\hat C^{J'}_M$ the second moment matrix of the first $J'$ whitened coordinates: it learns the correction to the analytic scale $\mathcal D^{1/2}$ on the first $J'$ modes only and uses the analytic scale beyond. Then $\norm{\hat C^{\rm hyb}_M-(\Id+\Xi)}_{op}\le O_P\big(\sqrt{J'/M}+J'/M\big)+2\norm{\Xi_\infty P_{>J'}}_{op}+o_P(1)$, and Theorem~\ref{m:thm:qnnA} holds for the hybrid generator with $J'/M_N\to0$ in place of $J_N/M_N\to0$; with the cut $J'=\min(J_{\rm eff},J_N)$ it suffices that $J_{\rm eff}/M_N\to0$.
+\item In the Gaussian experiment of Proposition~\ref{m:prop:pr}, a generator that reproduces the center exactly but uses the prior spread beyond $J'$ incurs a Wasserstein penalty in the Euclidean norm of at most
+\[
+\sqrt{\tfrac2\pi}\sum_{j>J'}\sigma_{0,j}\Big(1-(1+N\iota_j\sigma_{0,j}^2)^{-1/2}\Big)\ \le\ \sqrt{\tfrac{1}{2\pi}}\sum_{j>J'}N\iota_j\sigma_{0,j}^3 ,
+\]
+which is the last column of Table~\ref{m:tab:gap} and decays like $(J')^{1-(3\alpha+2)/d}$ when the sum is replaced by its integral.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) Substitute $\iota_j=c_j/(2\nu\lambda_jT)$ from \eqref{m:eq:iota}: the condition $N\iota_j\sigma_{0,j}^2\ge1$ reads $N\rho^2c_j\lambda_1^\alpha\ge2\nu T\lambda_j^{\alpha+1}$, that is $c_j\ge(\lambda_j/\Lambda)^{\alpha+1}$ with $\Lambda$ as in the statement. Since $c_j\le1$, $J_{\rm eff}\le\#\{j:\lambda_j\le\Lambda\}$. If $\nu T\Lambda\ge1$ and $\lambda_j\le(1-e^{-1})^{1/(\alpha+1)}\Lambda$, then $c_j\ge1-e^{-1}\ge(\lambda_j/\Lambda)^{\alpha+1}$ when $2\nu\lambda_jT\ge1$, and otherwise, by concavity of $x\mapsto1-e^{-x}$, $c_j\ge2(1-e^{-1})\nu\lambda_jT\ge\lambda_j/\Lambda\ge(\lambda_j/\Lambda)^{\alpha+1}$; so all these $j$ are counted. For each fixed $a>0$ the count of lattice points with $\lambda_j=4\pi^2|k|^2\le a\Lambda$ is $\asymp\Lambda^{d/2}$ as $\Lambda\to\infty$, which gives the asymptotic. Finally $\iota_j\le1$, so $N\iota_j\sigma_{0,j}^2\ge1$ implies $\lambda_j\le\lambda_1(N\rho^2)^{1/\alpha}$. (ii) Exactness in the linear model is Proposition~\ref{m:prop:linsuff} with the scale written out. For the hybrid generator, follow the proof of Theorem~\ref{m:thm:qnnA}: terms II and III there do not involve the generator, and term I is at most the finite Hilbert Schmidt weight of that proof times $\norm{(\hat C^{\rm hyb}_M)^{1/2}-(\Id+\Xi)^{1/2}}_{op}$. With $P$ the projection onto the first $J'$ modes and $Q=\Id-P$, $\hat C^{\rm hyb}_M=P\hat C^{J'}_MP+Q$, and since $\Xi Q=P\Xi Q+Q\Xi Q$,
+\[
+\hat C^{\rm hyb}_M-(\Id+\Xi)=P\big(\hat C^{J'}_M-(\Id+\Xi)\big)P-\big(\Xi Q+Q\Xi P\big) .
+\]
+The first term is bounded by the covariance estimation step of that proof in dimension $J'$, which gives $O_P\big(\sqrt{J'/M}+J'/M\big)+o_P(1)$, and the second by $2\norm{\Xi Q}_{op}\le2\norm{\Xi_\infty P_{>J'}}_{op}$, because $\Xi$ is symmetric. Both tend to zero, so for large $N$ both $\hat C^{\rm hyb}_M$ and $\Id+\Xi$ are $\succeq(c_0/2)\Id$ with probability tending to one, the square root is Lipschitz there with constant $1/\sqrt{2c_0}$, and term I tends to zero. Statement (G2) follows as in that proof, which uses only that the head is bounded in operator norm. Finally $J'\le J_{\rm eff}$ when $J'=\min(J_{\rm eff},J_N)$. (iii) The $\Wone_1$ distance between two centered Gaussians on the line with standard deviations $a>b$ is $(a-b)\sqrt{2/\pi}$; couple the modes independently, each optimally, bound the Euclidean norm by the sum of the absolute values of the coordinates, and sum over the affected modes with $a=\sigma_{0,j}$, $b=\sigma_{0,j}(1+N\iota_j\sigma_{0,j}^2)^{-1/2}$, and use $1-(1+x)^{-1/2}\le x/2$ for $x\ge0$. The decay rate follows from $\iota_j\sigma_{0,j}^3\asymp\lambda_j^{-1-3\alpha/2}$ and $\lambda_j\asymp j^{2/d}$.
+\end{proof}
+
+Remark~\ref{m:rem:jeff} says how the three counts $J_N$, $J^{\rm eff}_N$ and $J_{\rm eff}$ differ. In the heat example of Table~\ref{m:tab:gap}, $J_{\rm eff}$ falls from $36$ at $\nu=10^{-3}$ to $8$ at $\nu=10^{-1}$ with $N=2000$, and grows as $8,20,36,68$ across $N=200,2000,20000,200000$, a least squares slope of $0.30$ on logarithmic axes against the exponent $1/(\alpha+1)=1/4$. As $\nu T$ tends to zero the count stops growing: at $N=2000$ it stays at $36$, the bound in Theorem~\ref{m:thm:jeff}(i), for every $\nu\le10^{-3}$.
+
+\subsection{Against the raw data}
+
+\begin{theorem}[Sufficiency versus the raw data]\label{m:thm:raw}
+Let a generator be trained to reproduce the conditional law of $\theta$ given the raw observation vector $Y\in\R^{N}$ (or $\R^{2N}$ for a vector field), with no summary, and let it be required to be accurate uniformly over the class $\mathcal Q_\beta(N)$ of Definition~\ref{m:def:qclass}, the $\beta$ H\"older conditional quantile maps on $[0,1]\times[0,1]^N$. Then the number of simulations needed for $\sqrt N\,E\,\Wone_1(\Pihat,\Pi(\cdot\mid Y))\to0$ satisfies $M\ge cN^{(2\beta+N)/(2\beta)}$ for all large $N$, where $c=C_\mu^{-1}$ and $C_\mu$ bounds the density of the design law as in Theorem~\ref{m:thm:qnnB}; the right side grows faster than any exponential in $N$. The hybrid generator of Theorem~\ref{m:thm:jeff}(ii) with the cut $\min(J_{\rm eff},J_N)$, trained on the sufficient statistic of that theorem, which uses the Bernstein von Mises structure that the uniform class does not, satisfies (G1) as soon as $J_{\rm eff}/M\to0$, with $J_{\rm eff}\asymp N^{d/(2\alpha+2)}(\nu T)^{-d/(2\alpha+2)}$, the count for the fixed prior of that theorem, by Theorem~\ref{m:thm:qnnA} and Theorem~\ref{m:thm:jeff}(ii), conditionally on the hypotheses of Theorem~\ref{m:thm:jeff}(ii), which include those of Theorem~\ref{m:thm:qnnA} and Assumption~\ref{m:ass:U}.
+\end{theorem}
+
+\begin{proof}
+The first claim is the last display of Theorem~\ref{m:thm:qnnB} with the input dimension $J_N$ replaced by the dimension $N$ of the raw data. The second is Theorem~\ref{m:thm:jeff}(ii), and it is conditional on Assumptions~\ref{m:ass:U} and~\ref{m:ass:u2p} and on the bound for the error of the summary because Theorem~\ref{m:thm:qnnA} is.
+\end{proof}

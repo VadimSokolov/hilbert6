@@ -1,0 +1,53 @@
+\section{Fluctuation theorems}
+
+Landauer's bound (Theorem~\ref{thm:landauer}) is an inequality on average. Its refinements are equalities about fluctuations. Consider a system in equilibrium at inverse temperature $\beta = 1/k_BT$ with Hamiltonian $\mathcal H_{\lambda_0}$, driven by changing a control parameter from $\lambda_0$ to $\lambda_1$ over a finite time, and let $W$ be the work performed along a trajectory.
+
+\begin{theorem}[Jarzynski]
+Under Hamiltonian dynamics, or under any Markov dynamics that preserves the instantaneous Gibbs measure for each fixed value of the control,
+\[
+\E\big[e^{-\beta W}\big] = e^{-\beta\Delta F},\qquad\Delta F = -\beta^{-1}\log\frac{Z_{\lambda_1}}{Z_{\lambda_0}}.
+\]
+\end{theorem}
+
+\begin{proof}[Proof for Hamiltonian dynamics]
+For an isolated system the work is $W = \mathcal H_{\lambda_1}(\Phi(x))-\mathcal H_{\lambda_0}(x)$, where $\Phi$ is the volume preserving flow map. Then
+\[
+\begin{aligned}\E e^{-\beta W} &= \int\frac{e^{-\beta\mathcal H_{\lambda_0}(x)}}{Z_{\lambda_0}}e^{-\beta(\mathcal H_{\lambda_1}(\Phi(x))-\mathcal H_{\lambda_0}(x))}\dd x\\ &= \frac{1}{Z_{\lambda_0}}\int e^{-\beta\mathcal H_{\lambda_1}(\Phi(x))}\dd x = \frac{Z_{\lambda_1}}{Z_{\lambda_0}},\end{aligned}
+\]
+by Liouville's theorem.
+\end{proof}
+
+\begin{proof}[Proof for Markov dynamics in discrete time]
+Let the control take the values $\mu_0 = \lambda_0,\mu_1,\dots,\mu_N = \lambda_1$ in turn. At step $k$ the control moves from $\mu_{k-1}$ to $\mu_k$ with the state $x_{k-1}$ held fixed, which costs the work $w_k(x_{k-1})$ with $w_k(x) = \mathcal H_{\mu_k}(x)-\mathcal H_{\mu_{k-1}}(x)$, and then the state moves to $x_k$ by a Markov kernel $K_{\mu_k}$ that leaves the Gibbs density $\pi_{\mu_k} = e^{-\beta\mathcal H_{\mu_k}}/Z_{\mu_k}$ invariant. The total work is $W = \sum_{k=1}^Nw_k(x_{k-1})$. Since $\pi_{\mu_{k-1}}(x)e^{-\beta w_k(x)} = (Z_{\mu_k}/Z_{\mu_{k-1}})\pi_{\mu_k}(x)$, integrating out $x_0,x_1,\dots$ in turn and using $\int\pi_{\mu_k}(x)K_{\mu_k}(x,y)\dd x = \pi_{\mu_k}(y)$ at each step gives $\E e^{-\beta W} = \prod_{k=1}^NZ_{\mu_k}/Z_{\mu_{k-1}} = Z_{\lambda_1}/Z_{\lambda_0}$.
+\end{proof}
+
+The equality is due to Jarzynski~\cite{jarzynski1997}. For Markov dynamics see Jarzynski~\cite{jarzynski1997master}, who works with a master equation, and Crooks~\cite{crooks2000}, who works in discrete time as above.
+
+Jensen's inequality gives $\E W\geq\Delta F$, the second law, as a consequence. The equality is a change of measure identity: it is importance sampling, with the nonequilibrium trajectory as proposal and the target equilibrium as goal, and it is the physical form of the annealed importance sampling algorithm that Neal introduced independently in 2001~\cite{neal2001}, and of the sequential Monte Carlo samplers of Del Moral, Doucet and Jasra~\cite{delmoral2006}. Crooks' theorem~\cite{crooks1999}, which we quote without proof, refines it to a statement about the ratio of the work density $p_F(W)$ of the protocol to the work density $p_R(-W)$ of the time reversed protocol started in equilibrium at $\lambda_1$, $p_F(W)/p_R(-W) = e^{\beta(W-\Delta F)}$, which is a likelihood ratio between time reversed path measures.
+
+Sagawa and Ueda~\cite{sagawaueda2010} extended the second law to systems with measurement and feedback, and we quote their inequality without proof. If a measurement yields mutual information $I$, in nats, between the system and the memory, and the protocol is chosen as a function of the outcome, then
+\[
+\E W\geq\Delta F-\beta^{-1}I,
+\]
+so that information can be converted into work at the rate $k_BT$ per nat, exactly Szilard's rate, and a corresponding cost must be paid when the memory is reset. The generalized second law is the thermodynamic counterpart of the data processing inequality: information is a resource, measured in the same units as free energy, and it can be spent but not created.
+
+\section{Rate distortion and the cost of approximate inference}
+
+Shannon's rate distortion theory asks for the minimal number of bits per symbol needed to describe a source $X$ to within expected distortion $D$:
+\[
+R(D) = \min_{p(\hat x\mid x):\,\E d(X,\hat X)\leq D}I(X;\hat X).
+\]
+For a Gaussian source with variance $\sigma^2$ and squared error distortion, $R(D) = \frac12\log_2(\sigma^2/D)$ for $D<\sigma^2$, as in Cover and Thomas~\cite{covertomas}. The minimizing channel is a Gaussian posterior: the optimal reconstruction is the posterior mean under a Gaussian prior and observation model. Rate distortion is therefore Bayesian inference read backwards.
+
+Combined with Landauer's principle, rate distortion theory gives a thermodynamic floor for storing approximations. Let $X_1,\dots,X_n$ be independent copies of the source, and let a memory with finitely many states hold reconstructions $\hat X_1,\dots,\hat X_n$ with average distortion at most $D$. Then $H(\hat X_{1:n})\geq I(X_{1:n};\hat X_{1:n})\geq nR(D)$, which is the converse half of the rate distortion theorem, and by Theorem~\ref{thm:landauer} resetting the memory dissipates at least $nR(D)\,k_BT\log2$ on average. For inference, the source is the unknown quantity and the reconstruction is the stored estimate of it.
+
+Blahut's algorithm~\cite{blahut1972} for computing $R(D)$, a counterpart of Arimoto's algorithm for the capacity of a channel~\cite{arimoto1972}, is an alternating minimization of relative entropy of the same type as Sinkhorn's algorithm of Chapter~\ref{ch:gbc}, with the distortion playing the role of the transport cost and the Lagrange multiplier the role of the inverse entropic regularization. It fixes only the marginal of the source, whereas Sinkhorn's algorithm fixes both marginals.
+
+\section*{Exercises}
+\begin{enumerate}
+\item Compute the Kelly fraction and the optimal growth rate for a bet that returns $o$ on a unit stake if it is won, the convention of Theorem~\ref{thm:kelly}, with win probability $p$ and $po>1$. Even odds are $o = 2$.
+\item Show that betting $2f^*$ in the even odds Kelly problem gives growth $-\frac{4}{3\ln2}(2p-1)^4+O\big((2p-1)^6\big)$ bits per bet, which is negative, whereas the growth at $f^*$ is of order $(2p-1)^2$.
+\item Prove the data processing inequality from the chain rule for mutual information.
+\item Deduce $\E W\geq\Delta F$ from Jarzynski's equality, and show that $\P(W\leq\Delta F-\varepsilon)\leq e^{-\beta\varepsilon}$.
+\item Compute $R(D)$ for a Bernoulli$(p)$ source with Hamming distortion.
+\end{enumerate}

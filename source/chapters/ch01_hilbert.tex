@@ -1,0 +1,130 @@
+\chapter{Hilbert's Sixth Problem}
+\label{ch:hilbert}
+
+\section{Paris, August 1900}
+
+The Second International Congress of Mathematicians met in Paris from 6 to 12 August 1900, during the Exposition Universelle. On the morning of 8 August, in a joint session of the sections on bibliography and history and on teaching and methods, David Hilbert delivered the lecture that became known as \emph{Mathematische Probleme}. Pressed for time, he presented only ten of the problems orally; the printed version, published in the \emph{G\"ottinger Nachrichten} and reprinted in the \emph{Archiv der Mathematik und Physik} in 1901, contains twenty three~\cite{hilbert1900}. The sixth carries the title \emph{Mathematical Treatment of the Axioms of Physics}.
+
+Hilbert's text is short. He observes that the investigations on the foundations of geometry suggest a parallel task: to treat by means of axioms those physical sciences in which mathematics already plays an important part, and in the first rank he places the theory of probabilities and mechanics. For probability he asks that the logical investigation of the axioms be accompanied by ``a rigorous and satisfactory development of the method of mean values in mathematical physics, and in particular in the kinetic theory of gases.'' For mechanics he points to the work of Mach, Hertz, Boltzmann and Volkmann on its principles, and then writes the sentence that defines the modern problem: ``Boltzmann's work on the principles of mechanics suggests the problem of developing mathematically the limiting processes, there merely indicated, which lead from the atomistic view to the laws of motion of continua.'' Both quotations are from Newson's translation, page 454~\cite{hilbert1900}.
+
+Three features of this formulation deserve emphasis. First, Hilbert joins probability and mechanics in a single problem. Second, the target is a limiting process. Hilbert did not ask for new physics; he asked that a passage already sketched by Boltzmann be made into mathematics. Third, the word \emph{axioms} is meant in the sense of the \emph{Grundlagen der Geometrie} of 1899: a small set of independent, consistent statements from which the theory follows by deduction, with the question of completeness and independence itself made a mathematical question.
+
+\section{Hilbert's own pursuit}
+
+Hilbert did not leave the sixth problem to others. Leo Corry's study of the G\"ottingen archives~\cite{corry2004} shows that between 1898 and 1918 Hilbert lectured repeatedly on the axiomatization of physics: on mechanics in 1905, on the kinetic theory of gases, on radiation theory, on the structure of matter, and on the foundations of relativity. His lectures of 1915 to 1927 on relativity, quantum theory and epistemology have been edited by Sauer and Majer~\cite{sauermajer2009}. Four published contributions stand out.
+
+In 1912 Hilbert published \emph{Begr\"undung der kinetischen Gastheorie}~\cite{hilbert1912}, in which he applied his newly developed theory of integral equations to the linearized Boltzmann collision operator. He showed that the equation could be solved by a formal expansion in the mean free path, the expansion that now bears his name, and that the first terms reproduce the equations of hydrodynamics. This is the direct ancestor of the Chapman Enskog method and of the modern rigorous hydrodynamic limits treated in Chapter~\ref{ch:hydro}.
+
+In November 1915 Hilbert presented \emph{Die Grundlagen der Physik}~\cite{hilbert1915}, deriving the field equations of gravitation from a variational principle, in close and famous proximity to Einstein's final paper on general relativity. Here the axiomatic method meant: postulate an action invariant under general coordinate transformations and derive everything else.
+
+In 1928, with John von Neumann and Lothar Nordheim, Hilbert published \emph{\"Uber die Grundlagen der Quantenmechanik}~\cite{hilbertvnn1928}, an attempt to put the new quantum theory on axiomatic footing. Its shortcomings led directly to von Neumann's \emph{Mathematische Grundlagen der Quantenmechanik} of 1932~\cite{vonneumann1932}, the subject of Chapter~\ref{ch:quantum}.
+
+Finally, the probability half of the problem found its answer not in G\"ottingen but in Moscow. Kolmogorov's \emph{Grundbegriffe der Wahrscheinlichkeitsrechnung} of 1933~\cite{kolmogorov1933} gave the axioms that every probabilist now uses. Its first chapter cites Hilbert's \emph{Grundlagen der Geometrie} as the model; the connection with the sixth problem is drawn by later authors~\cite[Section~4]{shafervovk2006}. We treat the axioms, together with the alternative of de Finetti and the large deviation theory of Sanov, in Chapter~\ref{ch:axioms}.
+
+\section{Three readings of the problem}
+
+It is useful to distinguish three readings of the sixth problem. They are not competing interpretations; they are three layers of one question, and the book is organized around them.
+
+\begin{description}
+\item[The axiomatic reading.] Give a consistent and complete set of axioms for probability, for classical mechanics, for quantum mechanics, and for the other physical theories, in the style of the \emph{Grundlagen der Geometrie}. Kolmogorov supplied axioms for probability and von Neumann for nonrelativistic quantum mechanics, and an axiomatization of the whole of physics remains incomplete~\cite{gorban2018}. Classical mechanics was in good order by the standards of the time, although Poincar\'e had already shown that its qualitative theory was far stranger than anyone had believed.
+\item[The derivational reading.] Derive the macroscopic laws of continua, the Boltzmann equation and then the Euler and Navier Stokes equations, from Newton's laws for many particles, by limiting processes carried out with full rigor. This is the reading suggested by Hilbert's sentence on Boltzmann~\cite{gorban2018}, and it is the one addressed by the recent results described below.
+\item[The inferential reading.] Given observations of a macroscopic system, recover the microscopic or initial state that produced them, together with its uncertainty, using a probability model that respects the physical laws. This is the inverse of the derivational reading, and it is the reading in which statistics enters.
+\end{description}
+
+\subsection{The derivational problem}
+
+Consider $N$ identical hard spheres of diameter $\varepsilon$ in a domain $\Omega$ that is either $\R^d$ or the torus $\T^d$, $d\geq 2$, with positions $x_i$ and velocities $v_i$. Between collisions the particles move freely, $\dot x_i = v_i$, $\dot v_i = 0$. When $|x_i - x_j| = \varepsilon$ and the particles are approaching, the velocities are updated by elastic reflection,
+\begin{equation}
+v_i' = v_i - \big((v_i - v_j)\cdot\omega\big)\,\omega,\qquad
+v_j' = v_j + \big((v_i - v_j)\cdot\omega\big)\,\omega,
+\label{eq:hs_collision}
+\end{equation}
+with $\omega = (x_i - x_j)/\varepsilon$ the unit vector from the second particle to the first. The particles are approaching when $(v_i - v_j)\cdot\omega<0$, and after the collision $(v_i' - v_j')\cdot\omega>0$. Momentum and kinetic energy are conserved. The flow on the phase space is defined for almost every initial configuration by a theorem of Alexander~\cite{alexander1975}.
+
+The state of the system is summarized by the empirical measure
+\[
+\mu^N_t = \frac{1}{N}\sum_{i=1}^N \delta_{(x_i(t), v_i(t))}.
+\]
+The \emph{Boltzmann Grad} scaling sends $N\to\infty$ and $\varepsilon\to 0$ with $N\varepsilon^{d-1} = \alpha$ fixed, so that the mean free path is of order one. In this limit one expects $\mu^N_t$ to converge to a deterministic density $f(t,x,v)$ solving the Boltzmann equation
+\begin{equation}
+\partial_t f + v\cdot\nabla_x f = \alpha\, Q(f,f),
+\label{eq:boltzmann_intro}
+\end{equation}
+with the hard sphere collision operator
+\[
+\begin{multlined}Q(f,f)(v) = \int_{\R^d}\int_{S^{d-1}} \big(f(v')f(v_*') - f(v)f(v_*)\big)\\ \times\big((v-v_*)\cdot\omega\big)_+ \dd\omega \dd v_* .\end{multlined}
+\]
+Here $v'$ and $v_*'$ are the velocities after a collision of particles with velocities $v$ and $v_*$, given by \eqref{eq:hs_collision} with $(v_i,v_j)$ replaced by $(v,v_*)$. The right side of \eqref{eq:hs_collision} does not change when $\omega$ is replaced by $-\omega$, and in $Q$ the vector $\omega$ points from the first particle to the second at contact, so that the weight $((v-v_*)\cdot\omega)_+$ is positive exactly for approaching pairs. A second limit, in which the mean free path itself is sent to zero, should then lead from \eqref{eq:boltzmann_intro} to the compressible Euler equations or, under the appropriate scaling of time and of fluctuations about equilibrium, to the incompressible Navier Stokes Fourier system
+\begin{equation}
+\begin{gathered}
+\partial_t u + u\cdot\nabla u + \nabla p = \nu\Delta u,\qquad \nabla\cdot u = 0,\\
+\partial_t\theta + u\cdot\nabla\theta = \kappa\Delta\theta,
+\end{gathered}
+\label{eq:ns_intro}
+\end{equation}
+for the velocity $u$, the pressure $p$ and the temperature fluctuation $\theta$, with a viscosity $\nu$ and a thermal diffusivity $\kappa$ computed from the collision operator.
+
+Lanford proved in 1975~\cite{lanford1975} that the first limit holds for a short time, a fraction of the mean free time, under natural assumptions on the initial data. The incompressible Navier Stokes limit was established at the level of renormalized and weak solutions in the program of Bardos, Golse and Levermore~\cite{bgl1991,bgl1993}, and completed by Golse and Saint Raymond for bounded collision kernels~\cite{golsesaintraymond2004} and for hard cutoff potentials, which include hard spheres~\cite{golsesaintraymond2009}. The difficulty was to connect the two, since Lanford's time is too short to see hydrodynamics. In 2024 and 2025 Deng, Hani and Ma gave a long time derivation of the Boltzmann equation from hard sphere dynamics, valid for as long as the Boltzmann solution exists in a suitable class, and combined it with hydrodynamic limits to derive the compressible Euler and, for data close to global equilibrium, the incompressible Navier Stokes Fourier equations from hard sphere dynamics on the torus in dimension two or three~\cite{denghanima2024,denghanima2025}. Chapters~\ref{ch:kinetic} and~\ref{ch:hydro} explain these results and the ideas behind them.
+
+\subsection{The inferential problem}
+
+Let $X$ be a Polish space and $\Phi_t:X\to X$, $t\in[0,T]$, a dynamical system, for example the two dimensional Navier Stokes flow on a space of divergence free fields, or the three dimensional flow on a set of initial fields whose solutions exist on $[0,T]$. We assume that the trajectory map $\Gamma(x) = (\Phi_t(x))_{t\in[0,T]}$ takes values in the space $C([0,T];X)$ of continuous paths and is Borel measurable. Let $\Pi$ be a prior probability measure on $X$, representing uncertainty about the initial state, and suppose we observe
+\begin{equation}
+y_j = \mathcal{O}_j\big(\Phi_{t_j}(x)\big) + \eta_j,\qquad j=1,\dots,m,
+\label{eq:observation_model}
+\end{equation}
+with measurable observation operators $\mathcal{O}_j$ from $X$ to a Euclidean space and noise variables $\eta_1,\dots,\eta_m$ that are independent of one another and of $x$, with a common density $p_\eta$. When the normalizing constant is finite and positive, the posterior measure is
+\[
+\Pi(\dd x\mid y) \propto \prod_{j=1}^m p_\eta\big(y_j - \mathcal{O}_j(\Phi_{t_j}(x))\big)\,\Pi(\dd x).
+\]
+The \emph{solution manifold} is the set of trajectories
+\[
+\mathcal{M} = \big\{ (\Phi_t(x))_{t\in[0,T]} : x\in X \big\},
+\]
+and the trajectory map $\Gamma$ pushes the posterior forward to a measure on trajectories.
+
+\begin{proposition}[Posterior on the solution manifold]
+\label{prop:solution_manifold}
+Let $P = \Gamma_\#\Pi(\cdot\mid y)$ be the pushforward of the posterior to $C([0,T];X)$. Then $\mathcal{M}$ is universally measurable and $P(\mathcal{M}) = 1$, and for every Borel functional $F$ of the trajectory that is nonnegative or $P$ integrable, $\E_P[F] = \E_{\Pi(\cdot\mid y)}[F\circ\Gamma]$. In particular every posterior predictive quantity is an average of exact solutions of the dynamics.
+\end{proposition}
+
+\begin{proof}
+The space $C([0,T];X)$ with the uniform metric is Polish, and the image of a Polish space under a Borel map is analytic. So $\mathcal{M} = \Gamma(X)$ is analytic, and analytic sets are universally measurable by a theorem of Lusin~\cite{kechris1995}. Hence there are Borel sets $B_1\subseteq\mathcal{M}\subseteq B_2$ with $P(B_2\setminus B_1) = 0$. Since $\Gamma^{-1}(B_2) = X$, we have $P(B_2) = \Pi(X\mid y) = 1$, and therefore $P(\mathcal{M}) = 1$. The second statement is the change of variables formula for pushforward measures.
+\end{proof}
+
+The proposition is elementary, but it encodes the methodological point of the inferential reading. A statistical procedure that models the observed field directly, say by a Gaussian process in space and time, produces estimates that need not satisfy the equations of motion. A procedure that infers the initial state and then simulates forward produces draws that satisfy them exactly, so that each draw has every conservation law and every symmetry of the physics. Averages of draws inherit the linear invariants, such as total mass and momentum, but not the nonlinear ones: the mean of solutions of a nonlinear equation is not a solution, and by Jensen's inequality the energy of the mean is at most the mean energy. The price is that the inverse map from observations to initial states is, for dissipative systems, violently ill posed: the heat equation forgets high frequencies at the rate $e^{-k^2 t}$. Chapter~\ref{ch:nsinference} develops the mathematics of this trade, building on the framework of Nickl and coauthors for nonlinear Bayesian inverse problems~\cite{nickl2023book}, and Part~\ref{part:manifold} develops the generative computation on the solution manifold from our own work~\cite{polsonsokolov2026manifold}.
+
+\section{Bachelier, 1900}
+
+In the same year and in the same city, on 29 March 1900, Louis Bachelier defended his thesis \emph{Th\'eorie de la sp\'eculation}~\cite{bachelier1900} before a jury of Poincar\'e, Appell and Boussinesq~\cite{courtault2000}. Bachelier modeled the price of a French government bond as a continuous random process with independent increments, derived what we would now call the heat equation for its transition density, computed the distribution of the maximum, and priced options. He did all this five years before Einstein's paper on Brownian motion and twenty three years before Wiener constructed Brownian motion as a measure on paths. A Brownian motion component had already appeared in a time series model of Thiele in 1880~\cite{lauritzen1981}.
+
+The object that Bachelier worked with, a continuous random path whose law is governed by the heat equation, is precisely the object that connects the two halves of the sixth problem. It is the scaling limit of a random walk, which is the simplest mechanical model of a particle buffeted by collisions. Its transition density solves the simplest equation of a continuum. Its rigorous construction is Wiener's measure on path space, and Kolmogorov's extension and continuity theorems give the modern route. And it is, as we shall see in Chapter~\ref{ch:brownian}, the source of a wide range of exact identities in law, many of which are algorithms in disguise.
+
+\section{Probability as the method of mean values}
+
+Hilbert's phrase for the second request in the probability half, the method of mean values, deserves a modern gloss. In kinetic theory the method of mean values meant replacing the exact positions and velocities of $10^{23}$ molecules by averages over a distribution. Maxwell derived the Gaussian law of velocities in 1860~\cite{maxwell1860} by an argument from symmetry and independence; Boltzmann derived it in 1872~\cite{boltzmann1872} as the stationary solution of his equation and in 1877~\cite{boltzmann1877} as the most probable distribution under a counting argument. The 1877 derivation is a large deviation computation and a precursor of Sanov's theorem, and we give it in Chapter~\ref{ch:axioms}. The 1860 derivation is a characterization argument: a distribution on $\R^3$ that is rotation invariant and has independent coordinates is Gaussian. Herschel had made the same argument for errors in the plane in 1850~\cite{herschel1850}, and both derivations assume that the components have a differentiable density. The theorem without that assumption was proved independently by Kac~\cite{kac1939} and by Bernstein: if $X$ and $Y$ are independent and so are $X+Y$ and $X-Y$, then $X$ and $Y$ are Gaussian, and the claim for rotation invariant laws follows by rotating two coordinates by 45 degrees. Darmois and Skitovich extended it to independent linear forms~\cite{darmois1953,skitovich1953}, and Bryc~\cite[Chapters~5 and~6]{bryc1995} treats these results.
+
+The legitimacy of these averages was exactly what Loschmidt and Zermelo had challenged. If the microscopic dynamics is reversible, how can averages over it be irreversible? If the dynamics is recurrent, how can entropy increase forever? These objections, which we discuss in Chapters~\ref{ch:poincare} and~\ref{ch:kinetic}, were the best known challenge to Boltzmann's work when Hilbert wrote, although his text names the work and not the challenge. The answer that emerged over the following century in the school of Kac and Lanford has three parts. First, irreversibility is a property of a limit, not of any finite system, and the order of limits matters. Second, the relevant averages are not over time but over initial conditions, so they are statements about typical behavior under a probability measure on phase space, and the choice of that measure is a modeling choice of exactly the kind Bayesian statistics is designed to make explicit. Third, propagation of chaos, the property that independence at time zero persists in the limit, is a statement about exchangeable measures and is best understood through de Finetti's theorem. The ergodic route of Chapter~\ref{ch:ergodic} answers the same objections differently, by asking when time averages along a single trajectory equal averages over phase space.
+
+\section{The thesis of the book}
+
+The book defends one thesis.
+
+\medskip
+\noindent\emph{Hilbert asked for the passage from atoms to continua. Kolmogorov supplied the probability axioms, kinetic theory supplied the limit theorems, and Bayesian computation supplies the inverse passage, from continua back to the states that produced them. The same mathematical objects, Brownian motion, scale mixtures of Gaussians, entropy and transport, govern both directions.}
+
+\medskip
+Three consequences follow. The first is technical: tools developed for the derivational problem, such as relative entropy and the Wasserstein gradient flow, are used in the analysis of posterior sampling in Chapter~\ref{ch:nsinference}, and we expect propagation of chaos and hydrodynamic limits to be useful for consistency and Bernstein von Mises theorems for the inferential problem. The second is computational: modern generative methods, which learn to transport noise into data, are a computational form of Bayes' theorem when the forward model is a simulator and the generator is trained on simulated pairs of parameters and data, and their mathematics is the mathematics of the Fokker Planck equation and Schr\"odinger's bridge problem. The third is conceptual: inference itself is a problem of statistical mechanics, with phase transitions, free energies and thermodynamic costs, and those costs can be stated in bits or in joules, the two being related by the factor $k_BT\ln2$ joules per bit that Szilard~\cite{szilard1929} and Landauer~\cite{landauer1961} found for Maxwell's demon.
+
+\section{How to read this book}
+\label{sec:howtoread}
+
+The book has five parts. Part~\ref{part:problem} states the problem and builds the probabilistic foundations, and the later parts depend on it. Chapters~\ref{ch:hilbert} and~\ref{ch:poincare} are historical and can be read first. Chapters~\ref{ch:axioms} to~\ref{ch:types} are mathematical and assume measure theoretic probability.
+
+Part~\ref{part:brownian} develops the probabilistic machinery and can be read by anyone comfortable with measure theoretic probability. Part~\ref{part:fluids} assumes some familiarity with partial differential equations. Part~\ref{part:manifold} assumes a first course in statistics or numerical analysis. Part~\ref{part:statmech} assumes that the reader has seen Bayesian computation and some machine learning. The Preface lists the dependencies chapter by chapter. Each chapter closes with notes on the literature.
+
+\input{chapters/ext/ch01}
+
+\section*{Notes}
+
+Hilbert's address is reprinted with commentary in many places; the English translation by Mary Winston Newson in the \emph{Bulletin of the American Mathematical Society} (1902) is the standard one. Corry~\cite{corry2004} is the standard historical study of Hilbert and physics up to 1918. The modern status of the sixth problem is surveyed by Gorban~\cite{gorban2018} and, from the kinetic side, by Saint Raymond~\cite{saintraymond2009} and Gallagher~\cite{gallagher2019}. The phrase \emph{solution manifold} and the program of inferring the initial condition before simulating forward are developed in~\cite{polsonsokolov2026manifold}.

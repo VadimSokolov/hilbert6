@@ -1,0 +1,180 @@
+\section{What the posterior is, and how to compute it}\label{m:sec:intro}
+
+An experimenter observes a fluid, a temperature field, or a wave at $N$ scattered points in space and time, each measurement corrupted by noise, and believes the field obeys a known evolution equation. They want three things: the state of the system, its uncertainty, and its future. In the Bayesian formulation this is the regression model
+\begin{equation}\label{m:eq:introm}
+Y_i=u_\theta(t_i,x_i)+\varepsilon_i,\qquad i=1,\dots,N,
+\end{equation}
+in which $u_\theta$ is the solution of the equation with initial condition $\theta$ and the prior is placed on $\theta$. Nickl and coauthors have developed its statistical theory for nonlinear parabolic equations~\cite{nickltiti2024,nicklbvm2024,konennickl2026,nickl2025}. With a Gaussian process prior on $\theta$ and observations beginning at time zero, the posterior on $\theta$ is asymptotically Gaussian in a weak topology, the posterior on the state at any later time is asymptotically Gaussian in supremum norm at the parametric rate $1/\sqrt N$, credible bands have exact asymptotic coverage, and the posterior mean trajectory attains the local asymptotic minimax bound. Within its scope this is a complete answer to what the posterior is and what it is worth.
+
+None of this answers how the posterior is to be obtained at the sample sizes one has, or what should be done when its hypotheses fail. Those are the questions that Part~\ref{part:manifold}, of which this chapter is the first, takes up. The tool is generative Bayesian computation (GBC)~\cite{polsonsokolov2025,polsonsokolov2026b}, developed in general in Chapter~\ref{ch:gbc}, which replaces sampling by a learned inverse map; the aim is to improve the framework's computational side while inheriting every guarantee it provides, and to say precisely where its guarantees stop. Chapter~\ref{ch:adjoint} constructs the summary statistic on which the generator conditions and says when it is sufficient, Chapter~\ref{ch:generators} shows when a generator trained on it inherits the guarantees of the framework and how to train it, and Chapter~\ref{ch:examples} works through the heat, Navier Stokes and Schr\"odinger equations and reports the experiments. This chapter states what they share, in the notation of this part: the framework, which Chapter~\ref{ch:nsinference} summarizes, the solution manifold, and the algorithm. Apart from the quoted results of the framework, this part is our own work~\cite{polsonsokolov2026manifold} and, to our knowledge, new; Section~\ref{m:sec:contrib} separates what is taken from what is added and what is conditional.
+
+\subsubsection{The solution manifold} The lever is an idea the framework uses without naming. Because the prior is on the initial condition and the field is obtained by solving forward, every posterior draw satisfies the equation: the posterior lives on the solution manifold $\mathcal M=\{u_\theta\}$, the Gaussian limit of the theory is a Gaussian on its tangent space, and the chart $\theta\mapsto u_\theta(t)$ contracts under dissipation, damping mode $j$ by $e^{-\nu\lambda_jt}$. That contraction is quantifiable: for the heat equation at $N=2000$, against a space time Gaussian process prior of the same regularity that predicts the same variance for every observation, the manifold posterior has $20$ effective parameters where the unconstrained one has $116$, and it is $1.4$ times tighter at the initial time and $6.1$ times tighter at the end of the window (Section~\ref{m:sec:manifold}, Table~\ref{m:tab:gain}). Generative Bayesian computation computes on $\mathcal M$ directly (Algorithm~\ref{m:alg:gbc}).
+
+\subsubsection{What the generator conditions on} The summary is the other half of the construction, and it too comes from the equation. For a linear dissipative equation the correct summary is the data themselves, run backward in time through the adjoint equation as point sources at the observation locations and read off at $t=0$; it is exactly sufficient. For a nonlinear equation there is no finite dimensional sufficient statistic, but the Bernstein von Mises theorem makes the posterior asymptotically Gaussian with data independent covariance, and a one step efficient score statistic, one forward and one adjoint solve at a preliminary estimate, is $\sqrt N$ equivalent to Nickl's centering. Under the uniform Bernstein von Mises statement of Assumption~\ref{m:ass:U} the posterior mean and this statistic are sufficient for the whole law at the $\sqrt N$ scale (Theorem~\ref{m:thm:jwbvm}).
+
+\subsubsection{Where the asymptotics stop} The affine structure that the Bernstein von Mises theorem supplies holds on a shrinking neighborhood of the truth, and a generator trained on the prior does not see it: in the nonlinear experiment of Section~\ref{m:sec:expns}, such a generator stays about one posterior standard deviation from the Metropolis reference at every budget tried. Section~\ref{m:sec:loc} gives the theory of the remedy, which is to train where the affine structure holds.
+
+\subsubsection{Examples} Three equations carry this part, and they differ in what the dynamics forget. The first is the heat equation, where every object is explicit and the asymptotic formulas can be checked against the exact posterior at finite $N$ (Section~\ref{m:sec:heat}). The second is two dimensional Navier Stokes about the Taylor Green vortex~\cite{taylorgreen1937} (Section~\ref{m:sec:ns}). The third is the Schr\"odinger equations (Section~\ref{m:sec:nondiss}), which show what dissipation was doing.
+
+\subsubsection{Notation} $\Omega=[0,1]^d$ is the $d$ dimensional torus (periodic), $(e_j)$ the Laplace eigenbasis with $-\Delta e_j=\lambda_je_j$, $\lambda_j=4\pi^2|k_j|^2\asymp j^{2/d}$, and $H^a$ the periodic Sobolev spaces with $\norm{h}_{H^a}^2=\sum_j(1+\lambda_j)^a\langle h,e_j\rangle^2$; $H^{-a}$ is the dual. On the mean zero subspaces $H^a_0=\{h\in H^a:\langle h,1\rangle=0\}$, where $\lambda_j\ge\lambda_1>0$, the weights $\lambda_j^a$ give an equivalent norm, which differs from this one by at most the factor $(1+1/\lambda_1)^{|a|/2}$~\cite{nicklbvm2024}; where a norm is written out below as a weighted sum, it uses the weights shown, and no convergence statement depends on the choice. This is the convention of the general theory and of the heat and Schr\"odinger equations; the Taylor Green vortex and the Navier Stokes experiment are written on the $2\pi$ periodic torus, where $\lambda_k=|k|^2$, and Section~\ref{m:sec:ns} gives the conversion. $\Gcal(\theta)=u_\theta$ is the forward map, $\I_\theta=D\Gcal_\theta$ its linearization, and $\I_\theta^*$ the adjoint with respect to $L^2(\Omega)$ and $L^2([0,T]\times\Omega)$ with unnormalized Lebesgue measure. Because the design in \eqref{m:eq:model} is uniform on $\mathcal X=[0,T]\times\Omega$, whose measure is $T$, the Fisher information for $N$ observations in direction $h$ is $\tfrac NT\langle h,\I^*_\theta\I_\theta h\rangle$ and every asymptotic covariance below carries the factor $T$: the Bernstein von Mises limit is $N(0,T(\I^*\I)^{-1})$, which for the heat and Stokes equations, where $\I^*\I$ is diagonal in $(e_j)$, has diagonal $1/\iota_j$, with $\iota_j$ the per mode information of \eqref{m:eq:gram}. Setting $T=1$, as all numerical examples do, collapses the distinction. $\Wone_{1,B}$ is the Wasserstein distance of order one on a Banach space $B$, and $\Ccal=C([t_{\min},t_{\max}],C(\Omega))$, or $C([t_{\min},t_{\max}],C(\Omega)^2)$ for a vector field, is the trajectory space with the supremum norm, so $\Wone_{1,\Ccal}$ is that distance on it. $\Law$, $E$, $\Var$ under the posterior are conditional on the data $Z^{(N)}$; $P^\N_{\theta_0}$ is the law of the data under the truth. $a\lesssim b$ means $a\le Cb$ with $C$ independent of $N$. Observation noise is written $\varepsilon$, and the discrepancies and contraction rates of Chapters~\ref{ch:adjoint} and~\ref{ch:generators} are written $\epsilon$.
+
+\section[\texorpdfstring{The Nickl framework for nonlinear Bayesian\newline estimation}{The Nickl framework for nonlinear Bayesian estimation}]{The Nickl framework for nonlinear Bayesian estimation}\label{m:sec:papers}
+
+The framework this part builds on is a sequence of papers by Nickl and coauthors that settle, for nonlinear parabolic equations, the questions a Bayesian statistician asks of data assimilation. The standard reference for the theory these papers sit in is Nickl~\cite{nickl2023book}.
+
+\subsection{Nickl (2024): the template}
+
+The setting is random design regression on the space time cylinder $\mathcal X=[0,T]\times\Omega$, $\Omega=[0,1]^d$ the torus,
+\begin{equation}\label{m:eq:model}
+Y_i=\Gcal(\theta)(X_i)+\varepsilon_i,\qquad X_i=(t_i,x_i)\sim\mathrm{Unif}(\mathcal X),\qquad\varepsilon_i\sim N(0,I_W),
+\end{equation}
+where $\Gcal(\theta)=u_\theta$ is the solution map of $\partial_tu=\Delta u+F(u)$, $u(0)=\theta$. The prior is a rescaled Gaussian series in the Laplace eigenbasis $(e_j)$ with eigenvalues $\lambda_j\asymp j^{2/d}$,
+\begin{equation}\label{m:eq:prior}
+\theta=\frac{1}{\sqrt N\delta_N}\theta',\qquad\theta'=\sum_j\lambda_j^{-\gamma/2}g_je_j,\qquad\delta_N=N^{-\gamma/(2\gamma+d)},
+\end{equation}
+with RKHS $H_0^\gamma$ (Condition 1 there). The factor $1/(\sqrt N\delta_N)$ multiplies the squared RKHS norm by $N\delta_N^2$, so that prior and likelihood are on the same scale at the rate $\delta_N$; Nickl uses it to control the nonlinearity, and for the heat and Stokes equations a fixed prior has the same Bernstein von Mises limit (Proposition~\ref{m:prop:regfixed}). Readers outside this literature may read \eqref{m:eq:prior} as the series prior of a $\gamma$ smooth function, shrunk to the statistical resolution of $N$ observations. Condition 2 lists what the forward map must satisfy on Sobolev balls: (A) uniform $L^\infty$ bounds; (B) $L^2$ Lipschitz continuity; (C) a linearization $\I_{\theta_0}=D\Gcal_{\theta_0}$ with quadratic remainder; (D) $L^\infty$ mapping properties from $H^\zeta$, $\zeta>d/2$; (E) the stability estimate $\norm{\Gcal(\theta)-\Gcal(\theta_0)}_{L^2(\mathcal X)}\ge c\norm{\theta-\theta_0}_{H^{-1}}$; (F) invertibility of the information operator: $\Delta\I^*_{\theta_0}\I_{\theta_0}$ is a homeomorphism of $H^\eta_0$ for $\eta\ge\eta_0$.
+
+\begin{theorem}[Nickl~\cite{nicklbvm2024}, Theorem 2]\label{m:thm:nickl2}
+Under Conditions 1 and 2 with integer $\gamma>\max(3\zeta+3d/2+2,\eta_0)$ and $k>\max(\zeta+5d/2,\eta_0)$, with $\tilde\theta_N=E^\Pi[\theta\mid Z^{(N)}]$,
+\begin{gather*}
+\Wone_1\big(\Law(\sqrt N(\theta-\tilde\theta_N)\mid Z^{(N)}),\,\Ncal_{\theta_0}\big)\to^{P^{\N}_{\theta_0}}0,\\
+\sqrt N(\tilde\theta_N-\theta_0)\to^d\Ncal_{\theta_0}\ \text{in }H^{-k-2},
+\end{gather*}
+where $\Wone_1$ is the Wasserstein distance of order one on $H^{-k-2}(\Omega)$ and $\Ncal_{\theta_0}=N(0,T(\I_{\theta_0}^*\I_{\theta_0})^{-1})$ is tight on $H^{-a}$ for $a>1+d/2$.
+\end{theorem}
+
+\begin{theorem}[Nickl~\cite{nicklbvm2024}, Theorem 1]\label{m:thm:nickl1}
+For $\partial_tu-\Delta u=f(u)$, $f\in C_c^\infty(\R)$, $d\le3$, integer $\gamma>2+3d$, $\theta_0$ smooth, any $0<t_{\min}<t_{\max}<\infty$, and $\Ccal=C([t_{\min},t_{\max}],C(\Omega))$,
+\begin{gather*}
+\Wone_1\big(\Law(\sqrt N(u_\theta-u_{\tilde\theta_N})\mid Z^{(N)}),\,\mu\big)\to^{P^\N_{\theta_0}}0,\\
+\sqrt N(u_{\tilde\theta_N}-u_{\theta_0})\to^d_\Ccal\mu,
+\end{gather*}
+where $\mu$ is the law in $\Ccal$ of the solution $U$ of $\partial_tU-\Delta U-f'(u_{\theta_0})U=0$, $U(0)=\vartheta\sim\Ncal_{\theta_0}$.
+\end{theorem}
+
+Two features of the proofs are used below. Theorem~\ref{m:thm:nickl1} follows from Theorem~\ref{m:thm:nickl2} by a two term decomposition: a linearization error controlled by concentration of the posterior on a localization set $\bar\Theta_N$, and a term bounded by $\Lip(\I_{\theta_0})$ times the Wasserstein distance in Theorem~\ref{m:thm:nickl2}, using that parabolic smoothing makes $\I_{\theta_0}$ continuous from $H^{-k-2}$ into $\Ccal$. And Theorem~\ref{m:thm:nickl2} is first proved with the centering
+\begin{equation}\label{m:eq:thetahat}
+\begin{aligned}
+\hat\theta_N&=\sum_{j\ge1}\hat\Psi_{N,j}e_j,\\
+\hat\Psi_{N,j}&=\langle e_j,\theta_0\rangle+\frac1N\sum_{i=1}^N\big\langle\I_{\theta_0}p_N(\bar e_j)(X_i),\varepsilon_i\big\rangle_W,\\
+\bar e_j&=T(\I_{\theta_0}^*\I_{\theta_0})^{-1}e_j,
+\end{aligned}
+\end{equation}
+with $p_N$ the projection onto the first $J_N\asymp N\delta_N^2$ modes, and then transferred to $\tilde\theta_N$. Equation \eqref{m:eq:thetahat} is the efficient influence function of the model and is the starting point of Section~\ref{m:sec:suff}.
+
+Nickl outlines how Theorem~\ref{m:thm:nickl1} gives credible bands of exact asymptotic coverage and refers for the argument to Corollary~1.3 of Konen and Nickl~\cite{konennickl2026}. That argument uses that the limit law $\mu$ is nondegenerate, which Konen and Nickl prove for Navier Stokes. For the reaction diffusion class of Theorem~\ref{m:thm:nickl1} we prove it here.
+
+\begin{lemma}[The limit law is nondegenerate]\label{m:lem:nondeg}
+In the setting of Theorem~\ref{m:thm:nickl1}, the reproducing kernel Hilbert space (RKHS) of $\mu$ is a nontrivial linear subspace of $\Ccal$, and $r\mapsto\mu(\norm U_\Ccal\le r)$ is continuous and strictly increasing on $[0,\infty)$.
+\end{lemma}
+
+\begin{proof}
+Let $V=f'(u_{\theta_0})$, so that $|V|\le K_f:=\sup|f'|<\infty$, and let $U_1=\I_{\theta_0}e_1$ be the solution of $\partial_tU_1=\Delta U_1+VU_1$, $U_1(0)=e_1$, which is smooth because $e_1$ is and $V$ is smooth in $x$ and continuously differentiable in $t$~\cite{nicklbvm2024}. First, $e_1$ lies in the RKHS of $\Ncal_{\theta_0}=N(0,T(\I^*_{\theta_0}\I_{\theta_0})^{-1})$: by Condition 2F, which Nickl verifies for this class, $\psi=T^{-1}\I^*_{\theta_0}\I_{\theta_0}e_1$ is smooth, and the covariance maps $\psi$ to $e_1$ (Section~2.2.2 of Nickl's paper~\cite{nicklbvm2024}). Second, $\I_{\theta_0}$ is continuous from $H^{-k-2}$ into $\Ccal$ and $\mu$ is the image of $\Ncal_{\theta_0}$ under it, so the RKHS of $\mu$ is the image of the RKHS of $\Ncal_{\theta_0}$ (Exercise~2.6.5 of Gin\'e and Nickl~\cite{ginenickl2016}, as Konen and Nickl use it) and contains $U_1$. Third, $U_1$ does not vanish. With $A=-\Delta$, the inner product of $L^2(\Omega)$, $q=\langle AU_1,U_1\rangle/\norm{U_1}^2$ and $w=(A-q)U_1$, as long as $U_1(t)\ne0$,
+\[
+\begin{aligned}
+q'&=2\norm{U_1}^{-2}\big(-\norm w^2+\langle w,VU_1\rangle\big)\le K_f^2/2,\\
+\big(\log\norm{U_1}^2\big)'&=-2q+2\norm{U_1}^{-2}\langle VU_1,U_1\rangle\ge-2q-2K_f,
+\end{aligned}
+\]
+the first because $-x^2+xy\le y^2/4$ and $\norm{VU_1}\le K_f\norm{U_1}$. Since $q(0)=\lambda_1$, it follows that $q(t)\le\lambda_1+K_f^2t/2$ and
+\[
+\norm{U_1(t)}^2\ge\exp\big(-2(\lambda_1+K_f)t-K_f^2t^2/2\big)
+\]
+on the largest interval $[0,t_*)$ on which $U_1$ does not vanish, hence at $t_*$ by continuity, so that $t_*=\infty$ and $\norm{U_1}_\Ccal\ge\norm{U_1(t_{\min})}_{L^2(\Omega)}>0$. The RKHS of $\mu$ is a linear space that contains $U_1\ne0$, so it contains elements of every norm. The rest is the argument of Konen and Nickl for Navier Stokes (Section~2.6 of their paper~\cite{konennickl2026}): the distribution function of $\norm U_\Ccal$ is continuous by Exercise~2.4.4 of Gin\'e and Nickl, and it is strictly increasing because every shell $\{r<\norm u_\Ccal<s\}$ contains a ball of radius $(s-r)/3$ centered at an element of the RKHS of $\mu$, and such a ball has positive $\mu$ measure by Theorem~2.4.5 and Corollary~2.6.18 of Gin\'e and Nickl.
+\end{proof}
+
+\subsection{Navier Stokes, the barrier, and McKean Vlasov}
+
+For the periodic two dimensional Navier Stokes system $du/dt+\nu Au+B[u,u]=f$, $u(0)=\theta$, with Stokes operator $A=-\Delta$ on divergence free mean zero fields $\Hds{}$, $B[u,v]=P[(u\cdot\nabla)v]$, prior $N(0,\rho_N^2A^{-\alpha})$, $\alpha>12$, and observations on $[0,T]\times\T^2$, Theorems~\ref{m:thm:nickl2} and~\ref{m:thm:nickl1} hold with $\Ncal_{\theta_0}=N(0,T(\I^*_{\theta_0}\I_{\theta_0})^{-1})$ tight on $\Hds{-\beta}$, $\beta>2$, RKHS $\Hds{-1}$, and $\Ccal=C([t_{\min},t_{\max}],C(\Omega)^2)$~\cite{konennickl2026}. The two new ingredients are a Lipschitz stability estimate at $t=0$ without symmetry of the linearized operator, and the Fredholm decomposition
+\begin{equation}\label{m:eq:fredholm}
+\begin{gathered}
+\I_\theta^*\I_\theta=\Lcal^*\Lcal+\Kcal,\qquad \Delta\Lcal^*\Lcal=\frac1{2\nu}\big(S_{2T}-\Id\big),\\
+\Kcal\ \text{compact }\Hds{a}\to\Hds{a+2},
+\end{gathered}
+\end{equation}
+where $\Lcal$ is the Stokes (heat) solution operator with semigroup $S_t=e^{\nu t\Delta}$. The same paper adds exact asymptotic coverage of credible bands (Corollary 1.3 there) and, via Konen~\cite{konen2026}, a local asymptotic minimax theorem attained by the posterior mean trajectory (Theorem 1.2 there). Mode by mode, \eqref{m:eq:fredholm} reads
+\begin{equation}\label{m:eq:modeinfo}
+\big\langle e_j,\Lcal^*\Lcal\,e_j\big\rangle=\int_0^Te^{-2\nu\lambda_jt}\,dt=\frac{1-e^{-2\nu\lambda_jT}}{2\nu\lambda_j},
+\end{equation}
+
+Nickl and Titi~\cite{nickltiti2024} prove consistency for the same Navier Stokes posterior with, in general, inverse logarithmic contraction rates, and a matching lower bound when observations are supported on $[T_0,T]$, $T_0>0$. They also describe conditions on the initial condition under which faster rates are possible, and Konen and Nickl~\cite{konennickl2026attractor} prove, for initial conditions on the global attractor of a two dimensional periodic reaction diffusion system, an $L^2$ Lipschitz stability estimate for $\theta\mapsto u_\theta(t)$ at any fixed $t>0$ and near parametric rates for the initial condition and the states. Nickl, Pavliotis and Ray~\cite{nickl2025} treat the McKean Vlasov equation, inferring the interaction potential from space time density data; the forward model is the mean field limit of a particle system, which makes it the natural meeting point of GBC with the particle side of the sixth problem (Section~\ref{m:sec:hilbert}).
+
+\subsection{What the framework establishes, and what it leaves open}\label{m:sec:gaps}
+
+The framework establishes, for parabolic equations with a Gaussian series prior on the initial condition and observations from time zero: contraction at the nonparametric rate $\delta_N$~\cite{nickltiti2024,nicklbvm2024}; the weak topology Bernstein von Mises theorem (Theorem~\ref{m:thm:nickl2}); its lift to the supremum norm on forward trajectories through parabolic smoothing (Theorem~\ref{m:thm:nickl1}); and, proved by Konen and Nickl for Navier Stokes~\cite{konennickl2026}, exact asymptotic coverage of credible bands and local asymptotic minimax efficiency of the posterior mean trajectory, the first also for the reaction diffusion class (Lemma~\ref{m:lem:nondeg}). Nickl and Wang~\cite{nicklwang2024} add that localized Langevin sampling computes the posterior in time polynomial in $N$, the dimension, and the inverse accuracy, in a related steady state elliptic model; Section~\ref{sec:gradstab} obtains their gradient stability for the heat equation and, when time zero is observed, for the initial condition of two dimensional Navier Stokes, and verifying their remaining conditions for the initial condition of a nonlinear time evolution equation is open as far as we know. The framework leaves open, or does not address, seven things that this part takes up.
+
+\begin{enumerate}
+\item Computation by generation rather than sampling: whether a learned inverse map can reach the posterior at the $\sqrt N$ scale, and under what hypothesis (Section~\ref{m:sec:main}).
+\item What the data must be reduced to: the framework proves the Bernstein von Mises theorem for the full data and never asks for a sufficient statistic (Section~\ref{m:sec:suff}).
+\item Whether reducing to a sufficient statistic improves any bound, or merely preserves one (Section~\ref{m:sec:suffbounds}).
+\item How a generator must be trained: the affine structure the theorem supplies is a statement on a shrinking neighborhood, and a training distribution that ignores this fails (Section~\ref{m:sec:loc}).
+\item Finite $N$: the accuracy of the Gaussian limit at the sample sizes one has (Proposition~\ref{m:prop:gram}, and the numerical study of Polson and Sokolov~\cite{polsonsokolov2026}).
+\item Nondissipative equations: the framework is parabolic throughout (Section~\ref{m:sec:nondiss}).
+\item Model error and non Gaussian priors, which the framework excludes by assumption (Theorem~\ref{m:thm:PR} and Section~\ref{m:sec:open}). The framework also assumes Gaussian noise, and so does this part.
+\end{enumerate}
+
+\section{The solution manifold: solve for the initial condition, then simulate forward}\label{m:sec:manifold}
+
+The framework of Section~\ref{m:sec:papers} constrains the initial condition, but the object it constrains is the trajectory. Every draw from the posterior is a solution of the equation, so the posterior lives on the set of space time fields the equation can produce, and that set is parameterized by $\theta$ alone.
+
+\subsection{The manifold and its tangent space}
+
+Let $\Theta$ be the parameter space of initial conditions and $\Gcal:\Theta\to C([0,T],L^2(\Omega))$ the solution map. The set
+\begin{equation}\label{m:eq:manifold}
+\mathcal M=\{u_\theta=\Gcal(\theta):\theta\in\Theta\}
+\end{equation}
+is the solution manifold: the space time fields that satisfy the PDE for some admissible initial datum. When $\Theta$ is the $D$ dimensional truncation of the Gaussian series prior, $\mathcal M$ is a $D$ dimensional embedded submanifold of the space of space time fields, with tangent space at $u_{\theta_0}$ equal to the range of the linearization $\I_{\theta_0}$. The Nickl framework parameterizes the unknown field by its initial condition and puts the prior on $\theta$; the posterior on the field is the push forward $\Gcal_\#\Pi(\cdot\mid Z^{(N)})$. Three consequences follow, none stated in the framework but all used by it.
+
+\begin{proposition}[Posterior on the manifold]\label{m:prop:manifold}
+\begin{enumerate}[label=(\roman*)]
+\item Every draw from the posterior on the field satisfies the equation exactly: $\Gcal_\#\Pi(\cdot\mid Z^{(N)})$ is supported on $\mathcal M$ for every $N$, and so is every draw of the GBC posterior of Algorithm~\ref{m:alg:gbc}, since it is obtained by simulating forward.
+\item The Gaussian limit $\mu$ of Theorem~\ref{m:thm:nickl1} is the law of $\I_{\theta_0}[\vartheta]$, $\vartheta\sim\Ncal_{\theta_0}$: a centered Gaussian measure supported on the tangent space $T_{u_{\theta_0}}\mathcal M$, with covariance the push forward of $T(\I^*_{\theta_0}\I_{\theta_0})^{-1}$ by $\I_{\theta_0}$.
+\item Forward prediction beyond the observation window is the restriction of the same posterior to $t>T$; it requires no extrapolation model, and, when the data come from the model and the hypotheses of Theorem~\ref{m:thm:nickl1} or of its Navier Stokes counterpart hold, its uncertainty at the $\sqrt N$ scale is asymptotically that of the tangent space Gaussian propagated by the tangent equation, on any window $[t_{\min},t_{\max}]$, also one with $t_{\max}>T$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) is the definition of the push forward and of the forward simulation. (ii) is the statement of Theorem~\ref{m:thm:nickl1} read as a statement about where the limit lives. The first part of (iii) is that $u_\theta$ is defined on $[0,\infty)$ and the posterior on $\theta$ does not know where the observations stopped. The second is Theorem~\ref{m:thm:nickl1}, and its Navier Stokes counterpart~\cite{konennickl2026}, whose window $0<t_{\min}<t_{\max}<\infty$ is arbitrary and may extend beyond $T$; the limit $\mu$ there is the law of the solution of the tangent equation started from $\vartheta\sim\Ncal_{\theta_0}$, which is the Gaussian of (ii).
+\end{proof}
+
+None of this holds for a Gaussian process prior placed directly on the space time field: that posterior is supported on the whole function space, its draws do not satisfy the equation, it cannot predict beyond $T$ without an extrapolation assumption, and its effective dimension is that of a field rather than of an initial condition. This is what separates the construction here from the physics informed and PDE constrained Gaussian process literature, which places the prior on the field and then imposes the equation as a constraint or a penalty: Raissi, Perdikaris and Karniadakis~\cite{raissi2017} use the linearity of the operator to push a Gaussian process through it exactly, and Chen and coauthors~\cite{chen2021} solve and learn nonlinear equations by collocating a Gaussian process against the residual. Putting the prior on the initial condition and simulating forward makes the constraint free, since the parametrization cannot leave $\mathcal M$. Proposition~\ref{m:prop:gain} prices the difference in the one case where both posteriors are available in closed form, and the comparison it makes is against an \emph{unconstrained} field prior. A Gaussian process conditioned on a linear equation is supported on the same manifold~\cite{albertrath2020}, so against that competitor the gain of Table~\ref{m:tab:gain} is not available; what survives the comparison is that here the constraint extends past $T$ without an extrapolation assumption.
+
+\subsection{The manifold gain, quantified}
+
+\begin{proposition}[Manifold gain for the heat equation]\label{m:prop:gain}
+Consider the heat equation on $\T^d$, let $\alpha>(d+1)/2$, and take the prior $\sigma_{0,j}^2=\rho^2(\lambda_j/\lambda_1)^{-\alpha}$ on the initial condition (constrained model), and, for comparison, a Gaussian process prior on the space time field $u(t,x)$ with Fourier variances $\rho^2((\lambda_k+\omega_m^2)/\lambda_1)^{-\alpha}$, $\omega_m=2\pi m/T$ (unconstrained model), so that the two priors have comparable regularity in $x$. With $N$ observations uniform on $[0,T]\times\T^d$, the Gram matrix of the design replaced by its limit, namely $\diag(\iota_j)$ by \eqref{m:eq:gram} in the constrained model and the identity in the unconstrained one, and noise variance $\varsigma^2$, which is the variance normalized to one in \eqref{m:eq:model} and is carried as a symbol here and in Sections~\ref{m:sec:suff} and~\ref{m:sec:jw} only to show where it enters:
+\begin{enumerate}[label=(\roman*)]
+\item the constrained posterior standard deviation of $u(t,x)$ is $\big(\sum_je^{-2\nu\lambda_jt}(N\iota_j/\varsigma^2+\sigma_{0,j}^{-2})^{-1}\big)^{1/2}$, decreasing in $t$, and the effective number of parameters is $J_{\rm eff}\asymp(N\rho^2/\nu T)^{d/(2\alpha+2)}$ (Theorem~\ref{m:thm:jeff});
+\item the unconstrained posterior standard deviation is $\big(\sum_{k,m}(N/\varsigma^2+\sigma_{0,km}^{-2})^{-1}\big)^{1/2}$, independent of $(t,x)$, and its effective number of parameters is $\#\{(k,m):N\sigma^2_{0,km}\ge\varsigma^2\}\asymp N^{(d+1)/(2\alpha)}$;
+\item the ratio of unconstrained to constrained standard deviation at time $t$ is at least $e^{\nu\lambda_1t}$ times its value at $t=0$, so it grows without bound as $t$ increases, at the rate at which the manifold contracts.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) is \eqref{m:eq:linpost} pushed through the heat semigroup, with the Gram concentration \eqref{m:eq:gram}; the parameter count is Theorem~\ref{m:thm:jeff}(i). (ii) is the same computation in the orthonormal space time Fourier basis, where the design is asymptotically orthonormal in both variables; the count follows from $\#\{(k,m):\lambda_k+\omega_m^2\le\Lambda\}\asymp\Lambda^{(d+1)/2}$ with $\Lambda\asymp N^{1/\alpha}$. (iii) the standard deviation in (ii) does not depend on $t$, while by (i) the constrained variance at time $t$ is at most $e^{-2\nu\lambda_1t}$ times its value at $t=0$, because $\lambda_j\ge\lambda_1$ for every $j$.
+\end{proof}
+
+\begin{table}[tp]\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{The manifold gain for the two dimensional heat equation, $N=2000$, $\nu=0.01$, $T=1$, $\alpha=3$, $\varsigma=1$, with matched priors: both use the spatial modes $k\in\Z^2$ with $0<\max(|k_1|,|k_2|)\le12$, so they exclude the spatial mean modes, and both give the signal $u(X_i)$ of an observation, with $X_i$ uniform on $[0,T]\times\Omega$, the prior standard deviation $1.75$, which takes $\rho=1$ in the constrained prior and $\rho=0.69$ in the unconstrained one, whose temporal frequencies are $|m|\le40$. The pointwise prior standard deviation is then $1.75$ at every $t$ in the unconstrained model and falls from $2.16$ at $t=0$ to $1.39$ at $t=1$ in the constrained one. Posterior standard deviation of $u(t,x)$ at a point.}\label{m:tab:gain}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.6in}>{\centering\arraybackslash}p{0.62in}ccccc@{}}
+\toprule
+& effective parameters & $t=0$ & $t=0.05$ & $t=0.2$ & $t=0.5$ & $t=1$\\
+\midrule
+constrained (on $\mathcal M$) & 20 & 0.227 & 0.194 & 0.137 & 0.085 & 0.051\\
+unconstrained space time GP & 116 & 0.313 & 0.313 & 0.313 & 0.313 & 0.313\\
+ratio & & 1.4 & 1.6 & 2.3 & 3.7 & 6.1\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{m:tab:gain} evaluates the proposition. How the priors are matched moves the ratio at the initial time but not its growth with $t$, a factor $4.4$ by $t=1$, since the unconstrained standard deviation does not depend on $t$. The unconstrained posterior is stationary in time because nothing in its prior distinguishes early from late; the constrained posterior improves with time because the manifold contracts under dissipation, so that a fixed uncertainty in the initial condition is damped by $e^{-\nu\lambda_jt}$ in every mode. This is the statistical content of parabolic smoothing, and it is the reason the Nickl framework obtains a $1/\sqrt N$ rate in supremum norm for the state at $t>0$ while the initial condition itself is recoverable only at the nonparametric rate.
+
+\subsection{Three examples, and what the viewpoint changes}
+
+\subsubsection{Heat and Stokes} $\mathcal M$ is the linear span $\{\sum_j\theta_je^{-\nu\lambda_jt}e_j\}$, a $D$ dimensional linear subspace of space time fields whose basis functions decay at mode dependent rates. The tangent space is $\mathcal M$ itself, the Gaussian limit is Gaussian on $\mathcal M$, and every Gaussian statement in Sections~\ref{m:sec:suff} to~\ref{m:sec:loc} is exact.
+
+\subsubsection{Navier Stokes about the Taylor Green vortex} $\mathcal M$ is a nonlinear manifold, and the Taylor Green family $\{Ae^{-2\nu t}u_{\rm TG}(x):A\in\R\}$, written on the $2\pi$ periodic torus where $\lambda_k=|k|^2$ as in Section~\ref{m:sec:ns}, is a one dimensional submanifold along which the equation is exactly linear, because the nonlinear term is a gradient. Off that curve the tangent space at $u_{\rm TG}$ is spanned by solutions of the linearized equation with the nearest neighbor Fourier coupling \eqref{m:eq:tgcoupling}, which is where it departs from the tangent space of the Stokes flow, and the compact perturbation $\Kcal$ of the information operator measures how far the metric that the data induce on $\mathcal M$ at $u_{\rm TG}$, which is $\I^*\I$, is from the Stokes metric $\Lcal^*\Lcal$ of the flat case.
+
+\subsubsection{Schr\"odinger} For the linear equation $\mathcal M$ is the orbit $\{e^{it\Delta}\theta\}$ of the unitary group: a manifold isometric to the space of initial conditions at every time, with no contraction. The manifold constraint still removes the space time degrees of freedom of an unconstrained model, but dissipation contributes nothing, so the gain of Proposition~\ref{m:prop:gain}(iii) is constant in $t$ rather than growing, and there is no supremum norm theorem because the chart does not smooth (Section~\ref{m:sec:nondiss}). For the cubic nonlinear Schr\"odinger equation (NLS) about a plane wave the metric that the data induce on the manifold departs from the flat $T\cdot\Id$ through the conjugation term of the linearized equation alone, and the Bogoliubov blocks of Proposition~\ref{m:prop:bog} give it mode by mode: a bounded perturbation in the defocusing case, and in the focusing band an exponential growth along one direction of each unstable block.
+
+\subsubsection{What the viewpoint changes in the computation} Everything that follows comes from computing on $\mathcal M$ rather than in the ambient space. The sufficient statistic of Section~\ref{m:sec:suff} is the projection of the data onto the tangent space of $\mathcal M$, computed by the adjoint equation. The supremum norm part of the transfer theorem of Section~\ref{m:sec:main} holds because the forward simulation in the last step of Algorithm~\ref{m:alg:gbc} is the chart $\theta\mapsto u_\theta$, whose linearization is Lipschitz from $H^{-k-2}$ into the trajectory space by parabolic smoothing (Section~\ref{m:sec:papers}). The effective dimension of Theorem~\ref{m:thm:jeff} is the dimension of the part of $\mathcal M$ that the data resolve. And the localization of Section~\ref{m:sec:loc} is the statement that the generator should be trained where the manifold is flat, at the scale on which the framework's Gaussian limit lives. The sequential methods of Section~\ref{m:sec:connections} are the same idea in time: particle learning carries the coordinate $\theta$, the practical filter relinearizes the chart, and the Gibbs smoother of Carlin Polson Stoffer is what one does when model error takes the trajectory off $\mathcal M$.

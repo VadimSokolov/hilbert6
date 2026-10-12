@@ -1,0 +1,91 @@
+\subsubsection{Identities as samplers} An identity in law $X\eqd F(Y_1,\dots,Y_m)$ is an algorithm for sampling $X$ when three conditions hold. The variables $Y_i$ can be drawn exactly at the cost of a few random numbers, the map $F$ is explicit, and the identity holds for the whole functional $X$ and not only asymptotically in a parameter. Table~\ref{tab:yor_catalogue} lists eight identities; the last three fall short of the conditions, as explained after the table.
+
+\begin{table}[t]\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Identities in law read as samplers.}\label{tab:yor_catalogue}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.95in}>{\raggedright\arraybackslash}p{1.85in}>{\raggedright\arraybackslash}p{1.15in}>{\raggedright\arraybackslash}p{0.34in}@{}}
+\toprule
+Identity & Statement in law & Sampler & Cost\\
+\midrule
+Dufresne, 1990~\cite{dufresne1990}, Theorem~\ref{thm:dufresne} & $\int_0^\infty e^{2(B_s-\mu s)}\dd s\eqd 1/(2\gamma_\mu)$ for $\mu>0$ & Draw $\gamma_\mu$; return $1/(2\gamma_\mu)$ & 1\\
+Bougerol, 1983~\cite{bougerol1983,alili1997} & $\sinh B_t\eqd\beta_{A_t}$ for fixed $t$, with $\beta$ a Brownian motion independent of $B$ & Draw $Z$; return $\sinh(\sqrt tZ)$, a draw of $\beta_{A_t}$, not of $A_t$ & 1\\
+Bachelier, 1900, and Pitman, 1975~\cite{bachelier1900,pitman1975} & $\P(M_t\ge m\mid B_t=b)=e^{-2m(m-b)/t}$ for $m\ge\max(b,0)$; $2M-B$ is $\mathrm{BES}(3)$ & Draw $Z$, $U$; return $B_t$ and $M_t$ (Algorithm~\ref{alg:yor_maximum}) & 2\\
+Michael, Schucany and Haas, 1976~\cite{michael1976} & $\inf\{t:B_t+\nu t=a\}$ for $a,\nu>0$ is inverse Gaussian with mean $a/\nu$ and shape $a^2$ & Draw $Z$, $U$; return a root of a quadratic in $Z^2$ (Algorithm~\ref{alg:yor_passage}) & 2\\
+Polson and Sokolov, 2026~\cite{polsonsokolovyor,carvalho2010} & Horseshoe: $\lambda^2\eqd\gamma_{1/2}/\gamma'_{1/2}$ is a GGC with Thorin mass $\frac12$, and $\E e^{-s\lambda^2}=e^s\,\mathrm{erfc}\sqrt s$ & Draw $\gamma_{1/2}$, $\gamma'_{1/2}$; return the ratio & 2\\
+Ciesielski and Taylor, 1962, and Kent, 1980~\cite{ciesielski1962,kent1980} & Theorem~\ref{thm:exit_series}: $T\eqd\int_0^\infty\mathbb{1}_{\{|W_s|<1\}}\dd s\eqd\sum_{n\ge1}8E_n/((2n-1)^2\pi^2)$ & Draw $E_1,\dots,E_K$ and a Gamma tail; return the sum & $K+1$\\
+Dufresne, 2001, and Matsumoto and Yor, 2001, in~\cite{matsumotoyor2005} & $1/A^{(-\mu)}_t\eqd 1/A^{(\mu)}_t+2\gamma_\mu$ for $\mu>0$ and each $t$, with $\gamma_\mu$ independent of $B$ & Draw $\gamma_\mu$; add $2\gamma_\mu$ to $1/A^{(\mu)}_t$ and invert & 1, and $A^{(\mu)}_t$\\
+Biane, Pitman and Yor, 2001~\cite{bpy2001} & Theorem~\ref{thm:bpy}: $\E Y^s=2\xi(s)$ for $s\in\C$, where $Y=\sqrt{2/\pi}\,m$ and $m$ is an excursion maximum & n/a & n/a\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Reading the table} In the table $M_t=\max_{s\le t}B_s$, $A^{(\nu)}_t=\int_0^te^{2(B_s+\nu s)}\dd s$ and $A_t=A^{(0)}_t$; $\gamma_\mu$ is a Gamma variable with shape $\mu$ and unit scale and $\gamma'_\mu$ is an independent copy; $E_n$, $Z$ and $U$ are standard exponential, standard normal and uniform variables, independent of each other and of $B$; $T$ is the exit time of $B$ from $(-1,1)$ and $W$ is three dimensional Brownian motion. The cost is counted in random variates, and $\mathrm{BES}(3)$ is the three dimensional Bessel process. In the horseshoe row the mixing law is HCM and hence a GGC by Chapter~\ref{ch:mixtures}; the sampler does not use that structure. In the exit time row the Gamma variable matches only the mean and variance of the tail after $K$ terms, so the sum is not exact. The Matsumoto and Yor row is Theorem~5.1 of Part~II of~\cite{matsumotoyor2005}, which credits the identity at a fixed $t$ to Dufresne and the extension to processes in $t$ to Matsumoto and Yor, both in 2001; it moves exactness from one functional to the other, since a sampler of $A^{(-\mu)}_t$ needs one of $A^{(\mu)}_t$, and letting $t\to\infty$ gives the Dufresne row. The Biane, Pitman and Yor row concerns the moments of $Y$ and gives no sampler.
+
+\subsubsection{Four algorithms} Algorithm~\ref{alg:yor_dufresne} replaces the $T/h$ normal variates of an Euler sum for the perpetuity by one Gamma variate and needs no horizon $T$.
+
+\begin{samepage}
+\begin{algorithm}[Perpetuity of geometric Brownian motion]\label{alg:yor_dufresne}
+Input: $\mu>0$. Output: one draw of $\int_0^\infty e^{2(B_s-\mu s)}\dd s$. Random variates: one Gamma. Rests on Theorem~\ref{thm:dufresne}, the Dufresne row of Table~\ref{tab:yor_catalogue}.
+\begin{enumerate}[nosep]
+\item Draw $G$ from the Gamma law with shape $\mu$ and unit scale.
+\item Return $X=1/(2G)$.
+\end{enumerate}
+\end{algorithm}
+\end{samepage}
+
+Bougerol's identity~\cite{bougerol1983} says that $\sinh B_t\eqd\beta_{A_t}$ for each fixed $t$, with $\beta$ a Brownian motion independent of $B$ and $A_t=\int_0^te^{2B_s}\dd s$ (Theorem~3.1 of Part~I of~\cite{matsumotoyor2005}). It is not an identity of processes in $t$, since $\sinh B_t$ is not a martingale and $\beta_{A_t}$ is. Given $A_t$ the variable $\beta_{A_t}$ is $N(0,A_t)$, so the right side is a normal variance mixture with mixing variable $A_t$, and Algorithm~\ref{alg:yor_bougerol} draws from it, without drawing $A_t$, as the hyperbolic sine of a normal variable, a Johnson $S_U$ variable. Alili, Dufresne and Yor~\cite{alili1997} gave a short proof by It\^o's formula and extended the identity to Brownian motion with drift;~\cite{vakeroudis2012} is a survey.
+
+\begin{samepage}
+\begin{algorithm}[Brownian motion at an exponential functional]\label{alg:yor_bougerol}
+Input: $t>0$. Output: one draw of $\beta_{A_t}$, a Brownian motion read at the random time $A_t=\int_0^te^{2B_s}\dd s$; it does not return $A_t$. Random variates: one normal. Rests on Bougerol's identity, the Bougerol row of Table~\ref{tab:yor_catalogue}.
+\begin{enumerate}[nosep]
+\item Draw $Z$ from the standard normal law.
+\item Return $S=\sinh(\sqrt tZ)$.
+\end{enumerate}
+\end{algorithm}
+\end{samepage}
+
+For $m>0$ and $b\le m$ the reflection principle, Theorem~\ref{thm:reflection}, gives $\P(M_t\ge m,B_t\le b)=\P(B_t\ge2m-b)$. Differentiating in $b$ and dividing by the density $\varphi_t(b)$ of $B_t$ gives $\P(M_t\ge m\mid B_t=b)=\varphi_t(2m-b)/\varphi_t(b)=e^{-2m(m-b)/t}$ for $m\ge\max(b,0)$. Setting this equal to $U$ and taking the larger root of the quadratic in $m$ gives step 3 of Algorithm~\ref{alg:yor_maximum}. Differentiating in $m$ as well gives the joint density $2r(2\pi t^3)^{-1/2}e^{-r^2/(2t)}$ of $(M_t,R_t)$ on $0\le m\le r$, where $R_t=2M_t-B_t$. It does not depend on $m$, so given $R_t$ the maximum is uniform on $[0,R_t]$, and $R_t$ has the law of $\sqrt t$ times the norm of a standard normal vector in $\R^3$, in agreement with Pitman's theorem~\cite{pitman1975} for the process $2M-B$. This is a second exact route to $(B_t,M_t)$ at the same cost: draw $R_t=\sqrt{2t\gamma_{3/2}}$, put $M_t=VR_t$ with $V$ uniform on $(0,1)$ and $B_t=2M_t-R_t$.
+
+\begin{samepage}
+\begin{algorithm}[Brownian motion and its maximum]\label{alg:yor_maximum}
+Input: $t>0$. Output: one draw from the joint law of $(B_t,M_t)$. Random variates: one normal and one uniform. Rests on Theorem~\ref{thm:reflection}.
+\begin{enumerate}[nosep]
+\item Draw $Z$ from the standard normal law and $U$ uniform on $(0,1]$, independently.
+\item Put $B_t=\sqrt tZ$.
+\item Put $M_t=\frac12\big(B_t+\sqrt{B_t^2-2t\log U}\big)$ and return $(B_t,M_t)$.
+\end{enumerate}
+\end{algorithm}
+\end{samepage}
+
+Let $\nu>0$ and let $T_a$ be the first time at which $B_t+\nu t$ reaches $a>0$. Girsanov's theorem multiplies the density of the L\'evy law of the hitting time of $a$ by $e^{\nu a-\nu^2t/2}$, which gives the inverse Gaussian density $a(2\pi t^3)^{-1/2}\exp(-(a-\nu t)^2/(2t))$ with mean $a/\nu$ and shape $a^2$. For this law $(\nu T_a-a)^2/T_a$ has the $\chi^2$ law with one degree of freedom, so it has the law of $Y=Z^2$. Indeed, the distribution function of $T_a$ is $F(t)=\Phi((\nu t-a)/\sqrt t)+e^{2a\nu}\Phi(-(\nu t+a)/\sqrt t)$, where $\Phi$ is the standard normal distribution function, and for $y>0$ the equation $(\nu t-a)^2=yt$ has two positive roots $t_1<a/\nu<t_2$. At them $(\nu t-a)/\sqrt t$ equals $-\sqrt y$ and $\sqrt y$, and $(\nu t+a)/\sqrt t=\sqrt{y+4a\nu}$ at both, so $\P((\nu T_a-a)^2/T_a\le y)=F(t_2)-F(t_1)=\Phi(\sqrt y)-\Phi(-\sqrt y)$. Given the value $Y$ of $(\nu T_a-a)^2/T_a$, the variable $T_a$ is therefore one of the two roots of $(\nu t-a)^2=Yt$, the smaller root $X$ and the larger root $a^2/(\nu^2X)$, since the product of the roots is $a^2/\nu^2$. Michael, Schucany and Haas~\cite{michael1976} show that $T_a$ may be taken equal to the smaller root $X$ with probability $a/(a+\nu X)$ and to the larger root otherwise, which is Algorithm~\ref{alg:yor_passage}. In floating point arithmetic the smaller root is better computed as $X=2a^2/(2a\nu+Y+\sqrt{Y^2+4a\nu Y})$, the same number without the cancellation that makes the expression of step 2 inaccurate when $a\nu$ is small compared with $Y$.
+
+\begin{samepage}
+\begin{algorithm}[First passage time with drift]\label{alg:yor_passage}
+Input: $a>0$ and $\nu>0$. Output: one draw of $T_a=\inf\{t:B_t+\nu t=a\}$. Random variates: one normal and one uniform. Rests on the inverse Gaussian law of $T_a$ and the transformation with multiple roots of Michael, Schucany and Haas, the passage time row of Table~\ref{tab:yor_catalogue}.
+\begin{enumerate}[nosep]
+\item Draw $Z$ from the standard normal law and put $Y=Z^2$.
+\item Put $X=\dfrac{a}{\nu}+\dfrac{Y-\sqrt{Y^2+4a\nu Y}}{2\nu^2}$.
+\item Draw $U$ uniform on $(0,1)$. If $U\le a/(a+\nu X)$ return $X$, and otherwise return $a^2/(\nu^2X)$.
+\end{enumerate}
+\end{algorithm}
+\end{samepage}
+
+\subsubsection{Checks} We compared each sampler with the exact distribution function and with the Euler scheme that it replaces, by the Kolmogorov Smirnov distance $\sup_x|F_n(x)-F(x)|$ between the empirical distribution function $F_n$ of $10^5$ draws and the exact one $F$. For an exact sample of this size the distance has mean 0.0027 and exceeds 0.0043 with probability 0.05. The generator is NumPy's \textit{default\_rng} with seed 20261007 and a fixed offset for each experiment, and the script \textit{code/yor\_catalogue.py} in the \LaTeX\ source reproduces the numbers below, apart from the times, in about two minutes on one core. The Euler schemes use nested grids of the same Brownian paths: left endpoint Riemann sums for $\int_0^6e^{2(B_s-2s)}\dd s$ and for $A_1$, the latter times an independent normal variable for Bougerol's identity with $t=1$, the maximum over the grid for $M_1$, and the first grid time with $B_{kh}+kh\ge1$ for $T_1$ with $\nu=1$.
+
+\begin{table}[t]\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Kolmogorov Smirnov distance between $10^5$ draws and the exact distribution function, for the exact sampler and for Euler schemes with step $h$.}\label{tab:yor_checks}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+& Exact & $h=2^{-6}$ & $h=2^{-8}$ & $h=2^{-10}$ & $h=2^{-12}$\\
+\midrule
+Perpetuity, $\mu=2$ & 0.0041 & 0.0243 & 0.0086 & 0.0051 & 0.0043\\
+Bougerol, $t=1$ & 0.0024 & 0.0024 & 0.0025 & 0.0025 & 0.0025\\
+Maximum $M_1$ & 0.0044 & 0.0701 & 0.0353 & 0.0175 & 0.0086\\
+Passage time, $a=\nu=1$ & 0.0022 & 0.0575 & 0.0283 & 0.0154 & 0.0096\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The exact samplers in Table~\ref{tab:yor_checks} have distances between 0.0022 and 0.0044, the largest being just above the 5\% value, for the maximum, and over 40 repetitions with fresh seeds of each of six exact samplers and coordinates, 14 of the 240 distances exceed it, against 12 expected. The Riemann sums have errors of order $h$: the exact mean of the sum differs from its limit by 1.6\% at $h=2^{-6}$ and 0.024\% at $h=2^{-12}$, for the perpetuity and for $A_1$, and the distance for the perpetuity falls from 0.024 to 0.0043. The Bougerol distance is at the noise level for every $h$, so it does not detect this error. The maximum and the first passage time on a grid have errors of order $\sqrt h$, and their distances fall by factors between 1.6 and 2.0 for each fourfold reduction of $h$; the distance for the maximum is the fraction of paths whose grid maximum is zero, about $\sqrt{h/\pi}$, and an exact maximum is never zero. The Kent series cut after $K=1,2,4,8,16$ terms has distances 0.175, 0.091, 0.047, 0.025 and 0.013, and at most 0.0039 for all five values when the Gamma tail is added. The Matsumoto and Yor row, with $\mu=t=1$ and $5\times10^4$ Euler paths with $h=2^{-10}$ on each side, has a two sample distance of 0.0059 against a 5\% value of 0.0086. The moments $\E Y^s$ computed from the theta series for the distribution function of the excursion maximum agree with $2\xi(s)$ for $s=1,2,3,4$ to within $5\times10^{-16}$. For the horseshoe row, the Laplace transform of $10^6$ draws of $\gamma_{1/2}/\gamma'_{1/2}$ is within 0.0004 of $e^s\,\mathrm{erfc}\sqrt s$ at $s=0.1,1,10$, and $-\log(e^s\,\mathrm{erfc}\sqrt s)$ exceeds $\frac12\log(\pi s)$ by 0.0049, $5\times10^{-5}$ and $5\times10^{-7}$ at $s=10^2,10^4,10^6$, consistent with the Thorin mass $\frac12$. In NumPy on one core of an Apple M2, $10^5$ exact draws took 1.8 to 2.8 milliseconds of CPU time and $10^5$ Euler paths with $h=2^{-10}$ took 1.5 to 13 seconds, so the exact samplers were faster by factors between $5\times10^2$ and $6\times10^3$. Times depend on the machine and on its load, and the factors depend on them less.
+
+\subsubsection{A library} The table is the start of the library that Open Problem~\ref{prob:yor} asks for. A solution of the problem would replace the Gamma variable of the exit time row by an exact draw of the tail. At $10^5$ draws the checks above cannot tell the Gamma tail from the exact one, which is evidence that the approximation is good and not a proof that it is exact.

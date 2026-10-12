@@ -1,0 +1,157 @@
+# book.yaml: the facts about the book, kept in one place.
+# bookrepo.py generates RESULTS.md, CITATION.cff, the README block and the summary blocks from this file and results.yaml.
+# The books website reads it too. Guide: references/repository.md of the book-writing skill.
+
+slug: hilbert6                     # lowercase letters, digits and underscores; also the name of the book's page on the site
+title: "On Hilbert's 6th Problem"
+subtitle: "Probability, Mechanics and Bayesian Computation"
+authors:
+  - given: "Nick"
+    family: "Polson"
+    orcid: ""                    # 0000-0000-0000-0000
+    affiliation: "Booth School of Business, University of Chicago"
+  - given: "Vadim"
+    family: "Sokolov"
+    orcid: "0000-0002-6618-2965"
+    affiliation: "George Mason University"
+credit_names: ""                 # how a citation names the authors, e.g. "Polson and Sokolov"; empty: built from the family names
+year: 2026
+edition: "1"
+version: "1.0.0"                 # the release tag is v<version>
+date_released: "2026-10-12" # YYYY-MM-DD, set at release
+publisher: "Independently published"                    # e.g. "Independently published" for a free KDP ISBN
+# no isbn: a free KDP ISBN may be used only on KDP, so it goes on the ISBN line of kdp.md (private) and is printed
+# only in the print edition (kdp.py interior); this file is published (references/publishing.md)
+doi: "10.5281/zenodo.23327515" # this edition's DOI; zenodo.py reserve writes it before the final build
+license_text: CC-BY-4.0          # text, figures and PDF
+license_code: MIT
+repository: https://github.com/VadimSokolov/hilbert6   # the public repository; its name is the slug
+site_page: https://vsokolov.org/books/hilbert6/    # the book page on the website; the PDF is served next to it
+language: en
+print_url: ""                    # where to buy the printed book (optional)
+cover_image: pdf/cover.jpg               # front cover image (PNG or JPEG, about 1600 px tall) in the repository, e.g. pdf/cover.png
+pdf: pdf/hilbert6.pdf              # the released PDF; bookrepo.py pdf copies the build here
+keywords:                        # 5 to 12 search terms
+  - "Hilbert's sixth problem"
+  - "foundations of probability"
+  - "kinetic theory"
+  - "Boltzmann equation"
+  - "Navier Stokes equations"
+  - "hydrodynamic limits"
+  - "Bayesian inverse problems"
+  - "sufficient statistics"
+  - "generative Bayesian computation"
+  - "large deviations"
+  - "stochastic mechanics"
+  - "statistical mechanics"
+short_description: "Hilbert's sixth problem from Kolmogorov's axioms and the Boltzmann equation to the Navier Stokes equations, and the inverse passage: Bayesian estimation on the solution manifold of a differential equation, where the adjoint evolution of the data is a sufficient statistic for linear equations."
+description: |
+  In 1900 David Hilbert asked for a mathematical treatment of the axioms of physics, beginning with probability and mechanics, and for the limiting processes that lead from the atomistic view to the laws of motion of continua. This book follows that program, with Henri Poincaré as a central figure: Kolmogorov's axioms, de Finetti's theorem and Sanov's large deviation theorem; ergodic theory and the method of types; Brownian motion, entropy and Nelson's stochastic mechanics; kinetic theory, Lanford's theorem and the passage from the Boltzmann equation to the Navier Stokes equations.
+
+  It then adds the inverse passage, from observed fluids back to the states that produced them. Part IV treats the inverse problem of a partial differential equation as Bayesian estimation on its solution manifold. For linear equations the adjoint evolution of the data is a sufficient statistic; for nonlinear equations it is asymptotically sufficient under a uniform Bernstein von Mises statement that the book states and leaves open. The cost of generative computation depends on the dimension that the data can resolve, and examples and experiments cover the heat, Navier Stokes and Schrödinger equations.
+
+  The last part treats inference itself as statistical mechanics: spin systems and Lee Yang zeros, Schrödinger bridges and generative Bayesian computation, gates as approximate nonlinear filters, and the thermodynamics of information. A final chapter lists open problems and builds a bridge to Hilbert's eighth problem through the de Bruijn Newman heat flow. Every chapter closes with exercises, and the Python code behind the computed figures and tables is in the repository.
+source:
+  format: latex
+  dir: source
+  main: main.tex
+  aux: source/main.aux        # written by the build
+  toc: source/main.toc
+  pdf: source/main.pdf        # the built PDF; bookrepo.py pdf copies it to pdf above
+  meta: source/bookmeta.tex   # generated: \BookISBN, \BookDOI, \BookVersion ... for the copyright page; \input it in the preamble
+macros: source/main.tex          # the file that defines the book's macros, e.g. source/main.tex
+code_dir: source/code             # empty if the book has no code
+environments: {}                 # printed names that \newtheorem does not declare, e.g. {thm: Theorem}
+related_papers:                  # the authors' own papers that results come from; KEY is used in results.yaml origin
+  - key: psw2013
+    citation: "Polson, Scott and Windle (2013), Bayesian inference for logistic models using Pólya Gamma latent variables, Journal of the American Statistical Association 108, 1339 to 1349"
+    url: https://doi.org/10.1080/01621459.2013.829001
+#  - key: smith2026x
+#    citation: "Smith and Jones (2026), Title of the paper, arXiv:2601.00001"
+#    url: https://arxiv.org/abs/2601.00001
+chapters:                        # from bookrepo.py scan; stems are public file names
+  - key: "1"
+    title: "Hilbert's Sixth Problem"
+    stem: 01_hilberts_sixth_problem
+  - key: "2"
+    title: "Poincaré: Recurrence, Chance and the Crisis of Physics"
+    stem: 02_poincare_recurrence_chance_and_the_crisis_of_physics
+  - key: "3"
+    title: "Axioms of Probability and Large Deviations"
+    stem: 03_axioms_of_probability_and_large_deviations
+  - key: "4"
+    title: "Ergodic Theory: From Boltzmann's Hypothesis to Entropy"
+    stem: 04_ergodic_theory_from_boltzmanns_hypothesis_to_entropy
+  - key: "5"
+    title: "The Method of Types and Moment Conditioning"
+    stem: 05_the_method_of_types_and_moment_conditioning
+  - key: "6"
+    title: "Brownian Motion and Yor's Identities as Algorithms"
+    stem: 06_brownian_motion_and_yors_identities_as_algorithms
+  - key: "7"
+    title: "Scale Mixtures, Thorin Measures and Shot Noise"
+    stem: 07_scale_mixtures_thorin_measures_and_shot_noise
+  - key: "8"
+    title: "Entropy, Perelman and the Uncertainty Principle"
+    stem: 08_entropy_perelman_and_the_uncertainty_principle
+  - key: "9"
+    title: "Quantum Mechanics: von Neumann, Nelson and Wick"
+    stem: 09_quantum_mechanics_von_neumann_nelson_and_wick
+  - key: "10"
+    title: "Kinetic Theory: Boltzmann, Kac and Propagation of Chaos"
+    stem: 10_kinetic_theory_boltzmann_kac_and_propagation_of_chaos
+  - key: "11"
+    title: "From Boltzmann to Navier Stokes"
+    stem: 11_from_boltzmann_to_navier_stokes
+  - key: "12"
+    title: "Navier Stokes as Inference on the Solution Manifold"
+    stem: 12_navier_stokes_as_inference_on_the_solution_manifold
+  - key: "13"
+    title: "The Boundary of the Manifold: Blowup, Turbulence and Steady Flows"
+    stem: 13_the_boundary_of_the_manifold_blowup_turbulence_and_steady
+  - key: "14"
+    title: "The Inverse Problem on the Solution Manifold"
+    stem: 14_the_inverse_problem_on_the_solution_manifold
+  - key: "15"
+    title: "Adjoint Sufficient Statistics"
+    stem: 15_adjoint_sufficient_statistics
+  - key: "16"
+    title: "Transfer, Generators and Localized Training"
+    stem: 16_transfer_generators_and_localized_training
+  - key: "17"
+    title: "Heat, Navier Stokes and Schrödinger: Examples and Experiments"
+    stem: 17_heat_navier_stokes_and_schrodinger_examples_and_experiments
+  - key: "18"
+    title: "Spin Systems, Phase Transitions and Inference"
+    stem: 18_spin_systems_phase_transitions_and_inference
+  - key: "19"
+    title: "Generative Bayesian Computation as Transport"
+    stem: 19_generative_bayesian_computation_as_transport
+  - key: "20"
+    title: "Filters, Gates and Local Rules"
+    stem: 20_filters_gates_and_local_rules
+  - key: "21"
+    title: "Kolmogorov, Cybernetics and the Thermodynamics of Information"
+    stem: 21_kolmogorov_cybernetics_and_the_thermodynamics_of_information
+  - key: "22"
+    title: "Open Problems and the Bridge to Hilbert's Eighth Problem"
+    stem: 22_open_problems_and_the_bridge_to_hilberts_eighth_problem
+  - key: "A"
+    title: "Lévy Processes, Thorin Measures and Related Classes"
+    stem: A_levy_processes_thorin_measures_and_related_classes
+  - key: "B"
+    title: "Code and Reproducibility"
+    stem: B_code_and_reproducibility
+  - key: "C"
+    title: "A Probability Toolkit"
+    stem: C_a_probability_toolkit
+  - key: "D"
+    title: "A Chronology"
+    stem: D_a_chronology
+  - key: "E"
+    title: "Notation"
+    stem: E_notation
+style:
+  forbid: ["—", "–"]             # characters that may not appear in published text
+  no_hyphenated_words: true
+  allow_hyphenated: []           # words that keep their hyphen, e.g. names

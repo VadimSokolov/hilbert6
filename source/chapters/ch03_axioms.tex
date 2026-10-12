@@ -1,0 +1,153 @@
+\chapter[Axioms of Probability and Large Deviations]{Axioms of Probability and Large Deviations: Kolmogorov, de Finetti and Sanov}
+\label{ch:axioms}
+
+\section{Before 1933}
+
+When Hilbert asked for a logical development of the calculus of probabilities, the subject had no agreed definition of its basic objects. Laplace had defined probability as the ratio of favorable to equally possible cases, which is circular. Venn and later von Mises defined it as a limiting frequency in an infinite sequence, a \emph{Kollektiv}, which raises the question of which sequences qualify. Borel had shown in 1909~\cite{borel1909} that the strong law of large numbers for binary digits can be proved with Lebesgue measure, and Lebesgue's integral of 1902~\cite{lebesgue1902} supplied the analytic tool. What was missing was the recognition that probability theory could simply \emph{be} measure theory on a space of total mass one, with independence and conditioning defined inside that framework.
+
+\section{Kolmogorov's axioms}
+
+\begin{definition}[Probability space]
+A probability space is a triple $(\Omega,\mathcal{F},\P)$ where $\Omega$ is a set, $\mathcal{F}$ a $\sigma$ algebra of subsets of $\Omega$, and $\P:\mathcal{F}\to[0,1]$ a countably additive function with $\P(\Omega)=1$. A random variable is a measurable map $X:\Omega\to E$ into a measurable space; its law is the image measure $\P\circ X^{-1}$.
+\end{definition}
+
+Kolmogorov's \emph{Grundbegriffe}~\cite{kolmogorov1933} contains five axioms for a field of events and a sixth, the continuity axiom, equivalent to countable additivity. Its decisive contributions are two theorems.
+
+\begin{theorem}[Kolmogorov extension]
+\label{thm:kolmogorov_extension}
+Let $E$ be a Polish space and, for each finite $J\subset I$ of an arbitrary index set $I$, let $\mu_J$ be a probability measure on $E^J$. If the family is consistent, meaning that the image of $\mu_K$ under the coordinate projection $E^K\to E^J$ is $\mu_J$ whenever $J\subset K$, then there is a unique probability measure $\mu$ on the product $\sigma$ algebra of $E^I$ whose finite dimensional marginals are the $\mu_J$.
+\end{theorem}
+
+Kolmogorov proved the theorem for real valued coordinates~\cite[Chapter~III, Section~4]{kolmogorov1933}. The proof carries over to Polish spaces because every Borel probability measure on a Polish space is tight, and we quote the theorem without proof. The extension theorem is what makes stochastic processes, and therefore Brownian motion and the many particle systems of kinetic theory, legitimate mathematical objects. It also exposes a limitation: the product $\sigma$ algebra on $\R^{[0,1]}$ does not contain the set of continuous paths, which is why Wiener's construction (Chapter~\ref{ch:brownian}) and its modern descendants are needed.
+
+The second contribution is conditional expectation. Given a sub $\sigma$ algebra $\mathcal{G}$ and an integrable $X$, the measure $A\mapsto\E[X\mathbb{1}_A]$ on $\mathcal{G}$ is absolutely continuous with respect to $\P$, and its Radon Nikodym derivative is $\E[X\mid\mathcal{G}]$. With this definition, conditioning on events of probability zero, such as the event that the energy of a gas equals a given value, becomes meaningful through regular conditional distributions. The microcanonical ensemble of statistical mechanics is such a conditional distribution, and Bayesian posteriors for continuous parameters are another.
+
+Kolmogorov regarded the axioms as settling the logical status of probability and leaving its application to experience. In the \emph{Grundbegriffe} he writes that the theory of probability as a mathematical discipline can and should be developed from axioms in exactly the same way as geometry and algebra, and a few lines later he compares the definition of a field of probabilities, whose elements may be given any meaning, with the introduction of basic concepts in Hilbert's \emph{Foundations of Geometry}. The probability half of the sixth problem is, in the axiomatic reading, solved.
+
+\section{De Finetti: coherence and exchangeability}
+
+Bruno de Finetti approached the foundations from the opposite direction. For him probability is a degree of belief, operationally defined by the prices at which an agent will buy and sell bets, and the axioms are consequences of a single requirement: that the agent not accept a combination of bets that loses money in every state of the world~\cite{definetti1937}.
+
+\begin{theorem}[Coherence]
+\label{thm:coherence}
+Let $A_1,\dots,A_k$ be events in a finite space $\Omega$ and let an agent announce prices $q_1,\dots,q_k$ at which she will buy or sell, in any real quantity, a ticket paying one unit if $A_i$ occurs. There is no combination of stakes $s_1,\dots,s_k$ whose net gain $\sum_i s_i(\mathbb{1}_{A_i}(\omega)-q_i)$ is strictly negative for every $\omega\in\Omega$ if and only if there exists a probability measure $\P$ on $\Omega$ with $\P(A_i) = q_i$ for all $i$.
+\end{theorem}
+
+\begin{proof}
+If such $\P$ exists, the expected net gain under $\P$ of any stakes is zero, so it cannot be negative everywhere. Conversely let $C\subset\R^k$ be the convex hull of the vectors $a(\omega) = (\mathbb{1}_{A_i}(\omega))_i$, $\omega\in\Omega$. A probability $\P$ with $\P(A_i) = q_i$ exists if and only if $q\in C$. If $q\notin C$, the separating hyperplane theorem for the compact convex set $C$ gives $s\in\R^k$ with $s\cdot(a(\omega)-q)<0$ for all $\omega$, which is a sure loss.
+\end{proof}
+
+De Finetti's deeper contribution concerns sequences. A sequence $X_1,X_2,\dots$ is \emph{exchangeable} if its law is invariant under finite permutations of indices. Independent identically distributed sequences are exchangeable, and so are mixtures of them.
+
+\begin{theorem}[de Finetti, Hewitt and Savage]
+\label{thm:definetti}
+Let $X_1,X_2,\dots$ be an exchangeable sequence with values in a Polish space $E$. There is a unique probability measure $\Pi$ on the space $\mathcal{P}(E)$ of probability measures on $E$ such that for every $n$,
+\[
+\P(X_1\in A_1,\dots,X_n\in A_n) = \int_{\mathcal{P}(E)} \prod_{i=1}^n Q(A_i)\,\Pi(\dd Q).
+\]
+Moreover the empirical measures $\frac1n\sum_{i\leq n}\delta_{X_i}$ converge weakly almost surely to a random measure $\tilde Q$ with law $\Pi$.
+\end{theorem}
+
+The theorem is the bridge between the subjective and frequentist views: an agent who judges a sequence exchangeable behaves as if there were an unknown parameter $\tilde Q$, drawn from a prior $\Pi$, given which the observations are independent. The parameter is a limit of observables. De Finetti proved the theorem for binary sequences~\cite{definetti1937}, and Hewitt and Savage proved the version for compact Hausdorff spaces and the associated zero one law~\cite{hewittsavage1955}; the version for a Polish space $E$ follows by embedding $E$ in a compact metric space. We quote the theorem without proof for general $E$; the binary case is proved in Section~\ref{sec:binary_definetti}. For finite sequences the representation holds approximately.
+
+\begin{theorem}[Diaconis and Freedman]
+\label{thm:diaconis_freedman}
+Let $(X_1,\dots,X_n)$ be exchangeable and let $k\leq n$. If the $X_i$ take values in a set of $c$ points, then the law of $(X_1,\dots,X_k)$ is within total variation distance $2ck/n$ of a mixture of independent identically distributed laws. If the $X_i$ take values in a Polish space, the distance is at most $k(k-1)/n$.
+\end{theorem}
+
+The distance in the theorem is twice the supremum over events, the normalization of Diaconis and Freedman~\cite{diaconisfreedman1980}. With the supremum, the convention of Appendix~\ref{app:toolkit}, the two bounds are $ck/n$ and $k(k-1)/(2n)$. Diaconis and Freedman give examples showing that neither rate can be improved. We quote the first bound without proof. The second is the birthday bound. Given the empirical measure of $(X_1,\dots,X_n)$, exchangeability makes $(X_1,\dots,X_k)$ a draw of $k$ values without replacement from the $n$ values, and the mixture is the same draw with replacement. The two draws can be coupled to agree unless an index repeats, an event of probability at most $k(k-1)/(2n)$. In kinetic theory $n$ is the number of particles and $k$ the number of particles whose joint law we wish to describe. The one particle space is continuous, so the second bound applies, and it is small when $k$ is small compared with $\sqrt n$.
+
+\section{Molecular chaos is a de Finetti statement}
+
+Boltzmann's \emph{Stosszahlansatz}, the assumption that the velocities of two particles about to collide are independent, is the hypothesis of molecular chaos. Kac formalized it.
+
+\begin{definition}[Chaos]
+Let $f$ be a probability measure on $E$ and, for each $N$, let $F_N$ be a symmetric probability measure on $E^N$. The sequence $(F_N)$ is $f$ chaotic if for every $k$ the $k$ particle marginal of $F_N$ converges weakly to $f^{\otimes k}$ as $N\to\infty$.
+\end{definition}
+
+\begin{theorem}[Sznitman~\cite{sznitman1991}]
+\label{thm:sznitman}
+$(F_N)$ is $f$ chaotic if and only if the empirical measure $\mu^N = \frac1N\sum_{i=1}^N\delta_{X_i}$ of $(X_1,\dots,X_N)\sim F_N$ converges in law to the constant $\delta_f$. It suffices that the two particle marginals converge to $f\otimes f$.
+\end{theorem}
+
+\begin{proof}
+Suppose first that the two particle marginals converge to $f\otimes f$, and let $\phi$ be bounded and continuous. By exchangeability,
+\[
+\begin{aligned}\E\Big[\big(\langle\mu^N,\phi\rangle-\langle f,\phi\rangle\big)^2\Big] &= \frac1N\E\big[\phi(X_1)^2\big]+\frac{N-1}{N}\E\big[\phi(X_1)\phi(X_2)\big]\\ &\quad-2\langle f,\phi\rangle\E\phi(X_1)+\langle f,\phi\rangle^2.\end{aligned}
+\]
+As $N\to\infty$ the right side tends to $\langle f,\phi\rangle^2-2\langle f,\phi\rangle^2+\langle f,\phi\rangle^2 = 0$. Hence $\langle\mu^N,\phi\rangle\to\langle f,\phi\rangle$ in probability for every bounded continuous $\phi$, and since the weak topology on $\mathcal{P}(E)$ is metrized by countably many such functionals, $\mu^N\to\delta_f$ in law.
+
+Conversely, suppose $\mu^N\to\delta_f$ in law, and let $\phi_1,\dots,\phi_k$ be bounded and continuous. The map $\mu\mapsto\prod_j\langle\mu,\phi_j\rangle$ is bounded and continuous on $\mathcal{P}(E)$, so $\E\prod_j\langle\mu^N,\phi_j\rangle\to\prod_j\langle f,\phi_j\rangle$. Expanding the product, $N^{-k}\sum_{i_1,\dots,i_k}\E\prod_j\phi_j(X_{i_j})$; the terms with distinct indices number $N(N-1)\cdots(N-k+1)$ and each equals $\E\prod_j\phi_j(X_j)$ by exchangeability, while the remaining terms number at most $k^2N^{k-1}$ and are bounded by $\prod\|\phi_j\|_\infty$. Hence $\E\prod_j\phi_j(X_j)\to\prod_j\langle f,\phi_j\rangle$, which is convergence of the $k$ particle marginal to $f^{\otimes k}$. The sufficiency of the two particle marginals is the first half of the proof.
+\end{proof}
+
+See Sznitman's lectures for the theorem. The coupling theorem of Chapter~\ref{ch:kinetic} (Theorem~\ref{thm:mckean}) is a different result from the same lectures. In de Finetti's language: a chaotic sequence is one whose de Finetti mixing measure, in the limit, is a point mass. Propagation of chaos, the statement that chaos at time zero implies chaos at time $t$, is the statement that the dynamics does not create uncertainty about the parameter. Chapter~\ref{ch:kinetic} proves it for mean field models and explains its role in Lanford's theorem.
+
+\section{Sanov's theorem and Boltzmann's counting}
+
+In 1877 Boltzmann~\cite{boltzmann1877} gave a second derivation of the Maxwell distribution. Divide the single particle phase space into cells, and count the number of ways $W$ of distributing $N$ particles with occupation numbers $n_1,\dots,n_m$. Then
+\begin{gather*}
+W = \frac{N!}{n_1!\cdots n_m!}, \\
+\frac{1}{N}\log W = -\sum_{j=1}^m p_j\log p_j + O\Big(\frac{m\log N}{N}\Big),\quad p_j = \frac{n_j}{N},
+\end{gather*}
+by Stirling's formula. Maximizing the Shannon entropy $H(p) = -\sum_jp_j\log p_j$ subject to the constraints of fixed particle number and fixed total energy gives the Gibbs distribution $p_j\propto e^{-\beta\varepsilon_j}$ and, for kinetic energy in continuous velocity space, the Maxwellian. The formula $S = k\log W$, engraved on Boltzmann's tombstone, is the statement that entropy is the exponential growth rate of the number of microstates compatible with a macrostate.
+
+Sanov's theorem is the probabilistic form of this computation. Sanov proved it in 1957 for real valued random variables~\cite{sanov1957}, and extensions to general spaces are due to several authors, among them Bahadur and Zabell~\cite{bahadurzabell1979}. The version below, for a Polish space and the weak topology, is proved in Section~6.2 of Dembo and Zeitouni~\cite{dembozeitouni}, and their Section~2.1.1 treats the case of a finite alphabet.
+
+\begin{theorem}[Sanov]
+\label{thm:sanov}
+Let $X_1,X_2,\dots$ be independent with law $P$ on a Polish space $E$ and let $L_n = \frac1n\sum_{i\leq n}\delta_{X_i}$. For every Borel set $\Gamma\subset\mathcal{P}(E)$ in the weak topology,
+\[
+\begin{aligned}-\inf_{Q\in\Gamma^\circ}\KL(Q\,\|\,P)&\leq\liminf_n\frac1n\log\P(L_n\in\Gamma)\\ &\leq\limsup_n\frac1n\log\P(L_n\in\Gamma)\leq-\inf_{Q\in\bar\Gamma}\KL(Q\,\|\,P),\end{aligned}
+\]
+where $\KL(Q\|P) = \int\log\frac{\dd Q}{\dd P}\dd Q$ if $Q\ll P$ and $+\infty$ otherwise.
+\end{theorem}
+
+\begin{proof}[Proof for a finite alphabet]
+Let $E = \{1,\dots,m\}$. The number of possible empirical measures, called types, is at most $(n+1)^m$. For a type $Q$ with $nQ$ integer, the type class $T(Q)$ has cardinality between $(n+1)^{-m}e^{nH(Q)}$ and $e^{nH(Q)}$, by the multinomial computation above (the exact bounds are in Theorem~\ref{thm:typecount} of Chapter~\ref{ch:types}), and each sequence in it has probability $\prod_j P_j^{nQ_j} = e^{-n(H(Q)+\KL(Q\|P))}$. Hence $(n+1)^{-m}e^{-n\KL(Q\|P)}\leq\P(L_n = Q)\leq e^{-n\KL(Q\|P)}$. Summing over the polynomially many types in $\Gamma$ gives the upper bound, and choosing types in $\Gamma^\circ$ approximating the infimum gives the lower bound.
+\end{proof}
+
+Boltzmann's $\log W$ is $nH(Q)$; Sanov's rate is $\KL(Q\|P) = -H(Q) - \sum Q_j\log P_j$, which reduces to $-H(Q)$ plus a constant when $P$ is uniform. The relative entropy is the correct generalization because physical systems have a reference measure, Liouville measure, and entropy is always relative to it.
+
+\begin{theorem}[Gibbs conditioning]
+\label{thm:gibbs_conditioning}
+Let $E$ be finite, let $X_1,X_2,\dots$ be independent with law $P$ on $E$ with $P(j)>0$ for every $j$, let $\varepsilon:E\to\R$, and let $a$ lie strictly between the minimum of $\varepsilon$ and its mean under $P$. Conditionally on $\frac1n\sum_{i\leq n}\varepsilon(X_i)\leq a$, the law of $X_1$ converges to
+\[
+P_\beta(j) = \frac{P(j)e^{-\beta\varepsilon(j)}}{\sum_i P(i)e^{-\beta\varepsilon(i)}},
+\]
+where $\beta>0$ is chosen so that $\E_{P_\beta}\varepsilon = a$. More generally, the conditional law of $(X_1,\dots,X_k)$ converges to $P_\beta^{\otimes k}$.
+\end{theorem}
+
+\begin{proof}
+Let $\Gamma = \{Q:\E_Q\varepsilon\leq a\}$, a closed convex subset of the simplex, and $Z_\beta = \sum_iP(i)e^{-\beta\varepsilon(i)}$. The identity $\KL(Q\|P) = \KL(Q\|P_\beta)-\beta\E_Q\varepsilon-\log Z_\beta$ shows that on $\Gamma$, where $-\beta\E_Q\varepsilon\geq-\beta a$, the divergence is minimized uniquely at $Q = P_\beta$, which lies on the boundary $\E_Q\varepsilon = a$; the minimum value is $I^* = \KL(P_\beta\|P)$. Let $U$ be an open neighborhood of $P_\beta$. Since $\Gamma\setminus U$ is compact and $\KL(\cdot\|P)$ is lower semicontinuous with unique minimizer $P_\beta$ on $\Gamma$, $\inf_{\Gamma\setminus U}\KL(\cdot\|P) = I^*+\eta$ for some $\eta>0$. By Theorem~\ref{thm:sanov}, $\P(L_n\in\Gamma\setminus U)\leq e^{-n(I^*+\eta/2)}$ for large $n$, while $\P(L_n\in\Gamma)\geq e^{-n(I^*+\eta/4)}$ because $P_\beta$ is in the closure of the interior of $\Gamma$, as $a$ lies strictly between the minimum and the mean of $\varepsilon$. Hence $\P(L_n\notin U\mid L_n\in\Gamma)\to0$. By exchangeability, $\P(X_1 = j\mid L_n\in\Gamma) = \E[L_n(j)\mid L_n\in\Gamma]$, which therefore converges to $P_\beta(j)$. For $k$ particles the same argument applies to $\E\big[\prod_{j\leq k}\phi_j(X_j)\mid L_n\in\Gamma\big]$, which differs from $\E\big[\prod_j\langle L_n,\phi_j\rangle\mid L_n\in\Gamma\big]$ by $O(k^2/n)$ as in the proof of Theorem~\ref{thm:sznitman}.
+\end{proof}
+
+The theorem is due in this form to Van Campenhout and Cover and to Csisz\'ar~\cite{vancampenhoutcover1981,csiszar1984}. Csisz\'ar's version allows general state spaces and general closed convex constraint sets, and we quote it without proof. Conditioning a large independent system on a macroscopic constraint produces the canonical ensemble for each subsystem. This is the equivalence of ensembles, and it is also the theorem that justifies Jaynes's principle of maximum entropy~\cite{jaynes1957}: maximum entropy is Bayesian conditioning on a macroscopic observation in the limit of many microscopic degrees of freedom.
+
+Chapter~\ref{ch:types} returns to the counting behind Theorem~\ref{thm:sanov} and Theorem~\ref{thm:gibbs_conditioning} with exact bounds, and adds the Pythagorean inequality for the I projection, the conditional limit theorem for closed convex constraint sets, exact conditional laws with their rates for exponential and Poisson samples, universal codes and Stein's lemma.
+
+\begin{example}[The Maxwellian]
+\label{ex:maxwellian}
+Let $P$ be the standard Gaussian measure on $\R^3$ as the reference law, let $V_1,V_2,\dots$ be independent with law $P$, and condition on $\frac1n\sum_{i\leq n}|V_i|^2 = 3\theta$. The conditional law of $V_1$ converges to the minimizer of $\KL(Q\|P)$ subject to $\E_Q|V|^2 = 3\theta$, which is $Q = N(0,\theta I_3)$. More directly, the joint density $\prod_{i\leq n}(2\pi)^{-3/2}e^{-|v_i|^2/2}$ is constant on the sphere $\{v\in\R^{3n}:|v|^2 = 3n\theta\}$, so the conditional law of $(V_1,\dots,V_n)$ is the uniform law on that sphere, and the one particle marginals of the uniform law converge to $N(0,\theta I_3)$ by the Maxwell, Poincar\'e and Borel lemma (Theorem~\ref{thm:sphere_lemma} of Chapter~\ref{ch:poincare}). The Gaussian form of the reference is what makes the conditional law uniform, and the choice of reference matters. Any Gaussian reference $N(0,\sigma^2I_3)$ gives the same limit, and so does Lebesgue measure, the reference of the microcanonical computation. A rotation invariant reference with density proportional to $g(|v|)$ gives in general the exponential tilt of the reference, the law with density proportional to $g(|v|)e^{-\beta|v|^2}$ for the $\beta$ that fixes the second moment, and this is Gaussian only when $g(r)$ is proportional to $e^{-ar^2}$ for a real $a$, which covers the Gaussian references and Lebesgue measure. With the total momentum fixed as well, the Gaussian case is Theorem~\ref{thm:maxwellian} of Chapter~\ref{ch:types}.
+\end{example}
+
+\section{Cox, Savage and the Bayesian axioms}
+
+A third axiomatization derives the rules of probability from requirements on plausible reasoning. Cox showed in 1946~\cite{cox1946} that, under regularity conditions, any real valued measure of plausibility satisfying certain functional equations, associativity of conjunction and a negation rule, is isomorphic to a probability. The theorem needs assumptions beyond the functional equations: Halpern~\cite{halpern1999} gave a counterexample on a finite domain. Jaynes developed the program at length~\cite{jaynes2003}. Savage's \emph{Foundations of Statistics} of 1954~\cite{savage1954} derived both probability and utility from axioms on preferences among acts. The three axiomatizations, Kolmogorov's measure theory, de Finetti's coherence and the Cox and Savage rationality postulates, agree on finite spaces and differ on infinite ones, notably on countable versus finite additivity. For the sixth problem they agree on what matters: probability is a measure, conditioning is Bayes' rule, and large deviation theory explains why macroscopic laws are deterministic.
+
+\section{Algorithmic randomness}
+
+In 1965 Kolmogorov proposed three approaches to the quantitative definition of information: combinatorial, probabilistic and algorithmic~\cite{kolmogorov1965}. The algorithmic approach defines the complexity of a finite binary string as the length of the shortest program that outputs it on a fixed universal machine. Kolmogorov's plain complexity $C(x)$ allows every program. The prefix complexity $K(x)$ is defined in the same way with programs of which none is an initial segment of another; it differs from $C(x)$ by at most a logarithmic term in the length of $x$ and is the complexity used below and in Chapter~\ref{ch:kolmogorov}. A string $x$ of length $n$ is random if it is incompressible, $C(x\mid n)\geq n-c$ for a small constant $c$, and Martin L\"of~\cite{martinlof1966} showed in 1966 that, up to additive constants, this is the same as passing every effective statistical test. For infinite sequences the criterion is the theorem of Levin and Schnorr~\cite{levin1973,schnorr1973}, here in its form with prefix complexity: a sequence $x_1x_2\cdots$ passes every effective test if and only if $K(x_1\cdots x_n)\geq n-c$ for some $c$ and all $n$. With the plain complexity no infinite sequence satisfies $C(x_1\cdots x_n)\geq n-c$ for all $n$~\cite{martinlof1971}.
+
+Solomonoff proposed in 1964~\cite{solomonoff1964} a universal prior, and Zvonkin and Levin showed in 1970~\cite{zvonkinlevin1970} that it dominates every computable prior up to a multiplicative constant. The discrete form $m$ of the universal prior satisfies $m(x)\approx 2^{-K(x)}$ up to a multiplicative constant, by Levin's coding theorem~\cite{levin1974}. In this approach individual sequences, rather than measures, are the primary objects, and the notion of randomness gives von Mises's idea of a collective a precise form.
+
+For this book the algorithmic view matters in two places. In Chapter~\ref{ch:kolmogorov} it supplies a measure of the information content of a scientific theory and of a learning system; and the relation $m(x)\approx 2^{-K(x)}$ is the bridge between Occam's razor and Bayesian model choice. Kolmogorov did not present the algorithmic approach as a replacement for the axioms. In 1965 he mentioned the use of these constructions as a new basis for probability theory~\cite{kolmogorov1965}, and in 1983 he wrote that there is no need to change the established construction of probability theory on the basis of measure theory, and that he was not inclined to attribute the significance of necessary foundations of probability theory to the algorithmic investigations~\cite{kolmogorov1983}. In the language of the sixth problem, the algorithmic view adds a definition of randomness for individual sequences.
+
+\section{What remains}
+
+The axioms of probability are settled, and they are sufficient for the derivational reading: every limit theorem of kinetic theory is a theorem in Kolmogorov's framework. What the axioms do not supply is a rule for choosing the measure. In mechanics the measure is the Liouville measure restricted to an energy surface or a Gibbs measure, and its justification is the subject of ergodic theory (Chapter~\ref{ch:ergodic}) and of the method of arbitrary functions (Chapter~\ref{ch:poincare}). In inference the measure is a prior, and its justification is the subject of Bayesian statistics. Both are conventions in Poincar\'e's sense, and both are tested by their consequences. The rest of the book is about those consequences.
+
+\input{chapters/ext/ch03}
+
+\section*{Notes}
+
+Shafer and Vovk~\cite{shafervovk2006} give a historical account of the \emph{Grundbegriffe}. Diaconis and Freedman's finite de Finetti theorem is in~\cite{diaconisfreedman1980}. Sznitman's lectures~\cite{sznitman1991} remain the standard reference on propagation of chaos. Dembo and Zeitouni~\cite{dembozeitouni} treat Gibbs conditioning in full generality. Li and Vit\'anyi~\cite{livitanyi2008} treat plain and prefix complexity, Martin L\"of randomness and the universal prior. The connection of molecular chaos with exchangeability is discussed in our book \emph{Elements of Bayes and Information Theory}~\cite{polsonsokolovelements}.

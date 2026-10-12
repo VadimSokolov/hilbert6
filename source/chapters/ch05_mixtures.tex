@@ -1,0 +1,163 @@
+\chapter{Scale Mixtures, Thorin Measures and Shot Noise}
+\label{ch:mixtures}
+
+\section{Why mixtures}
+
+In kinetic theory, the velocity of a single particle in equilibrium is Gaussian with variance proportional to temperature. If the temperature itself fluctuates, across regions of a nonequilibrium gas, across the components of a plasma, or across the latent states of a statistical model, the observed law is a scale mixture of Gaussians. Heavy tails in turbulence, in financial returns and in posterior distributions of shrinkage priors all arise this way. Conversely, many laws that do not look Gaussian can be written as Gaussian mixtures, and the representation is then an algorithm, a data augmentation that turns a hard computation into a sequence of Gaussian ones.
+
+\section{Scale mixtures of normals}
+
+A random variable $X$ is a scale mixture of normals if $X\eqd\sqrt{V}Z$ with $Z\sim N(0,1)$ independent of $V\geq0$. Its density is $f(x) = \int(2\pi v)^{-1/2}e^{-x^2/2v}\,G(\dd v)$.
+
+\begin{theorem}[Andrews and Mallows]
+A symmetric density $f$ on $\R$ is a scale mixture of normals if and only if $y\mapsto f(\sqrt{y})$ is completely monotone on $(0,\infty)$.
+\end{theorem}
+
+\begin{proof}
+If $f$ is such a mixture then $f(\sqrt y) = \int(2\pi v)^{-1/2}e^{-y/2v}G(\dd v)$ is a mixture of decreasing exponentials in $y$, hence completely monotone. Conversely, by Bernstein's theorem a completely monotone function is the Laplace transform of a positive measure, $f(\sqrt y) = \int e^{-sy}\mu(\dd s)$, and the change of variables $s = 1/(2v)$ with $G(\dd v) = (2\pi v)^{1/2}\mu(\dd s)$ exhibits the mixture; integrability of $f$ makes $G$ a probability measure.
+\end{proof}
+
+The Student $t$, the Laplace, the logistic, the symmetric stable laws with index below two, and the horseshoe prior are all normal scale mixtures.
+
+\section{Infinite divisibility and the L\'evy Khintchine formula}
+
+A law on $\R$ is infinitely divisible if for every $n$ it is the law of a sum of $n$ independent identically distributed variables. Such laws are exactly the marginals of L\'evy processes and are characterized by the L\'evy Khintchine formula
+\[
+\E e^{iuX} = \exp\Big(iub - \frac{\sigma^2u^2}{2} + \int_{\R\setminus\{0\}}\big(e^{iux} - 1 - iux\mathbb{1}_{|x|<1}\big)\nu(\dd x)\Big),
+\]
+with $\int(1\wedge x^2)\nu(\dd x)<\infty$. For nonnegative variables, the subordinators, the Laplace transform is $\E e^{-\lambda X} = e^{-\phi(\lambda)}$ with
+\[
+\phi(\lambda) = a\lambda + \int_0^\infty(1 - e^{-\lambda x})\nu(\dd x),
+\]
+a Bernstein function. Bernstein functions are closed under composition, which corresponds to subordination: if $Y$ is a subordinator with exponent $\phi$ and $B$ a Brownian motion, then $B_{Y_t}$ is a symmetric L\'evy process with $\E e^{iuB_{Y_t}} = e^{-t\phi(u^2/2)}$. Every symmetric law obtained by subordinating Brownian motion is a normal scale mixture with an infinitely divisible mixing law.
+
+\section{Generalized Gamma convolutions and Thorin measures}
+
+Olof Thorin introduced in 1977~\cite{thorin1977,thorin1977b} the class that Bondesson later named generalized Gamma convolutions, to prove that the lognormal and Pareto laws are infinitely divisible.
+
+\begin{definition}
+A law on $[0,\infty)$ is a generalized Gamma convolution (GGC) if its Laplace transform has the form
+\[
+\E e^{-\lambda X} = \exp\Big(-a\lambda - \int_{(0,\infty)}\log\Big(1+\frac{\lambda}{y}\Big)U(\dd y)\Big),
+\]
+with $a\geq0$ and a nonnegative measure $U$, the Thorin measure, satisfying $\int_{(0,\infty)}\log(1+1/y)\,U(\dd y)<\infty$. This condition says that $U$ is finite on $(0,1]$ and that $\int_{(0,1]}|\log y|\,U(\dd y)$ and $\int_{(1,\infty)}y^{-1}U(\dd y)$ are finite, which makes the exponent finite at $\lambda=1$.
+\end{definition}
+
+A Gamma law with shape $\beta$ and rate $y$ has Laplace transform $(1+\lambda/y)^{-\beta}$, so it is a GGC with Thorin measure $\beta\delta_y$, and finite convolutions of Gamma laws with arbitrary shapes and rates are GGCs with discrete Thorin measures. The class is the closure of these convolutions under weak limits. Since
+\[
+\log\Big(1+\frac{\lambda}{y}\Big) = \int_0^\infty\big(1-e^{-\lambda x}\big)\frac{e^{-xy}}{x}\dd x,
+\]
+the L\'evy measure of a GGC is $\nu(\dd x) = x^{-1}k(x)\dd x$ with $k(x) = \int e^{-xy}U(\dd y)$ completely monotone. Conversely an infinitely divisible law on $[0,\infty)$ whose L\'evy density has this form is a GGC.
+
+\begin{theorem}[Bondesson]
+A density on $(0,\infty)$ is hyperbolically completely monotone (HCM) if for every $u>0$ the function $w\mapsto f(uv)f(u/v)$, with $w = v + 1/v$, is completely monotone. Every HCM law is a GGC. The class of HCM laws is closed under products and quotients of independent variables and under powers $X^q$ with $|q|\geq1$.
+\end{theorem}
+
+We quote the theorem without proof from Bondesson's monograph~\cite[Chapter~5]{bondesson1992}. The closure properties make the class a calculus. The lognormal is HCM; the Gamma, Beta of the second kind and positive stable laws with index at most one half are HCM, the last by a theorem of Bosch and Simon~\cite{bosch2016}; and products of independent HCM variables remain HCM. The companion volume~\cite{polsonh8} is built on the question of whether the reciprocal of the Riemann $\Xi$ function of Section~\ref{sec:excursions_xi}, suitably normalized, is the Laplace transform of a GGC, and the key computational tool there is Polson's $2\sin^2$ lemma, which converts a L\'evy measure into a Thorin measure through the identity $1-\cos x = 2\sin^2(x/2)$. Appendix~\ref{app:levy} states the definitions we use.
+
+\section{P\'olya Gamma variables}
+
+\begin{definition}
+For $b>0$ and $c\in\R$ the P\'olya Gamma law $PG(b,c)$~\cite{psw2013} is the law of
+\[
+\omega = \frac{1}{2\pi^2}\sum_{k=1}^\infty\frac{g_k}{(k-\frac12)^2 + c^2/(4\pi^2)},
+\]
+with $g_k$ independent Gamma variables of shape $b$ and unit rate.
+\end{definition}
+
+It is a GGC with Thorin measure $b\sum_k\delta_{y_k}$, $y_k = 2\pi^2(k-\frac12)^2 + c^2/2$, and its Laplace transform is
+\[
+\E e^{-t\omega} = \cosh^b\Big(\frac c2\Big)\Big/\cosh^b\Big(\sqrt{\frac{c^2/2+t}{2}}\Big).
+\]
+By Theorem~\ref{thm:exit_series}, $PG(1,0)$ is a quarter of the exit time of Brownian motion from $(-1,1)$.
+
+\begin{theorem}[Polson, Scott and Windle~\cite{psw2013}]
+\label{thm:pg_identity}
+For $b>0$, $a\in\R$ and $\psi\in\R$,
+\[
+\frac{(e^{\psi})^a}{(1+e^\psi)^b} = 2^{-b}e^{(a-b/2)\psi}\int_0^\infty e^{-\omega\psi^2/2}\,p(\omega\mid b,0)\dd\omega,
+\]
+where $p(\cdot\mid b,0)$ is the $PG(b,0)$ density. Moreover the conditional law of $\omega$ given $\psi$ is $PG(b,\psi)$.
+\end{theorem}
+
+\begin{proof}
+Write $(e^\psi)^a(1+e^\psi)^{-b} = 2^{-b}e^{(a-b/2)\psi}\cosh^{-b}(\psi/2)$. The Laplace transform of $PG(b,0)$ at $t = \psi^2/2$ is $\cosh^{-b}(\sqrt{t/2}) = \cosh^{-b}(\psi/2)$. Exponential tilting of $PG(b,0)$ by $e^{-\omega\psi^2/2}$ gives, by the Laplace transform formula above, the law $PG(b,\psi)$.
+\end{proof}
+
+The identity makes the logistic likelihood a scale mixture of Gaussians in the linear predictor $\psi = x^\top\beta$. Bayesian logistic regression then becomes a two block Gibbs sampler with Gaussian and P\'olya Gamma conditionals. In the language of this chapter, the logistic likelihood is a Gaussian kernel averaged over a Brownian exit time.
+
+\section{Shot noise and Campbell's theorem}
+
+Walter Schottky observed in 1918~\cite{schottky1918} that the current in a vacuum tube fluctuates because charge arrives in discrete electrons at random times. The resulting process, a sum of pulses $S(t) = \sum_k A_k h(t-\tau_k)$ with Poisson arrival times $\tau_k$ of rate $\lambda$, random amplitudes $A_k$ and a pulse shape $h$, is called shot noise. Campbell had computed its mean and variance in 1909~\cite{campbell1909} in his analysis of the ionization currents of radioactive sources; Rice~\cite{rice1944} gave the general theory in 1944.
+
+\begin{theorem}[Campbell]
+\label{thm:campbell}
+Let $\Pi$ be a Poisson point process on a space $E$ with intensity measure $\mu$ and $f:E\to[0,\infty)$ measurable. Then
+\[
+\E\exp\Big(-\sum_{x\in\Pi}f(x)\Big) = \exp\Big(-\int_E\big(1-e^{-f(x)}\big)\mu(\dd x)\Big).
+\]
+In particular $\E\sum_{x\in\Pi}f(x) = \int f\dd\mu$ and $\Var\sum_{x\in\Pi}f(x) = \int f^2\dd\mu$ when these are finite. If $f:E\to\R$ is measurable and $\int_E(1\wedge|f|)\dd\mu<\infty$, then $\sum_{x\in\Pi}f(x)$ converges absolutely almost surely and
+\[
+\E\exp\Big(i\sum_{x\in\Pi}f(x)\Big) = \exp\Big(\int_E\big(e^{if(x)}-1\big)\mu(\dd x)\Big),
+\]
+and the mean and variance formulas hold for real $f$ when $\int|f|\dd\mu$ and $\int f^2\dd\mu$ are finite.
+\end{theorem}
+
+\begin{proof}
+For $\mu$ finite, $\Pi$ consists of $N\sim\mathrm{Poisson}(\mu(E))$ points drawn independently from $\mu/\mu(E)$, so the left side equals $\sum_n e^{-\mu(E)}\frac{\mu(E)^n}{n!}\big(\int e^{-f}\dd\mu/\mu(E)\big)^n = \exp\big(-\mu(E) + \int e^{-f}\dd\mu\big)$. For $\sigma$ finite $\mu$, decompose $E$ into countably many pieces of finite measure, use independence of the restrictions, and pass to the limit by monotone convergence. Differentiating $\theta\mapsto\E e^{-\theta\sum f}$ at zero gives the moments. For real $f$ with $\int(1\wedge|f|)\dd\mu<\infty$, the set $\{|f|>\varepsilon\}$ has finite measure for every $\varepsilon>0$, so only finitely many points of $\Pi$ have $|f|>\varepsilon$, and $\E\sum_{|f|\leq1}|f| = \int_{|f|\leq1}|f|\dd\mu<\infty$; hence $\sum|f(x)|<\infty$ almost surely. The finite case computed above, with $e^{if}$ in place of $e^{-f}$, gives the formula for $f_m = f\mathbb{1}\{|f|>1/m\}$. Let $m\to\infty$: the left side converges by dominated convergence, and so does the right side, because $|e^{if_m}-1|\leq2(1\wedge|f|)$. Finally $f^+$ and $f^-$ live on disjoint sets, so $\sum f^+$ and $\sum f^-$ are independent, and the mean of $\sum f$ is the difference and the variance the sum of those of the two parts.
+\end{proof}
+
+Applied to the marked process $\{(\tau_k,A_k)\}$ with intensity $\lambda\dd\tau\otimes P_A$, whose amplitudes may have either sign, the second form of Campbell's theorem shows that stationary shot noise is infinitely divisible with L\'evy measure the image of $\lambda\dd\tau\otimes P_A$ under $(\tau,a)\mapsto ah(-\tau)$, provided $\int\E(1\wedge|Ah(s)|)\dd s<\infty$. Every infinitely divisible law is, conversely, shot noise for some intensity: this is the content of the L\'evy It\^o decomposition. For GGCs there is an especially explicit construction.
+
+\begin{theorem}[Bondesson's shot noise representation]
+\label{thm:bondesson_shot}
+Let $X$ be a GGC with drift zero and Thorin measure $U$ of finite total mass $\beta$. Let $\Gamma_1<\Gamma_2<\cdots$ be the points of a unit rate Poisson process on $(0,\infty)$, and let $E_k$ and $Y_k$ be independent sequences of independent variables with $E_k$ standard exponential and $Y_k\sim U/\beta$. Then
+\[
+X\eqd\sum_{k=1}^\infty\frac{e^{-\Gamma_k/\beta}E_k}{Y_k}.
+\]
+\end{theorem}
+
+\begin{proof}
+By the marking and mapping theorems for Poisson processes, the points $z_k = e^{-\Gamma_k/\beta}E_k/Y_k$ form a Poisson process on $(0,\infty)$. The points $s_k = e^{-\Gamma_k/\beta}$ have intensity $\beta s^{-1}\dd s$ on $(0,1)$. Given $Y=y$, the variable $sE/y$ has density $(y/s)e^{-xy/s}$ in $x$, so the intensity of the $z_k$ is
+\[
+\int U(\dd y)\int_0^1\frac{1}{s}\cdot\frac{y}{s}e^{-xy/s}\dd s\,\dd x = \int U(\dd y)\,\frac{e^{-xy}}{x}\dd x,
+\]
+after the substitution $w = y/s$. This is the L\'evy measure of the GGC, and Theorem~\ref{thm:campbell} identifies the Laplace transform of the sum.
+\end{proof}
+
+The theorem is a sampling algorithm: truncate the series where $e^{-\Gamma_k/\beta}$ is negligible. It is also a physical model. Each term is a pulse whose amplitude decays exponentially in the arrival index, exactly the response of a leaky integrator to a Poisson train of inputs. We return to this in Chapter~\ref{ch:filters}, where the membrane potential of a spiking neuron driven by Poisson input turns out to be a GGC (Theorem~\ref{thm:shot_noise_neuron}).
+
+\section{Ferromagnetic random variables}\label{sec:ferromagnetic}
+
+Let $X$ be a symmetric random variable with $\E e^{bX^2}<\infty$ for every $b>0$, so that $\E e^{zX}$ is entire. Following Newman~\cite{newman1974}, we say that $X$ has the Lee Yang property if $z\mapsto\E e^{zX}$ has only purely imaginary zeros. The uniform law on $[-1,1]$ is the basic example: $\E e^{zU} = \sinh(z)/z$, with zeros at $z = i\pi k$, $k\neq0$. A single Ising spin, $X = \pm1$ with equal probability, gives $\cosh z$, with zeros at $i\pi(k+\frac12)$.
+
+\begin{theorem}[Newman~\cite{newman1974}]
+\label{thm:newman}
+Let $X_1,\dots,X_n$ be independent with the Lee Yang property and let $J_{ij}\geq0$ be such that $\exp\big(\sum_{i<j}J_{ij}x_ix_j\big)$ is integrable against $\prod_i\dd\P_{X_i}(x_i)$. Define the coupled law by $\dd\P_J\propto\exp\big(\sum_{i<j}J_{ij}x_ix_j\big)\prod_i\dd\P_{X_i}(x_i)$. Then for every choice of positive weights $a_i$ the variable $\sum_ia_iX_i$ under $\P_J$ has the Lee Yang property.
+\end{theorem}
+
+We quote the theorem without proof; the proof is in~\cite{newman1974}. The integrability hypothesis, which makes $\P_J$ exist, cannot be dropped. Standard Gaussian variables have $\E e^{zX} = e^{z^2/2}$, which has no zeros at all, but for two of them and $J_{12}\geq1$ the weight $e^{J_{12}x_1x_2}$ is not integrable. Multiplying the law of a variable with the Lee Yang property by $e^{bx^2}$ with $b\geq0$, and normalizing, preserves the property. To see this, couple $X$ to $n$ independent Ising spins by the coupling $\sqrt{2b/n}$ between $X$ and each spin, with no coupling between the spins, and apply Theorem~\ref{thm:newman} with the weight $1$ for $X$ and the weight $\delta>0$ for every spin. Summing over the spins multiplies the law of $X$ by $\cosh^n(\sqrt{2b/n}\,x)$, so letting $\delta\to0$ and using Hurwitz's theorem shows that this tilted law has the Lee Yang property. Since $\cosh^n(\sqrt{2b/n}\,x)\leq e^{bx^2}$ and the left side tends to $e^{bx^2}$, Hurwitz's theorem applies again as $n\to\infty$. This is the fact behind the monotonicity of the de Bruijn Newman flow (Theorem~\ref{thm:polyadebruijn}).
+
+The case of Ising spins with $a_i = 1$ is the Lee Yang circle theorem of Chapter~\ref{ch:spins}. We call laws with the Lee Yang property, and the couplings that preserve it, ferromagnetic. Uniform laws are the building blocks: by Khinchin's theorem~\cite{khinchin1938} a symmetric law is unimodal if and only if it is the law of $UZ$ with $U$ uniform on $[-1,1]$ independent of $Z\geq0$, so unimodal laws are scale mixtures of uniforms just as completely monotone tails give scale mixtures of exponentials. The Riemann hypothesis is equivalent to the statement that the P\'olya law, whose density is proportional to the kernel $\Phi(|u|)$ of the $\Xi$ function, has the Lee Yang property; we make this precise in Chapter~\ref{ch:open}.
+
+\section{The Mat\'ern class as a Gaussian mixture}
+
+The Mat\'ern covariance on $\R^d$ with smoothness $\nu$ and inverse range $\kappa$ has spectral density proportional to $(\kappa^2 + |k|^2)^{-(\nu+d/2)}$. Whittle observed in 1954~\cite{whittle1954} for the plane, and in 1963~\cite{whittle1963} in general, that it is the covariance of the stationary solution of the stochastic partial differential equation
+\[
+(\kappa^2 - \Delta)^{\alpha/2}u = \dot W,\qquad\alpha = \nu + \frac d2,
+\]
+driven by white noise $\dot W$, a fact that Lindgren, Rue and Lindstr\"om turned into a sparse computational method~\cite{lindgrenrue2011}. A second representation makes the Mat\'ern class a data augmentation. For $\alpha>0$,
+\[
+(\kappa^2+|k|^2)^{-\alpha} = \frac{1}{\Gamma(\alpha)}\int_0^\infty s^{\alpha-1}e^{-s\kappa^2}e^{-s|k|^2}\dd s.
+\]
+The factor $e^{-s|k|^2}$ is, up to a factor proportional to $s^{-d/2}$, the spectral density of the squared exponential covariance $e^{-|r|^2/4s}$, which has unit variance and length scale $\sqrt{2s}$. Moving the factor $s^{-d/2}$ into the weight turns $s^{\alpha-1}e^{-s\kappa^2}$ into $s^{\nu-1}e^{-s\kappa^2}$ with $\nu = \alpha-d/2$, a Gamma density in $s$ with shape $\nu$ and rate $\kappa^2$. Hence the Mat\'ern covariance with unit variance is a Gamma mixture of unit variance squared exponential covariances,
+\[
+\frac{2^{1-\nu}}{\Gamma(\nu)}(\kappa|r|)^\nu K_\nu(\kappa|r|) = \frac{\kappa^{2\nu}}{\Gamma(\nu)}\int_0^\infty s^{\nu-1}e^{-s\kappa^2}e^{-|r|^2/4s}\dd s,
+\]
+where $K_\nu$ is the modified Bessel function of the second kind; the identity is the integral representation~\cite[10.32.10]{dlmf} after the substitution $t = |r|^2/4s$. A Gaussian process with Mat\'ern covariance can therefore be represented hierarchically with a latent scale. In our paper on Mat\'ern data augmentation we exploit this representation computationally; in Section~\ref{sec:hypodiss} it reappears in the hypodissipative Navier Stokes equations.
+
+\input{chapters/ext/ch05}
+
+\section*{Notes}
+
+Bondesson's monograph~\cite{bondesson1992} is the definitive account of GGCs and HCM laws; James, Roynette and Yor~\cite{jamesroynetteyor2008} connect them with Brownian functionals. Andrews and Mallows~\cite{andrewsmallows1974} is the original source for normal scale mixtures. Rosi\'nski~\cite{rosinski2001} develops series representations of L\'evy processes, of which Theorem~\ref{thm:bondesson_shot} is an instance. Newman's theory of Lee Yang measures is in~\cite{newman1974,newman1976}.

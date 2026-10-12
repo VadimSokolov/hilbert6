@@ -1,0 +1,64 @@
+\section{Concentration from the log Sobolev inequality}
+
+The log Sobolev inequality implies Gaussian concentration by a short argument due to Herbst (see Ledoux~\cite{ledoux2001}).
+
+\begin{theorem}[Herbst]
+Let $\mu$ satisfy $\Ent_\mu(f^2)\leq2C\int|\nabla f|^2\dd\mu$ for all smooth $f$, where $\Ent_\mu(g)=\int g\log g\dd\mu-\int g\dd\mu\,\log\int g\dd\mu$ for $g\ge0$. Then every $1$ Lipschitz function $F$ satisfies
+\[
+\mu\Big(F-\int F\dd\mu\geq r\Big)\leq e^{-r^2/2C},\qquad r\geq0.
+\]
+\end{theorem}
+
+\begin{proof}
+Let $M(\lambda) = \int e^{\lambda F}\dd\mu$ and apply the inequality to $f = e^{\lambda F/2}$. Since $|\nabla f|^2\leq\frac{\lambda^2}{4}e^{\lambda F}$, we get $\lambda M'(\lambda)-M(\lambda)\log M(\lambda)\leq\frac{C\lambda^2}{2}M(\lambda)$. Dividing by $\lambda^2M$ shows that $K(\lambda) = \lambda^{-1}\log M(\lambda)$ satisfies $K'(\lambda)\leq C/2$, and $K(0^+) = \int F\dd\mu$. Hence $\log M(\lambda)\leq\lambda\int F+C\lambda^2/2$, and Chebyshev's exponential inequality with $\lambda = r/C$ gives the bound.
+\end{proof}
+
+For the standard Gaussian measure $C = 1$, and the theorem says that a Lipschitz function of many independent Gaussian variables is as concentrated as a single Gaussian, with no dependence on dimension. This is one mechanism behind the determinism of the macroscopic observables of a gas with many particles: if the Gibbs measure satisfies a log Sobolev inequality with a constant that does not grow with the number of particles, then a macroscopic observable, a Lipschitz function of the microstate with small Lipschitz constant, barely fluctuates. Whether a given Gibbs measure satisfies such an inequality is a question about the interaction.
+
+\section{The I MMSE identity}\label{sec:immse}
+
+De Bruijn's identity has an estimation theoretic twin found by Guo, Shamai and Verd\'u in 2005~\cite{guo2005}. Let $Y = \sqrt{s}\,X+Z$ with $Z$ standard Gaussian independent of $X$ and $s>0$ the signal to noise ratio. Let $\mathrm{mmse}(s) = \E|X-\E[X\mid Y]|^2$.
+
+\begin{theorem}[Guo, Shamai and Verd\'u]
+\label{thm:immse}
+For $X$ with finite second moment,
+\[
+\frac{\dd}{\dd s}I(X;Y) = \frac12\,\mathrm{mmse}(s),
+\]
+where the mutual information is measured in nats.
+\end{theorem}
+
+\begin{proof}[Sketch]
+Write $I(X;Y) = h(Y)-h(Z)$ and rescale: $Y/\sqrt s = X+Z/\sqrt s$, so $h(Y) = h(X+\sqrt tZ')+\frac n2\log s$ with $t = 1/s$ and $Z'$ standard. De Bruijn's identity gives $\frac{\dd}{\dd t}h(X+\sqrt tZ') = \frac12J(X+\sqrt tZ')$, and Tweedie's formula with the Fisher information identity $J(X+\sqrt tZ') = \frac nt-\frac{1}{t^2}\mathrm{mmse}$ in the rescaled problem converts the derivative in $t$ into the stated derivative in $s$.
+\end{proof}
+
+In the inference problems of Chapter~\ref{ch:spins}, where the replica formula gives the mutual information, Theorem~\ref{thm:immse} turns the derivative of the mutual information in the signal to noise ratio into the Bayes optimal error, and so locates its phase transitions.
+
+\section{Transport inequalities}
+
+Talagrand proved in 1996~\cite{talagrand1996} that the standard Gaussian measure satisfies the transport entropy inequality
+\[
+W_2(\nu,\gamma)^2\leq2\,\KL(\nu\,\|\,\gamma)
+\]
+for every probability measure $\nu$. Otto and Villani~\cite{ottovillani2000} showed that if a probability measure $\mu$ satisfies the log Sobolev inequality with constant $C$, then it satisfies Talagrand's inequality $W_2(\nu,\mu)^2\leq2C\,\KL(\nu\,\|\,\mu)$ with the same constant, and they introduced the HWI inequality, which for the standard Gaussian measure reads
+\[
+\KL(\nu\|\gamma)\leq W_2(\nu,\gamma)\sqrt{J(\nu\|\gamma)}-\frac12W_2(\nu,\gamma)^2,
+\]
+where $J(\nu\|\gamma) = \int|\nabla\log\frac{\dd\nu}{\dd\gamma}|^2\dd\nu$ is the relative Fisher information. The three letters of HWI stand for relative entropy ($\KL$), transport distance ($W_2$) and Fisher information ($J$), the three quantities of this chapter. For Bayesian computation, suppose that the posterior $\pi$ satisfies the log Sobolev inequality with constant $C$. Then Talagrand's inequality bounds the Wasserstein error of an approximate posterior $\nu$ by its Kullback Leibler error, $W_2(\nu,\pi)^2\leq2C\,\KL(\nu\,\|\,\pi)$, and the Kullback Leibler error of the Langevin sampler at time $t$ is at most $e^{-2t/C}$ times its initial value.
+
+\section{Boltzmann, Shannon and the second law of inference}
+
+Boltzmann's $H$ and Shannon's entropy differ by a sign and a constant. Let $\pi$ be a prior and $\pi_y$ a posterior. Averaged over the predictive distribution of $y$,
+\[
+\E_y\big[\KL(\pi_y\,\|\,\pi)\big] = I(\theta;Y)\geq0,
+\]
+so the expected information gain is the mutual information, and the expected posterior entropy is never larger than the prior entropy. This is the second law of inference, with the arrow reversed: observation decreases expected entropy about the parameter, at the price, by Landauer's principle of Chapter~\ref{ch:kolmogorov}, of increasing the entropy of the environment when the observation is recorded and later erased. The parallel with Boltzmann's $H$ theorem is only partial. For the Boltzmann equation $H$ decreases along the solution, whereas the posterior entropy can increase for particular data, when a surprising observation spreads the posterior out; only its average is monotone.
+
+\section*{Exercises}
+\begin{enumerate}
+\item For an equal mixture of $N(\pm m,1)$, compute $h$, $J$ and $W(\tau)$ numerically for several $m$ and check that $W\geq0$.
+\item Show that Stam's inequality is an equality for independent Gaussian $X$ and $Y$.
+\item Show that the log Sobolev inequality implies the Poincar\'e inequality by applying it to $f = 1+\varepsilon g$ and expanding in $\varepsilon$.
+\item Derive $\Var(X)\Var(P)\geq\hbar^2/4$ from the entropic uncertainty principle and the maximum entropy property of Gaussians.
+\item Show that the JKO scheme with $V = 0$ and Gaussian initial data produces Gaussian iterates, and compute their variances.
+\end{enumerate}

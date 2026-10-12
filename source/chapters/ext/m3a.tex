@@ -1,0 +1,215 @@
+\section{The transfer theorem}\label{m:sec:main}
+
+Chapters~\ref{ch:manifold} and~\ref{ch:adjoint} state the Bernstein von Mises theorems of Nickl~\cite{nicklbvm2024} and of Konen and Nickl~\cite{konennickl2026} for the exact posterior of the initial condition and reduce the data to a statistic of dimension $J_N$ that is exactly sufficient for linear equations and, under Assumption~\ref{m:ass:U}, sufficient at the scale $N^{-1/2}$ for nonlinear ones. Algorithm~\ref{m:alg:gbc} does not sample the exact posterior. It samples the output of a generator trained on $M$ simulated pairs, and nothing proved so far says that this output shares the guarantees. This chapter asks how accurate the generator must be for the guarantees to pass to its output, whether a concrete generator is that accurate at a simulation budget one can pay, and how the training pairs should be drawn.
+
+The first answer is Theorem~\ref{m:thm:main}. If the Wasserstein distance between the GBC posterior and the exact posterior is $o(N^{-1/2})$, and the GBC posterior concentrates on the localization set (Assumption~\ref{m:ass:G}), then it has the same Gaussian limit as the exact posterior for the initial condition and, for the equations covered by the theorems of Nickl and of Konen and Nickl, for the trajectory; its credible bands have exact asymptotic coverage; and for the Navier Stokes equations the solution started at its mean is a regular estimator of the state that attains the local asymptotic minimax bound for bounded losses. Nothing is assumed about how the generator was trained. The second answer has two halves. An identity skip generator with a Gaussian head computed in closed form meets the accuracy requirement as soon as $J_N/M_N\to0$ (Theorem~\ref{m:thm:qnnA}), but only conditionally on Assumptions~\ref{m:ass:U} and~\ref{m:ass:u2p} and on a bound for the error of the summary (Open Question~\ref{m:op:unif}). A generator required to be accurate uniformly over a H\"older class of quantile maps cannot meet the requirement with polynomially many simulations once the dimension of the summary grows (Theorem~\ref{m:thm:qnnB}). The third answer concerns the training distribution, which matters as much as the architecture: Section~\ref{m:sec:loc} computes the exact law of the residual under a localized proposal in the linear Gaussian model and derives from it a training rule, which is to center the residuals and rescale them, and explains why importance weighting back to the prior is not used.
+
+Let $\Wone_1=\Wone_{1,H^{-k-2}}$ with $k$ as in Theorem~\ref{m:thm:nickl2}. The localization set of Theorem~3 in Nickl~\cite{nicklbvm2024} is contained in an intersection of a Sobolev ball with Sobolev neighborhoods of $\theta_0$, and that containment is all the proof below uses of it, so we write $\bar\Theta_{N,L}$ for the intersection:
+\begin{equation}\label{m:eq:locset}
+\begin{aligned}
+\bar\Theta_{N,L}&=\{\norm\theta_{H^{\bar\gamma}}\le L\}\cap\big\{\norm{\theta-\theta_0}_{H^\xi}\le L\tilde\delta_N(\xi)\ \ \forall\,0\le\xi<\bar\gamma\big\},\\
+\tilde\delta_N(\xi)&=\delta_N^{(\bar\gamma-\xi)/(\bar\gamma+1)},
+\end{aligned}
+\end{equation}
+where $\bar\gamma$ is the Sobolev index of the localization ball, chosen as in the cited proofs within $\max(2,2\zeta)<\bar\gamma<\gamma-\max(1,d/2)$, a nonempty range under the hypothesis $\gamma>\max(3\zeta+3d/2+2,\eta_0)$ of Theorem~\ref{m:thm:nickl2}. Two constants of the proof being transferred enter the hypotheses below. The first is the exponent $m$ in the linearization bound
+\begin{equation}\label{m:eq:interpm}
+\begin{aligned}
+&\norm{u_\theta-u_\vartheta-\I_{\theta_0}[\theta-\vartheta]}_\Ccal\ \lesssim\ \big(\norm{\theta-\theta_0}^2_{L^2}+\norm{\vartheta-\theta_0}^2_{L^2}\big)^m,\\
+&\qquad \norm\theta_{H^{\bar\gamma}}\vee\norm\vartheta_{H^{\bar\gamma}}\le M ,
+\end{aligned}
+\end{equation}
+which arises from interpolating $L^2$ against $H^{\bar\gamma}$ and is therefore always at most $1$: it is $m=(\bar\gamma-\zeta)/\bar\gamma$ with $d/2<\zeta<\bar\gamma$ in Nickl~\cite{nicklbvm2024} and $m=(\bar\gamma-1)/\bar\gamma$ in Konen and Nickl~\cite{konennickl2026}. It is also strictly greater than $1/2$, since those proofs need $\tilde\delta_N^{2m}=o(N^{-1/2})$ while $\tilde\delta_N\ge N^{-1/2}$ (Remark~\ref{m:rem:jwmeasure}), so that $N^{-m}=o(N^{-1/2})$. That requirement is stronger than $m>1/2$ and is what restricts the choice of $\bar\gamma$ and $\zeta$ in the range above: it forces $\bar\gamma>2\zeta+1$. The second is the moment order
+\begin{equation}\label{m:eq:qorder}
+\begin{gathered}
+q=4\ \ \text{in the setting of Theorem~\ref{m:thm:nickl1}},\\
+q=4\bar\gamma\ \ \text{in that of Theorem~1.1 of Konen and Nickl~\cite{konennickl2026}},
+\end{gathered}
+\end{equation}
+which is what the two Cauchy Schwarz steps of that proof consume.
+
+\begin{assumption}[GBC accuracy]\label{m:ass:G}
+As $N\to\infty$, in $P^\N_{\theta_0}$ probability:
+\begin{enumerate}[label=(G\arabic*),nosep]
+\item $\sqrt N\,\Wone_1(\Pihat,\PiN)\to0$.
+\item For some $b>0$ and $L$, $\Pihat(\bar\Theta_{N,L}^c)\le e^{-bN\delta_N^2}$, and $E^{\Pihat}\norm\theta^{q}_{H^{\bar\gamma}}=O_P(1)$ with $q$ as in \eqref{m:eq:qorder}.
+\end{enumerate}
+\end{assumption}
+
+Because $q\ge4$ and $\bar\gamma\ge2$, the moment clause of (G2) contains the bound $E^{\Pihat}\norm\theta^2_{H^2}=O_P(1)$ used elsewhere, and adds the two things the proof of part (ii) needs and that a second moment does not give: the moment of order $4m<4$ consumed by the Cauchy Schwarz step off $\bar\Theta_{N,L}$, and, through Jensen's inequality, $\norm{\hat\theta^{\rm G}_N}_{H^{\bar\gamma}}\le(E^{\Pihat}\norm\theta^q_{H^{\bar\gamma}})^{1/q}=O_P(1)$. The clause is the analogue for $\Pihat$ of the posterior moment bound (39) of Nickl~\cite{nicklbvm2024}, namely $(E^{\PiN}\norm{\theta-\theta_0}^r_{H^\xi})^{1/r}=O_P(\tilde\delta_N(\xi))$ for every $r<\infty$ and every $0\le\xi\le\bar\gamma$, which holds at every order for the exact posterior and at no order for a learned measure: that is why it has to be assumed rather than derived. It can, however, be enforced by construction rather than assumed, by composing the generator with the radial retraction $r(\theta)=\theta\min(1,L/\norm\theta_{H^{\bar\gamma}})$ onto the ball $B_L=\{\norm\theta_{H^{\bar\gamma}}\le L\}$, with $L$ the constant of (G2). The clause then holds at every order trivially. The first clause of (G2) survives with $2e^{-bN\delta_N^2}$ in place of $e^{-bN\delta_N^2}$, because $r$ is the identity on $B_L\supset\bar\Theta_{N,L}$, and so does (G1): with $s=K_N/\sqrt N$ and the $1$ Lipschitz function $\phi_s(\theta)=(\norm{\theta-\theta_0}_{H^{-k-2}}-s)_+$,
+\[
+\begin{aligned}
+\Wone_1(r_\#\Pihat,\Pihat)&\le E^{\Pihat}\big[\norm\theta_{H^{-k-2}}\mathbf 1_{B^c_L}\big]\\
+&\le\big(s+\norm{\theta_0}_{H^{-k-2}}\big)\Pihat(B^c_L)+E^{\PiN}\phi_s+\Wone_1(\Pihat,\PiN),
+\end{aligned}
+\]
+and each term is $o_P(N^{-1/2})$ for $K_N\to\infty$ slowly: the first by the first clause of (G2), the second by the uniform integrability of $\norm{\sqrt N(\theta-\theta_0)}_{H^{-k-2}}$ under $\PiN$ that the convergence in $\Wone_1$ of Theorem~\ref{m:thm:nickl2} gives, and the third by (G1). So the retraction costs nothing asymptotically. The proof of Theorem~\ref{m:thm:qnnA} discharges it for the plug in Gaussian generator of Definition~\ref{m:def:gen}, so the strengthening costs that theorem nothing.
+
+Under Assumption~\ref{m:ass:U}, (G1) holds for the exact generator with the posterior mean summary by Corollary~\ref{m:cor:jwgbc}, and for the one step summary by Proposition~\ref{m:prop:suff} together with the last statement of Theorem~\ref{m:thm:jwbvm}, which needs the same assumption; the generator's estimation error is the remaining contribution and is the subject of Section~\ref{m:sec:qnn}.
+
+\begin{theorem}[BvM for GBC]\label{m:thm:main}
+Suppose Conditions 1 and 2 of Nickl~\cite{nicklbvm2024} hold with the constants of Theorem~\ref{m:thm:nickl2}, and Assumption~\ref{m:ass:G} holds. Then:
+\begin{enumerate}[label=(\roman*),nosep]
+\item $\Wone_1\big(\Law(\sqrt N(\theta-\hat\theta_N^{\rm G})\mid\theta\sim\Pihat),\,\Ncal_{\theta_0}\big)\to^{P}0$ and $\sqrt N(\hat\theta_N^{\rm G}-\theta_0)\to^d\Ncal_{\theta_0}$ in $H^{-k-2}$.
+\item If in addition the forward map satisfies the hypotheses of Theorem~\ref{m:thm:nickl1} or of Theorem~1.1 in Konen and Nickl~\cite{konennickl2026}, then
+\[
+\begin{gathered}
+\Wone_{1,\Ccal}\big(\Law(\sqrt N(u_\theta-u_{\hat\theta_N^{\rm G}})\mid\theta\sim\Pihat),\,\mu\big)\to^P0,\\
+\sqrt N\big(u_{\hat\theta_N^{\rm G}}-u_{\theta_0}\big)\to^d_\Ccal\mu .
+\end{gathered}
+\]
+\item For $\Phi:\Ccal\to\mathbb B$ Hadamard differentiable, $\sqrt N(\Phi(u_{\hat\theta_N^{\rm G}})-\Phi(u_{\theta_0}))\to^d\dot\Phi_{u_{\theta_0}}[U]$, and the GBC credible band $C^{\rm G}_N$ of $\Pihat$ probability $1-\beta$ satisfies $P^\N_{\theta_0}(u_{\theta_0}\in C^{\rm G}_N)\to1-\beta$, its radius $R_N$ in $\Ccal$ obeying $\sqrt NR_N\to c>0$.
+\item In the Navier Stokes case of (ii), write $\theta_{N,h}=\theta_0+h/\sqrt N$. Then for every $h\in\Hds\infty$, under $P^\N_{\theta_{N,h}}$,
+\[
+\sqrt N\big(\hat\theta^{\rm G}_N-\theta_{N,h}\big)\to^d\Ncal_{\theta_0}\ \text{ in }H^{-k-2},\qquad \sqrt N\big(u_{\hat\theta^{\rm G}_N}-u_{\theta_{N,h}}\big)\to^d_\Ccal\mu ;
+\]
+that is, $u_{\hat\theta^{\rm G}_N}$ is a regular estimator sequence of the state at $\theta_0$, with the limit law $\mu$ that attains the bound of Theorem~1.2 in Konen and Nickl~\cite{konennickl2026} (Theorem~2.10 there for a general $\Phi$). Consequently, with $\Phi$ as in (iii) and $\Phi=\Id$ permitted, $\Phi(u_{\hat\theta^{\rm G}_N})$ is efficient among regular estimator sequences by the convolution theorem, and for every bounded, continuous, subconvex loss $\ell:\mathbb B\to[0,\infty)$ it attains the local asymptotic minimax bound,
+\[
+\begin{aligned}
+&\sup_{J\subset\Hds\infty,\ |J|<\infty}\ \liminf_{N\to\infty}\ \max_{h\in J}\ E^\N_{\theta_{N,h}}\,\ell\Big(\sqrt N\big(\Phi(u_{\hat\theta^{\rm G}_N})-\Phi(u_{\theta_{N,h}})\big)\Big)\\
+&\qquad=\ E_\mu\,\ell\big(\dot\Phi_{u_{\theta_0}}[U]\big),\qquad U\sim\mu .
+\end{aligned}
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Three facts about $\Wone_1$ on a separable Banach space $B$: (a) translation invariance; (b) $\Wone_1(\Law(cX),\Law(cY))=|c|\Wone_1(\Law X,\Law Y)$; (c) $\norm{EX-EY}_B\le\Wone_1(\Law X,\Law Y)$, since $x\mapsto\langle x,\psi\rangle$ is Lipschitz with constant $1$ for $\psi$ in the dual unit ball.
+
+(i) With $\tau^{\rm G}_N$, $\tau'_N$, $\tau_N$ the laws of $\sqrt N(\theta-\hat\theta^{\rm G}_N)$ under $\Pihat$, of $\sqrt N(\theta-\hat\theta^{\rm G}_N)$ under $\PiN$, and of $\sqrt N(\theta-\tilde\theta_N)$ under $\PiN$,
+\[
+\Wone_1(\tau_N^{\rm G},\Ncal_{\theta_0})\le\Wone_1(\tau_N^{\rm G},\tau_N')+\Wone_1(\tau_N',\tau_N)+\Wone_1(\tau_N,\Ncal_{\theta_0}).
+\]
+By (a) and (b) the first term is $\sqrt N\Wone_1(\Pihat,\PiN)\to^P0$ by (G1); the second is at most $\sqrt N\norm{\tilde\theta_N-\hat\theta^{\rm G}_N}_{H^{-k-2}}\le\sqrt N\Wone_1(\Pihat,\PiN)$ by (a) and (c); the third tends to zero by Theorem~\ref{m:thm:nickl2}. The mean statement follows by Slutsky in $H^{-k-2}$.
+
+(ii) Follow the proof of Theorem~1 in Nickl~\cite{nicklbvm2024}, or of Theorem~1.1 in Konen and Nickl~\cite{konennickl2026}, with $\PiN$ replaced by $\Pihat$ and $\tilde\theta_N$ by $\hat\theta^{\rm G}_N$. The term $\sup_{\norm F_{\Lip}\le1}|EF(\I_{\theta_0}Z^{\rm G}_N)-EF(\I_{\theta_0}Z)|$, in which $Z^{\rm G}_N$ has the law $\Law(\sqrt N(\theta-\hat\theta^{\rm G}_N)\mid\theta\sim\Pihat)$ and $Z\sim\Ncal_{\theta_0}$, is at most $\Lip(\I_{\theta_0}:H^{-k-2}\to\Ccal)$ times the quantity in (i). The linearization term $\sqrt N\,E^{\Pihat}\norm{u_\theta-u_{\hat\theta^{\rm G}_N}-\I_{\theta_0}[\theta-\hat\theta^{\rm G}_N]}_\Ccal$ is handled by that argument, which uses three properties of the measure it integrates against and nothing else.
+
+\emph{(a) The centering lies in a fixed Sobolev ball.} The argument is run on the frequentist event $\{\norm{\hat\theta^{\rm G}_N}_{H^{\bar\gamma}}\le M\}$, on which \eqref{m:eq:interpm} may be applied with $\vartheta=\hat\theta^{\rm G}_N$. By Jensen and the moment clause of (G2), $\norm{\hat\theta^{\rm G}_N}_{H^{\bar\gamma}}\le(E^{\Pihat}\norm\theta^q_{H^{\bar\gamma}})^{1/q}=O_P(1)$, so that event has probability tending to one for $M$ large; for the exact posterior the same is (39) of Nickl~\cite{nicklbvm2024} at $\xi=\bar\gamma$.
+
+\emph{(b) Exponentially small mass off the ball, with a moment for the integrand there.} By \eqref{m:eq:locset}, $\bar\Theta_{N,L}\subset B_L:=\{\norm\theta_{H^{\bar\gamma}}\le L\}$, so the first clause of (G2) gives $\Pihat(B^c_L)\le e^{-bN\delta_N^2}$. On $B^c_L$ the integrand is at most a constant times $1+\norm\theta_{H^2}$ in the setting of Theorem~\ref{m:thm:nickl1}, by $\sup_t\norm{u_\theta(t)}^2_{H^2}\lesssim1+\norm\theta^2_{H^2}$ and the embedding $H^2\subset C(\Omega)$ for $d\le3$, and at most a constant times $1+\norm\theta^{2\bar\gamma}_{\Hds{\bar\gamma}}$ in that of Konen and Nickl~\cite{konennickl2026}. Cauchy Schwarz and (G2) bound its contribution by
+\[
+\big(E^{\Pihat}\big[1+\norm\theta^{q}_{H^{\bar\gamma}}\big]\big)^{1/2}\,\Pihat(B^c_L)^{1/2}=O_P(1)\,e^{-bN\delta_N^2/2}=o_P(N^{-1/2}),
+\]
+since $N\delta_N^2=N^{d/(2\gamma+d)}$ is a positive power of $N$. This is what fixes $q$ in \eqref{m:eq:qorder}.
+
+\emph{(c) On the ball, the linearization bound \eqref{m:eq:interpm}}, for which one needs $E^{\Pihat}\norm{\theta-\theta_0}^{2m}_{L^2}=o_P(N^{-1/2})$ and $\norm{\hat\theta^{\rm G}_N-\theta_0}_{L^2}=O_P(\tilde\delta_N)$. For the exact posterior the first is (39) of Nickl~\cite{nicklbvm2024} at order $2m$; for $\Pihat$ we have only (G2), and split at $\bar\Theta_{N,L}$. By \eqref{m:eq:locset}, $\bar\Theta_{N,L}\subset\{\norm{\theta-\theta_0}_{L^2}\le L\tilde\delta_N\}$, so
+\[
+E^{\Pihat}\norm{\theta-\theta_0}^{2m}_{L^2}\ \le\ L^{2m}\tilde\delta_N^{2m}+\big(E^{\Pihat}\norm{\theta-\theta_0}^{4m}_{L^2}\big)^{1/2}\,\Pihat(\bar\Theta^c_{N,L})^{1/2} .
+\]
+The first term is $o(N^{-1/2})$ by the choice of $\bar\gamma$ and $\zeta$ in the cited proofs. The second is $O_P(1)e^{-bN\delta_N^2/2}$: since $4m<4\le q$ and $\norm\cdot_{L^2}\le\norm\cdot_{H^{\bar\gamma}}$, Lyapunov's inequality and (G2) give
+\[
+\begin{aligned}
+E^{\Pihat}\norm{\theta-\theta_0}^{4m}_{L^2}&\le\big(E^{\Pihat}\norm{\theta-\theta_0}^{q}_{H^{\bar\gamma}}\big)^{4m/q}\\
+&\lesssim\big(E^{\Pihat}\norm{\theta}^{q}_{H^{\bar\gamma}}+\norm{\theta_0}^{q}_{H^{\bar\gamma}}\big)^{4m/q}=O_P(1) .
+\end{aligned}
+\]
+It is this step, and only this step, that a second moment does not cover: $4m>2$ whenever $m>1/2$, and $m>1/2$ is forced. Finally, Jensen and $2m\ge1$ give $\norm{\hat\theta^{\rm G}_N-\theta_0}_{L^2}\le E^{\Pihat}\norm{\theta-\theta_0}_{L^2}\le(E^{\Pihat}\norm{\theta-\theta_0}^{2m}_{L^2})^{1/(2m)}=O_P(\tilde\delta_N)$. The single point statement uses (i) and continuity of $\I_{\theta_0}$.
+
+(iii) The delta method is Section~3.10 of van der Vaart and Wellner~\cite{vandervaartwellner2023}. Coverage follows from (ii) as Corollary~1.3 of Konen and Nickl~\cite{konennickl2026} follows from their Theorem~1.1, via Theorem~7.3.23 of Gin\'e and Nickl~\cite{ginenickl2016}: $t\mapsto\mu(\norm U_\Ccal\le t)$ is continuous and strictly increasing because $\mu$ is nondegenerate (Section~2.6 of Konen and Nickl~\cite{konennickl2026} for Navier Stokes, Lemma~\ref{m:lem:nondeg} for the reaction diffusion class), $\Wone_{1,\Ccal}$ convergence gives convergence of the $\Pihat$ quantiles of $\norm{Y^{\rm G}_N}_\Ccal$, in which $Y^{\rm G}_N=\sqrt N(u_\theta-u_{\hat\theta^{\rm G}_N})$ with $\theta\sim\Pihat$, and $\sqrt N\norm{u_{\hat\theta^{\rm G}_N}-u_{\theta_0}}_\Ccal\to^d\norm U_\Ccal$.
+
+(iv) Recall that the design is uniform on $\mathcal X=[0,T]\times\Omega$, a set of measure $T$, so that $E\norm{g(X)}^2_W=T^{-1}\norm g^2_{L^2(\mathcal X)}$ with $L^2(\mathcal X)$ unnormalized.
+
+\emph{Step 1: local asymptotic normality at $\theta_0$.} In the Gaussian model \eqref{m:eq:model} the log likelihood ratio is exactly
+\[
+\begin{aligned}
+\Lambda_N(h)&:=\log\frac{dP^\N_{\theta_{N,h}}}{dP^\N_{\theta_0}}\big(Z^{(N)}\big)=\sum_{i=1}^N\Big[\big\langle\varepsilon_i,\Delta_N(X_i)\big\rangle_W-\tfrac12\norm{\Delta_N(X_i)}^2_W\Big],\\
+\Delta_N&=\Gcal(\theta_{N,h})-\Gcal(\theta_0).
+\end{aligned}
+\]
+Condition 2C gives $\norm{\Delta_N-\I_{\theta_0}[h]/\sqrt N}_{L^2(\mathcal X)}\lesssim\norm h^2_{L^2}/N$, so the linear part differs from $N^{-1/2}\sum_i\langle\varepsilon_i,\I_{\theta_0}[h](X_i)\rangle_W$ by a centered term of variance $NT^{-1}\norm{\Delta_N-\I_{\theta_0}[h]/\sqrt N}^2_{L^2(\mathcal X)}=O(N^{-1})$, and Condition 2D makes $\I_{\theta_0}[h]$ bounded, so $\sum_i\norm{\Delta_N(X_i)}^2_W\to^PT^{-1}\norm{\I_{\theta_0}h}^2_{L^2(\mathcal X)}$. Hence
+\[
+\begin{aligned}
+\Lambda_N(h)&=\frac1{\sqrt N}\sum_{i=1}^N\big\langle\varepsilon_i,\I_{\theta_0}[h](X_i)\big\rangle_W-\frac{\sigma^2_h}{2}+o_P(1)\ \to^d\ N\Big(-\frac{\sigma^2_h}{2},\,\sigma^2_h\Big),\\
+\sigma^2_h&=\frac1T\norm{\I_{\theta_0}h}^2_{L^2(\mathcal X)} .
+\end{aligned}
+\]
+The experiment is therefore locally asymptotically normal at $\theta_0$ with information inner product $T^{-1}\langle h,\I^*_{\theta_0}\I_{\theta_0}h'\rangle_{L^2(\Omega)}$, whose inverse is $T(\I^*_{\theta_0}\I_{\theta_0})^{-1}$, the covariance of $\Ncal_{\theta_0}$. By Le Cam's first lemma~\cite[Section~6.2]{vandervaart1998}, $(P^\N_{\theta_{N,h}})$ and $(P^\N_{\theta_0})$ are mutually contiguous.
+
+\emph{Step 2: (G1) and (G2) transfer to the local alternatives.} $\Pihat$ is a measurable function of $Z^{(N)}$ and of simulation randomness $\omega$ drawn from a fixed law $\mathcal Q$ independently of $Z^{(N)}$, and the likelihood ratio of $P^\N_{\theta_{N,h}}\otimes\mathcal Q$ with respect to $P^\N_{\theta_0}\otimes\mathcal Q$ is again $e^{\Lambda_N(h)}$, so the product experiments are mutually contiguous as well. Convergence in probability to zero and uniform tightness are preserved under contiguity~\cite[Section~6.2]{vandervaart1998}, and (G1), (G2), Theorem~\ref{m:thm:nickl2} and Theorem~3 of Nickl~\cite{nicklbvm2024} are all statements of one of those two forms; each therefore holds in $P^\N_{\theta_{N,h}}$ probability. The localization set is unaffected by the recentering, since $\norm{\theta_{N,h}-\theta_0}_{H^\xi}=N^{-1/2}\norm h_{H^\xi}=o(\tilde\delta_N(\xi))$ by Remark~\ref{m:rem:jwmeasure}, so $\bar\Theta_{N,L}$ built at $\theta_0$ and at $\theta_{N,h}$ differ only in the constant $L$. Consequently every conclusion of (i) and (ii) of the form $\to^P0$ holds under $P^\N_{\theta_{N,h}}$, in particular
+\[
+\begin{gathered}
+\sqrt N\norm{\hat\theta^{\rm G}_N-\tilde\theta_N}_{H^{-k-2}}\to^{P_{\theta_{N,h}}}0,\\
+\sqrt N\big(u_{\hat\theta^{\rm G}_N}-u_{\theta_0}\big)-\I_{\theta_0}\big[\sqrt N(\hat\theta^{\rm G}_N-\theta_0)\big]\to^{P_{\theta_{N,h}}}0\ \text{ in }\Ccal .
+\end{gathered}
+\]
+
+\emph{Step 3: the centering is regular.} By Theorem~\ref{m:thm:nickl2} and the display following (80) in Nickl~\cite{nicklbvm2024}, $\sqrt N(\tilde\theta_N-\hat\theta_N)\to^P0$ in $H^{-k-2}$, so it suffices to treat $Q_N=\sqrt N(\hat\theta_N-\theta_0)$ for the efficient centering \eqref{m:eq:thetahat}. For $\psi\in L^2_0\cap C^\infty$ and $\bar\psi=T(\I^*_{\theta_0}\I_{\theta_0})^{-1}\psi$,
+\[
+\langle\psi,Q_N\rangle_{L^2}=\frac1{\sqrt N}\sum_{i=1}^N\big\langle\I_{\theta_0}p_N(\bar\psi)(X_i),\varepsilon_i\big\rangle_W ,
+\]
+which, with the leading term of $\Lambda_N(h)$, is an average of the same independent, identically distributed, square integrable variables, so the bivariate central limit theorem applies. By equation (51) of Nickl~\cite{nicklbvm2024}, the identity already used in the proof of Proposition~\ref{m:prop:suff}, the limiting covariance is
+\[
+\frac1T\big\langle\I_{\theta_0}\bar\psi,\I_{\theta_0}h\big\rangle_{L^2(\mathcal X)}=\frac1T\big\langle T(\I^*_{\theta_0}\I_{\theta_0})^{-1}\psi,\ \I^*_{\theta_0}\I_{\theta_0}h\big\rangle_{L^2(\Omega)}=\langle\psi,h\rangle_{L^2(\Omega)} ,
+\]
+while the limiting variance of $\langle\psi,Q_N\rangle$ is $T^{-1}\norm{\I_{\theta_0}\bar\psi}^2_{L^2(\mathcal X)}=T\langle\psi,(\I^*_{\theta_0}\I_{\theta_0})^{-1}\psi\rangle_{L^2}$, which is the variance of $\langle\psi,\cdot\rangle$ under $\Ncal_{\theta_0}$. Le Cam's third lemma~\cite[Example 6.7]{vandervaart1998} therefore gives, under $P^\N_{\theta_{N,h}}$,
+\[
+\langle\psi,Q_N\rangle\ \to^d\ N\big(\langle\psi,h\rangle,\ T\langle\psi,(\I^*_{\theta_0}\I_{\theta_0})^{-1}\psi\rangle\big).
+\]
+The Cram\'er Wold device gives the finite dimensional distributions; the laws of $Q_N$ are uniformly tight in $H^{-k-2}$ under $P^\N_{\theta_0}$, by the truncation bound $E\norm{Q_N-P_{E_J}Q_N}^2_{H^{-k-2}}\lesssim\sum_{j>J}\lambda_j^{-k}$ in that proof, hence also under $P^\N_{\theta_{N,h}}$ by contiguity. Therefore $\sqrt N(\tilde\theta_N-\theta_{N,h})\to^d\Ncal_{\theta_0}$ in $H^{-k-2}$ under $P^\N_{\theta_{N,h}}$: the posterior mean is regular, with the efficient limit.
+
+\emph{Step 4: the GBC limit under the local alternative.} Condition 2C and \eqref{m:eq:interpm} give $\norm{\sqrt N(u_{\theta_{N,h}}-u_{\theta_0})-\I_{\theta_0}[h]}_\Ccal\lesssim\sqrt N(\norm h^2_{L^2}/N)^m=O(N^{1/2-m})\to0$, because $m>1/2$. Combining this with Steps 2 and 3 and the continuity of $\I_{\theta_0}:H^{-k-2}\to\Ccal$,
+\[
+\begin{gathered}
+\sqrt N\big(\hat\theta^{\rm G}_N-\theta_{N,h}\big)\to^d\Ncal_{\theta_0},\\
+\sqrt N\big(u_{\hat\theta^{\rm G}_N}-u_{\theta_{N,h}}\big)=\I_{\theta_0}\big[\sqrt N(\hat\theta^{\rm G}_N-\theta_{N,h})\big]+o_P(1)\ \to^d_\Ccal\ \mu
+\end{gathered}
+\]
+under $P^\N_{\theta_{N,h}}$, for every $h\in\Hds\infty$. This is the first assertion of (iv).
+
+\emph{Step 5: efficiency and attainment.} By Step 4 and the delta method, $\Phi(u_{\hat\theta^{\rm G}_N})$ is a regular estimator sequence with limit law $\Law(\dot\Phi_{u_{\theta_0}}[U])$, $U\sim\mu$, so the convolution theorem~\cite[Section~3.12]{vandervaartwellner2023} says that the limit law of every regular sequence is this one convolved with some further law, and that this sequence attains the case in which that further law is degenerate. For the minimax statement, let $\ell$ be bounded, continuous and subconvex. By Step 4 and the portmanteau theorem, $E^\N_{\theta_{N,h}}\ell(\sqrt N(\Phi(u_{\hat\theta^{\rm G}_N})-\Phi(u_{\theta_{N,h}})))\to E_\mu\ell(\dot\Phi_{u_{\theta_0}}[U])$ for each fixed $h$; a maximum over a finite set of sequences with a common limit has that limit, so the display in (iv) holds, and its right hand side is what the general local asymptotic minimax theorem~\cite[Section~3.12]{vandervaartwellner2023}, the source of Theorems~1.2 and~2.10 in Konen and Nickl~\cite{konennickl2026}, places below the left hand side for every estimator sequence. The bound is therefore attained.
+\end{proof}
+
+\begin{remark}[What (iv) claims, and what the quadratic loss would cost]\label{m:rem:lam}
+An estimator whose limit law is $\mu$ at $\theta_0$ alone may behave arbitrarily at $\theta_0+h/\sqrt N$, and (G1) and (G2) are hypotheses at $\theta_0$. Theorem~1.2 of Konen and Nickl~\cite{konennickl2026} is a local asymptotic minimax lower bound, and the convolution and minimax theorems certify attainment only for a regular sequence; Steps 1 to 4 establish that regularity for the GBC centering. The local asymptotic minimax bound quantifies over finite sets of local parameters, so convergence for each fixed $h$ suffices once regularity is in hand; no uniformity over $h$ beyond that is claimed or needed.
+
+Theorem~1.2 of Konen and Nickl~\cite{konennickl2026} is stated with the unbounded loss $\norm\cdot^2_\Ccal$, and its extension to $\Phi$, their Theorem~2.10, with $\norm\cdot^2_{\mathbb B}$, whereas (iv) is stated for bounded losses, which is the form in which the H\'ajek Le Cam theorem is proved. Passing to the quadratic loss requires in addition that $\{N\norm{\Phi(u_{\hat\theta^{\rm G}_N})-\Phi(u_{\theta_{N,h}})}^2_{\mathbb B}\}_N$ be uniformly integrable under $P^\N_{\theta_{N,h}}$, and contiguity does not deliver uniform integrability. For the posterior mean this is the upgrade of their Theorem~1.1 to convergence of moments. For the GBC mean it would follow from that upgrade together with $\sup_NN^2E^\N_{\theta_0}\norm{\hat\theta^{\rm G}_N-\tilde\theta_N}^4_{H^{-k-2}}<\infty$ and a stability bound $\norm{\Phi(u_\theta)-\Phi(u_\vartheta)}_{\mathbb B}\lesssim\norm{\theta-\vartheta}_{H^{-k-2}}$ at the two centers $\theta=\hat\theta^{\rm G}_N$ and $\vartheta=\tilde\theta_N$, since in this Gaussian model $e^{\Lambda_N(h)}$ is bounded in $L^3(P^\N_{\theta_0})$, so H\"older's inequality with exponents $3$ and $3/2$ transfers uniform integrability to the local alternatives. That fourth moment bound is (G1) with convergence in probability replaced by a bounded fourth moment at the same $N^{-1/2}$ scale, and the stability bound is a property of the solution map. We do not assume them: (G1) is a hypothesis in probability, and a hypothesis in probability buys the bounded loss statement and nothing more.
+\end{remark}
+
+\begin{corollary}[Solve then simulate equals simulate the limit]\label{m:cor:commute}
+Under the hypotheses of Theorem~\ref{m:thm:main}(ii), the law of $\sqrt N(u_\theta-u_{\hat\theta^{\rm G}_N})$ obtained by pushing GBC draws through the nonlinear solver, and the law obtained by pushing $\Ncal_{\theta_0}$ through the tangent linear equation linearized at $u_{\theta_0}$, are asymptotically equal in $\Wone_{1,\Ccal}$.
+
+Suppose in addition that Assumption~\ref{m:ass:U} holds with a set $\Theta_N$ that contains $\hat\theta^{\rm G}_N$ with probability tending to one (for the Sobolev balls described after that assumption this follows from Jensen's inequality and the moment clause of (G2)), and that, for the index $\zeta>d/2$ of Condition 2D of Nickl~\cite{nicklbvm2024}, the map $\vartheta\mapsto\I_\vartheta$ is Lipschitz from an $H^\zeta$ ball about $\theta_0$ into bounded operators $H^{-k-2}\to\Ccal$. Then
+\begin{equation}\label{m:eq:plugin}
+\varrho_N:=\norm{\hat\theta^{\rm G}_N-\theta_0}_{H^\zeta}=O_P\big(N^{-(\bar\gamma-\zeta)/(2(\bar\gamma+k+2))}\big)\to0 .
+\end{equation}
+Write $U^\vartheta$ for the solution of the tangent equation \eqref{m:eq:tangentgen} linearized at $u_\vartheta$ with initial datum drawn from $\Ncal_\vartheta=N(0,T(\I^*_\vartheta\I_\vartheta)^{-1})$, so that $U^{\theta_0}$ has law $\mu$. Then the forward simulation step of Algorithm~\ref{m:alg:gbc} may replace the nonlinear solves by the tangent equation linearized at $\hat\theta^{\rm G}_N$ with initial law $N(0,T(\I^*_{\hat\theta^{\rm G}_N}\I_{\hat\theta^{\rm G}_N})^{-1}/N)$, and the plug in error is
+\[
+\Wone_{1,\Ccal}\Big(\Law\big(\sqrt N(u_\theta-u_{\hat\theta^{\rm G}_N})\mid\theta\sim\Pihat\big),\ \Law\big(U^{\hat\theta^{\rm G}_N}\big)\Big)\ \le\ o_P(1)+C\varrho_N ,
+\]
+with $C$ depending only on the Lipschitz constant of $\vartheta\mapsto\I_\vartheta$ just assumed, on the Lipschitz constant of $\vartheta\mapsto\Ncal_\vartheta$ in $\Wone_{1,H^{-k-2}}$ supplied by (U3), on the norm of $\I_{\theta_0}$ from $H^{-k-2}$ into $\Ccal$ and on the first moment of $\Ncal_{\theta_0}$ in $H^{-k-2}$.
+\end{corollary}
+
+\begin{proof}
+The first assertion is Theorem~\ref{m:thm:main}(ii). For the rate \eqref{m:eq:plugin}, Theorem~\ref{m:thm:main}(i) gives $\norm{\hat\theta^{\rm G}_N-\theta_0}_{H^{-k-2}}=O_P(N^{-1/2})$, and Jensen's inequality and the moment clause of (G2) give $\norm{\hat\theta^{\rm G}_N}_{H^{\bar\gamma}}\le(E^{\Pihat}\norm\theta^q_{H^{\bar\gamma}})^{1/q}=O_P(1)$; since $\theta_0\in H^{\bar\gamma}$ and $\zeta<\bar\gamma$, the interpolation inequality $\norm f_{H^\zeta}\le\norm f_{H^{-k-2}}^{(\bar\gamma-\zeta)/(\bar\gamma+k+2)}\norm f_{H^{\bar\gamma}}^{(\zeta+k+2)/(\bar\gamma+k+2)}$ gives \eqref{m:eq:plugin}. The law of $U^\vartheta$ is the image of $\Ncal_\vartheta$ under $\I_\vartheta$, and $\mu$ is that of $\Ncal_{\theta_0}$ under $\I_{\theta_0}$, so the triangle inequality splits the plug in error into the $o_P(1)$ of Theorem~\ref{m:thm:main}(ii) and two plug ins, which we bound separately on the event, of probability tending to one, that $\hat\theta^{\rm G}_N\in\Theta_N$ and $\hat\theta^{\rm G}_N$ lies in the $H^\zeta$ ball of the Lipschitz hypothesis.
+
+\emph{Covariance.} By the $\Wone_1$ clause of (U3), applied at $\theta_0$ and at $\hat\theta^{\rm G}_N$, $\Wone_{1,H^{-k-2}}(\Ncal_{\theta_0},\Ncal_{\hat\theta^{\rm G}_N})=O(\varrho_N)$, and $\I_{\theta_0}$ is continuous from $H^{-k-2}$ into $\Ccal$, so the images of the two laws under $\I_{\theta_0}$ are $O(\varrho_N)$ apart in $\Wone_{1,\Ccal}$.
+
+\emph{Linearization point.} Coupling the images of $\Ncal_{\hat\theta^{\rm G}_N}$ under $\I_{\theta_0}$ and under $\I_{\hat\theta^{\rm G}_N}$ through the same initial datum $Z\sim\Ncal_{\hat\theta^{\rm G}_N}$ (Lemma~\ref{m:lem:coupling}) bounds their $\Wone_{1,\Ccal}$ distance by $E\norm{(\I_{\hat\theta^{\rm G}_N}-\I_{\theta_0})Z}_\Ccal$, which by the Lipschitz hypothesis is at most a constant times $\varrho_N$ times the first moment of $\Ncal_{\hat\theta^{\rm G}_N}$ in $H^{-k-2}$. That moment is at most the first moment of $\Ncal_{\theta_0}$ plus $\Wone_{1,H^{-k-2}}(\Ncal_{\theta_0},\Ncal_{\hat\theta^{\rm G}_N})$, so this plug in contributes $O(\varrho_N)$ as well.
+
+Adding the two bounds to the $o_P(1)$ of Theorem~\ref{m:thm:main}(ii) gives the display.
+\end{proof}
+
+\begin{remark}[Where the rate \eqref{m:eq:plugin} comes from, and what the corollary adds]\label{m:rem:plugin}
+Theorem~\ref{m:thm:main} delivers convergence of $\hat\theta^{\rm G}_N$ to $\theta_0$ only in $H^{-k-2}$, a norm far weaker than the $H^\zeta$ with $\zeta>d/2$ that Condition 2D needs. The moment clause of (G2) upgrades it by interpolation, as in the proof, for every $\zeta<\bar\gamma$, and in particular for every $\zeta$ admissible in Condition 2D, since $\bar\gamma>2\zeta$. With a second moment in $H^2$ only in place of the moment clause of (G2), this argument would be available for $\zeta<2$ alone. We assume Assumption~\ref{m:ass:U} rather than importing (U3) as a free standing hypothesis, because that assumption is already in force wherever the corollary is applied, namely in Theorem~\ref{m:thm:qnnA} and hence in the pipeline of Section~\ref{m:sec:ns}. The Lipschitz property of $\vartheta\mapsto\I_\vartheta$ is the one hypothesis the corollary adds: Condition 2D of Nickl is a Lipschitz bound at $\theta_0$ for the forward map together with a mapping property of $\I_{\theta_0}$, and says nothing about how $\I_\vartheta$ moves with $\vartheta$.
+\end{remark}
+
+\section{Bernstein von Mises theorems for quantile generators}\label{m:sec:qnn}
+
+Theorem~\ref{m:thm:main} takes the accuracy of the generator as a hypothesis. This section proves it for a specific generator class, conditionally on the hypotheses of Theorem~\ref{m:thm:qnnA}, and shows that the specificity is necessary. Throughout, $J=J_N\asymp N\delta_N^2$ is the summary dimension, $\hat S_N\in\R^J$ the one step statistic of Definition~\ref{m:def:summary}, and $\Sigma=T(\I^*_{\theta_0}\I_{\theta_0})^{-1}$ restricted to the first $J$ modes, so that by Proposition~\ref{m:prop:suff} the scaled residual $R:=\sqrt N(\theta-\hat S_N)$ has conditional law close to $N(0,\Sigma)$. We write $\Lambda=\diag(\lambda_j)$ and $\norm{\cdot}_w$ for the $H^{-k-2}$ norm on $\R^J$, $\norm{x}_w^2=\sum_j\lambda_j^{-k-2}x_j^2$.
+
+\subsection{Two preliminaries: a coupling lemma and the uniformity assumption}
+
+\begin{lemma}[Generators and Wasserstein distance]\label{m:lem:coupling}
+Let $G,G':\R^q\to B$ be measurable into a separable Banach space and $U$ a random variable on $\R^q$. Then $\Wone_{1,B}(\Law G(U),\Law G'(U))\le E\norm{G(U)-G'(U)}_B$.
+\end{lemma}
+
+\begin{proof}
+$(G(U),G'(U))$ is a coupling of the two laws, and $\Wone_1$ is the infimum over couplings of $E\norm{X-Y}_B$.
+\end{proof}
+
+\subsubsection{The uniformity assumption} The training pairs are simulated under the prior, so the generator learns the conditional law of $R$ given $\hat S_N$ under the joint law of $(\theta,Z^{(N)})$, whereas the Bernstein von Mises theorems are stated for a fixed truth $\theta_0$. The condition that bridges the two is Assumption~\ref{m:ass:U}, introduced in Section~\ref{m:sec:jw} for exactly this reason. We use it here with $S_N=\hat S_N$ the one step summary, so that (U1) is Proposition~\ref{m:prop:suff} with its constants tracked uniformly over $\theta_0$.
+
+Clause (U4) of Assumption~\ref{m:ass:U}, applied with $S_N=\hat S_N$, says that the conditional law of $R$ given $\hat S_N$, evaluated at the observed summary, is close to $\Ncal_{\theta_0}$ in $P^\N_{\theta_0}$ probability, and on the first $J$ modes this is the law $N(0,\Sigma)$ above. A procedure that needs this covariance explicitly, as the proposal of Algorithm~\ref{m:alg:loc} does, cannot evaluate it at $\theta_0$ and uses the plug in
+\[
+\Sigma(\bar\theta_N)=T\big(\I^*_{\bar\theta_N}\I_{\bar\theta_N}\big)^{-1}\ \ \text{restricted to the first $J$ modes}
+\]
+at the preliminary estimator $\bar\theta_N$ of Definition~\ref{m:def:summary}. The $\Wone_1$ clause of (U3) controls the plug in error through $\norm{\bar\theta_N-\theta_0}_{H^\zeta}$, which is $O_P(\tilde\delta_N(\zeta))$ by that definition, so the error is $O_P(\tilde\delta_N(\zeta))$ in $\Wone_{1,w}$, provided $\bar\theta_N\in\Theta_N$ with probability tending to one. Evaluating at $\hat S_N$ would do as well under the hypothesis of Theorem~\ref{m:thm:qnnA} on the summary, which by interpolation between $L^2$ and $H^{\bar\gamma}$ gives $\norm{\hat S_N-\theta_0}_{H^\zeta}=o_P(\tilde\delta_N(\zeta))$; the stochastic part of the one step correction has $H^\zeta$ norm of order $(N^{-1}\sum_{j\le J}\lambda_j^{\zeta+1})^{1/2}$, which is smaller than $\tilde\delta_N(\zeta)$ by the factor $N^{-(\zeta+1)(\gamma-\bar\gamma-1)/((2\gamma+d)(\bar\gamma+1))}$.

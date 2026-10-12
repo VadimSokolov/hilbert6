@@ -1,0 +1,18 @@
+{
+ "laplace": 0.07768642855416924,
+ "global_identity_M400": 1.13059754777894,
+ "global_linear_M400": 0.8848954355087141,
+ "local_train_identity_M400": 0.2365772078165317,
+ "local_train_linear_M400": 0.2022810586944106,
+ "global_identity_M800": 1.077873933872361,
+ "global_linear_M800": 0.85511806939813,
+ "local_train_identity_M800": 0.21755743153415194,
+ "local_train_linear_M800": 0.18345191367338623,
+ "global_identity_M1600": 1.0774695824425338,
+ "global_linear_M1600": 0.9006201137834848,
+ "local_train_identity_M1600": 0.18685173620974382,
+ "local_train_linear_M1600": 0.17975523532915305,
+ "global_localised_K200": 0.36443286466384617,
+ "global_localised_K400": 0.4749582413660531,
+ "global_localised_K800": 0.5677371973682104
+}

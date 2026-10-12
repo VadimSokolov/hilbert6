@@ -1,0 +1,110 @@
+\chapter{Notation}
+\label{app:notation}
+
+Each symbol is defined where it first occurs, and most keep their meaning inside one chapter. This appendix lists the symbols used in more than one chapter or throughout a long section and, in the last block, the letters that mean different things in different chapters. Numbers in parentheses are chapter numbers, and a capital letter is an appendix; the Part IV entries also name the section, result or equation that defines a symbol. A meaning used on a few lines of one section only is left out.
+
+\section*{Probability, information and stochastic processes}
+
+\begin{description}[leftmargin=2.2em,labelwidth=1.8em,labelsep=0.4em,itemsep=0pt,parsep=0pt]
+\item[$\R,\C,\Z,\N$] real, complex, integer and natural numbers.
+\item[$\P,\E,\Var$] probability, expectation, variance; $X\eqd Y$ is equality in law.
+\item[$N(m,C)$] Gaussian law with mean $m$ and covariance $C$ (or $P$, or $\Sigma$).
+\item[$L_n$] empirical measure, or type, of the first $n$ observations (\ref{ch:axioms}, \ref{ch:types}).
+\item[$H(p)$] Shannon entropy $-\sum_ap(a)\log p(a)$, also written $H(Q)$ for a type $Q$ (\ref{ch:axioms} to~\ref{ch:types}, \ref{ch:kolmogorov}).
+\item[$H(f)$] Boltzmann's functional $\int f\log f$, minus the differential entropy of $f$ (\ref{ch:entropy}, \ref{ch:kinetic}).
+\item[$h(u),\ J(u)$] differential entropy $-\int u\log u$ and Fisher information $\int|\nabla u|^2/u$ of a density $u$ (\ref{ch:entropy}; $J(\rho)$ in Chapter~\ref{ch:quantum}).
+\item[$\KL(Q\|P)$] relative entropy $\int\log\frac{\dd Q}{\dd P}\dd Q$ (\ref{ch:axioms}, \ref{ch:types}, \ref{ch:entropy}, \ref{ch:spins}, \ref{ch:gbc}, \ref{ch:kolmogorov}).
+\item[$\Ent_\mu(g)$] entropy $\int g\log g\dd\mu-\int g\dd\mu\log\int g\dd\mu$ of $g\ge0$ (\ref{ch:entropy}, \ref{app:toolkit}).
+\item[$\mathrm{TV},\ d_{BL},\ W_p$] total variation distance (\ref{ch:poincare}, \ref{ch:axioms}, \ref{ch:nsinference}, \ref{app:toolkit}; $\mathrm{TV}(Q,P)$ in Chapter~\ref{ch:types}), bounded Lipschitz distance (\ref{ch:nsinference}, \ref{app:toolkit}) and Wasserstein distance of order $p$ (\ref{ch:entropy}, \ref{ch:kinetic}, \ref{ch:nsinference}; $\Wone_1$ in Part IV, where only order one occurs).
+\item[$B_t,\ W_t$] Brownian motion, $B_t$ (\ref{ch:brownian}) or $W_t$ (\ref{ch:quantum}, \ref{ch:nsinference}, \ref{ch:gbc}, \ref{ch:filters}).
+\item[$M_t,\ R_t$] running maximum $\max_{s\le t}B_s$ and Bessel process, such as $R_t=2M_t-B_t$, of dimension three by Pitman's theorem; $A^{(\nu)}_t=\int_0^te^{2(B_s+\nu s)}\dd s$, $A_t=A^{(0)}_t$; $\gamma_\mu$ is a Gamma variable of shape $\mu$ and $\beta$ a second Brownian motion (\ref{ch:brownian}).
+\item[$PG(b,c)$] P\'olya Gamma law, whose variable is written $\omega$ (\ref{ch:brownian}, \ref{ch:mixtures}).
+\item[$\phi,\ \psi$] Laplace exponent of a subordinator, $\E e^{-\lambda X}=e^{-\phi(\lambda)}$ (\ref{ch:mixtures}, \ref{app:levy}), and L\'evy exponent, $\E e^{iuX_t}=e^{t\psi(u)}$ (\ref{app:levy}).
+\item[$\mathcal{W},\ W(\tau)$] Perelman's entropy and its flat space form (\ref{ch:poincare}, \ref{ch:entropy}).
+\end{description}
+
+\section*{Mechanics, kinetic theory, fluids and quantum mechanics}
+
+\begin{description}[leftmargin=2.2em,labelwidth=1.8em,labelsep=0.4em,itemsep=0pt,parsep=0pt]
+\item[$k_B,\ \hbar$] Boltzmann's constant, reduced Planck constant.
+\item[$M_{\rho,u,\theta}$] Maxwellian $\rho(2\pi\theta)^{-d/2}e^{-|v-u|^2/2\theta}$ with density $\rho$, mean velocity $u$ and temperature $\theta$, the variance of a velocity coordinate (\ref{ch:types}, \ref{ch:kinetic}, \ref{ch:hydro}; named in Chapter~\ref{ch:hydro}); $\theta=k_BT/m_0$ for molecules of mass $m_0$ (\ref{ch:hilbert}); $M$ is the standard Maxwellian (\ref{ch:hydro}).
+\item[$u,\ p,\ \nu,\ \kappa$] velocity, pressure, kinematic viscosity and thermal diffusivity of a fluid (\ref{ch:hilbert}, \ref{ch:hydro}); Chapters~\ref{ch:nsinference} and~\ref{ch:boundary} use $u$, $p$ and $\nu$.
+\item[$\mathcal H,\ \rho,\ \psi$] Hilbert space of a system; density operator $\rho$, $\tr\rho=1$, equal to $|\psi\rangle\langle\psi|$ for a pure state; $\rho=|\psi|^2$ is the position density in the Madelung and Nelson equations (\ref{ch:quantum}).
+\item[$H,\ U_t$] self adjoint Hamiltonian and unitary group $U_t=e^{-itH/\hbar}$ (\ref{ch:quantum}).
+\item[$S(\rho)$] von Neumann entropy $-\tr(\rho\log\rho)$ and relative entropy $S(\rho\|\sigma)$ (\ref{ch:quantum}).
+\item[$\nu,\ b,\ u,\ v$] in Nelson's stochastic mechanics, the diffusion constant $\nu=\hbar/2m$, the forward drift $b=v+u$, the osmotic velocity $u=\nu\nabla\log\rho$ and the current velocity $v$ (\ref{ch:quantum}).
+\end{description}
+
+\section*{Part IV: the solution manifold}
+
+\begin{description}[leftmargin=2.2em,labelwidth=1.8em,labelsep=0.4em,itemsep=0pt,parsep=0pt]
+\item[$e_j,\ \lambda_j$] Laplace eigenbasis of the torus $\Omega=[0,1]^d$, $\lambda_j=4\pi^2|k_j|^2\asymp j^{2/d}$ (Section~\ref{m:sec:intro}); $H^a$ is the periodic Sobolev space and $\Hds a$ its divergence free subspace of mean zero fields (\ref{ch:nsinference}, \ref{ch:manifold}, \ref{ch:generators}, \ref{ch:examples}).
+\item[$\Gcal,\ \mathcal M$] forward map $u_\theta=\Gcal(\theta)$, written $\mathcal G$ in Chapter~\ref{ch:nsinference}, and solution manifold $\mathcal M=\{u_\theta\}$, as in Chapters~\ref{ch:hilbert} and~\ref{ch:nsinference}.
+\item[$\I_\theta,\ \I^*_\theta$] linearization $D\Gcal_\theta$ and its adjoint for unnormalized Lebesgue measure on $\mathcal X=[0,T]\times\Omega$; $\I_\theta^*\I_\theta=\Lcal^*\Lcal+\Kcal$ \eqref{m:eq:fredholm}, $\Lcal$ the Stokes (heat) solution operator, $\Kcal$ compact.
+\item[$\Pi,\ \PiN,\ \Pihat$] prior, exact posterior and posterior of generative Bayesian computation (Algorithm~\ref{m:alg:gbc}); $\Ncal_{\theta_0}=N(0,T(\I^*\I)^{-1})$ is the Bernstein von Mises limit.
+\item[$Z^{(N)},\ \mathbf P$] the data, with law $P^\N_{\theta_0}$ at the truth $\theta_0$; $\mathbf P=\Pi\otimes P^\N_\vartheta$ is the prior predictive law and $\mathbf E$ its expectation (Theorem~\ref{m:thm:jwbvm}).
+\item[$\varepsilon,\ \epsilon$] noise $\varepsilon_i$ \eqref{m:eq:model}; $\epsilon$ is kept for the uniform Wasserstein discrepancy $\bar\epsilon_N$ of Assumption~\ref{m:ass:U}, the discrepancies $\epsilon_N$, $\hat\epsilon_N$ of Chapter~\ref{ch:adjoint} and the contraction rate $\epsilon_N$ of Theorem~\ref{m:thm:PR}.
+\item[$\gamma,\ \delta_N$] prior smoothness and rate $\delta_N=N^{-\gamma/(2\gamma+d)}$ of the rescaled prior \eqref{m:eq:prior}.
+\item[$J_N,\ D$] summary dimension $J_N\asymp N\delta_N^2$ that the theory licenses and number $D$ of retained modes, the coefficients a generator outputs; Table~\ref{m:tab:dims} also fixes $k_{\rm eff}$ and $K_{\max}$.
+\item[$\iota_j,\ \kappa_j$] information per mode \eqref{m:eq:gram}, for the heat equation \eqref{m:eq:iota}, and ratio $\kappa_j=N\iota_j\sigma_{0,j}^2$ of information to prior precision, $\sigma_{0,j}^2$ the prior variances; $\iota^0_j,\ \kappa^0_j$ are the same at the center of the prior for reaction diffusion \eqref{m:eq:iotazero}, and $\Gamma_N$ is the non Gaussian part of the realized information gain (Lemma~\ref{m:lem:prexact}).
+\item[$J^{\rm eff}_N,\ J_{\rm eff}$] number of modes with $\kappa_j>1$ under the rescaled prior (Proposition~\ref{m:prop:pr}) and with $N\iota_j\sigma^2_{0,j}\ge1$ under the fixed prior $\sigma^2_{0,j}=\rho^2(\lambda_j/\lambda_1)^{-\alpha}$ (Theorem~\ref{m:thm:jeff}); $J_N$ sets the simulation budget of the identity skip generator, $J_{\rm eff}$, through the cut $\min(J_{\rm eff},J_N)$, that of the hybrid one (Remark~\ref{m:rem:jeff}).
+\item[\eqref{m:eq:momentbound}] uniform bound on moments of order $2+\varpi$ of $\sqrt N(\theta-\hat S_N)$ and $\sqrt N(\theta-\tilde\theta_N)$ (Proposition~\ref{m:prop:abcopt}).
+\item[$\mathcal D,\ \Xi$] whitening matrix $\diag(1/\iota_j)$ and compact correction in $\Sigma=\mathcal D^{1/2}(\Id+\Xi)\mathcal D^{1/2}$ (Section~\ref{m:sec:qnn}).
+\item[$\Wone_{1,B},\ \Ccal$] Wasserstein distance of order one on a Banach space $B$; trajectory space $\Ccal=C([t_{\min},t_{\max}],C(\Omega))$.
+\item[$c_{\min},\ R_N$] in Section~\ref{sec:gradstab}, after Nickl and Wang: curvature constant $c_{\min}$ \eqref{eq:gs_curv}, also in Chapter~\ref{ch:examples}; bound $c_{\max}$ on the expected log likelihood and its first two derivatives; bound $R_N$ on the dimension; events $E_{\mathrm{conv}}$, $E_{\mathrm{init}}$, $E_{\mathrm{wass}}$ of Theorem~\ref{thm:gs_main}.
+\end{description}
+
+\section*{Inference as statistical mechanics}
+
+\begin{description}[leftmargin=2.2em,labelwidth=1.8em,labelsep=0.4em,itemsep=0pt,parsep=0pt]
+\item[$\sigma_x,\ \mu_{\beta,h}$] spin $\sigma_x\in\{-1,+1\}$ and Gibbs measure of the Ising model with coupling $J$, field $h$ and inverse temperature $\beta$ (\ref{ch:spins}).
+\item[$H(y,u)$] generator map; $H(y,U)$ has the posterior law given $y$ for uniform $U$ (\ref{ch:nsinference}, \ref{ch:gbc}).
+\item[$\rho_\tau$] check loss $\rho_\tau(r)=r(\tau-\mathbb{1}\{r<0\})$ at quantile level $\tau$ (\ref{ch:nsinference}, \ref{ch:gbc}).
+\item[$T_\#\mu$] image of $\mu$ under $T$ (\ref{ch:gbc}); $\Pi(\mu,\nu)$ is the set of couplings (\ref{ch:entropy}, \ref{ch:gbc}).
+\item[$\eta_t,\ \pi_t$] predictive law $p(x_t\mid y_{1:t-1})$ and filter $p(x_t\mid y_{1:t})$ of a hidden Markov model with kernel $M$ and likelihood $g_t$; $\Psi_t$ is Bayes' rule, $\Phi_t=\Psi_tM$ (\ref{ch:filters}).
+\item[$\mathcal H_\lambda,\ Q,\ W$] Hamiltonian with control parameter $\lambda$, heat and work (\ref{ch:kolmogorov}).
+\item[$\xi,\ \Xi$] Riemann's functions, $\Xi(x)=\xi(\frac12+ix)$; $\Phi(u)$ is the P\'olya kernel of $\Xi$, $H_t$ and $\Lambda$ the de Bruijn Newman heat flow and constant (\ref{ch:mixtures}, \ref{ch:open}).
+\end{description}
+
+\section*{Symbols with several meanings}
+
+\begin{description}[leftmargin=2.2em,labelwidth=1.8em,labelsep=0.4em,itemsep=0pt,parsep=0pt]
+\item[$\alpha$] rate $N\varepsilon^{d-1}$ of the Boltzmann Grad scaling (\ref{ch:hilbert}, \ref{ch:kinetic}); rotation number (\ref{ch:poincare}, \ref{ch:ergodic}); exponent of a scaling, a H\"older or Sobolev space, a fractional dissipation or a prior (\ref{ch:hydro} to \ref{ch:examples}); GARCH coefficient (\ref{ch:filters}).
+\item[$\beta$] inverse temperature (\ref{ch:hilbert}, \ref{ch:poincare}, \ref{ch:spins}, \ref{ch:kolmogorov}); exponent of the Gibbs distribution (\ref{ch:axioms}); Brownian motion (\ref{ch:brownian}); Gamma shape and total mass of a Thorin measure (\ref{ch:mixtures}); H\"older or Sobolev exponent (\ref{ch:nsinference} to \ref{ch:examples}); GARCH coefficient (\ref{ch:filters}).
+\item[$\gamma$] standard Gaussian measure (\ref{ch:poincare}, \ref{ch:entropy}, \ref{ch:gbc}); Gamma variable $\gamma_\mu$ (\ref{ch:brownian}); step size or learning rate (\ref{ch:nsinference}, \ref{ch:filters}); prior smoothness (\ref{ch:manifold} to \ref{ch:examples}); ordinate of a zero of $\zeta$ (\ref{ch:open}).
+\item[$\varepsilon$] diameter of a hard sphere (\ref{ch:hilbert}, \ref{ch:kinetic}); Knudsen number (\ref{ch:hydro}); energy of a state (\ref{ch:axioms}); noise (\ref{ch:nsinference}, \ref{ch:manifold} to \ref{ch:examples}); energy dissipation rate (\ref{ch:boundary}).
+\item[$\eta$] observation noise (\ref{ch:hilbert}); viscosity of a fluid (\ref{ch:brownian}); JKO step (\ref{ch:entropy}); Kolmogorov dissipation scale (\ref{ch:boundary}); Nickl's constant $\eta_0$ (\ref{ch:manifold}); predictive law of a filter (\ref{ch:filters}).
+\item[$\theta$] temperature (\ref{ch:hilbert}, \ref{ch:types}, \ref{ch:kinetic}, \ref{ch:hydro}); unknown parameter (\ref{ch:axioms}, \ref{ch:brownian}, \ref{ch:spins} to \ref{ch:kolmogorov}); initial condition (\ref{ch:nsinference}, \ref{ch:manifold} to \ref{ch:examples}); label of an ergodic component (\ref{ch:ergodic}); exponent of a blowup rate (\ref{ch:boundary}).
+\item[$\kappa$] thermal diffusivity (\ref{ch:hilbert}, \ref{ch:hydro}); Mat\'ern inverse range (\ref{ch:mixtures}, \ref{ch:boundary}); information ratio (\ref{ch:adjoint}); cubic Schr\"odinger coefficient (\ref{ch:examples}).
+\item[$\lambda$] Laplace variable (\ref{ch:brownian}, \ref{ch:mixtures}, \ref{app:levy}); argument of a moment generating function (\ref{ch:axioms}, \ref{ch:entropy}); spectral gap $\lambda_1$ (\ref{ch:poincare}; written $g$ in Chapter~\ref{ch:ergodic}); tilting parameters of an exponential family (\ref{ch:types}); Poisson rate (\ref{ch:mixtures}, \ref{ch:filters}); prior variance (\ref{ch:nsinference}); Laplace eigenvalues (\ref{ch:manifold} to \ref{ch:examples}).
+\item[$\mu$] invariant measure (\ref{ch:poincare}, \ref{ch:ergodic}, \ref{ch:entropy}, \ref{app:toolkit}); Brownian drift (\ref{ch:brownian}); limit law (\ref{ch:manifold}, \ref{ch:generators}); Gibbs measure (\ref{ch:spins}); source measure of a transport (\ref{ch:gbc}).
+\item[$\nu$] kinematic viscosity (\ref{ch:hilbert}, \ref{ch:hydro} to \ref{ch:boundary}); Nelson's diffusion constant (\ref{ch:quantum}); L\'evy measure (\ref{ch:mixtures}, \ref{app:levy}); second measure of a distance or coupling (\ref{ch:poincare}, \ref{ch:entropy}, \ref{ch:gbc}, \ref{app:toolkit}); Planck frequency (\ref{ch:poincare}); reference measure of the Gibbs principle (\ref{ch:spins}); the collision frequency of Chapter~\ref{ch:hydro} is $\nu_c$.
+\item[$\xi$] Fourier variable (\ref{ch:poincare}, \ref{ch:entropy}); finite partition (\ref{ch:ergodic}); Riemann's function (\ref{ch:brownian}, \ref{ch:mixtures}, \ref{ch:open}, \ref{app:levy}); rescaled velocity (\ref{ch:hydro}); Gaussian noise or variable (\ref{ch:nsinference}, \ref{ch:boundary}, \ref{ch:spins}, \ref{ch:filters}).
+\item[$\rho$] density (\ref{ch:brownian}, \ref{ch:entropy}, \ref{ch:quantum}, \ref{ch:kinetic}, \ref{ch:hydro}); density operator (\ref{ch:quantum}); irreducible representation (\ref{ch:poincare}); check loss (\ref{ch:nsinference}, \ref{ch:gbc}); prior scale (\ref{ch:manifold}, \ref{ch:adjoint}, \ref{ch:examples}); single spin law of Newman's theorem (\ref{ch:open}, \ref{app:levy}).
+\item[$\sigma$] $\sigma$ algebra (\ref{ch:axioms}, \ref{ch:ergodic}); diffusion coefficient (\ref{ch:brownian}, \ref{ch:filters}); standard deviation (\ref{ch:hilbert}, \ref{ch:entropy}, \ref{ch:nsinference} to \ref{ch:adjoint}, \ref{ch:examples}, \ref{ch:gbc}); unit vector at a collision (\ref{ch:kinetic}, \ref{ch:hydro}); spin (\ref{ch:spins}).
+\item[$\tau$] return or hitting time (\ref{ch:poincare}, \ref{ch:brownian}, \ref{app:toolkit}); scale of the backward heat flow (\ref{ch:poincare}, \ref{ch:entropy}); imaginary time (\ref{ch:quantum}); pulse arrival time (\ref{ch:mixtures}, \ref{ch:filters}); quantile level (\ref{ch:nsinference}, \ref{ch:gbc}).
+\item[$\psi$] linear predictor (\ref{ch:mixtures}); wave function (\ref{ch:entropy}, \ref{ch:quantum}); ratio of features to observations (\ref{ch:spins}); L\'evy exponent (\ref{app:levy}).
+\item[$\omega$] sample point (\ref{ch:axioms}); unit vector at a collision (\ref{ch:hilbert}; $\sigma$ in Chapters~\ref{ch:kinetic} and~\ref{ch:hydro}); P\'olya Gamma variable (\ref{ch:brownian}, \ref{ch:mixtures}); oscillator frequency (\ref{ch:quantum}); vorticity (\ref{ch:nsinference}, \ref{ch:boundary}); Edwards Sokal bond variable (\ref{ch:spins}); GARCH intercept (\ref{ch:filters}).
+\item[$\Gamma$] set of measures (\ref{ch:axioms}); trajectory map (\ref{ch:hilbert}); gamma function (\ref{ch:types}, \ref{ch:brownian}, \ref{ch:open}); points of a Poisson process (\ref{ch:mixtures}, \ref{ch:filters}); quadratic collision term (\ref{ch:hydro}); operator of the Bakry \'Emery criterion (\ref{app:toolkit}).
+\item[$\Lambda$] log moment generating function (\ref{ch:axioms}); tent map (\ref{ch:ergodic}); box (\ref{ch:spins}); de Bruijn Newman constant (\ref{ch:open}).
+\item[$\Xi$] Riemann's function (\ref{ch:brownian}, \ref{ch:mixtures}, \ref{ch:open}, \ref{app:levy}, \ref{app:chronology}); compact correction (\ref{ch:generators}).
+\item[$\Pi$] prior or posterior (\ref{ch:hilbert}, \ref{ch:nsinference}, \ref{ch:manifold} to \ref{ch:examples}); mixing measure of de Finetti's theorem (\ref{ch:axioms}, \ref{ch:ergodic}); set of couplings (\ref{ch:entropy}, \ref{ch:gbc}); Poisson point process (\ref{ch:mixtures}); projection onto a kernel (\ref{ch:hydro}).
+\item[$\Phi$] flow map (\ref{ch:hilbert}, \ref{ch:nsinference}, \ref{ch:kolmogorov}); filter map (\ref{ch:filters}); standard normal distribution function (\ref{ch:boundary}, \ref{ch:generators}, \ref{ch:gbc}); P\'olya kernel (\ref{ch:mixtures}, \ref{ch:open}); design matrix (\ref{ch:adjoint} to \ref{ch:examples}); functional of the solution (\ref{ch:manifold}, \ref{ch:generators}, \ref{ch:examples}).
+\item[$\Omega$] sample space or space of a Gibbs principle (\ref{ch:axioms}, \ref{ch:spins}); domain or box of a gas or a fluid (\ref{ch:hilbert}, \ref{ch:boundary}); unit torus (\ref{ch:manifold} to \ref{ch:examples}).
+\item[$D$] diffusion coefficient (\ref{ch:hilbert}, \ref{ch:brownian}, \ref{ch:nsinference}); rate of decrease of $H(f)$ (\ref{ch:kinetic}); number of retained modes (\ref{ch:nsinference}, \ref{ch:manifold} to \ref{ch:examples}); derivative $D\Gcal_\theta$ (\ref{ch:manifold}, \ref{ch:examples}).
+\item[$E$] Cameron Martin space (\ref{ch:nsinference}); energy spectrum $E(k)$ (\ref{ch:nsinference}, \ref{ch:boundary}); expectation, written $E$ in Part IV and $\E$ in the other chapters.
+\item[$H$] Shannon entropy (\ref{ch:axioms} to \ref{ch:types}, \ref{ch:kolmogorov}); Boltzmann's functional (\ref{ch:entropy}, \ref{ch:kinetic}); Hamiltonian (\ref{ch:hilbert}, \ref{ch:poincare}, \ref{ch:quantum}); Hilbert space $\mathcal H$ (\ref{ch:ergodic}, \ref{ch:quantum}); generator map (\ref{ch:nsinference}, \ref{ch:gbc}); Sobolev space $H^\alpha$ (\ref{ch:nsinference}) and $H^a$ (\ref{ch:manifold} to \ref{ch:examples}); heat flow $H_t$ (\ref{ch:open}).
+\item[$h$] Kolmogorov Sinai entropy (\ref{ch:ergodic}); differential entropy (\ref{ch:entropy}); Planck's constant (\ref{ch:poincare}); external field (\ref{ch:spins}); Cameron Martin element (\ref{ch:nsinference}).
+\item[$I$] mutual information (\ref{ch:entropy}, \ref{ch:kolmogorov}); rate function (\ref{ch:types}, \ref{app:toolkit}); invariant $\sigma$ algebra $\mathcal I$ (\ref{ch:ergodic}); linearization $\I_\theta$ of the forward map (\ref{ch:nsinference}, \ref{ch:manifold} to \ref{ch:examples}).
+\item[$J$] Fisher information (\ref{ch:entropy}, \ref{ch:quantum}, \ref{ch:kolmogorov}); coupling (\ref{ch:mixtures}, \ref{ch:spins}, \ref{ch:open}); dimension of a summary (\ref{ch:nsinference}, \ref{ch:manifold} to \ref{ch:examples}).
+\item[$K$] Kalman gain (\ref{ch:gbc}, \ref{ch:filters}); Kolmogorov complexity (\ref{ch:axioms}, \ref{ch:kolmogorov}); Markov kernel (\ref{ch:ergodic}, \ref{ch:types}); compact operator $\Kcal$ (\ref{ch:manifold}, \ref{ch:adjoint}, \ref{ch:examples}).
+\item[$\mathcal L$] generator of a semigroup (\ref{ch:poincare}, \ref{ch:brownian}, \ref{ch:filters}, \ref{app:toolkit}); linearized collision operator (\ref{ch:hydro}); Stokes solution operator $\Lcal$ (\ref{ch:manifold}, \ref{ch:adjoint}, \ref{ch:examples}).
+\item[$M$] martingale (\ref{ch:brownian}, \ref{ch:quantum}, \ref{app:toolkit}); running maximum (\ref{ch:brownian}); Maxwellian (\ref{ch:kinetic}, \ref{ch:hydro}); number of simulations (\ref{ch:manifold} to \ref{ch:examples}); kernel of a hidden Markov model (\ref{ch:filters}).
+\item[$Q$] Boltzmann collision operator (\ref{ch:hilbert}, \ref{ch:kinetic}, \ref{ch:hydro}); measure or type (\ref{ch:axioms}, \ref{ch:types}, \ref{ch:spins}, \ref{ch:gbc}); heat (\ref{ch:entropy}, \ref{ch:kolmogorov}); quantum potential (\ref{ch:quantum}); conditional quantile function (\ref{ch:manifold} to \ref{ch:generators}).
+\item[$S$] entropy $k_B\log W$ (\ref{ch:axioms}, \ref{ch:entropy}) and $-\int f\log f$ (\ref{ch:kinetic}); von Neumann entropy and phase of the wave function (\ref{ch:quantum}); entropy of a bath (\ref{ch:kolmogorov}); summary statistic (\ref{ch:manifold} to \ref{ch:examples}); semigroup $S_t$ (\ref{ch:manifold}, \ref{ch:adjoint}).
+\item[$T$] final time (\ref{ch:hilbert}, \ref{ch:quantum}, \ref{ch:hydro}, \ref{ch:nsinference}, \ref{ch:manifold} to \ref{ch:examples}); absolute temperature (\ref{ch:brownian}, \ref{ch:entropy}, \ref{ch:kolmogorov}); measure preserving map (\ref{ch:poincare}, \ref{ch:ergodic}); blowup or Lanford time (\ref{ch:kinetic}, \ref{ch:boundary}).
+\item[$U$] Koopman operator (\ref{ch:ergodic}); uniform random variable (\ref{ch:brownian}, \ref{ch:nsinference}, \ref{ch:manifold}, \ref{ch:generators}, \ref{ch:gbc}, \ref{ch:open}); solution of a linearized equation (\ref{ch:manifold}, \ref{ch:generators}, \ref{ch:examples}); Thorin measure (\ref{ch:mixtures}, \ref{ch:filters}, \ref{app:levy}); unitary group (\ref{ch:quantum}).
+\item[$W$] number of microstates (\ref{ch:axioms}, \ref{ch:entropy}); Brownian motion (\ref{ch:quantum}, \ref{ch:nsinference}, \ref{ch:gbc}, \ref{ch:filters}); Wasserstein distance (\ref{ch:entropy}, \ref{ch:kinetic}, \ref{ch:nsinference}), script $\Wone$ in Part IV; Perelman's entropy $\mathcal W$ (\ref{ch:poincare}, \ref{ch:entropy}); work (\ref{ch:kolmogorov}).
+\item[$\mathcal X$] finite alphabet (\ref{ch:types}); space time cylinder $[0,T]\times\Omega$ (\ref{ch:nsinference}, \ref{ch:manifold}, \ref{ch:generators}, \ref{ch:examples}).
+\item[$\T^d$] flat torus of side $2\pi$, $(\R/2\pi\Z)^d$ (\ref{ch:nsinference}), or of side one, $\R/\Z$ (\ref{ch:ergodic}, \ref{ch:hydro}) and $[0,1]^d$ (\ref{ch:manifold} to \ref{ch:examples}, Section~\ref{m:sec:intro}), except for the Taylor Green vortex and the experiment of Section~\ref{m:sec:expns}, on the $2\pi$ torus (Section~\ref{m:sec:ns}); the side is not fixed in Chapters~\ref{ch:hilbert} and~\ref{ch:boundary}.
+\end{description}

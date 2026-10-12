@@ -1,0 +1,145 @@
+\chapter{From Boltzmann to Navier Stokes}
+\label{ch:hydro}
+
+\section{Hilbert's expansion}
+
+The second limit in Hilbert's sentence, from the kinetic description to the laws of continua, was the one Hilbert himself attacked. In his 1912 paper~\cite{hilbert1912} he introduced a small parameter $\varepsilon$, the ratio of the mean free path to the macroscopic length, now called the Knudsen number, wrote the Boltzmann equation as
+\[
+\partial_tf_\varepsilon+v\cdot\nabla_xf_\varepsilon = \frac1\varepsilon Q(f_\varepsilon,f_\varepsilon),
+\]
+and sought a solution as a formal power series $f_\varepsilon = f_0+\varepsilon f_1+\varepsilon^2f_2+\cdots$. At order $\varepsilon^{-1}$ one finds $Q(f_0,f_0) = 0$, so $f_0$ is a local Maxwellian whose density, velocity and temperature depend on $(t,x)$. At each subsequent order one must solve a linear equation $\mathcal{L}f_{k+1} = (\text{known})$, where $\mathcal{L}$ is the collision operator linearized at $f_0$. Hilbert proved, using his theory of integral equations, that $\mathcal{L}$ satisfies a Fredholm alternative: the equation is solvable if and only if the right side is orthogonal to the collision invariants, and the solvability conditions are the equations of fluid dynamics. This was one of the first applications of Hilbert space methods to a problem of physics, and it showed that Hilbert regarded his sixth problem as a problem of analysis.
+
+Chapman in 1916~\cite{chapman1916} and Enskog in 1917~\cite{enskog1917} reorganized the expansion so that the fluid variables are not expanded but remain exact, which avoids secular growth and yields at successive orders the Euler equations, the Navier Stokes equations with explicit transport coefficients, and the Burnett equations. For the dilute noble gases the Chapman Enskog formulas, with realistic pair potentials fitted to experimental data, reproduce the measured viscosity and heat conductivity to within one percent between 50 and 1000 K~\cite{kestin1984}.
+
+\section{The Euler limit}
+
+Let $M_{\rho,u,\theta}(v) = \rho(2\pi\theta)^{-d/2}\exp(-|v-u|^2/2\theta)$. Its moments are
+\begin{gather*}
+\int M = \rho,\quad\int vM = \rho u,\quad\int v\otimes vM = \rho u\otimes u+\rho\theta I,\\ \int\tfrac12|v|^2vM = \Big(\tfrac12\rho|u|^2+\tfrac{d+2}{2}\rho\theta\Big)u.
+\end{gather*}
+Integrating the Boltzmann equation against the collision invariants $1$, $v$ and $\frac12|v|^2$, the collision term drops out by Lemma~\ref{lem:weakform}, and we obtain local conservation laws for mass, momentum and energy whose fluxes are moments of $f$. If $f$ is replaced by the local Maxwellian with the same $(\rho,u,\theta)$, the fluxes are those just computed and the conservation laws become the compressible Euler equations
+\begin{align*}
+\partial_t\rho+\nabla\cdot(\rho u) &= 0,\\
+\partial_t(\rho u)+\nabla\cdot(\rho u\otimes u)+\nabla p &= 0,\\
+\partial_tE+\nabla\cdot\big((E+p)u\big) &= 0,
+\end{align*}
+with pressure $p = \rho\theta$ and energy $E = \frac12\rho|u|^2+\frac d2\rho\theta$, the equation of state of a monatomic ideal gas. \begin{theorem}[Caflisch]
+\label{thm:caflisch}
+Let $(\rho,u,\theta)$ be a smooth solution of the compressible Euler equations on $[0,T]$ in one space dimension with periodic boundary conditions, with $\rho,\theta$ bounded away from zero. For hard sphere collisions and $\varepsilon$ small enough, there is a solution $f_\varepsilon$ of the Boltzmann equation with Knudsen number $\varepsilon$ on $[0,T]$ such that
+\[
+\sup_{t\leq T}\big\|f_\varepsilon(t)-M_{\rho(t),u(t),\theta(t)}\big\|_{H^1_{x,v}}\leq C\varepsilon.
+\]
+The solution is the truncated Hilbert expansion $f_\varepsilon = \sum_{n=0}^6\varepsilon^nf_n+\varepsilon^3f_{R,\varepsilon}$ with $f_{R,\varepsilon}(0) = 0$, so its initial datum is the expansion at time zero.
+\end{theorem}
+
+The theorem makes the Euler limit rigorous on the time interval of smooth Euler flow, which for generic data is finite because of shock formation. We quote the theorem without proof. Caflisch~\cite{caflisch1980} proves it for hard cutoff potentials in the sense of Grad, states that an Euler solution in $H^9$ suffices, and remarks that the same method treats several space dimensions. Guo, Jang and Jiang~\cite{guojangjiang2009} gave a new proof on $\R^3$ and on the three dimensional torus, by an $L^2$ to $L^\infty$ method that does not require $f_{R,\varepsilon}(0) = 0$, under the assumption that the temperature of the Euler solution varies by less than a factor of two. The remainder is controlled by the spectral gap of the linearized operator, so the argument is a Poincar\'e inequality in disguise.
+
+\section{The linearized operator}
+
+Fix the standard Maxwellian $M(v) = (2\pi)^{-d/2}e^{-|v|^2/2}$ and write $f = M(1+g)$. The linearized operator is
+\[
+\mathcal{L}g = -\frac1M\big(Q(M,Mg)+Q(Mg,M)\big),
+\]
+acting on $L^2(M\dd v)$, where $Q(f,h) = \iint B\,(f'h'_*-fh_*)\dd\sigma\dd v_*$ is the bilinear collision operator, so that $Q(f,f)$ is the operator of Chapter~\ref{ch:kinetic}.
+
+\begin{theorem}[Hilbert, Grad]
+\label{thm:linearized}
+For hard spheres, $\mathcal{L}$ is a nonnegative self adjoint operator on $L^2(M\dd v)$ with kernel spanned by $1,v_1,\dots,v_d,|v|^2$. It has the form $\mathcal{L} = \nu_c(v)-K$, where the collision frequency $\nu_c(v)$ grows like $1+|v|$ and $K$ is compact. In particular $\mathcal{L}$ satisfies a Fredholm alternative on the orthogonal complement of its kernel and has a spectral gap there in the weighted sense.
+\end{theorem}
+
+Nonnegativity and symmetry follow from the two symmetries used in the proof of Lemma~\ref{lem:weakform}. Since $M'M'_* = MM_*$, the definition gives $\mathcal{L}g = -\iint B\,M_*\big(g'+g'_*-g-g_*\big)\dd\sigma\dd v_*$, and the swap of $v$ and $v_*$ followed by the pre and post collisional change of variables gives, for $\varphi$ and $g$ for which the integrals converge,
+\[
+\begin{aligned}\langle\varphi,\mathcal{L}g\rangle_{L^2(M)} &= \frac14\iiint B\,MM_*\big(\varphi'+\varphi'_*-\varphi-\varphi_*\big)\\ &\qquad\times\big(g'+g'_*-g-g_*\big)\dd\sigma\dd v_*\dd v.\end{aligned}
+\]
+The right side is symmetric in $\varphi$ and $g$, and for $\varphi = g$ it is nonnegative. Self adjointness of $\mathcal{L}$ itself follows from the splitting $\mathcal{L} = \nu_c-K$, in which $\nu_c$ is multiplication by a positive function and $K$ is bounded and, by the symmetry of the form, symmetric. The kernel is identified by Lemma~\ref{lem:collision_invariants}. We quote the splitting, the growth of $\nu_c$, the compactness of $K$, the Fredholm alternative and the spectral gap without proof. Compactness of $K$ is Hilbert's contribution of 1912~\cite{hilbert1912}; Grad extended the analysis to a large class of kernels in 1963~\cite{grad1963}.
+
+\section{The incompressible Navier Stokes limit}
+
+The Euler limit loses dissipation. To see viscosity one must look at fluctuations about a global equilibrium on a diffusive time scale. Bardos, Golse and Levermore~\cite{bgl1991} identified the scaling:
+\begin{equation}
+\varepsilon\,\partial_tf_\varepsilon+v\cdot\nabla_xf_\varepsilon = \frac1\varepsilon Q(f_\varepsilon,f_\varepsilon),\qquad f_\varepsilon = M(1+\varepsilon g_\varepsilon).
+\label{eq:bgl_scaling}
+\end{equation}
+Time is slow compared with the transport time, the Mach number is of order $\varepsilon$, and the Knudsen number is $\varepsilon$, so the Reynolds number, by von K\'arm\'an's relation, is of order one. Substituting, $g_\varepsilon$ solves
+\[
+\varepsilon\,\partial_tg_\varepsilon+v\cdot\nabla_xg_\varepsilon+\frac1\varepsilon\mathcal{L}g_\varepsilon = \Gamma(g_\varepsilon,g_\varepsilon),
+\]
+where $\Gamma(g,g) = M^{-1}Q(Mg,Mg)$ is the quadratic part.
+
+\begin{theorem}[Formal limit, Bardos, Golse and Levermore]
+\label{thm:bgl}
+Suppose $g_\varepsilon\to g$ in a sense strong enough to pass to the limit in the equation. Then
+\[
+g(t,x,v) = \rho(t,x)+u(t,x)\cdot v+\theta(t,x)\frac{|v|^2-d}{2},
+\]
+with $\nabla\cdot u = 0$ and $\nabla(\rho+\theta) = 0$, and $(u,\theta)$ solve the incompressible Navier Stokes Fourier system
+\begin{align*}
+\partial_tu+u\cdot\nabla u+\nabla p &= \nu\Delta u,\\
+\partial_t\theta+u\cdot\nabla\theta &= \kappa\Delta\theta,
+\end{align*}
+with transport coefficients
+\[
+\nu = \frac{1}{(d-1)(d+2)}\int\hat A:A\,M\dd v,\qquad\kappa = \frac{2}{d(d+2)}\int\hat B\cdot B\,M\dd v,
+\]
+where $A(v) = v\otimes v-\frac{|v|^2}{d}I$, $B(v) = \frac12v(|v|^2-(d+2))$, and $\hat A$, $\hat B$ are the unique solutions orthogonal to the kernel of $\mathcal{L}\hat A = A$ and $\mathcal{L}\hat B = B$.
+\end{theorem}
+
+\begin{proof}[Derivation]
+Multiplying the equation for $g_\varepsilon$ by $\varepsilon$ and letting $\varepsilon\to0$ gives $\mathcal{L}g = 0$, so $g$ lies in the kernel and has the stated form. Taking moments of the equation against $\varphi = 1$, $v$ and $|v|^2$, for which the collision terms vanish, gives conservation laws of the form $\varepsilon\,\partial_t\int\varphi\,g_\varepsilon M\dd v+\nabla_x\cdot\int v\varphi\,g_\varepsilon M\dd v = 0$. For $g$ of the stated form, $\int v\,gM\dd v = u$ and $\int v\otimes v\,gM\dd v = (\rho+\theta)I$, so letting $\varepsilon\to0$ gives at leading order $\nabla\cdot u = 0$ and $\nabla(\rho+\theta) = 0$, the incompressibility and Boussinesq relations. Dividing the conservation laws by $\varepsilon$, the next order needs the momentum and energy fluxes, $\frac1\varepsilon\int A\,g_\varepsilon M$ and $\frac1\varepsilon\int Bg_\varepsilon M$. Since $A$ and $B$ are orthogonal to the kernel, $\frac1\varepsilon\int Ag_\varepsilon M = \frac1\varepsilon\langle\mathcal{L}\hat A,g_\varepsilon\rangle = \frac1\varepsilon\langle\hat A,\mathcal{L}g_\varepsilon\rangle$, and the equation gives $\frac1\varepsilon\mathcal{L}g_\varepsilon = \Gamma(g_\varepsilon,g_\varepsilon)-v\cdot\nabla_xg_\varepsilon+O(\varepsilon)$. Substituting the limit form of $g$, the quadratic term produces the convection $u\cdot\nabla u$ and the transport term produces $-\nu\,(\nabla u+\nabla u^\top)$, using the rotational invariance of $\mathcal{L}$, which forces $\hat A(v) = a(|v|)A(v)$ and reduces $\int\hat A_{ij}A_{kl}M$ to a multiple of the isotropic fourth order tensor. Taking the divergence and using $\nabla\cdot u = 0$ yields $\nu\Delta u$. The energy equation is obtained in the same way with $B$ in place of $A$, the factor $\frac{d+2}{2}$ in front of $\partial_t\theta+u\cdot\nabla\theta$ being absorbed in $\kappa$.
+\end{proof}
+
+Since $\mathcal{L}$ commutes with rotations of velocity space and $A$ is a traceless symmetric tensor, $\hat A(v) = a(|v|)A(v)$ for a scalar function $a$, and the fourth order tensor $T_{ijkl} = \int\hat A_{ij}A_{kl}M\dd v$ is isotropic, symmetric and traceless in each pair of indices. The only such tensor is a multiple of
+\[
+\frac12\big(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}\big)-\frac1d\delta_{ij}\delta_{kl},
+\]
+and contracting over $i = k$, $j = l$ identifies the multiple as $2\int\hat A:A\,M/((d-1)(d+2))$, which is $2\nu$. Hence for any velocity gradient, $\int\hat A_{ij}\,(v\cdot\nabla)(u\cdot v)\,M\dd v = \partial_ku_l\,T_{ijkl} = \nu\big(\partial_iu_j+\partial_ju_i-\frac2d(\nabla\cdot u)\delta_{ij}\big)$, where we used $v_kv_l = A_{kl}+\frac1d|v|^2\delta_{kl}$ and the orthogonality of $\hat A$ to the isotropic part. The theorem shows that the viscosity of a gas is a Green Kubo type coefficient: an inner product of a flux with the inverse of the linearized collision operator applied to the same flux. For hard spheres it can be computed numerically to high accuracy and agrees with Chapman and Enskog. Golse and Saint Raymond~\cite{golsesaintraymond2004} made the derivation rigorous for bounded collision kernels, a class that excludes hard spheres: renormalized solutions of the Boltzmann equation on $\R^3$ in the scaling \eqref{eq:bgl_scaling}, which exist globally by DiPerna and Lions~\cite{diperna1989}, have fluctuations whose limit points are Leray solutions of the Navier Stokes Fourier system. The same authors extended the Navier Stokes limit to hard cutoff potentials, which include hard spheres~\cite{golsesaintraymond2009}, and Levermore and Masmoudi~\cite{levermoremasmoudi2010} proved the Navier Stokes Fourier limit on periodic domains of dimension two or more for a still wider class of kernels.
+
+\section{Hydrodynamic limits from stochastic particle systems}
+\label{sec:particle_hydro}
+
+A second route from particles to continua bypasses the Boltzmann equation and starts from stochastic interacting particle systems, where the noise does the work that molecular chaos does in Lanford's theorem. The simplest case can be done completely.
+
+The symmetric simple exclusion process on the discrete torus $\T_N = \Z/N\Z$ has configurations $\eta\in\{0,1\}^{\T_N}$; each particle attempts to jump to each neighbor at rate one, and the jump succeeds if the target is empty. Equivalently, the contents of each pair of adjacent sites are exchanged at rate one. The generator is
+\[
+\mathcal{A}F(\eta) = \sum_{x\in\T_N}\big(F(\eta^{x,x+1})-F(\eta)\big),
+\]
+where $\eta^{x,x+1}$ exchanges the occupations of $x$ and $x+1$.
+
+\begin{theorem}[Hydrodynamic limit for simple exclusion]
+\label{thm:ssep}
+Let $\rho_0:\T\to[0,1]$ be continuous, where $\T = \R/\Z$ is the circle of length one, and start the process from the product measure with $\P(\eta_0(x) = 1) = \rho_0(x/N)$. Speed up time by $N^2$. For every continuous $G:\T\to\R$ and $t\geq0$,
+\[
+\frac1N\sum_{x\in\T_N}G\Big(\frac xN\Big)\eta_{N^2t}(x)\longrightarrow\int_\T G(u)\rho(t,u)\dd u\quad\text{in probability},
+\]
+where $\rho$ solves the heat equation $\partial_t\rho = \partial_u^2\rho$ with $\rho(0,\cdot) = \rho_0$.
+\end{theorem}
+
+\begin{proof}
+Applying the generator to $F(\eta) = \eta(x)$ gives $\mathcal{A}\eta(x) = \eta(x+1)+\eta(x-1)-2\eta(x)$, a discrete Laplacian. Hence $m_t(x) = \E\eta_t(x)$ solves the closed linear system $\partial_tm = \Delta_Nm$, whose solution is $m_t(x) = \sum_yp_t(x,y)\rho_0(y/N)$ with $p_t$ the transition kernel of a continuous time simple random walk jumping at rate one to each neighbor. Under the diffusive scaling, $p_{N^2t}$ converges to the heat kernel by the local central limit theorem, so the mean of the empirical average converges to $\int G\rho(t)$. For the variance, the exclusion process started from a product measure has nonpositive two point correlations, $\E[\eta_t(x)\eta_t(y)]\leq m_t(x)m_t(y)$ for $x\neq y$, a consequence of Liggett's correlation inequality for exclusion processes~\cite{liggett1985}. For $G\geq0$ the covariance terms are therefore nonpositive, and
+\[
+\begin{aligned}\Var\Big(\frac1N\sum_xG(x/N)\eta_t(x)\Big)&\leq\frac{1}{N^2}\sum_xG(x/N)^2\,m_t(x)(1-m_t(x))\\ &\leq\frac{\|G\|_\infty^2}{4N}.\end{aligned}
+\]
+For general $G$ write $G = G^+-G^-$ and use $\Var(S^+-S^-)\leq2\Var(S^+)+2\Var(S^-)$, which gives the bound $\|G\|_\infty^2/N$; Chebyshev's inequality completes the proof.
+\end{proof}
+
+The closure of the first moment equation is an exact duality: the expectation of one occupation variable is governed by a single random walk. For general interacting systems no such closure exists, and Guo, Papanicolaou and Varadhan~\cite{gpv1988} developed the entropy method, which proves the hydrodynamic limit for gradient systems by controlling the relative entropy of the process with respect to local equilibria and replacing microscopic currents by functions of the local density through the one and two block estimates. Yau's relative entropy method of 1991~\cite{yau1991} gives a cleaner proof when the limit is smooth. Large deviations from the hydrodynamic limit, the theory of Kipnis, Olla and Varadhan~\cite{kipnis1989} and its macroscopic fluctuation extension by Bertini, De Sole, Gabrielli, Jona Lasinio and Landim~\cite{bertini2015}, show that the probability of observing an atypical macroscopic evolution is exponentially small in the number of particles with a rate given by an action functional. This is the Sanov theorem of hydrodynamics, and it is the bridge to the inferential reading: conditioning on an atypical macroscopic observation, the most likely microscopic history is the minimizer of that action, which is Schr\"odinger's question of Chapter~\ref{ch:quantum} in a new setting.
+
+\section{The full derivation}
+
+Deng, Hani and Ma~\cite{denghanima2025} combine their long time derivation of the Boltzmann equation, Theorem~\ref{thm:dhm}, with hydrodynamic limits of the kind described above, and derive fluid equations from hard sphere dynamics. The setting is the torus in dimension two or three. The incompressible Navier Stokes Fourier system is obtained for smooth solutions near global equilibrium, from the result of Gallagher and Tristani~\cite{gallaghertristani2020}, and the compressible Euler system for a smooth solution on a fixed time interval, from the Hilbert expansion of Theorem~\ref{thm:caflisch} in the form of Guo, Jang and Jiang~\cite{guojangjiang2009}. The Knudsen number tends to zero while the number of particles diverges in the Boltzmann Grad scaling, either in two steps, the kinetic limit at a fixed Knudsen number and then the Knudsen number to zero, or jointly, and in the joint limit the Knudsen number must tend to zero slowly enough that the kinetic approximation remains valid on the hydrodynamic time scale. In their notation the particle diameter is $\varepsilon$ and the Knudsen number is $\delta$, and for a smooth fluid solution on $[0,T]$ the joint limit requires $\max(1,\delta^{-1})\max(1,\delta^{-1}T)\ll(\log\log(1/\varepsilon))^{1/2}$. This required the long time theorem in an essential way: Lanford's time is a fixed fraction of the kinetic time and therefore vanishes on the hydrodynamic scale. Deng, Hani and Ma state that the result resolves Hilbert's sixth problem as it pertains to the program of deriving the fluid equations from Newton's laws by way of Boltzmann's kinetic theory, for the hard sphere model on the torus and for as long as the limiting fluid equations have smooth solutions.
+
+\section{What the derivation does not give}
+
+Three limitations of the derivational reading are worth stating, because each is the starting point of a later chapter.
+
+First, the derivation is conditional on the regularity of the limit. In three dimensions it is unknown whether smooth solutions of the Navier Stokes equations remain smooth for all time, the Clay Millennium problem. Chapter~\ref{ch:boundary} discusses blowup and turbulence as phenomena at the boundary of the derivation.
+
+Second, the derivation assumes the initial state is a chaotic law, a product of one particle densities that are themselves close to a local Maxwellian. Real flows are observed, not prescribed. The question of which microscopic states are compatible with a given macroscopic observation, and with what probabilities, is the inferential problem, and Theorem~\ref{thm:gibbs_conditioning} and the large deviation theory of Section~\ref{sec:particle_hydro} say that the answer is a maximum entropy distribution conditioned on the observation.
+
+Third, the derivation runs forward in time. The hydrodynamic equations are dissipative, so the passage back from a macroscopic state at time $T$ to the state at time zero is ill posed. Chapter~\ref{ch:nsinference} treats this problem by Bayesian methods on the solution manifold.
+
+\input{chapters/ext/ch09}
+
+\section*{Notes}
+
+Saint Raymond~\cite{saintraymond2009} and Golse's lecture notes are the standard references for hydrodynamic limits of the Boltzmann equation. Kipnis and Landim~\cite{kipnislandim1999} treat hydrodynamic limits of interacting particle systems; Spohn's \emph{Large Scale Dynamics of Interacting Particles}~\cite{spohn1991} covers both.

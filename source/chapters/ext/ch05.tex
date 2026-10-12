@@ -1,0 +1,50 @@
+\section{The horseshoe prior}
+
+The horseshoe prior of Carvalho, Polson and Scott~\cite{carvalho2010} is the normal scale mixture
+\[
+\theta\mid\lambda,\tau\sim N(0,\lambda^2\tau^2),\qquad\lambda\sim C^+(0,1),
+\]
+with a half Cauchy local scale $\lambda$ and a global scale $\tau$. With $\tau = 1$ and unit noise, the posterior mean of $\theta$ given an observation $y\sim N(\theta,1)$ is $\E[\theta\mid y] = (1-\E[\kappa\mid y])\,y$, where $\kappa = 1/(1+\lambda^2)$ is the shrinkage coefficient. A change of variables shows that under the half Cauchy prior $\kappa$ has the Beta$(\frac12,\frac12)$ law, the arcsine law of Chapter~\ref{ch:brownian}, whose density is unbounded at both ends and gives the prior its name. Its mass near $\kappa = 1$ shrinks noise to zero; its mass near $\kappa = 0$ leaves large signals untouched.
+
+\begin{theorem}[Horseshoe density bounds]
+The marginal density of $\theta$ under the horseshoe prior with $\tau = 1$ is $p(\theta) = Ke^{\theta^2/2}E_1(\theta^2/2)$, where $K = 1/\sqrt{2\pi^3}$ and $E_1(x) = \int_x^\infty s^{-1}e^{-s}\dd s$ is the exponential integral, and it satisfies, for all $\theta\neq0$,
+\[
+\frac K2\log\Big(1+\frac4{\theta^2}\Big)<p(\theta)<K\log\Big(1+\frac2{\theta^2}\Big).
+\]
+In particular $p$ has a logarithmic pole at zero and tails of order $\theta^{-2}$.
+\end{theorem}
+
+The bounds are due to Carvalho, Polson and Scott~\cite{carvalho2010}; we include the short proof.
+
+\begin{proof}
+With $\tau=1$ the marginal density is $p(\theta) = \int_0^\infty\frac{1}{\sqrt{2\pi}\,\lambda}e^{-\theta^2/2\lambda^2}\,\frac{2}{\pi(1+\lambda^2)}\dd\lambda$. The substitution $t = \lambda^{-2}$ gives $p(\theta) = K\int_0^\infty\frac{e^{-xt}}{1+t}\dd t$ with $x = \theta^2/2$, and the substitution $s = x(1+t)$ shows that the integral equals $e^xE_1(x)$. By Frullani's integral, $\log(1+1/x) = \int_0^\infty e^{-xt}\frac{1-e^{-t}}{t}\dd t$ and $\log(1+2/x) = \int_0^\infty e^{-xt}\frac{1-e^{-2t}}{t}\dd t$. For $t>0$ we have $\frac{1-e^{-2t}}{2t}<\frac{1}{1+t}<\frac{1-e^{-t}}{t}$: the right inequality is $e^t>1+t$, and the left one is $(1+t)e^{-2t}>1-t$, which holds because $(1+t)e^{-2t}-(1-t)$ vanishes at $t=0$ and has the derivative $1-(1+2t)e^{-2t}>0$. Multiplying by $e^{-xt}$ and integrating gives $\frac12\log(1+2/x)<e^xE_1(x)<\log(1+1/x)$, which is the claim with $x = \theta^2/2$.
+\end{proof}
+
+The pole at zero yields efficient recovery of sparse signals and the Cauchy like tails yield robustness, in the sense that $\E[\theta\mid y]-y\to0$ as $|y|\to\infty$. The last property follows from Tweedie's formula of Chapter~\ref{ch:gbc}: $\E[\theta\mid y]-y = \frac{\dd}{\dd y}\log p_Y(y)$, and the log derivative of a marginal with polynomial tails tends to zero.
+
+The mixing law of the horseshoe on the variance $\lambda^2$ is the Beta prime law with parameters $(\frac12,\frac12)$, the law of a ratio of independent Gamma$(\frac12)$ variables. This law is HCM, hence a generalized Gamma convolution, so the horseshoe belongs to the class of extended generalized Gamma convolutions, defined in Appendix~\ref{app:levy}, and is infinitely divisible as a law on the real line.
+
+\section{Gamma processes and the Dirichlet process}
+
+The Gamma subordinator with shape measure $\alpha$ on a space $E$ is the completely random measure $\Gamma$ whose values on disjoint sets are independent with $\Gamma(A)\sim\mathrm{Gamma}(\alpha(A),1)$. By Bondesson's representation, Theorem~\ref{thm:bondesson_shot}, it can be written as a countable sum of atoms $\sum_kJ_k\delta_{Z_k}$ with jumps $J_k = e^{-\Gamma_k/\alpha(E)}E_k$ and independent locations $Z_k\sim\alpha/\alpha(E)$. Normalizing gives Ferguson's Dirichlet process~\cite{ferguson1973},
+\[
+D = \frac{\Gamma}{\Gamma(E)},
+\]
+which is independent of $\Gamma(E)$. Indeed, for a partition $A_1,\dots,A_k$ of $E$ the variables $\Gamma(A_i)$ are independent Gamma variables with a common scale, and the sum of such variables is independent of the vector of proportions $(\Gamma(A_i)/\Gamma(E))_i$, which has the Dirichlet law with parameters $\alpha(A_i)$; the converse is Lukacs's characterization of the Gamma law. Hence every finite dimensional law of $D$ is independent of $\Gamma(E)$, and so is $D$. The Dirichlet process is the de Finetti measure of the P\'olya urn and of Blackwell and MacQueen's predictive rule~\cite{blackwell1973}, and its stick breaking representation by Sethuraman~\cite{sethuraman1994} lists the normalized jumps in size biased order. Generalized Gamma convolutions thereby connect with Bayesian nonparametrics~\cite{jamesroynetteyor2008}: normalizing other completely random measures with independent increments gives the class studied by Regazzini, Lijoi and Pr\"unster~\cite{regazzini2003}, which contains the Dirichlet process as the Gamma case, and the Pitman Yor process $\mathrm{PY}(\sigma,0)$ with $0<\sigma<1$ arises from the positive stable case~\cite{pitman1997}. In this sense the de Finetti priors of Chapter~\ref{ch:axioms} are themselves built from shot noise.
+
+\section{Infinite divisibility on the line: a worked example}
+
+The logistic law, with density $\frac{e^{-x}}{(1+e^{-x})^2}$, is a normal scale mixture whose mixing variance is four times the square of a Kolmogorov variable, the law of $\sup_{0\leq t\leq1}|b_t|$ for a Brownian bridge $b$. To see the connection with the P\'olya Gamma law, compute its characteristic function:
+\[
+\E e^{iuX} = \frac{\pi u}{\sinh\pi u} = \prod_{k=1}^\infty\Big(1+\frac{u^2}{k^2}\Big)^{-1}.
+\]
+Hence $X\eqd\sum_kL_k/k$ with $L_k$ independent standard Laplace variables, and since each Laplace variable is a normal scale mixture with exponential mixing variance, $X$ is a normal scale mixture with mixing variance $V = \sum_k2E_k/k^2$, an infinite sum of exponentials, hence a GGC. Its Laplace transform is $\E e^{-sV} = \prod_k(1+2s/k^2)^{-1} = \sqrt{2s}\,\pi/\sinh(\pi\sqrt{2s})$. The hyperbolic secant law, with characteristic function $1/\cosh(\pi u/2)$, has in the same way a mixing variance that is a multiple of the $PG(1,0)$ variable, which in turn is a quarter of the Brownian exit time of Theorem~\ref{thm:exit_series}. The three hyperbolic functions $1/\cosh x$, $x/\sinh x$ and $\tanh x/x$, evaluated at $x = \sqrt{2\lambda}$, are Laplace transforms $\E e^{-\lambda T}$ of three infinitely divisible laws that Pitman and Yor~\cite{pitman2003} associate with functionals of Brownian motion and Bessel processes; the first two are GGCs, being infinite convolutions of exponentials as above. The Riemann $\xi$ function sits naturally in the same family, as in the survey of Biane, Pitman and Yor~\cite{bpy2001} and in Section~\ref{sec:excursions_xi}.
+
+\section*{Exercises}
+\begin{enumerate}
+\item Verify that the Student $t$ law with $\nu$ degrees of freedom is a normal scale mixture with inverse Gamma mixing, and identify the parameters.
+\item Compute the Thorin measure of the sum of two independent Gamma variables with shapes $\beta_1,\beta_2$ and different rates.
+\item Prove that stationary shot noise $S = \sum_kA_kh(t-\tau_k)$ has mean $\lambda\E A\int h$ and variance $\lambda\E A^2\int h^2$.
+\item Use Theorem~\ref{thm:pg_identity} to write the Gibbs sampler for Bayesian logistic regression with a Gaussian prior, specifying both conditional laws.
+\item Show that the law of $U_1+U_2$, with $U_1,U_2$ independent uniform on $[-1,1]$, has the Lee Yang property.
+\end{enumerate}
