@@ -9,7 +9,7 @@ It then adds the inverse passage, from observed fluids back to the states that p
 
 The last part treats inference itself as statistical mechanics: spin systems and Lee Yang zeros, Schrödinger bridges and generative Bayesian computation, gates as approximate nonlinear filters, and the thermodynamics of information. A final chapter lists open problems and builds a bridge to Hilbert's eighth problem through the de Bruijn Newman heat flow. Every chapter closes with exercises, and the Python code behind the computed figures and tables is in the repository.
 
-## Main new results
+## Main results
 
 - [Adjoint representation of the sufficient statistic](RESULTS.md#adjoint_representation_of_the_sufficient_statistic) (Lemma 15.1, page 206): For a linear evolution equation that is diagonal in a fixed basis, the data statistic that is sufficient for the initial state is the coefficient vector of the time zero value of the solution of the backward adjoint equation driven by the data as point sources.
 - [Exact sufficiency, linear case](RESULTS.md#exact_sufficiency_linear_case) (Proposition 15.2, page 207): In the linear model with a Gaussian prior the adjoint statistic is sufficient, the posterior given it is the full data posterior, and the conditional quantile map is exactly affine with slope equal to the posterior covariance.
