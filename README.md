@@ -66,7 +66,7 @@ All 75 catalogued results, with statements and status, are in [RESULTS.md](RESUL
 
 ## Files
 
-- `pdf/hilbert6.pdf`: the book; `pdf/chapters/`: one PDF per chapter.
+- `pdf/hilbert6.pdf`: the book.
 - `source/`: the LaTeX source, bibliography included; the macros are defined in `source/main.tex`.
 - `source/code/`: the code that computes the figures and tables.
 - `RESULTS.md` and `summaries/`: the catalog of results and one summary per chapter.

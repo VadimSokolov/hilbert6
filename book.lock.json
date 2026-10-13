@@ -6,8 +6,6 @@
   "pages": 548,
   "parts": [
    {
-    "bytes": 215167,
-    "file": "pdf/chapters/00_front_matter.pdf",
     "first_page": "i",
     "key": "",
     "last_page": "xviii",
@@ -15,8 +13,6 @@
     "title": "Front matter"
    },
    {
-    "bytes": 223968,
-    "file": "pdf/chapters/01_hilberts_sixth_problem.pdf",
     "first_page": "3",
     "key": "1",
     "last_page": "12",
@@ -24,8 +20,6 @@
     "title": "Chapter 1. Hilbert's Sixth Problem"
    },
    {
-    "bytes": 324992,
-    "file": "pdf/chapters/02_poincare_recurrence_chance_and_the_crisis_of_physics.pdf",
     "first_page": "13",
     "key": "2",
     "last_page": "26",
@@ -33,8 +27,6 @@
     "title": "Chapter 2. Poincaré: Recurrence, Chance and the Crisis of Physics"
    },
    {
-    "bytes": 230027,
-    "file": "pdf/chapters/03_axioms_of_probability_and_large_deviations.pdf",
     "first_page": "27",
     "key": "3",
     "last_page": "38",
@@ -42,8 +34,6 @@
     "title": "Chapter 3. Axioms of Probability and Large Deviations"
    },
    {
-    "bytes": 2007431,
-    "file": "pdf/chapters/04_ergodic_theory_from_boltzmanns_hypothesis_to_entropy.pdf",
     "first_page": "39",
     "key": "4",
     "last_page": "52",
@@ -51,8 +41,6 @@
     "title": "Chapter 4. Ergodic Theory: From Boltzmann's Hypothesis to Entropy"
    },
    {
-    "bytes": 466023,
-    "file": "pdf/chapters/05_the_method_of_types_and_moment_conditioning.pdf",
     "first_page": "53",
     "key": "5",
     "last_page": "66",
@@ -60,8 +48,6 @@
     "title": "Chapter 5. The Method of Types and Moment Conditioning"
    },
    {
-    "bytes": 271589,
-    "file": "pdf/chapters/06_brownian_motion_and_yors_identities_as_algorithms.pdf",
     "first_page": "69",
     "key": "6",
     "last_page": "82",
@@ -69,8 +55,6 @@
     "title": "Chapter 6. Brownian Motion and Yor's Identities as Algorithms"
    },
    {
-    "bytes": 222985,
-    "file": "pdf/chapters/07_scale_mixtures_thorin_measures_and_shot_noise.pdf",
     "first_page": "83",
     "key": "7",
     "last_page": "92",
@@ -78,8 +62,6 @@
     "title": "Chapter 7. Scale Mixtures, Thorin Measures and Shot Noise"
    },
    {
-    "bytes": 232318,
-    "file": "pdf/chapters/08_entropy_perelman_and_the_uncertainty_principle.pdf",
     "first_page": "93",
     "key": "8",
     "last_page": "104",
@@ -87,8 +69,6 @@
     "title": "Chapter 8. Entropy, Perelman and the Uncertainty Principle"
    },
    {
-    "bytes": 217013,
-    "file": "pdf/chapters/09_quantum_mechanics_von_neumann_nelson_and_wick.pdf",
     "first_page": "105",
     "key": "9",
     "last_page": "114",
@@ -96,8 +76,6 @@
     "title": "Chapter 9. Quantum Mechanics: von Neumann, Nelson and Wick"
    },
    {
-    "bytes": 337748,
-    "file": "pdf/chapters/10_kinetic_theory_boltzmann_kac_and_propagation_of_chaos.pdf",
     "first_page": "117",
     "key": "10",
     "last_page": "132",
@@ -105,8 +83,6 @@
     "title": "Chapter 10. Kinetic Theory: Boltzmann, Kac and Propagation of Chaos"
    },
    {
-    "bytes": 220522,
-    "file": "pdf/chapters/11_from_boltzmann_to_navier_stokes.pdf",
     "first_page": "133",
     "key": "11",
     "last_page": "142",
@@ -114,8 +90,6 @@
     "title": "Chapter 11. From Boltzmann to Navier Stokes"
    },
    {
-    "bytes": 741204,
-    "file": "pdf/chapters/12_navier_stokes_as_inference_on_the_solution_manifold.pdf",
     "first_page": "143",
     "key": "12",
     "last_page": "170",
@@ -123,8 +97,6 @@
     "title": "Chapter 12. Navier Stokes as Inference on the Solution Manifold"
    },
    {
-    "bytes": 251350,
-    "file": "pdf/chapters/13_the_boundary_of_the_manifold_blowup_turbulence_and_steady.pdf",
     "first_page": "171",
     "key": "13",
     "last_page": "182",
@@ -132,8 +104,6 @@
     "title": "Chapter 13. The Boundary of the Manifold: Blowup, Turbulence and Steady Flows"
    },
    {
-    "bytes": 331478,
-    "file": "pdf/chapters/14_the_inverse_problem_on_the_solution_manifold.pdf",
     "first_page": "185",
     "key": "14",
     "last_page": "204",
@@ -141,8 +111,6 @@
     "title": "Chapter 14. The Inverse Problem on the Solution Manifold"
    },
    {
-    "bytes": 769586,
-    "file": "pdf/chapters/15_adjoint_sufficient_statistics.pdf",
     "first_page": "205",
     "key": "15",
     "last_page": "272",
@@ -150,8 +118,6 @@
     "title": "Chapter 15. Adjoint Sufficient Statistics"
    },
    {
-    "bytes": 680181,
-    "file": "pdf/chapters/16_transfer_generators_and_localized_training.pdf",
     "first_page": "273",
     "key": "16",
     "last_page": "330",
@@ -159,8 +125,6 @@
     "title": "Chapter 16. Transfer, Generators and Localized Training"
    },
    {
-    "bytes": 684293,
-    "file": "pdf/chapters/17_heat_navier_stokes_and_schrodinger_examples_and_experiments.pdf",
     "first_page": "331",
     "key": "17",
     "last_page": "384",
@@ -168,8 +132,6 @@
     "title": "Chapter 17. Heat, Navier Stokes and Schrödinger: Examples and Experiments"
    },
    {
-    "bytes": 254440,
-    "file": "pdf/chapters/18_spin_systems_phase_transitions_and_inference.pdf",
     "first_page": "387",
     "key": "18",
     "last_page": "396",
@@ -177,8 +139,6 @@
     "title": "Chapter 18. Spin Systems, Phase Transitions and Inference"
    },
    {
-    "bytes": 338663,
-    "file": "pdf/chapters/19_generative_bayesian_computation_as_transport.pdf",
     "first_page": "397",
     "key": "19",
     "last_page": "406",
@@ -186,8 +146,6 @@
     "title": "Chapter 19. Generative Bayesian Computation as Transport"
    },
    {
-    "bytes": 842074,
-    "file": "pdf/chapters/20_filters_gates_and_local_rules.pdf",
     "first_page": "407",
     "key": "20",
     "last_page": "428",
@@ -195,8 +153,6 @@
     "title": "Chapter 20. Filters, Gates and Local Rules"
    },
    {
-    "bytes": 238188,
-    "file": "pdf/chapters/21_kolmogorov_cybernetics_and_the_thermodynamics_of_information.pdf",
     "first_page": "429",
     "key": "21",
     "last_page": "438",
@@ -204,8 +160,6 @@
     "title": "Chapter 21. Kolmogorov, Cybernetics and the Thermodynamics of Information"
    },
    {
-    "bytes": 461185,
-    "file": "pdf/chapters/22_open_problems_and_the_bridge_to_hilberts_eighth_problem.pdf",
     "first_page": "439",
     "key": "22",
     "last_page": "450",
@@ -213,8 +167,6 @@
     "title": "Chapter 22. Open Problems and the Bridge to Hilbert's Eighth Problem"
    },
    {
-    "bytes": 185103,
-    "file": "pdf/chapters/A_levy_processes_thorin_measures_and_related_classes.pdf",
     "first_page": "451",
     "key": "A",
     "last_page": "454",
@@ -222,8 +174,6 @@
     "title": "Appendix A. Lévy Processes, Thorin Measures and Related Classes"
    },
    {
-    "bytes": 262701,
-    "file": "pdf/chapters/B_code_and_reproducibility.pdf",
     "first_page": "455",
     "key": "B",
     "last_page": "470",
@@ -231,8 +181,6 @@
     "title": "Appendix B. Code and Reproducibility"
    },
    {
-    "bytes": 182048,
-    "file": "pdf/chapters/C_a_probability_toolkit.pdf",
     "first_page": "471",
     "key": "C",
     "last_page": "474",
@@ -240,8 +188,6 @@
     "title": "Appendix C. A Probability Toolkit"
    },
    {
-    "bytes": 144529,
-    "file": "pdf/chapters/D_a_chronology.pdf",
     "first_page": "475",
     "key": "D",
     "last_page": "478",
@@ -249,8 +195,6 @@
     "title": "Appendix D. A Chronology"
    },
    {
-    "bytes": 293990,
-    "file": "pdf/chapters/E_notation.pdf",
     "first_page": "479",
     "key": "E",
     "last_page": "484",
@@ -258,8 +202,6 @@
     "title": "Appendix E. Notation"
    },
    {
-    "bytes": 273205,
-    "file": "pdf/chapters/bibliography.pdf",
     "first_page": "485",
     "key": "",
     "last_page": "530",

@@ -4,7 +4,7 @@ By Nick Polson and [Vadim Sokolov](https://orcid.org/0000-0002-6618-2965).
 
 Independently published, 2026. Edition 1, version 1.0.0. DOI [10.5281/zenodo.23327515](https://doi.org/10.5281/zenodo.23327515). All versions: [10.5281/zenodo.23327514](https://doi.org/10.5281/zenodo.23327514).
 
-- The book as a PDF: [hilbert6.pdf](https://vsokolov.org/books/hilbert6/hilbert6.pdf) (548 pages, 6.3 MB)
+- The book as a PDF: [hilbert6.pdf](https://github.com/VadimSokolov/hilbert6/releases/download/v1.0.0/hilbert6.pdf) (548 pages, 6.3 MB)
 - LaTeX source, code and bibliography: [github.com/VadimSokolov/hilbert6](https://github.com/VadimSokolov/hilbert6/tree/v1.0.0)
 - Archived copy: [Zenodo](https://zenodo.org/records/23327515)
 - This page in Markdown: [index.html.md](https://vsokolov.org/books/hilbert6/index.html.md)
@@ -51,7 +51,7 @@ To credit a result, cite the book with the number of the result, for example Pol
 
 ### Chapter 1. Hilbert's Sixth Problem
 
-Pages 3 to 12. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/01_hilberts_sixth_problem.pdf).
+Pages 3 to 12.
 
 This chapter states Hilbert's sixth problem (Paris, 1900), the mathematical treatment of the axioms of physics, and the passage from atomistic mechanics to the laws of continua. It separates three readings. The axiomatic reading asks for axioms of probability and of physical theories in the style of Hilbert's Grundlagen der Geometrie. The derivational reading asks for a rigorous derivation of the Boltzmann equation from Newtonian hard sphere dynamics in the Boltzmann Grad scaling, and then of the compressible Euler and incompressible Navier Stokes Fourier equations; the chapter reports Lanford's short time theorem, the Bardos Golse Levermore and Golse Saint Raymond hydrodynamic limits, and the long time results of Deng, Hani and Ma. The inferential reading asks for the initial state of a dynamical system, with its uncertainty, from noisy observations. For it the chapter proves Proposition 1.1: for a Polish state space and a Borel measurable trajectory map into continuous paths, the posterior pushed forward to path space puts probability one on the solution manifold, which is universally measurable, and posterior expectations of Borel path functionals that are nonnegative or integrable are averages of exact solutions. Examples include an ideal gas with an inverse gamma posterior and Perrin's Avogadro number.
 
@@ -73,7 +73,7 @@ Hilbert's sixth problem, Hilbert's 6th problem, axiomatization of physics, Boltz
 
 ### Chapter 2. Poincaré: Recurrence, Chance and the Crisis of Physics
 
-Pages 13 to 26. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/02_poincare_recurrence_chance_and_the_crisis_of_physics.pdf).
+Pages 13 to 26.
 
 This chapter asks how recurrence, chance and irreversibility fit together in Poincaré's work, and proves the theorems behind it. It proves the Poincaré recurrence theorem for measure preserving maps; Kac's lemma, that the mean return time to a set of positive measure under an ergodic map is the reciprocal of its measure, with an estimate of return times for a mole of gas; a bound with an explicit constant for Poincaré's method of arbitrary functions (the fractional part of $tX$ for a density of bounded variation, the roulette argument); the Gaussian Poincaré inequality, by the Ornstein Uhlenbeck semigroup, with exponential convergence to equilibrium; convergence of random walks on finite groups by Fourier analysis, from Poincaré's card shuffling; and the Maxwell, Poincaré and Borel lemma on the first coordinates of a uniform point on a high dimensional sphere. The historical sections cover the three body problem, the surface of section and the Hénon Heiles system, the probability of causes and the Dreyfus affair, Poincaré's report on Bachelier, his 1912 argument that Planck's law requires quanta, his 1906 coarse and fine entropy, Gauss's derivation of the normal law, and Perelman's entropy and the Poincaré conjecture.
 
@@ -93,7 +93,7 @@ Poincaré recurrence theorem, Poincare recurrence, Kac lemma, return time, Zerme
 
 ### Chapter 3. Axioms of Probability and Large Deviations
 
-Pages 27 to 38. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/03_axioms_of_probability_and_large_deviations.pdf).
+Pages 27 to 38.
 
 This chapter asks what the axioms of probability are and how they connect with large deviations and statistical mechanics. It covers Kolmogorov's axioms (probability space, the Kolmogorov extension theorem, conditional expectation), de Finetti's coherence (Dutch book) theorem, exchangeability with the de Finetti, Hewitt and Savage representation and the Diaconis and Freedman bounds for finite sequences, and molecular chaos as a de Finetti statement, with Sznitman's characterization of chaos. It proves Sanov's theorem for a finite alphabet by the method of types and Gibbs conditioning for a finite alphabet, the equivalence of ensembles behind Jaynes's maximum entropy principle, and derives the Maxwellian by conditioning on the energy with the Maxwell, Poincaré and Borel lemma. It compares the Cox and Savage axiomatizations and algorithmic randomness (Kolmogorov complexity, Martin Löf tests, the Solomonoff universal prior). It proves the binary de Finetti theorem through the Hausdorff moment problem, with Laplace's rule of succession, sketches Doob's posterior consistency theorem, quotes the Bernstein von Mises theorem, and relates Sanov's theorem to Cramér's theorem, exponential tilting, Legendre duality and Varadhan's lemma.
 
@@ -115,7 +115,7 @@ Kolmogorov axioms, probability space, Kolmogorov extension theorem, conditional 
 
 ### Chapter 4. Ergodic Theory: From Boltzmann's Hypothesis to Entropy
 
-Pages 39 to 52. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/04_ergodic_theory_from_boltzmanns_hypothesis_to_entropy.pdf).
+Pages 39 to 52.
 
 This chapter asks whether Boltzmann's ergodic hypothesis, that time averages equal averages over the energy surface, can justify equilibrium measures in statistical mechanics, and what replaces it when it fails. It develops measure preserving systems, ergodicity, mixing and the Koopman operator, and proves von Neumann's mean ergodic theorem, the maximal ergodic lemma, Birkhoff's pointwise ergodic theorem, Weyl's equidistribution theorem, mixing of the Arnold cat map, and the arcsine invariant density, Lyapunov exponent and Kolmogorov Sinai entropy $\log 2$ of the logistic map at $r=4$. The Kolmogorov Sinai generator theorem, the Shannon McMillan Breiman theorem and Ornstein's isomorphism theorem are quoted without proof. KAM theory and the Chirikov standard map illustrate the failure of ergodicity for typical Hamiltonian systems with few degrees of freedom, and Khinchin's concentration argument shows that, for noninteracting particles, infinite time averages of sum functions are close to phase averages for most initial conditions without ergodicity. The chapter relates the ergodic decomposition to de Finetti's theorem and ends with spectral gaps, the Kipnis Varadhan central limit theorem and Markov chain Monte Carlo.
 
@@ -137,7 +137,7 @@ ergodic theory, ergodic hypothesis, ergodicity, measure preserving system, Koopm
 
 ### Chapter 5. The Method of Types and Moment Conditioning
 
-Pages 53 to 66. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/05_the_method_of_types_and_moment_conditioning.pdf).
+Pages 53 to 66.
 
 This chapter asks why conditioning a large system of independent particles on macroscopic moments produces the exponential families, Gibbs distributions and Maxwellians of statistical mechanics, and how fast. It uses the method of types: sequences over a finite alphabet are counted by their empirical distribution (type), which turns Boltzmann's count $\log W=nH$ into exact nonasymptotic bounds. It proves the type counting bounds, Csiszár's Pythagorean inequality for the I projection onto a closed convex set of laws, with the exponential tilt form for linear families, the conditional limit theorem, and Stein's lemma by types. It computes the conditional law exactly for exponential and Poisson samples, shows that conditioning independent Gaussian velocity vectors on their mean and kinetic energy gives the Maxwellian, and treats Bayes mixtures as universal codes with minimax regret. It also covers Chernoff information and types for Markov chains. A closing section reads Boltzmann's $H$ theorem through types and says that this reading is not a theorem.
 
@@ -159,7 +159,7 @@ method of types, type class, empirical distribution, Sanov theorem, large deviat
 
 ### Chapter 6. Brownian Motion and Yor's Identities as Algorithms
 
-Pages 69 to 82. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/06_brownian_motion_and_yors_identities_as_algorithms.pdf).
+Pages 69 to 82.
 
 How can Yor's identities in law for Brownian functionals be turned into exact simulation algorithms? Following the authors' paper Yor's Identities as Algorithms, an identity in law between a Brownian functional and independent Gamma, normal, exponential or uniform variables is read as a sampler with no discretization, Markov chain or rejection step. The chapter builds Brownian motion by the Lévy Ciesielski series of Haar and Schauder functions and describes the Smoluchowski Kramers high friction limit of the Langevin equation. It treats squared Bessel processes and their additivity, Lamperti's time change, and Dufresne's identity for the perpetuity of geometric Brownian motion, sampled by one Gamma variable. It tabulates eight identities, seven of them as samplers, and checks four algorithms (perpetuity, Bougerol, maximum, first passage time with drift) against exact distribution functions and Euler schemes by Kolmogorov Smirnov distance. The exit time from $(-1,1)$ is an infinite sum of exponentials, four times a Pólya Gamma $PG(1,0)$ variable, sampled exactly only up to truncation. Also covered: the reflection principle, arcsine laws, Girsanov's theorem, local time, Ray Knight theorems, the Biane Pitman Yor identity for the Riemann $\xi$ function (quoted without proof), Dyson Brownian motion.
 
@@ -181,7 +181,7 @@ Brownian motion, Wiener process, Lévy Ciesielski construction, Einstein relatio
 
 ### Chapter 7. Scale Mixtures, Thorin Measures and Shot Noise
 
-Pages 83 to 92. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/07_scale_mixtures_thorin_measures_and_shot_noise.pdf).
+Pages 83 to 92.
 
 When is a heavy tailed law a scale mixture of Gaussians, and what does the mixing law give as an algorithm? The chapter treats scale mixtures of normals, infinite divisibility, the Lévy Khintchine formula and subordination of Brownian motion. It defines generalized Gamma convolutions (GGC) through Thorin measures, quotes Bondesson's theorem that hyperbolically completely monotone (HCM) laws are GGCs, and defines Pólya Gamma variables $PG(b,c)$, with $PG(1,0)$ a quarter of the Brownian exit time from $(-1,1)$. It proves the Polson, Scott and Windle identity that writes the logistic likelihood as a Gaussian scale mixture, giving a two block Gibbs sampler for Bayesian logistic regression. It proves Campbell's theorem for Poisson processes, deduces that shot noise is infinitely divisible, and proves Bondesson's shot noise representation of a GGC with zero drift and a Thorin measure of finite total mass, a sampling algorithm. It also covers the Lee Yang property (Newman's theorem, quoted without proof), the Matérn covariance as a Gamma mixture, the horseshoe prior, and the Gamma and Dirichlet processes.
 
@@ -203,7 +203,7 @@ scale mixture of normals, Gaussian scale mixture, Andrews Mallows theorem, compl
 
 ### Chapter 8. Entropy, Perelman and the Uncertainty Principle
 
-Pages 93 to 104. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/08_entropy_perelman_and_the_uncertainty_principle.pdf).
+Pages 93 to 104.
 
 This chapter relates entropy, Fisher information and the heat flow, and applies the relation to Perelman's entropy, the uncertainty principle and Bayesian computation. It proves de Bruijn's identity, the Cramér Rao bound, Stam's inequality, the Gaussian and Euclidean forms of Gross's logarithmic Sobolev inequality with their equivalence, and McKean's formula for the second derivative of entropy. On flat space it proves, by Bochner's identity, that Perelman's entropy, a scale invariant combination of entropy and Fisher information, is nonincreasing along the heat equation from a density of finite variance and tends to zero as $\tau\to\infty$, so it is nonnegative, and that this nonnegativity is equivalent to the Euclidean log Sobolev inequality. A probabilistic proof for scale mixtures, from the authors' paper with Zantedeschi (2026), is described. Further sections derive Heisenberg's inequality from Fisher information, quote the Jordan Kinderlehrer Otto theorem without proof, and cover Herbst's concentration argument, the I MMSE identity and transport inequalities.
 
@@ -223,7 +223,7 @@ differential entropy, Boltzmann H functional, Shannon entropy, Fisher informatio
 
 ### Chapter 9. Quantum Mechanics: von Neumann, Nelson and Wick
 
-Pages 105 to 114. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/09_quantum_mechanics_von_neumann_nelson_and_wick.pdf).
+Pages 105 to 114.
 
 This chapter asks in what sense quantum mechanics is a probability theory and how it connects back to Brownian motion. It states the von Neumann axioms, explains that noncommuting observables have no joint distribution, quotes Gleason's theorem without proof, and derives the CHSH form of Bell's inequality, stating Fine's converse and Tsirelson's bound. It writes the Schrödinger equation in Madelung form, where the average of Bohm's quantum potential is a multiple of the Fisher information, and derives Nelson's theorem: for smooth positive $\rho$ and smooth $S$, a diffusion with diffusion constant $\hbar/2m$, density $\rho(\cdot,t)$ at time $t$ and forward drift determined by $\rho$ and $S$ obeys the stochastic Newton law if and only if $\psi=\sqrt\rho\,e^{iS/\hbar}$ solves the Schrödinger equation, after $S$ is changed by a function of time alone. It treats the harmonic oscillator as an Ornstein Uhlenbeck process and discusses the theory's difficulties. In imaginary time (Wick rotation) it gives a proof sketch of the Feynman Kac formula and states the Donsker Varadhan formula for the ground state energy. Further sections cover Euclidean quantum field theory, the Schrödinger bridge problem, quantum relative entropy and Bayesian updating, and diffusion Monte Carlo.
 
@@ -243,7 +243,7 @@ quantum mechanics axioms, density operator, density matrix, Born rule, Gleason's
 
 ### Chapter 10. Kinetic Theory: Boltzmann, Kac and Propagation of Chaos
 
-Pages 117 to 132. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/10_kinetic_theory_boltzmann_kac_and_propagation_of_chaos.pdf).
+Pages 117 to 132.
 
 When does molecular chaos, independence between particles, propagate in time, and how does the irreversible Boltzmann equation arise from reversible particle dynamics? The chapter proves the weak form of the collision operator, the collision invariants for continuous functions and Boltzmann's H theorem for smooth positive rapidly decaying spatially homogeneous solutions. For hard spheres in the Boltzmann Grad scaling it writes the BBGKY hierarchy, states Lanford's theorem on a short time interval, the Lanford window, with a sketch of the proof, proves the abstract Cauchy Kovalevskaya lemma behind the window, and quotes without proof the long time theorem of Deng, Hani and Ma. It quotes Kac's propagation of chaos theorem without proof, proves a coupling bound of order $N^{-1/2}$ for McKean Vlasov mean field diffusions with Lipschitz interaction and initial data of finite second moment, and analyzes Kac's ring, an exactly solvable model of the arrow of time. Shorter sections cover the Lorentz gas, the Vlasov equation, Grad's moment method and ergodic theory.
 
@@ -272,7 +272,7 @@ Boltzmann equation, H theorem, collision invariants, molecular chaos, Stosszahla
 
 ### Chapter 11. From Boltzmann to Navier Stokes
 
-Pages 133 to 142. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/11_from_boltzmann_to_navier_stokes.pdf).
+Pages 133 to 142.
 
 Can the equations of fluid dynamics be derived from the Boltzmann equation and from particle systems, the second limit in Hilbert's sixth problem? The chapter presents the Hilbert and Chapman Enskog expansions, the compressible Euler limit through the truncated Hilbert expansion (Caflisch's theorem in one space dimension, quoted without proof), and the linearized collision operator (Hilbert, Grad), for which it shows nonnegativity, identifies the kernel through the collision invariants, and quotes compactness and the spectral gap. It gives the formal derivation of the incompressible Navier Stokes Fourier system from the Bardos, Golse and Levermore scaling, with viscosity and heat conductivity as Green Kubo type coefficients, and surveys the acoustic, Stokes Fourier and incompressible Euler regimes. It proves the hydrodynamic limit of the symmetric simple exclusion process to the heat equation, computes the BGK transport coefficients (Prandtl number one), and reports the derivation of fluid equations from hard sphere dynamics on the torus by Deng, Hani and Ma, with three limitations of the derivation.
 
@@ -297,7 +297,7 @@ Hilbert expansion, Chapman Enskog expansion, Knudsen number, hydrodynamic limit,
 
 ### Chapter 12. Navier Stokes as Inference on the Solution Manifold
 
-Pages 143 to 170. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/12_navier_stokes_as_inference_on_the_solution_manifold.pdf).
+Pages 143 to 170.
 
 This chapter treats the Navier Stokes equations as a Bayesian inverse problem on the solution manifold: from noisy, incomplete observations of the velocity or vorticity, infer the initial condition and push the posterior through the solution map. The linear case, the backward heat equation with Gaussian priors, is solved exactly, with logarithmic posterior contraction and a Bernstein von Mises theorem for linear functionals with fast decaying coefficients. The nonlinear theory of Nickl and coauthors is presented, including gradient stability and polynomial time Langevin sampling from a warm start, proved by Nickl and Wang for a Schrödinger equation. The chapter deduces a gradient stability bound for the initial condition of the two dimensional Navier Stokes equations when time zero is observed, and lists the other steps for Navier Stokes as open. It shows that a generator trained on simulations (generative Bayesian computation) inherits the Bernstein von Mises theorem when accurate at the posterior scale. It also reviews Hellinger well posedness and preconditioned Crank Nicolson sampling, with computed posteriors for the Fisher Kolmogorov and vorticity equations.
 
@@ -320,7 +320,7 @@ Bayesian inverse problem, Navier Stokes, solution manifold, data assimilation, b
 
 ### Chapter 13. The Boundary of the Manifold: Blowup, Turbulence and Steady Flows
 
-Pages 171 to 182. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/13_the_boundary_of_the_manifold_blowup_turbulence_and_steady.pdf).
+Pages 171 to 182.
 
 This chapter studies the boundary of the solution manifold of the Navier Stokes equations: finite time blowup, turbulence and steady flows. It reviews Leray weak solutions and the regularity problem, hypodissipative equations and Matérn fields, Kolmogorov's 1941 and 1962 turbulence theories (the $k^{-5/3}$ spectrum, the four fifths law, intermittency), Onsager's conjecture, Burgers' equation, and Bayesian flow MRI. The one result it proves is statistical: in a linear model for the reciprocal of the vorticity supremum norm, with Gaussian errors of known variance and a flat prior, the posterior probability of no blowup is an explicit normal probability, and the Fieller confidence set for the blowup time (Fieller 1954) is bounded exactly when the slope is significantly nonzero. Sparse priors for forcing and a posterior for the hypodissipation exponent are only proposed. Regularity for smooth data in $\mathbb{R}^3$ without boundary remains open.
 
@@ -342,7 +342,7 @@ finite time blowup, singularity, regularity problem, Leray solutions, Beale Kato
 
 ### Chapter 14. The Inverse Problem on the Solution Manifold
 
-Pages 185 to 204. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/14_the_inverse_problem_on_the_solution_manifold.pdf).
+Pages 185 to 204.
 
 Chapter 14 opens Part IV with the Bayesian inverse problem for the initial condition $\theta$ of an evolution equation, observed through noisy values of the solution at $N$ random space time points, with a Gaussian process prior on $\theta$. It summarizes the framework of Nickl and coauthors for nonlinear parabolic equations (heat, reaction diffusion, two dimensional Navier Stokes): Bernstein von Mises theorems for the posterior in a weak norm and in the supremum norm on forward trajectories, exact coverage of credible bands and local asymptotic minimax efficiency. It then introduces the solution manifold $\mathcal M=\{u_\theta\}$: posterior draws of the field solve the equation exactly, the Gaussian limit lives on the tangent space, and prediction beyond the observation window needs no extrapolation model. For the heat equation a closed form comparison with an unconstrained space time Gaussian process prior, with the Gram matrix of the design replaced by its limit, shows the posterior standard deviation shrinking in time. The chapter states the generative Bayesian computation (GBC) algorithm and compares GBC with function space MCMC, ensemble Kalman inversion, Laplace approximation, transport maps and simulation based inference. It proves that the Gaussian limit is nondegenerate for the reaction diffusion class of Nickl's trajectory theorem ($\partial_tu-\Delta u=f(u)$, $f$ smooth with compact support, torus of dimension at most three).
 
@@ -365,7 +365,7 @@ inverse problem, initial condition, data assimilation, solution manifold, tangen
 
 ### Chapter 15. Adjoint Sufficient Statistics
 
-Pages 205 to 272. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/15_adjoint_sufficient_statistics.pdf).
+Pages 205 to 272.
 
 Which statistic of the data should generative or approximate Bayesian computation (GBC, ABC) condition on when the unknown is the initial condition of a dissipative partial differential equation observed with noise? For linear equations such as heat and Stokes, the adjoint statistic $\Phi^\top Y$, the time zero value of the backward adjoint equation driven by the data, is exactly sufficient together with the design. For nonlinear forward maps (reaction diffusion, two dimensional Navier Stokes) the chapter defines a cross fitted one step efficient score summary, proves it, under rate conditions on its preliminary estimates, root N equivalent to the efficient centering of Nickl's Bernstein von Mises theorem, and bounds its error in Sobolev norms. It gives Lindley information gain identities, a Kullback Leibler form of the Bernstein von Mises theorem and an entropic van Trees bound, identifies the adjoint statistic with partial least squares (PLS) in the linear Gaussian model, and shows that the posterior mean summary is asymptotically sufficient under a uniform Bernstein von Mises hypothesis, which the book leaves open. Rao Blackwell and transport entropy bounds bracket the sufficiency gap of a linear summary in the linear Gaussian model, dissipation lowers the effective dimension of the heat and Stokes posteriors, and a generator trained on the raw data, accurate uniformly over a Hölder class, needs a number of simulations growing faster than any exponential in $N$.
 
@@ -417,7 +417,7 @@ adjoint sufficient statistic, 4DVar, Bayes sufficiency, one step estimator, cros
 
 ### Chapter 16. Transfer, Generators and Localized Training
 
-Pages 273 to 330. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/16_transfer_generators_and_localized_training.pdf).
+Pages 273 to 330.
 
 How accurate must a generative Bayesian computation (GBC) generator be for its output to inherit the Bernstein von Mises (BvM) theorem of the exact posterior in a nonlinear PDE inverse problem, and how should its training pairs be drawn? In Nickl's framework for reaction diffusion equations and the Konen Nickl theory for two dimensional Navier Stokes, the transfer theorem shows that Wasserstein accuracy $o(N^{-1/2})$ and concentration on the localization set pass the Gaussian limit, exact credible band coverage and, for Navier Stokes, local asymptotic minimax efficiency for bounded losses to the GBC posterior. An identity skip quantile generator with a closed form Gaussian head is that accurate once $J/M\to0$ (summary dimension $J$, simulations $M$), conditionally on a uniform BvM assumption, a whitened residual assumption and a summary error bound. A minimax lower bound over monotone Hölder classes of conditional quantile maps shows that uniform accuracy needs at least of order $N^{1+J/(2\beta)}$ simulations, and local quantile estimators attain the exponent $\beta/(2\beta+J)$ (for $\beta>2$ with bounded densities). Under Nickl's conditions on $L^\infty$ balls, unverified for any forward map, a sparse deep ReLU network prior gives contraction in $H^{-1}$. For localized training it derives the exact residual law in the linear Gaussian model, a center and rescale rule, and proves the whitened residual assumption under a localized proposal.
 
@@ -460,7 +460,7 @@ generative Bayesian computation, GBC, Bernstein von Mises theorem, BvM, transfer
 
 ### Chapter 17. Heat, Navier Stokes and Schrödinger: Examples and Experiments
 
-Pages 331 to 384. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/17_heat_navier_stokes_and_schrodinger_examples_and_experiments.pdf).
+Pages 331 to 384.
 
 This chapter tests the book's generative Bayesian computation (GBC) for the initial condition of an evolution equation (data assimilation) on three examples: the heat equation, two dimensional Navier Stokes about the Taylor Green vortex, and the Schrödinger equation (linear, and cubic nonlinear, NLS). For the heat equation it computes the information per Fourier mode (the dissipation barrier, or viscous curse) and proves a matrix Bernstein concentration bound for the Gram matrix of a uniform random design with the finite sample Bernstein von Mises error. Experiments compare GBC with exact posteriors, the Laplace approximation, pCN and Metropolis references. Without dissipation it computes the Bogoliubov information blocks of cubic NLS about a plane wave (modulational instability), proves linearized stability (defocusing) and stability of the NLS solution map (for bounded solutions), and proves a Bernstein von Mises transfer theorem for the linear Schrödinger equation; no Bernstein von Mises theorem is proved for cubic NLS. It links GBC to Longstaff Schwartz least squares Monte Carlo and to Storvik sufficient statistic filtering, and lists open problems.
 
@@ -493,7 +493,7 @@ heat equation, dissipation barrier, viscous curse, information per mode, Gram ma
 
 ### Chapter 18. Spin Systems, Phase Transitions and Inference
 
-Pages 387 to 396. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/18_spin_systems_phase_transitions_and_inference.pdf).
+Pages 387 to 396.
 
 This chapter asks how statistical mechanics describes Bayesian inference and sampling. It proves the Peierls theorem (a low temperature phase transition of the two dimensional Ising model), the Lee Yang circle theorem on the zeros of the partition function (Asano's lemma proved, the rest sketched), the Nishimori identity and the Gibbs variational principle. It derives the mean field equation of the Curie Weiss model by the Hubbard Stratonovich transformation and Laplace's method, and reports Onsager's solution. Bayes optimal inference in the spiked Wigner model is a planted spin glass on the Nishimori line, and the replica symmetric formula for the mutual information, with the I MMSE relation, locates the phase transitions of the Bayes optimal error. Further topics are statistical versus computational thresholds (planted clique, approximate message passing), double descent of ridge regression, samplers from physics (Metropolis, Glauber, Swendsen Wang, slice and log concave sampling), variational inference, and belief propagation with the Bethe approximation.
 
@@ -515,7 +515,7 @@ Ising model, Gibbs measure, phase transition, spontaneous magnetization, Peierls
 
 ### Chapter 19. Generative Bayesian Computation as Transport
 
-Pages 397 to 406. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/19_generative_bayesian_computation_as_transport.pdf).
+Pages 397 to 406.
 
 This chapter asks how Bayes' rule can be computed as a map instead of a density. Generative Bayesian computation (GBC) seeks a function $H$ such that $H(y,U)$, with $U$ a fixed reference noise, has the posterior law for every $y$, learns $H$ from simulated pairs of parameters and data, and samples the posterior for a new $y$ by one evaluation. The chapter proves noise outsourcing (for real valued parameters, the general case by a Borel isomorphism), the check loss characterization of quantiles, that the perturbed observation ensemble Kalman update transports prior draws to posterior draws in the linear Gaussian model, Tweedie's formula, and the static reduction of the Schrödinger problem to entropic optimal transport. It quotes Brenier's theorem without proof. It connects GBC with diffusion models and score matching, Schrödinger bridges and Sinkhorn's algorithm (geometric convergence through Hilbert's projective metric), the Föllmer process, bootstraps and martingale posteriors, and approximate Bayesian computation (ABC) and its limits. A last section proposes quantile GBC for reinforcement learning with verifiable rewards.
 
@@ -537,7 +537,7 @@ generative Bayesian computation, GBC, noise outsourcing, quantile map, check los
 
 ### Chapter 20. Filters, Gates and Local Rules
 
-Pages 407 to 428. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/20_filters_gates_and_local_rules.pdf).
+Pages 407 to 428.
 
 A filter computes the posterior of a hidden state from the observations so far and updates it recursively. The chapter asks which recursive and local update rules compute or approximate the Bayes filter. It covers the Kalman, Kalman Bucy, Zakai and Wonham filters, the local level model, and the score function filter, a Gaussian summary corrected by the score of the predictive density. For a Gaussian prior and scale mixture of normals noise it proves that the gain is a posterior average of Kalman gains that does not increase with the size of the innovation, and it reads LSTM gates as approximate Bayes filters under conditions. It treats particle filters (sequential Monte Carlo): weight degeneracy, error bounds, path degeneracy, particle learning and a Markov switching Zakai equation. It proves that the stationary subthreshold potential of a shot noise neuron with exponential amplitudes is a generalized Gamma convolution whose Thorin measure is the law of the amplitude rates weighted by the time constants, or is infinite almost surely. It also treats local learning rules (Hebb, Oja), stochastic approximation and the energy budget of the brain.
 
@@ -560,7 +560,7 @@ filtering, state space model, hidden Markov model, Kalman filter, Zakai equation
 
 ### Chapter 21. Kolmogorov, Cybernetics and the Thermodynamics of Information
 
-Pages 429 to 438. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/21_kolmogorov_cybernetics_and_the_thermodynamics_of_information.pdf).
+Pages 429 to 438.
 
 The chapter asks what Hilbert's sixth problem means for inference regarded as a physical process, starting from Kolmogorov's view of machines that learn and Wiener's cybernetics. It presents Kolmogorov's superposition theorem (the Kolmogorov Arnold representation, Hilbert's thirteenth problem) without proof, algorithmic information (Kolmogorov complexity, the universal prior, minimum description length), and Maxwell's demon with the Szilard engine and Landauer's principle. It proves a Landauer bound in information theoretic form: for a memory with finitely many states of equal energy and a heat bath that start independent, the bath in its Gibbs state, and evolve under reversible dynamics, the expected energy gained by the bath is at least $k_BT\log2$ per bit of entropy lost by the memory. It proves Kelly's theorem on optimal growth and proportional betting, a recursive self learning bound from the data processing inequality (without a verifier the information about the target never exceeds its initial value, and a verifier channel of capacity $C$ bits per round adds at most $C$ per round), Jarzynski's equality, and a lower bound on the heat dissipated in resetting a memory that stores reconstructions at a given average distortion. Crooks' theorem and the Sagawa Ueda inequality are quoted without proof.
 
@@ -580,7 +580,7 @@ Kolmogorov Arnold representation theorem, Kolmogorov superposition theorem, Hilb
 
 ### Chapter 22. Open Problems and the Bridge to Hilbert's Eighth Problem
 
-Pages 439 to 450. [The chapter as a PDF](https://vsokolov.org/books/hilbert6/chapters/22_open_problems_and_the_bridge_to_hilberts_eighth_problem.pdf).
+Pages 439 to 450.
 
 This chapter links Hilbert's sixth and eighth problems through the heat equation and closes with open problems. The Riemann hypothesis (RH) is expressed through the backward heat flow: the de Bruijn Newman constant $\Lambda$ is defined from the Gaussian deformation $H_t$ of the Pólya kernel of the Riemann $\Xi$ function, $H_t$ solves the backward heat equation, and RH holds if and only if $\Lambda\leq0$. The chapter proves the Pólya de Bruijn theorem that the backward heat semigroup preserves real zeros of even entire functions of order less than 2, quotes $0\leq\Lambda\leq0.2$ without proof, and shows that RH is equivalent to the Lee Yang property of the Pólya law. It reads the de Bruijn flow as exponential tilting and conditioning on the second moment, and relates RH to the Biane Pitman Yor Brownian excursion identity and to generalized Gamma convolutions. The link with the inferential sixth problem is an analogy and not an equivalence. No proof of RH is claimed.
 
@@ -604,7 +604,7 @@ Hilbert's sixth problem, Hilbert's eighth problem, Riemann hypothesis, RH, Riema
 
 ### Appendix A. Lévy Processes, Thorin Measures and Related Classes
 
-Pages 451 to 454. [The appendix as a PDF](https://vsokolov.org/books/hilbert6/chapters/A_levy_processes_thorin_measures_and_related_classes.pdf).
+Pages 451 to 454.
 
 This appendix collects the definitions and standard results on infinite divisibility that the book uses, with references for the proofs. It defines Lévy processes, their characteristic exponent through the Lévy Khintchine formula, and the Lévy Itô decomposition into drift, Brownian motion and an independent Poisson jump part with Lévy measure $\nu$. It defines Bernstein, completely monotone, Stieltjes and complete Bernstein functions, and generalized Gamma convolutions (GGC): laws on $[0,\infty)$ with Laplace exponent $\phi(\lambda)=a\lambda+\int\log(1+\lambda/y)\,U(\mathrm{d}y)$, drift $a\ge0$ and Thorin measure $U$, which Stieltjes inversion of $\phi'$ recovers (the formula behind the computational strategy of Chapter 22). It states that the class of GGCs is closed under convolution and weak limits, that every GGC is self decomposable and unimodal, and that hyperbolically completely monotone (HCM) laws are GGCs. It then treats normal scale mixtures by Brownian subordination and extended generalized Gamma convolutions (EGGC), a class that contains the GGCs and the Student $t$, symmetric hyperbolic and logistic laws, and finally the Lee Yang measures of Newman (Section 7.7). The results are presented as standard, with chapter or section numbers of the references.
 
@@ -630,7 +630,7 @@ Lévy process, infinitely divisible law, Lévy Khintchine formula, Lévy Itô de
 
 ### Appendix B. Code and Reproducibility
 
-Pages 455 to 470. [The appendix as a PDF](https://vsokolov.org/books/hilbert6/chapters/B_code_and_reproducibility.pdf).
+Pages 455 to 470.
 
 Each of the book's 32 figures is drawn by a Python script in the folder `code`: 28 compute their data, 3 replot recorded experiment results and one, the Lanford window, is a schematic. Ten tables have numbers that a script computes or reads. `figures.py` and `figures_color.py` draw 20 figures; `figures_pf.py`, `figures_pl.py` and `figures_msw.py` the filter figures of Chapter 20; `fk_posterior.py` (whose generator study needs PyTorch) and `ns2d_posterior.py` (which needs JAX) the posterior figures and tables of Chapter 12; `yor_catalogue.py` the table of Yor identity checks; six `mf_` scripts the Part IV figures, with `mf_gain.py` and `mf_gap.py` for two tables. The Part IV experiments are in `code/anc`, a copy of the ancillary files of the authors' manifold paper (scripts, recorded results, SLURM files). The figure and table scripts need Python 3, NumPy, SciPy and Matplotlib (NumPy 2.0 or later for three), fix any random seeds, overwrite the shipped figures unless run in a copy, and take under a second to 19 minutes on an Apple M2 laptop. The replicate studies take hours, so the book reads their recorded results; the authors reran them on a cluster, and the Navier Stokes experiment scripts in a copy of the folder, and matched the recorded results to a relative difference of at most $3\times10^{-10}$, except wall clock times and four entries (up to $6\times10^{-8}$). The chaotic Hénon Heiles and standard map figures can differ in detail on another machine, but not in structure. Some files in `code/anc` are outdated or absent. Three `pdflatex` runs rebuild the book.
 
@@ -650,7 +650,7 @@ reproducibility, code, Python scripts, figure scripts, `figures.py`, `figures_co
 
 ### Appendix C. A Probability Toolkit
 
-Pages 471 to 474. [The appendix as a PDF](https://vsokolov.org/books/hilbert6/chapters/C_a_probability_toolkit.pdf).
+Pages 471 to 474.
 
 This appendix collects standard probability results used throughout the book, with references for the proofs. It covers weak convergence on Polish spaces (Prokhorov's theorem on tightness and relative compactness, the portmanteau theorem, Skorokhod's representation theorem) and the tightness, identification and uniqueness scheme of hydrodynamic limits; metrics on probability measures (total variation, Hellinger, bounded Lipschitz and Wasserstein $W_p$ distances, Pinsker's inequality, the comparison of total variation with Hellinger distance); martingales (Doob's convergence theorem and maximal inequality, optional stopping, Lévy's characterization of Brownian motion, the Dambis Dubins Schwarz time change); large deviations (the large deviation principle with a good rate function, the contraction principle, Varadhan's lemma, the Gärtner Ellis theorem, and the principles of Cramér, Sanov, Schilder and Donsker Varadhan, with Schilder's rate function the Cameron Martin norm, used in Chapter 12); and Markov semigroups and generators (Kolmogorov equations, invariant and reversible measures, the Dirichlet form, Poincaré and log Sobolev inequalities with convergence rates $e^{-t/C}$ and $e^{-2t/C}$, and the Bakry Émery criterion $\Gamma_2\ge K\Gamma$, which for the diffusion with generator $\Delta-\nabla V\cdot\nabla$ on a Riemannian manifold reads $\mathrm{Ric}+\nabla^2V\ge K$).
 
@@ -674,7 +674,7 @@ weak convergence, Polish space, Prokhorov theorem, tightness, portmanteau theore
 
 ### Appendix D. A Chronology
 
-Pages 475 to 478. [The appendix as a PDF](https://vsokolov.org/books/hilbert6/chapters/D_a_chronology.pdf).
+Pages 475 to 478.
 
 This appendix is a chronology of 78 dated entries, the events and results discussed in the book, from Gauss's derivation of the normal law of errors from the optimality of the arithmetic mean (1809) to the long time derivations of the Boltzmann equation and of fluid equations from hard spheres by Deng, Hani and Ma (2024 to 2025). It follows several threads in parallel: kinetic theory and the reversibility and recurrence objections (Maxwell, Boltzmann, Loschmidt, Poincaré, Zermelo), Hilbert's problems and the axiomatization of mechanics and probability, Brownian motion, quantum mechanics, ergodic theory, entropy and information (Shannon, Kolmogorov, Sinai, Landauer), the Ising model and the Lee Yang theorem, turbulence and Navier Stokes, Riemann's $\Xi$ function and the de Bruijn Newman constant, and filtering and Bayesian computation. It gives dates and attributions and proves nothing.
 
@@ -694,7 +694,7 @@ chronology, timeline, history of probability, history of statistical mechanics, 
 
 ### Appendix E. Notation
 
-Pages 479 to 484. [The appendix as a PDF](https://vsokolov.org/books/hilbert6/chapters/E_notation.pdf).
+Pages 479 to 484.
 
 This appendix is the notation guide of the book. It lists the symbols used in more than one chapter or throughout a long section, with the chapters where they occur and, for Part IV, the section, result or equation that defines each one. Four blocks cover probability, information and stochastic processes (probability, expectation, Gaussian law, types, Shannon and Boltzmann entropies, differential entropy, Fisher information, relative entropy $\mathrm{KL}$, total variation, bounded Lipschitz and Wasserstein distances, Brownian motion, Bessel process, Pólya Gamma law, Laplace and Lévy exponents, Perelman's entropy); mechanics, kinetic theory, fluids and quantum mechanics (Maxwellian, viscosity, density operator, von Neumann entropy, Nelson's stochastic mechanics); Part IV, the solution manifold (forward map, linearization and its adjoint, prior, posterior, Bernstein von Mises limit, information per mode, summary dimension); and inference as statistical mechanics (Gibbs measure, generator map, check loss, hidden Markov filters, Riemann's $\xi$ and $\Xi$). A last block lists the letters that mean different things in different chapters, such as $\alpha$, $\beta$, $\gamma$, $\varepsilon$, $\theta$, $\lambda$, $\nu$, $\rho$, $\sigma$, $\Gamma$, $\Pi$, $\Phi$, $D$, $H$, $T$ and the torus $\mathbb{T}^d$, whose side is $2\pi$ in Chapter 12, one in Chapters 4, 11 and 14 to 17 (with exceptions) and not fixed in Chapters 1 and 13.
 
@@ -709,8 +709,6 @@ No new results of this appendix are catalogued.
 #### Key terms
 
 notation, list of symbols, nomenclature, glossary of symbols, symbol index, conventions, overloaded symbols, Shannon entropy, Boltzmann functional, differential entropy, Fisher information, relative entropy, Kullback Leibler divergence, total variation, Wasserstein distance, Maxwellian, density operator, von Neumann entropy, Nelson stochastic mechanics, forward map, solution manifold, information per mode, Bernstein von Mises limit, Gibbs measure, check loss, torus
-
-Other parts of the book as PDFs: [Front matter](https://vsokolov.org/books/hilbert6/chapters/00_front_matter.pdf), [Bibliography](https://vsokolov.org/books/hilbert6/chapters/bibliography.pdf).
 
 ## All results
 
