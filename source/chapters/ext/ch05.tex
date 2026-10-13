@@ -6,7 +6,7 @@ The horseshoe prior of Carvalho, Polson and Scott~\cite{carvalho2010} is the nor
 \]
 with a half Cauchy local scale $\lambda$ and a global scale $\tau$. With $\tau = 1$ and unit noise, the posterior mean of $\theta$ given an observation $y\sim N(\theta,1)$ is $\E[\theta\mid y] = (1-\E[\kappa\mid y])\,y$, where $\kappa = 1/(1+\lambda^2)$ is the shrinkage coefficient. A change of variables shows that under the half Cauchy prior $\kappa$ has the Beta$(\frac12,\frac12)$ law, the arcsine law of Chapter~\ref{ch:brownian}, whose density is unbounded at both ends and gives the prior its name. Its mass near $\kappa = 1$ shrinks noise to zero; its mass near $\kappa = 0$ leaves large signals untouched.
 
-\begin{theorem}[Horseshoe density bounds]
+\begin{theorem}[Horseshoe density bounds]\label{thm:horseshoe_bounds}%
 The marginal density of $\theta$ under the horseshoe prior with $\tau = 1$ is $p(\theta) = Ke^{\theta^2/2}E_1(\theta^2/2)$, where $K = 1/\sqrt{2\pi^3}$ and $E_1(x) = \int_x^\infty s^{-1}e^{-s}\dd s$ is the exponential integral, and it satisfies, for all $\theta\neq0$,
 \[
 \frac K2\log\Big(1+\frac4{\theta^2}\Big)<p(\theta)<K\log\Big(1+\frac2{\theta^2}\Big).

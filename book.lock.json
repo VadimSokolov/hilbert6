@@ -465,6 +465,17 @@
    "verified_fingerprint": "9d84efe61c04",
    "verified_on": "2026-10-12"
   },
+  "horseshoe_density_bounds": {
+   "environment": "theorem",
+   "file": "source/chapters/ext/ch05.tex",
+   "fingerprint": "3b3ca6f43c2a",
+   "label": "thm:horseshoe_bounds",
+   "number": "7.9",
+   "page": "89",
+   "printed": "Theorem 7.9",
+   "verified_fingerprint": "3b3ca6f43c2a",
+   "verified_on": "2026-10-13"
+  },
   "information_operator_of_nls_about_a_plane_wave": {
    "environment": "proposition",
    "file": "source/chapters/ext/m4d.tex",
@@ -619,6 +630,61 @@
    "verified_fingerprint": "f56b86d9c5c9",
    "verified_on": "2026-10-12"
   },
+  "open_problem_arbitrary_functions_mixed_phase_space": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "ab16d207baf0",
+   "label": "prob:poincare",
+   "number": "2",
+   "page": "445",
+   "printed": "Open Problem 2",
+   "verified_fingerprint": "ab16d207baf0",
+   "verified_on": "2026-10-13"
+  },
+  "open_problem_bayesian_answer_to_wallstrom": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "c694c9988298",
+   "label": "prob:quantum",
+   "number": "7",
+   "page": "446",
+   "printed": "Open Problem 7",
+   "verified_fingerprint": "c694c9988298",
+   "verified_on": "2026-10-13"
+  },
+  "open_problem_blowup_posterior_consistency": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "5d32aca47445",
+   "label": "prob:blowup",
+   "number": "11",
+   "page": "447",
+   "printed": "Open Problem 11",
+   "verified_fingerprint": "5d32aca47445",
+   "verified_on": "2026-10-13"
+  },
+  "open_problem_heat_bound_bayesian_update": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "ecf86286bd1a",
+   "label": "prob:thermodynamics_of_inference",
+   "number": "15",
+   "page": "448",
+   "printed": "Open Problem 15",
+   "verified_fingerprint": "ecf86286bd1a",
+   "verified_on": "2026-10-13"
+  },
+  "open_problem_inferential_sixth_problem": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "e587a7b3fcc0",
+   "label": "prob:inferential_sixth",
+   "number": "1",
+   "page": "445",
+   "printed": "Open Problem 1",
+   "verified_fingerprint": "e587a7b3fcc0",
+   "verified_on": "2026-10-13"
+  },
   "open_problem_kac_entropy_production_ggc_mixtures": {
    "environment": "problem",
    "file": "source/chapters/ch16_open.tex",
@@ -630,6 +696,17 @@
    "verified_fingerprint": "465831e3fa56",
    "verified_on": "2026-10-12"
   },
+  "open_problem_learned_schrodinger_bridge_rates": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "f4fd9c77a45f",
+   "label": "prob:transport",
+   "number": "14",
+   "page": "448",
+   "printed": "Open Problem 14",
+   "verified_fingerprint": "f4fd9c77a45f",
+   "verified_on": "2026-10-13"
+  },
   "open_problem_ns_posterior_fixed_sensors": {
    "environment": "problem",
    "file": "source/chapters/ch16_open.tex",
@@ -640,6 +717,72 @@
    "printed": "Open Problem 10",
    "verified_fingerprint": "1ae43e21c787",
    "verified_on": "2026-10-12"
+  },
+  "open_problem_onsager_exponents_posterior": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "3af51aa4713f",
+   "label": "prob:onsager",
+   "number": "12",
+   "page": "447",
+   "printed": "Open Problem 12",
+   "verified_fingerprint": "3af51aa4713f",
+   "verified_on": "2026-10-13"
+  },
+  "open_problem_optimal_finite_de_finetti_kac": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "ef9271b87c5f",
+   "label": "prob:axioms",
+   "number": "3",
+   "page": "445",
+   "printed": "Open Problem 3",
+   "verified_fingerprint": "ef9271b87c5f",
+   "verified_on": "2026-10-13"
+  },
+  "open_problem_perelman_entropy_scale_mixture_manifolds": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "cbb156e2fab2",
+   "label": "prob:perelman",
+   "number": "6",
+   "page": "446",
+   "printed": "Open Problem 6",
+   "verified_fingerprint": "cbb156e2fab2",
+   "verified_on": "2026-10-13"
+  },
+  "open_problem_planted_clique_sampler_threshold": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "1ecd24383d50",
+   "label": "prob:phase_transitions",
+   "number": "13",
+   "page": "448",
+   "printed": "Open Problem 13",
+   "verified_fingerprint": "1ecd24383d50",
+   "verified_on": "2026-10-13"
+  },
+  "open_problem_polya_law_ferromagnetic_limit": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "74f52867856c",
+   "label": "prob:bridge",
+   "number": "16",
+   "page": "448",
+   "printed": "Open Problem 16",
+   "verified_fingerprint": "74f52867856c",
+   "verified_on": "2026-10-13"
+  },
+  "open_problem_reciprocal_xi_ggc_from_mixture": {
+   "environment": "problem",
+   "file": "source/chapters/ch16_open.tex",
+   "fingerprint": "dfcc6987d3f9",
+   "label": "prob:mixtures",
+   "number": "5",
+   "page": "445",
+   "printed": "Open Problem 5",
+   "verified_fingerprint": "dfcc6987d3f9",
+   "verified_on": "2026-10-13"
   },
   "open_problem_yor_exact_samplers": {
    "environment": "problem",
@@ -739,6 +882,17 @@
    "printed": "Corollary 15.23",
    "verified_fingerprint": "708e82ed581c",
    "verified_on": "2026-10-12"
+  },
+  "recursive_self_learning_information_bound": {
+   "environment": "proposition",
+   "file": "source/chapters/ch15_kolmogorov.tex",
+   "fingerprint": "3d5c8deb082a",
+   "label": "prop:recursive_self_learning",
+   "number": "21.4",
+   "page": "433",
+   "printed": "Proposition 21.4",
+   "verified_fingerprint": "3d5c8deb082a",
+   "verified_on": "2026-10-13"
   },
   "regularized_summary_fixed_prior_untruncated_posteriors": {
    "environment": "proposition",

@@ -69,6 +69,9 @@ related_papers:                  # the authors' own papers that results come fro
   - key: cjlp2010
     citation: "Carvalho, Johannes, Lopes and Polson (2010), Particle learning and smoothing, Statistical Science 25, 88 to 106"
     url: https://doi.org/10.1214/10-STS325
+  - key: carvalho2010
+    citation: "Carvalho, Polson and Scott (2010), The horseshoe estimator for sparse signals, Biometrika 97, 465 to 480"
+    url: https://doi.org/10.1093/biomet/asq017
 #  - key: smith2026x
 #    citation: "Smith and Jones (2026), Title of the paper, arXiv:2601.00001"
 #    url: https://arxiv.org/abs/2601.00001

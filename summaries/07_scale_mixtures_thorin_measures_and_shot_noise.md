@@ -12,10 +12,11 @@ Andrews and Mallows (1974) on normal scale mixtures; the Lévy Khintchine formul
 
 ## New results
 
-The catalogued result is an identity from Polson, Scott and Windle (2013), a paper of the first author; the other theorems are credited in the text to their sources.
+The catalogued results were first stated in papers of the first author: the Pólya Gamma identity in Polson, Scott and Windle (2013) and the horseshoe density bounds in Carvalho, Polson and Scott (2010); the other theorems are credited in the text to their sources.
 
 <!-- results:begin -->
 - [Pólya Gamma integral identity for the logistic likelihood](../RESULTS.md#polya_gamma_logistic_identity) (Theorem 7.5, page 85; proved): The logistic likelihood equals an exponential factor times an average, over a Pólya Gamma variable, of Gaussian kernels in the linear predictor, and given the linear predictor that variable again has a Pólya Gamma law. First stated in Polson, Scott and Windle (2013), Bayesian inference for logistic models using Pólya Gamma latent variables, Journal of the American Statistical Association 108, 1339 to 1349.
+- [Horseshoe density bounds](../RESULTS.md#horseshoe_density_bounds) (Theorem 7.9, page 89; proved): The marginal density of the horseshoe prior lies between two explicit multiples of logarithms, so it has a logarithmic pole at zero and tails of order theta to the power minus two. First stated in Carvalho, Polson and Scott (2010), The horseshoe estimator for sparse signals, Biometrika 97, 465 to 480.
 <!-- results:end -->
 
 ## Key terms

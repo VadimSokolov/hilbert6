@@ -13,7 +13,7 @@ Kolmogorov's superposition theorem (Kolmogorov 1957) and Arnold's theorem on fun
 ## New results
 
 <!-- results:begin -->
-No new results of this chapter are catalogued.
+- [Information bound for recursive self learning](../RESULTS.md#recursive_self_learning_information_bound) (Proposition 21.4, page 433; proved): A model that is updated only from its own state and from fresh randomness independent of the target gains no information about the target, and with a verifier of capacity C bits per round it gains at most C bits per round. New in this book.
 <!-- results:end -->
 
 ## Key terms

@@ -1,6 +1,6 @@
 # Results by chapter <small>On Hilbert's 6th Problem</small>
 
-The results of [On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation](https://vsokolov.org/books/hilbert6/) that are new in the book, that come from the authors' own papers, or that correct one of those papers, as the book states them: 74 entries (57 proved, 11 conditional, 5 open, 1 counterexample). Results of other authors that the book presents are credited in the [chapter summaries](https://github.com/VadimSokolov/hilbert6/tree/main/summaries).
+The results of [On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation](https://vsokolov.org/books/hilbert6/) that are new in the book, that come from the authors' own papers, or that correct one of those papers, as the book states them: 88 entries (59 proved, 11 conditional, 17 open, 1 counterexample). Results of other authors that the book presents are credited in the [chapter summaries](https://github.com/VadimSokolov/hilbert6/tree/main/summaries).
 
 Status: proved; conditional (proved assuming the named statements, which the book does not prove); open (stated as an open question); counterexample (a proved counterexample); withdrawn (found wrong after release; the entry says what was wrong and which version corrects it).
 
@@ -17,6 +17,18 @@ Status: proved.
 Statement. For $b>0$ and $c\in\mathbb{R}$, the Pólya Gamma law $PG(b,c)$ is the law of $\omega=\frac{1}{2\pi^2}\sum_{k=1}^\infty \frac{g_k}{(k-\frac12)^2+c^2/(4\pi^2)}$, where $g_1,g_2,\dots$ are independent Gamma variables with shape $b$ and unit rate. Let $p(\cdot\mid b,0)$ be the density of $PG(b,0)$. Then for all $b>0$, $a\in\mathbb{R}$ and $\psi\in\mathbb{R}$, $\frac{(e^{\psi})^a}{(1+e^{\psi})^b}=2^{-b}e^{(a-b/2)\psi}\int_0^\infty e^{-\omega\psi^2/2}\,p(\omega\mid b,0)\,\mathrm{d}\omega$. Moreover, the conditional law of $\omega$ given $\psi$, that is the law with density proportional to $e^{-\omega\psi^2/2}p(\omega\mid b,0)$ in $\omega$, is $PG(b,\psi)$.
 
 Source: [`source/chapters/ch05_mixtures.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch05_mixtures.tex), label `thm:pg_identity`.
+
+<a id="horseshoe_density_bounds"></a>
+
+### Horseshoe density bounds
+
+Theorem 7.9, page 89 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. First stated in Carvalho, Polson and Scott (2010), The horseshoe estimator for sparse signals, Biometrika 97, 465 to 480.
+
+Status: proved.
+
+Statement. Let $\theta\mid\lambda\sim N(0,\lambda^2)$ with $\lambda$ half Cauchy $C^+(0,1)$ (the horseshoe prior with global scale $\tau=1$). The marginal density of $\theta$ is $p(\theta)=K\,e^{\theta^2/2}E_1(\theta^2/2)$, where $K=1/\sqrt{2\pi^3}$ and $E_1(x)=\int_x^\infty s^{-1}e^{-s}\,\mathrm{d}s$ is the exponential integral, and it satisfies, for all $\theta\neq0$, $\frac K2\log\big(1+\frac4{\theta^2}\big)<p(\theta)<K\log\big(1+\frac2{\theta^2}\big)$. In particular $p$ has a logarithmic pole at zero and tails of order $\theta^{-2}$.
+
+Source: [`source/chapters/ext/ch05.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/ch05.tex), label `thm:horseshoe_bounds`.
 
 ## Chapter 12. Navier Stokes as Inference on the Solution Manifold
 
@@ -1026,7 +1038,57 @@ Statement. Let the input spikes $t_k$ form a Poisson process of rate $\lambda>0$
 
 Source: [`source/chapters/ch14_filters.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch14_filters.tex), label `thm:shot_noise_neuron`.
 
+## Chapter 21. Kolmogorov, Cybernetics and the Thermodynamics of Information
+
+<a id="recursive_self_learning_information_bound"></a>
+
+### Information bound for recursive self learning
+
+Proposition 21.4, page 433 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: proved.
+
+Statement. Let $\Theta$ be a target and let $M_0$ be a model with $I(\Theta;M_0)=i_0$, where $I$ denotes mutual information. Suppose $M_{k+1}$ is computed from $M_k$ and from fresh randomness independent of $\Theta$. Then $I(\Theta;M_k)\le i_0$ for all $k$. If at each round the update also uses the output of a verifier $V_k$ that depends on $\Theta$ through a channel of capacity $C$ bits per round, so that $I(\Theta;V_k\mid M_k)\le C$, then $I(\Theta;M_k)\le i_0+kC$.
+
+Source: [`source/chapters/ch15_kolmogorov.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch15_kolmogorov.tex), label `prop:recursive_self_learning`.
+
 ## Chapter 22. Open Problems and the Bridge to Hilbert's Eighth Problem
+
+<a id="open_problem_inferential_sixth_problem"></a>
+
+### Open problem: the inferential sixth problem (a program)
+
+Open Problem 1, page 445 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. This is a program, and its first task is to fix the regime. Consider hard spheres in the Boltzmann Grad limit with Gibbs initial data conditioned on a macroscopic density, velocity and temperature profile, observed through the hydrodynamic fields at a later time with noise of standard deviation $\sigma$. Find a relation between $\sigma$, the Knudsen number and the number of particles under which the deviation of the particle fields from the solution of the limiting fluid equations is small compared with $\sigma$, and prove under it a Bernstein von Mises theorem for smooth functionals of the initial macroscopic profile, with constants that do not depend on the number of particles.
+
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:inferential_sixth`.
+
+<a id="open_problem_arbitrary_functions_mixed_phase_space"></a>
+
+### Open problem: quantitative arbitrary functions for mixed phase space systems
+
+Open Problem 2, page 445 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. Give quantitative versions of the method of arbitrary functions (for a real random variable $X$ with a density $g$ of total variation $V<\infty$, $t>0$ and $a\in[0,1]$, $|\mathbb{P}(\{tX\}\in[0,a))-a|\le a(1-a)V/(2t)$, where $\{\cdot\}$ is the fractional part) for mixed phase space systems such as Hénon Heiles, where invariant tori and chaotic regions coexist, with rates in terms of the measure of the chaotic sea.
+
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:poincare`.
+
+<a id="open_problem_optimal_finite_de_finetti_kac"></a>
+
+### Open problem: optimal finite de Finetti rate and propagation of chaos for Kac's model
+
+Open Problem 3, page 445 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. Quantitative estimates for chaos and entropic chaos in Kac's model are known in several forms. Carlen, Carvalho, Le Roux, Loss and Villani (2010) relate propagation of chaos to entropy and show, in particular, that the entropic rate of convergence to equilibrium can be arbitrarily slow. Hauray and Mischler (2014) compare Kac's chaos, entropic chaos and Fisher information chaos quantitatively, extend the estimates to measures on the Kac spheres, and treat mixtures in the sense of de Finetti, Hewitt and Savage. We do not know whether these estimates are optimal. Find the optimal rate, as a function of the marginal size $k$ and of $N$, in the finite de Finetti theorem for exchangeable laws on the sphere $S^{N-1}(\sqrt N)$ in relative entropy, with examples showing that it cannot be improved, and use it to prove a propagation of chaos theorem for Kac's model whose dependence on $N$ is optimal under explicit hypotheses on the initial law.
+
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:axioms`.
 
 <a id="open_problem_yor_exact_samplers"></a>
 
@@ -1039,6 +1101,42 @@ Status: open.
 Statement. Open problem, posed as a program in the book. Kent's theorem writes the hitting time of a level $b$ by a regular one dimensional diffusion, started at a reflecting or entrance boundary $a$, as $\sum_{n\geq1}E_n/\lambda_n$, where $E_1,E_2,\dots$ are independent standard exponential variables and $0<\lambda_1<\lambda_2<\cdots$ are the eigenvalues of minus the generator on $(a,b)$ with Dirichlet condition at $b$ and the reflecting or entrance condition at $a$. For each $n$, the remainder $\sum_{k>n}E_k/\lambda_k$ after the first $n$ terms is a generalized Gamma convolution (a law on $[0,\infty)$ with Laplace transform $s\mapsto e^{-\phi(s)}$, $\phi(s)=cs+\int_{(0,\infty)}\log(1+s/y)\,U(\mathrm{d}y)$, where $c\geq0$ and $U$ is the Thorin measure) with an explicit Thorin measure. The problem is to identify a class of regular diffusions for which this remainder can be sampled exactly with finite expected cost, to prove that the resulting sampler is exact, and to use it to build a library of exact samplers for Brownian functionals.
 
 Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:yor`.
+
+<a id="open_problem_reciprocal_xi_ggc_from_mixture"></a>
+
+### Open problem: the reciprocal Xi function as a generalized Gamma convolution from the mixture representation
+
+Open Problem 5, page 445 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. Let $\xi(s)=\frac12 s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$, $\Xi(x)=\xi(\frac12+ix)$ and $\Phi(u)=\sum_{n\ge1}\big(2\pi^2n^4e^{9u}-3\pi n^2e^{5u}\big)\exp(-\pi n^2e^{4u})$, so that $\Xi(x)=8\int_0^\infty\Phi(u)\cos(2xu)\,\mathrm{d}u$. The Pólya law is the law of a random variable $X$ with the symmetric density $\Phi(|u|)/\int_{\mathbb{R}}\Phi(|v|)\,\mathrm{d}v$; its moment generating function is $\mathbb{E}e^{sX}=\Xi(-is/2)/\Xi(0)$. By Khintchine's theorem the Pólya law is the law of $UZ$ with $U$ uniform on $[-1,1]$ and $Z\ge0$ independent of $U$. The law of $Z$ is not a generalized Gamma convolution, because $Z$ has finite exponential moments of every order and a nonconstant generalized Gamma convolution does not. The reciprocal of the moment generating function of $UZ$ at $2\sqrt\lambda$ is a different matter. It is $\Xi(0)/\Xi(i\sqrt\lambda)=\prod_n(1+\lambda/\gamma_n^2)^{-1}$, where $\pm\gamma_n$ are the zeros of $\Xi$, and it is the Laplace transform of a generalized Gamma convolution (a law on $[0,\infty)$ with Laplace transform $\exp\{-as-\int_{(0,\infty)}\log(1+s/t)\,U(\mathrm{d}t)\}$, $a\ge0$, $U$ the Thorin measure) if and only if the Riemann hypothesis holds. In that case the Thorin measure is the sum of point masses at the $\gamma_n^2$. Conversely, the logarithmic derivative of the Laplace transform of a generalized Gamma convolution is analytic outside the negative half line, which forces all the $\gamma_n^2$ to be positive. Prove that this function is the Laplace transform of a generalized Gamma convolution by using the mixture representation $X=UZ$ and not the location of the zeros.
+
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:mixtures`.
+
+<a id="open_problem_perelman_entropy_scale_mixture_manifolds"></a>
+
+### Open problem: scale mixture proof of the monotonicity of Perelman's entropy on manifolds
+
+Open Problem 6, page 446 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. For a probability density $u_0$ of finite variance on $\mathbb{R}^n$ let $u_\tau$ solve the heat equation $\partial_\tau u=\Delta u$, and let $W(\tau)=\tau J(u_\tau)+h(u_\tau)-\frac n2\log(4\pi\tau)-n$, where $J(u)=\int|\nabla u|^2/u$ is the Fisher information and $h(u)=-\int u\log u$ the differential entropy; $W$ is nonincreasing. Ni (2004) proved that the analog of $W$ for the linear heat equation on a Riemannian manifold is nonincreasing when the Ricci curvature is nonnegative. Extend the scale mixture proof of the monotonicity of $W$ on $\mathbb{R}^n$ (for initial densities $u_0=\int\varphi_v\,G(\mathrm{d}v)$, mixtures of the centered Gaussian densities $\varphi_v$ with covariance $vI$ under a mixing law $G$, for which $u_\tau=\int\varphi_{v+2\tau}\,G(\mathrm{d}v)$) to Riemannian manifolds with nonnegative Ricci curvature, interpreting the Ricci term as a correction to the subordinated Brownian motion.
+
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:perelman`.
+
+<a id="open_problem_bayesian_answer_to_wallstrom"></a>
+
+### Open problem: a Bayesian answer to Wallstrom's objection for Nelson's diffusions
+
+Open Problem 7, page 446 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. Formulate a prior on Nelson's diffusions (diffusions with diffusion constant $\hbar/2m$ whose drift is determined by the density $\rho$ and the phase $S$ of a wave function $\psi=\sqrt\rho\,e^{iS/\hbar}$) that does not itself impose the quantization condition, and identify data that determine the circulation of the drift around the nodes of the density, so that the posterior concentrates on drifts satisfying the quantization condition. Position statistics alone fix the density and, through the continuity equation, only the divergence of the current, so the data must carry more. A solution would give a Bayesian answer to Wallstrom's objection. Wallstrom (1994) observed that the condition that $\psi$ be single valued, which forces the quantization of angular momentum, does not follow from Nelson's equations, which only involve $\rho$ and $\nabla S$; it must be added by hand.
+
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:quantum`.
 
 <a id="open_problem_kac_entropy_production_ggc_mixtures"></a>
 
@@ -1063,6 +1161,78 @@ Status: open.
 Statement. Open problem. Konen and Nickl prove a functional Bernstein von Mises theorem for the posterior of the trajectory of the two dimensional Navier Stokes equations on the torus, with root $N$ consistent prediction of future states in the supremum norm, for a Gaussian prior on the initial condition and $N$ noisy observations at uniformly random points of space and time. The authors know of no corresponding result for sensors at fixed locations or for other priors. The problem is to determine the posterior contraction rate for the initial vorticity from noisy point observations at a fixed array of sensors and times, in terms of the number of sensors, the number of times and the noise level, and to identify the functionals of the initial vorticity that admit a Bernstein von Mises theorem. A companion question is whether the posterior of the initial vorticity can be computed in time polynomial in the data size and the dimension.
 
 Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:inference`.
+
+<a id="open_problem_blowup_posterior_consistency"></a>
+
+### Open problem: consistent posterior probability of a computable blowup event
+
+Open Problem 11, page 447 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. Fix a finite horizon and a computable blowup criterion, for example that a norm of the solution of a Galerkin truncation of the equations exceeds a threshold before the horizon. Construct a prior on initial data and forcing for three dimensional Navier Stokes and a sequence of numerical solvers such that the posterior probability of this event is consistent, that is, converges to its true value as the resolution and the amount of data increase, and quantify how the event approximates finite time blowup of the exact solution. Consistency for the blowup of the exact solution itself, under either hypothesis, would require deciding the regularity of the data near the truth, which is the regularity problem.
+
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:blowup`.
+
+<a id="open_problem_onsager_exponents_posterior"></a>
+
+### Open problem: joint posterior for structure function exponents and the inertial range
+
+Open Problem 12, page 447 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. This is a program. At finite Reynolds number the velocity field is smooth, so a Hölder exponent has to be defined through an inertial range statement, such as the scaling $S_p(\ell)\propto\ell^{\zeta_p}$ of the structure functions. Develop a joint posterior for the exponents $\zeta_p$ and the inertial range from measured velocity increments, and use it to ask whether laboratory and numerical data concentrate at, above or below the exponents $\zeta_p=p/3$ of Kolmogorov and Onsager.
+
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:onsager`.
+
+<a id="open_problem_planted_clique_sampler_threshold"></a>
+
+### Open problem: computational threshold of posterior samplers for planted clique
+
+Open Problem 13, page 448 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. Consider the planted clique problem with a known clique size $k$ in the graph $G(n,\frac12)$. The book records that approximate message passing succeeds for $k\ge(1+\varepsilon)\sqrt{n/e}$, and that from a suitable starting state the Metropolis process cannot find a planted clique of size $k=n^{1/2-\varepsilon}$ in polynomial time. Take as samplers of the posterior over clique locations either Glauber dynamics on vertex sets of size $k$, or Langevin dynamics for a continuous relaxation of the clique indicator, in both cases initialized from the prior. Determine whether such samplers have a computational phase transition at $k=\sqrt{n/e}$, in the sense that they succeed in polynomial time above $(1+\varepsilon)\sqrt{n/e}$ and fail below $(1-\varepsilon)\sqrt{n/e}$.
+
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:phase_transitions`.
+
+<a id="open_problem_learned_schrodinger_bridge_rates"></a>
+
+### Open problem: convergence rates for generative Bayesian computation by learned Schrödinger bridges
+
+Open Problem 14, page 448 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. Prove convergence rates for generative Bayesian computation via learned Schrödinger bridges in terms of the entropic regularization, the number of simulations and the smoothness of the posterior. Rates in the sample size are known for the entropic optimal transport cost estimated from samples, by Genevay, Chizat, Bach, Cuturi and Peyré (2019) and by Mena and Niles Weed (2019). The problem concerns the learned bridge as an estimator of the posterior.
+
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:transport`.
+
+<a id="open_problem_heat_bound_bayesian_update"></a>
+
+### Open problem: heat dissipation bound for a Bayesian update
+
+Open Problem 15, page 448 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. The Landauer bound bounds the heat dissipated by a physical process in terms of the entropy removed, and the Sagawa Ueda inequality bounds the work in terms of the mutual information acquired. For a Bayesian update from a prior $\mu_0$ to the posterior $\mu_y$, prove a lower bound on the heat dissipated by any physical implementation in terms of $\mathrm{KL}(\mu_y\|\mu_0)$ and the information erased, and compare it with the dissipation of Langevin samplers.
+
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:thermodynamics_of_inference`.
+
+<a id="open_problem_polya_law_ferromagnetic_limit"></a>
+
+### Open problem: the Pólya law as a limit of ferromagnetic Ising constructions
+
+Open Problem 16, page 448 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. This is a program whose goal is the Riemann hypothesis. Let $\xi(s)=\frac12 s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$, $\Xi(x)=\xi(\frac12+ix)$ and $\Phi(u)=\sum_{n\ge1}\big(2\pi^2n^4e^{9u}-3\pi n^2e^{5u}\big)\exp(-\pi n^2e^{4u})$, so that $\Xi(x)=8\int_0^\infty\Phi(u)\cos(2xu)\,\mathrm{d}u$. The Pólya law is the law with the symmetric density $\Phi(|u|)/\int_{\mathbb{R}}\Phi(|v|)\,\mathrm{d}v$; its moment generating function is $\Xi(-is/2)/\Xi(0)$. The de Bruijn Newman constant $\Lambda$ is the real number such that $H_t(z)=\int_0^\infty e^{tu^2}\Phi(u)\cos(zu)\,\mathrm{d}u$ has only real zeros if and only if $t\ge\Lambda$, and the Riemann hypothesis is equivalent to $\Lambda\le0$. A symmetric random variable $X$ with $\mathbb{E}e^{bX^2}<\infty$ for every $b>0$ has the Lee Yang property if $z\mapsto\mathbb{E}e^{zX}$ has only purely imaginary zeros; the uniform law on $[-1,1]$ and the Ising spin $\pm1$ have it. Newman's theorem (1974): if $X_1,\dots,X_n$ are independent with the Lee Yang property, $J_{ij}\ge0$ are such that $\exp(\sum_{i<j}J_{ij}x_ix_j)$ is integrable against the product law, and $\mathbb{P}_J$ has density proportional to this exponential with respect to the product law, then $\sum_ia_iX_i$ under $\mathbb{P}_J$ has the Lee Yang property for every choice of positive weights $a_i$. The Riemann hypothesis holds if and only if the Pólya law has the Lee Yang property. Decide whether the Pólya law is the weak limit of a sequence of laws of random variables $X_n$ obtained by such constructions from Ising spins and uniform laws, with $\sup_n\mathbb{E}e^{c|X_n|}<\infty$ for every $c>0$, which is the control that carries the Lee Yang property to the limit by Hurwitz's theorem. A construction would prove the Riemann hypothesis, and a proof that none exists would show that this route to the hypothesis is closed.
+
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:bridge`.
 
 ***
 

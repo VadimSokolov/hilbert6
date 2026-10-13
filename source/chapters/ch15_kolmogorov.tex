@@ -97,7 +97,7 @@ Figure~\ref{fig:kelly} shows the growth curve for $p = 0.6$. The maximal growth 
 
 A learning system observes data, updates an internal model, and acts. The data processing inequality states that for a Markov chain $\Theta\to Y\to Z$, $I(\Theta;Z)\leq I(\Theta;Y)$: no processing of the data can increase its information about the truth. Consider a model that is retrained repeatedly on its own outputs.
 
-\begin{proposition}[Recursive self learning]
+\begin{proposition}[Recursive self learning]\label{prop:recursive_self_learning}%
 Let $\Theta$ be a target and let $M_0$ be a model with $I(\Theta;M_0) = i_0$. Suppose $M_{k+1}$ is computed from $M_k$ and from fresh randomness independent of $\Theta$. Then $I(\Theta;M_k)\leq i_0$ for all $k$. If at each round the update also uses the output of a verifier $V_k$ that depends on $\Theta$ through a channel of capacity $C$ bits per round, so that $I(\Theta;V_k\mid M_k)\leq C$, then $I(\Theta;M_k)\leq i_0+kC$.
 \end{proposition}
 

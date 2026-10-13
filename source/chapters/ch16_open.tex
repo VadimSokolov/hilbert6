@@ -99,15 +99,15 @@ The Thorin measure of a GGC can be estimated from its Laplace transform by inver
 
 We close with open problems drawn from the chapters of the book. Some are precise questions and some are programs, which we mark as such.
 
-\begin{problem}[The inferential sixth problem]
+\begin{problem}[The inferential sixth problem]\label{prob:inferential_sixth}%
 This is a program, and its first task is to fix the regime. Consider hard spheres in the Boltzmann Grad limit with Gibbs initial data conditioned on a macroscopic density, velocity and temperature profile, observed through the hydrodynamic fields at a later time with noise of standard deviation $\sigma$. Find a relation between $\sigma$, the Knudsen number and the number of particles under which the deviation of the particle fields from the solution of the limiting fluid equations is small compared with $\sigma$, and prove under it a Bernstein von Mises theorem for smooth functionals of the initial macroscopic profile, with constants that do not depend on the number of particles.
 \end{problem}
 
-\begin{problem}[Poincar\'e]
+\begin{problem}[Poincar\'e]\label{prob:poincare}%
 Give quantitative versions of the method of arbitrary functions (Theorem~\ref{thm:arbitrary}) for mixed phase space systems such as H\'enon Heiles, where invariant tori and chaotic regions coexist, with rates in terms of the measure of the chaotic sea.
 \end{problem}
 
-\begin{problem}[Axioms]
+\begin{problem}[Axioms]\label{prob:axioms}%
 Quantitative estimates for chaos and entropic chaos in Kac's model are known in several forms. Carlen, Carvalho, Le Roux, Loss and Villani~\cite{cclv2010} relate propagation of chaos to entropy and show, in particular, that the entropic rate of convergence to equilibrium can be arbitrarily slow. Hauray and Mischler~\cite{hauraymischler2014} compare Kac's chaos, entropic chaos and Fisher information chaos quantitatively, extend the estimates to measures on the Kac spheres, and treat mixtures in the sense of de Finetti, Hewitt and Savage. We do not know whether these estimates are optimal. Find the optimal rate, as a function of the marginal size $k$ and of $N$, in the finite de Finetti theorem for exchangeable laws on the sphere $S^{N-1}(\sqrt N)$ in relative entropy, with examples showing that it cannot be improved, and use it to prove a propagation of chaos theorem for Kac's model whose dependence on $N$ is optimal under explicit hypotheses on the initial law.
 \end{problem}
 
@@ -116,15 +116,15 @@ Quantitative estimates for chaos and entropic chaos in Kac's model are known in 
 This is a program. Kent's theorem~\cite{kent1980} writes the hitting time of a level by a regular diffusion, started at a reflecting or entrance boundary, as a sum $\sum_nE_n/\lambda_n$ of independent exponential variables, where the $\lambda_n$ are eigenvalues of the generator. The part of the sum after the first $n$ terms is a generalized Gamma convolution with an explicit Thorin measure. Identify a class of regular diffusions for which this remainder can be sampled exactly with finite expected cost, prove that the resulting sampler is exact, and use it to build a library of exact samplers for Brownian functionals.
 \end{problem}
 
-\begin{problem}[Mixtures]
+\begin{problem}[Mixtures]\label{prob:mixtures}%
 By Khintchine's theorem the P\'olya law of Section~\ref{sec:leeyangrh} is the law of $UZ$ with $U$ uniform on $[-1,1]$ and $Z\geq0$ independent of $U$. The law of $Z$ is not a generalized Gamma convolution, because $Z$ has finite exponential moments of every order and a nonconstant generalized Gamma convolution does not. The reciprocal of the moment generating function of $UZ$ at $2\sqrt\lambda$ is a different matter. It is $\Xi(0)/\Xi(i\sqrt\lambda) = \prod_n(1+\lambda/\gamma_n^2)^{-1}$, where $\pm\gamma_n$ are the zeros of $\Xi$, and it is the Laplace transform of a generalized Gamma convolution if and only if the Riemann hypothesis holds. In that case the Thorin measure is the sum of point masses at the $\gamma_n^2$. Conversely, the logarithmic derivative of the Laplace transform of a generalized Gamma convolution is analytic outside the negative half line, which forces all the $\gamma_n^2$ to be positive. Prove that this function is the Laplace transform of a generalized Gamma convolution by using the mixture representation $X = UZ$ and not the location of the zeros.
 \end{problem}
 
-\begin{problem}[Perelman]
+\begin{problem}[Perelman]\label{prob:perelman}%
 Ni~\cite{ni2004} proved that the analog of the entropy $W$ of Theorem~\ref{thm:perelman_flat} for the linear heat equation on a Riemannian manifold is nonincreasing when the Ricci curvature is nonnegative. Extend the scale mixture proof of the monotonicity of $W$ (Theorem~\ref{thm:perelman_flat}) to Riemannian manifolds with nonnegative Ricci curvature, interpreting the Ricci term as a correction to the subordinated Brownian motion.
 \end{problem}
 
-\begin{problem}[Quantum]
+\begin{problem}[Quantum]\label{prob:quantum}%
 Formulate a prior on Nelson's diffusions that does not itself impose the quantization condition, and identify data that determine the circulation of the drift around the nodes of the density, so that the posterior concentrates on drifts satisfying the quantization condition. Position statistics alone fix the density and, through the continuity equation, only the divergence of the current, so the data must carry more. A solution would give a Bayesian answer to Wallstrom's objection.
 \end{problem}
 
@@ -142,27 +142,27 @@ Derive the incompressible Navier Stokes Fourier system from hard sphere dynamics
 Konen and Nickl~\cite{konennickl2026} prove a functional Bernstein von Mises theorem for the posterior of the trajectory of the two dimensional Navier Stokes equations on the torus, with root $N$ consistent prediction of future states in the supremum norm, for a Gaussian prior on the initial condition and $N$ noisy observations at uniformly random points of space and time. We know of no corresponding result for sensors at fixed locations or for other priors. Determine the posterior contraction rate for the initial vorticity from noisy point observations at a fixed array of sensors and times, in terms of the number of sensors, the number of times and the noise level, and identify the functionals of the initial vorticity that admit a Bernstein von Mises theorem. A companion question is whether the posterior of the initial vorticity can be computed in time polynomial in the data size and the dimension; Section~\ref{sec:gradstab} records what is known.
 \end{problem}
 
-\begin{problem}[Blowup]
+\begin{problem}[Blowup]\label{prob:blowup}%
 Fix a finite horizon and a computable blowup criterion, for example that a norm of the solution of a Galerkin truncation of the equations exceeds a threshold before the horizon. Construct a prior on initial data and forcing for three dimensional Navier Stokes and a sequence of numerical solvers such that the posterior probability of this event is consistent, that is, converges to its true value as the resolution and the amount of data increase, and quantify how the event approximates finite time blowup of the exact solution. Consistency for the blowup of the exact solution itself, under either hypothesis, would require deciding the regularity of the data near the truth, which is the regularity problem.
 \end{problem}
 
-\begin{problem}[Onsager]
+\begin{problem}[Onsager]\label{prob:onsager}%
 This is a program. At finite Reynolds number the velocity field is smooth, so a H\"older exponent has to be defined through an inertial range statement, such as the scaling $S_p(\ell)\propto\ell^{\zeta_p}$ of the structure functions. Develop a joint posterior for the exponents $\zeta_p$ and the inertial range from measured velocity increments, and use it to ask whether laboratory and numerical data concentrate at, above or below the exponents $\zeta_p = p/3$ of Kolmogorov and Onsager.
 \end{problem}
 
-\begin{problem}[Phase transitions]
+\begin{problem}[Phase transitions]\label{prob:phase_transitions}%
 Chapter~\ref{ch:spins} records what is known for the planted clique problem with a known clique size $k$ in the graph $G(n,\frac12)$: approximate message passing succeeds for $k\geq(1+\varepsilon)\sqrt{n/e}$, and from a suitable starting state the Metropolis process cannot find a planted clique of size $k = n^{1/2-\varepsilon}$ in polynomial time. Take as samplers of the posterior over clique locations either Glauber dynamics on vertex sets of size $k$, or Langevin dynamics for a continuous relaxation of the clique indicator, in both cases initialized from the prior. Determine whether such samplers have a computational phase transition at $k = \sqrt{n/e}$, in the sense that they succeed in polynomial time above $(1+\varepsilon)\sqrt{n/e}$ and fail below $(1-\varepsilon)\sqrt{n/e}$.
 \end{problem}
 
-\begin{problem}[Transport]
+\begin{problem}[Transport]\label{prob:transport}%
 Prove convergence rates for generative Bayesian computation via learned Schr\"odinger bridges in terms of the entropic regularization, the number of simulations and the smoothness of the posterior. Rates in the sample size are known for the entropic optimal transport cost estimated from samples, by Genevay, Chizat, Bach, Cuturi and Peyr\'e~\cite{genevay2019} and by Mena and Niles Weed~\cite{menaniles2019}. The problem concerns the learned bridge as an estimator of the posterior.
 \end{problem}
 
-\begin{problem}[Thermodynamics of inference]
+\begin{problem}[Thermodynamics of inference]\label{prob:thermodynamics_of_inference}%
 The Landauer bound (Theorem~\ref{thm:landauer}) bounds the heat dissipated by a physical process in terms of the entropy removed, and the Sagawa Ueda inequality of Chapter~\ref{ch:kolmogorov} bounds the work in terms of the mutual information acquired. For a Bayesian update from a prior $\mu_0$ to the posterior $\mu_y$, prove a lower bound on the heat dissipated by any physical implementation in terms of $\KL(\mu_y\|\mu_0)$ and the information erased, and compare it with the dissipation of Langevin samplers.
 \end{problem}
 
-\begin{problem}[The bridge]
+\begin{problem}[The bridge]\label{prob:bridge}%
 This is a program whose goal is the Riemann hypothesis, which is equivalent to $\Lambda\leq0$. Newman's theorem (Chapter~\ref{ch:mixtures}) produces laws with the Lee Yang property from independent single spin laws with that property by ferromagnetic couplings. Decide whether the P\'olya law is the weak limit of a sequence of laws of random variables $X_n$ obtained by such constructions from Ising spins and uniform laws, with $\sup_n\E e^{c|X_n|}<\infty$ for every $c>0$, which is the control that carries the Lee Yang property to the limit by Hurwitz's theorem. A construction would prove the Riemann hypothesis by Proposition~\ref{prop:polyaleeyang}, and a proof that none exists would show that this route to the hypothesis is closed.
 \end{problem}
 
