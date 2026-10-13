@@ -399,6 +399,17 @@
    "verified_fingerprint": "b8754d8babd9",
    "verified_on": "2026-10-12"
   },
+  "exactness_of_the_particle_learning_step": {
+   "environment": "proposition",
+   "file": "source/chapters/ext/ch14_pl.tex",
+   "fingerprint": "52ae1e71108c",
+   "label": "prop:pl_exact",
+   "number": "20.5",
+   "page": "415",
+   "printed": "Proposition 20.5",
+   "verified_fingerprint": "52ae1e71108c",
+   "verified_on": "2026-10-13"
+  },
   "expected_utility_form_of_the_bernstein_von_mises_limit": {
    "environment": "proposition",
    "file": "source/chapters/ext/m2a.tex",
@@ -652,17 +663,6 @@
    "verified_fingerprint": "b8d61f26d3b6",
    "verified_on": "2026-10-12"
   },
-  "posterior_on_the_solution_manifold": {
-   "environment": "proposition",
-   "file": "source/chapters/ch01_hilbert.tex",
-   "fingerprint": "48957615291c",
-   "label": "prop:solution_manifold",
-   "number": "1.1",
-   "page": "7",
-   "printed": "Proposition 1.1",
-   "verified_fingerprint": "48957615291c",
-   "verified_on": "2026-10-12"
-  },
   "preliminary_estimates_rate_in_h_minus_one": {
    "environment": "lemma",
    "file": "source/chapters/ext/m2a.tex",
@@ -872,17 +872,6 @@
    "verified_fingerprint": "1ad6355cac85",
    "verified_on": "2026-10-12"
   },
-  "the_gain_of_the_score_function_filter": {
-   "environment": "proposition",
-   "file": "source/chapters/ch14_filters.tex",
-   "fingerprint": "5780a6394f7a",
-   "label": "prop:gates_bayes",
-   "number": "20.8",
-   "page": "421",
-   "printed": "Proposition 20.8",
-   "verified_fingerprint": "5780a6394f7a",
-   "verified_on": "2026-10-12"
-  },
   "the_gram_matrix_of_the_whitened_weights": {
    "environment": "lemma",
    "file": "source/chapters/ext/m3c.tex",
@@ -1038,7 +1027,7 @@
    "verified_on": "2026-10-12"
   }
  },
- "updated": "2026-10-12",
+ "updated": "2026-10-13",
  "zenodo": {
   "concept_doi": "10.5281/zenodo.23327514",
   "doi": "10.5281/zenodo.23327515",

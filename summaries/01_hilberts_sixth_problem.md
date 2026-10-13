@@ -12,10 +12,10 @@ Hilbert's problem list (Hilbert 1900); the Hilbert expansion (Hilbert 1912); Hil
 
 ## New results
 
-The text calls Proposition 1.1 elementary.
+The text calls Proposition 1.1 elementary: its proof is Lusin's theorem on analytic sets and the change of variables formula, so it is not listed as a new result. The phrase solution manifold and the program of inferring the initial condition before simulating forward are the authors', developed in Part IV.
 
 <!-- results:begin -->
-- [Posterior on the solution manifold](../RESULTS.md#posterior_on_the_solution_manifold) (Proposition 1.1, page 7; proved): For a dynamical system on a Polish space whose trajectory map is Borel measurable, the posterior over initial states given noisy observations, pushed forward along the flow, puts probability one on the set of exact trajectories (the solution manifold), so posterior averages of path functionals are averages of exact solutions. New in this book.
+No new results of this chapter are catalogued.
 <!-- results:end -->
 
 ## Key terms
