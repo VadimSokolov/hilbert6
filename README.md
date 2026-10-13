@@ -70,7 +70,7 @@ All 75 catalogued results, with statements and status, are in [RESULTS.md](RESUL
 - `source/`: the LaTeX source, bibliography included; the macros are defined in `source/main.tex`.
 - `source/code/`: the code that computes the figures and tables.
 - `RESULTS.md` and `summaries/`: the catalog of results and one summary per chapter.
-- `site/`: what the book's web page is built from: `book.json` with every fact and result, the page in Markdown, its head tags and its `llms.txt` section.
+- `site/`: what the book's web pages are built from: `book.json` with every fact and result, the book page and the page of the results by chapter in Markdown, their head tags and the book's `llms.txt` section.
 - Book page: https://vsokolov.org/books/hilbert6/
 - Printed edition: https://www.amazon.com/dp/B0HMV1WFRD
 
