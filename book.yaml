@@ -28,7 +28,7 @@ license_code: MIT
 repository: https://github.com/VadimSokolov/hilbert6   # the public repository; its name is the slug
 site_page: https://vsokolov.org/books/hilbert6/    # the book page on the website; the PDF is served next to it
 language: en
-print_url: ""                    # where to buy the printed book (optional)
+print_url: https://www.amazon.com/dp/B0HMV1WFRD   # where to buy the printed book (optional); the Amazon page, never the ISBN
 cover_image: pdf/cover.jpg               # front cover image (PNG or JPEG, about 1600 px tall) in the repository, e.g. pdf/cover.png
 pdf: pdf/hilbert6.pdf              # the released PDF; bookrepo.py pdf copies the build here
 keywords:                        # 5 to 12 search terms

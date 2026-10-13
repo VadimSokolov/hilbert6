@@ -2,7 +2,7 @@
 
 By Nick Polson and [Vadim Sokolov](https://orcid.org/0000-0002-6618-2965).
 
-[PDF](https://github.com/VadimSokolov/hilbert6/releases/download/v1.0.0/hilbert6.pdf) (548 pages, 6.3 MB), [source on GitHub](https://github.com/VadimSokolov/hilbert6/tree/v1.0.0), [Zenodo](https://zenodo.org/records/23327515)
+[PDF](https://github.com/VadimSokolov/hilbert6/releases/download/v1.0.0/hilbert6.pdf) (548 pages, 6.3 MB), [paperback on amazon.com](https://www.amazon.com/dp/B0HMV1WFRD), [source on GitHub](https://github.com/VadimSokolov/hilbert6/tree/v1.0.0), [Zenodo](https://zenodo.org/records/23327515)
 
 ## Description
 
