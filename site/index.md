@@ -2,7 +2,7 @@
 
 By Nick Polson and [Vadim Sokolov](https://orcid.org/0000-0002-6618-2965).
 
-[![PDF](https://vsokolov.org/books/icon-pdf.svg)](https://github.com/VadimSokolov/hilbert6/releases/download/v1.0.1/hilbert6.pdf "PDF") [![Source on GitHub](https://vsokolov.org/books/icon-github.svg)](https://github.com/VadimSokolov/hilbert6/tree/v1.0.1 "Source on GitHub") [![Paperback, available at Amazon](https://vsokolov.org/books/available-at-amazon.png)](https://www.amazon.com/dp/B0HMV1WFRD "Paperback on Amazon")
+[![PDF](https://vsokolov.org/books/icon-pdf.svg)](https://github.com/VadimSokolov/hilbert6/releases/download/v1.0.1/hilbert6.pdf "PDF") [![Source on GitHub](https://vsokolov.org/books/icon-github.svg)](https://github.com/VadimSokolov/hilbert6/tree/v1.0.1 "Source on GitHub") [![DOI 10.5281/zenodo.23407620](https://zenodo.org/badge/DOI/10.5281/zenodo.23407620.svg)](https://doi.org/10.5281/zenodo.23407620) [![Paperback, available at Amazon](https://vsokolov.org/books/available-at-amazon.png)](https://www.amazon.com/dp/B0HMV1WFRD "Paperback on Amazon")
 
 ## Description
 
