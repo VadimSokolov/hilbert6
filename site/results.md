@@ -1,6 +1,6 @@
 # Results by chapter <small>On Hilbert's 6th Problem</small>
 
-The results of [On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation](https://vsokolov.org/books/hilbert6/) that are new in the book, that come from the authors' own papers, or that correct one of those papers, as the book states them: 88 entries (59 proved, 11 conditional, 17 open, 1 counterexample). Results of other authors that the book presents are credited in the [chapter summaries](https://github.com/VadimSokolov/hilbert6/tree/main/summaries).
+The results of [On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation](https://vsokolov.org/books/hilbert6/) that are new in the book, that come from the authors' own papers, or that correct one of those papers, as the book states them: 92 entries (59 proved, 11 conditional, 21 open, 1 counterexample). Results of other authors that the book presents are credited in the [chapter summaries](https://github.com/VadimSokolov/hilbert6/tree/main/summaries).
 
 Status: proved; conditional (proved assuming the named statements, which the book does not prove); open (stated as an open question); counterexample (a proved counterexample); withdrawn (found wrong after release; the entry says what was wrong and which version corrects it).
 
@@ -16,7 +16,7 @@ Status: proved.
 
 Statement. For $b>0$ and $c\in\mathbb{R}$, the Pólya Gamma law $PG(b,c)$ is the law of $\omega=\frac{1}{2\pi^2}\sum_{k=1}^\infty \frac{g_k}{(k-\frac12)^2+c^2/(4\pi^2)}$, where $g_1,g_2,\dots$ are independent Gamma variables with shape $b$ and unit rate. Let $p(\cdot\mid b,0)$ be the density of $PG(b,0)$. Then for all $b>0$, $a\in\mathbb{R}$ and $\psi\in\mathbb{R}$, $\frac{(e^{\psi})^a}{(1+e^{\psi})^b}=2^{-b}e^{(a-b/2)\psi}\int_0^\infty e^{-\omega\psi^2/2}\,p(\omega\mid b,0)\,\mathrm{d}\omega$. Moreover, the conditional law of $\omega$ given $\psi$, that is the law with density proportional to $e^{-\omega\psi^2/2}p(\omega\mid b,0)$ in $\omega$, is $PG(b,\psi)$.
 
-Source: [`source/chapters/ch05_mixtures.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch05_mixtures.tex), label `thm:pg_identity`.
+Source: [`source/chapters/ch05_mixtures.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch05_mixtures.tex), label `thm:pg_identity`.
 
 <a id="horseshoe_density_bounds"></a>
 
@@ -28,7 +28,7 @@ Status: proved.
 
 Statement. Let $\theta\mid\lambda\sim N(0,\lambda^2)$ with $\lambda$ half Cauchy $C^+(0,1)$ (the horseshoe prior with global scale $\tau=1$). The marginal density of $\theta$ is $p(\theta)=K\,e^{\theta^2/2}E_1(\theta^2/2)$, where $K=1/\sqrt{2\pi^3}$ and $E_1(x)=\int_x^\infty s^{-1}e^{-s}\,\mathrm{d}s$ is the exponential integral, and it satisfies, for all $\theta\neq0$, $\frac K2\log\big(1+\frac4{\theta^2}\big)<p(\theta)<K\log\big(1+\frac2{\theta^2}\big)$. In particular $p$ has a logarithmic pole at zero and tails of order $\theta^{-2}$.
 
-Source: [`source/chapters/ext/ch05.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/ch05.tex), label `thm:horseshoe_bounds`.
+Source: [`source/chapters/ext/ch05.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/ch05.tex), label `thm:horseshoe_bounds`.
 
 ## Chapter 12. Navier Stokes as Inference on the Solution Manifold
 
@@ -44,7 +44,7 @@ Statement. Let $\nu,T,L>0$. Let $\mathbb{T}^2=(\mathbb{R}/2\pi\mathbb{Z})^2$, le
 $\big\|v^\top\nabla\mathcal{G}(\theta)\big\|_{L^2(\mathcal{X})}\ge c\,D^{-1/2}\,|v|$
 for every $D\ge1$, every $v\in\mathbb{R}^D$ and every $\theta\in\mathbb{R}^D$ with $\big\|\sum_{k\le D}\theta_ke_k\big\|_{\dot H^{2}_\diamond}\le L$. Here $v^\top\nabla\mathcal{G}(\theta)=\sum_{k\le D}v_k\,\partial\mathcal{G}(\theta)/\partial\theta_k$ is the derivative of $\mathcal{G}$ at $\theta$ in the direction $v$ and $|v|$ is the Euclidean norm.
 
-Source: [`source/chapters/ext/ch10_nw.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/ch10_nw.tex), label `prop:gs_ns`.
+Source: [`source/chapters/ext/ch10_nw.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/ch10_nw.tex), label `prop:gs_ns`.
 
 <a id="bernstein_von_mises_for_generators"></a>
 
@@ -58,7 +58,7 @@ Statement. Let $\Pi_n(\cdot\mid y)$ be posterior distributions of a parameter $\
 $d_{BL}\big(\tilde\Pi_n,N(0,\sigma^2)\big)\to0$ and $d_{BL}\big(\tilde G_n,\tilde\Pi_n\big)\to0.$
 Then $d_{BL}\big(\tilde G_n,N(0,\sigma^2)\big)\to0$ in probability: the generated law satisfies the same Bernstein von Mises theorem as the posterior.
 
-Source: [`source/chapters/ch10_ns_inference.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch10_ns_inference.tex), label `prop:bvm_generators`.
+Source: [`source/chapters/ch10_ns_inference.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch10_ns_inference.tex), label `prop:bvm_generators`.
 
 ## Chapter 14. The Inverse Problem on the Solution Manifold
 
@@ -72,7 +72,7 @@ Status: proved.
 
 Statement. Work in the setting of Theorem 1 of Nickl (2024), the Bernstein von Mises theorem for forward trajectories: $\Omega=[0,1]^d$ is the $d$ dimensional torus with $d\le3$, $T>0$, $f\in C_c^\infty(\mathbb{R})$, $\theta_0$ is a smooth initial condition, $u_\theta$ is the solution of $\partial_tu-\Delta u=f(u)$, $u(0)=\theta$, which is observed with standard normal noise at design points uniform on $[0,T]\times\Omega$, and $\theta$ has the rescaled Gaussian series prior of Theorem 1 of Nickl (2024), of integer regularity $\gamma>2+3d$. Let $\mathbb{I}_{\theta_0}$ be the linearization of $\theta\mapsto u_\theta$ at $\theta_0$, $\mathbb{I}_{\theta_0}^*$ its adjoint with respect to Lebesgue measure on $\Omega$ and on $[0,T]\times\Omega$, and $\mathcal{N}_{\theta_0}=N(0,T(\mathbb{I}_{\theta_0}^*\mathbb{I}_{\theta_0})^{-1})$ the Gaussian limit of the posterior of $\theta$. Let $0<t_{\min}<t_{\max}<\infty$, let $\mathscr{C}=C([t_{\min},t_{\max}],C(\Omega))$ with the supremum norm, and let $\mu$ be the law in $\mathscr{C}$ of the solution $U$ of $\partial_tU-\Delta U-f'(u_{\theta_0})U=0$ with $U(0)=\vartheta\sim\mathcal{N}_{\theta_0}$. Then the reproducing kernel Hilbert space of the Gaussian measure $\mu$ is a nontrivial linear subspace of $\mathscr{C}$, and $r\mapsto\mu(\|U\|_{\mathscr{C}}\le r)$ is continuous and strictly increasing on $[0,\infty)$.
 
-Source: [`source/chapters/ext/m1a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m1a.tex), label `m:lem:nondeg`.
+Source: [`source/chapters/ext/m1a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m1a.tex), label `m:lem:nondeg`.
 
 <a id="manifold_gain_for_the_heat_equation"></a>
 
@@ -87,7 +87,7 @@ Statement. Consider the heat equation $\partial_tu=\nu\Delta u$ with viscosity $
 (ii) the unconstrained posterior standard deviation is $\big(\sum_{k,m}(N/\varsigma^2+\sigma_{0,km}^{-2})^{-1}\big)^{1/2}$, independent of $(t,x)$, and its effective number of parameters, $\#\{(k,m):N\sigma_{0,km}^2\ge\varsigma^2\}$, is of order $N^{(d+1)/(2\alpha)}$ as $N\to\infty$;
 (iii) the ratio of the unconstrained to the constrained standard deviation at time $t$ is at least $e^{\nu\lambda_1t}$ times its value at $t=0$, so it grows without bound as $t$ increases, at the rate at which the manifold contracts.
 
-Source: [`source/chapters/ext/m1a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m1a.tex), label `m:prop:gain`.
+Source: [`source/chapters/ext/m1a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m1a.tex), label `m:prop:gain`.
 
 ## Chapter 15. Adjoint Sufficient Statistics
 
@@ -101,7 +101,7 @@ Status: proved.
 
 Statement. Let $(e_j)$ be an orthonormal basis of $L^2(\Omega)$, let $S_t$ be a strongly continuous semigroup on $L^2(\Omega)$ with $S_te_j=s_j(t)e_j$ and generator $A$, let $(t_i,x_i)\in[0,T]\times\Omega$ and $Y_i\in\mathbb{R}$ for $i\le N$, let $\Phi_{ij}=s_j(t_i)e_j(x_i)$ ($i\le N$, $j\le D$) be the design matrix, so that $(\Phi^\top Y)_j=\sum_{i\le N}Y_is_j(t_i)e_j(x_i)$, and let $r=\sum_{i\le N}Y_i\,\delta_{t_i}\otimes\delta_{x_i}$ be the empirical data measure on $[0,T]\times\Omega$. Then for every $h=\sum_jh_je_j\in\operatorname{span}\{e_j:j\le D\}$, $\langle\Phi^\top Y,h\rangle_{\mathbb{R}^D}=\sum_{i=1}^NY_i\,(S_{t_i}h)(x_i)=\big\langle h,\int_0^TS_t^*r(t)\,\mathrm{d}t\big\rangle$, so that $\Phi^\top Y$ is the coefficient vector of $w(0)$, where $w$ is the mild solution of the backward problem $-\partial_sw=A^*w+r$, $w(T)=0$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:lem:adjoint`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:lem:adjoint`.
 
 <a id="exact_sufficiency_linear_case"></a>
 
@@ -113,7 +113,7 @@ Status: proved.
 
 Statement. Consider the linear model $Y=\Phi\theta+\varepsilon$ with $\theta\in\mathbb{R}^D$, design matrix $\Phi_{ij}=s_j(t_i)e_j(x_i)$ ($i\le N$, $j\le D$, where $S_te_j=s_j(t)e_j$ for a semigroup that is diagonal in the basis $(e_j)$), noise $\varepsilon\sim N(0,\mathrm{Id}_N)$ and Gaussian prior $\theta\sim N(0,\Sigma_0)$. Let $S_N=\Phi^\top Y$ be the adjoint statistic (the coefficient vector of $w(0)$, where $w$ solves the backward adjoint problem driven by the data) and $V_N=(\Phi^\top\Phi+\Sigma_0^{-1})^{-1}$. Then $S_N$ together with the design is sufficient for $\theta$; the posterior given $S_N$ is exactly the posterior given all the data, namely $N(V_NS_N,V_N)$; and the conditional quantile map is exactly affine: for each coordinate $j$ and $\tau\in(0,1)$, $Q_j(\tau\mid S_N)=(V_NS_N)_j+z_\tau(V_N)_{jj}^{1/2}$, where $z_\tau$ is the $\tau$ quantile of the standard normal law. The slope of this map in $S_N$ is $V_N$, not the identity. For the preconditioned summary $\tilde S_N=V_NS_N$, which is the posterior mean, the map $\tilde S_N\mapsto Q_j(\tau\mid S_N)$ has slope exactly one and, apart from the data independent scale term $z_\tau(V_N)_{jj}^{1/2}$, intercept zero. Consequently generative Bayesian computation (GBC) with summary $\tilde S_N$ and an identity plus scale generator is exact for every $N$, up to the estimation of the $D\times D$ scale from $M$ simulations; in the linear model that scale is $V_N$ itself and is known in closed form.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:prop:linsuff`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:prop:linsuff`.
 
 <a id="equivalence_with_the_efficient_centering"></a>
 
@@ -131,7 +131,7 @@ The one step efficient score summary is defined by cross fitting. The sample is 
 
 Suppose further that $\sqrt N\,\tilde\delta_N(0)\tilde\delta_N(\zeta)\to0$; that $\gamma<(\bar\gamma+1)(\kappa-d/2)$ unless $\mathbb{I}^*_{\theta_0}\mathbb{I}_{\theta_0}$ is diagonal in $(e_j)$ or the preliminary estimates converge at the rate $\delta_N$ in $H^{-1}$; and that the weights depend on the linearization point in a Lipschitz way: for every $B>0$ there is $L=L(B)$ such that for all $\vartheta$ with $\|\vartheta\|_{H^{\bar\gamma}}\le B$ and all $j\le J_N$, $\|\mathbb{I}_\vartheta p_N(\bar e_j^{\,\vartheta})-\mathbb{I}_{\theta_0}p_N(\bar e_j^{\,\theta_0})\|_{L^2(\mathcal X)}\le L\,\|\vartheta-\theta_0\|_{H^\zeta}\|e_j\|_{H^{\kappa+2}}$. Then $\sqrt N\,\|\hat S^{J_N}_N-\hat\theta_N\|_{H^{-k-2}}\to0$ in $P^N_{\theta_0}$ probability, and consequently $\mathscr{W}_1\big(\operatorname{Law}(\sqrt N(\theta-\hat S^{J_N}_N)\mid Z^{(N)}),\mathcal{N}_{\theta_0}\big)\to0$ in $P^N_{\theta_0}$ probability, where $\mathscr{W}_1$ is the Wasserstein distance of order one on $H^{-k-2}$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:prop:suff`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:prop:suff`.
 
 <a id="the_summary_in_sobolev_norms"></a>
 
@@ -143,7 +143,7 @@ Status: proved.
 
 Statement. In Nickl's framework, for the cross fitted one step efficient score summary of the book (torus $\Omega=[0,1]^d$, data $Y_i=\mathscr{G}(\theta_0)(X_i)+\varepsilon_i$ at the true initial condition $\theta_0$ with $X_i$ i.i.d. uniform on $\mathcal X=[0,T]\times\Omega$ and $\varepsilon_i\sim N(0,I_W)$, orthonormal Laplace eigenbasis $(e_j)$ with eigenvalues $\lambda_j\asymp j^{2/d}$, rescaled Gaussian series prior with exponent $\gamma$ and $\delta_N=N^{-\gamma/(2\gamma+d)}$, $J_N\asymp N\delta_N^2$, $p_N$ the projection onto the first $J_N$ modes, $\mathbb{I}_\vartheta$ the linearization of $\mathscr{G}$ at $\vartheta$, $\tilde\delta_N(\xi)=\delta_N^{(\bar\gamma-\xi)/(\bar\gamma+1)}$), suppose that Conditions 1 and 2 of Nickl (2024) hold (the prior and, for the forward map on balls of $H^{\bar\gamma}$, uniform bounds, a linearization at $\theta_0$ with quadratic remainder, the stability estimate $\|\mathscr{G}(\theta)-\mathscr{G}(\theta_0)\|_{L^2(\mathcal X)}\ge c\|\theta-\theta_0\|_{H^{-1}}$ and an invertible information operator). Suppose that for every $B>0$ there are constants $0<c_B\le C_B<\infty$ such that for every $\vartheta$ in the parameter space with $\|\vartheta\|_{H^{\bar\gamma}}\le B$, $c_B\|h\|_{H^{-1}}\le\|\mathbb{I}_\vartheta h\|_{L^2(\mathcal X)}\le C_B\|h\|_{H^{-1}}$ for all $h\in L^2_0(\Omega)$ (with $\dot H^{-1}_\diamond$ and $\dot H_\diamond$ in place of $H^{-1}$ and $L^2_0(\Omega)$ for the Stokes and Navier Stokes equations), and that the preliminary estimates $\bar\theta^{[b]}_N$ of the cross fitted one step summary (each computed from one half sample alone, with values in the parameter space and $\|\bar\theta^{[b]}_N-\theta_0\|_{H^\xi}=O_P(\tilde\delta_N(\xi))$ for $0\le\xi\le\bar\gamma$) satisfy $\|\bar\theta^{[b]}_N-\theta_0\|_{H^{-1}}=O_P(\delta_N)$ for $b=1,2$. Then the projected one step statistic $\hat S^{J_N}_N$ satisfies $\|\hat S^{J_N}_N-\theta_0\|_{H^s}=O_P\big(N^{(s+1-\gamma)/(2\gamma+d)}\big)$ for every $-1\le s\le\gamma$. If moreover $\bar\gamma<\gamma-1$, then $\|\hat S^{J_N}_N-\theta_0\|_{L^2}=o_P(\tilde\delta_N(0))$ and $\|\hat S^{J_N}_N-\theta_0\|_{H^{\bar\gamma}}=o_P(1)$. For a linear forward map whose information operator is diagonal in $(e_j)$, as for the heat and Stokes equations, the same conclusions hold without the rate in $H^{-1}$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:prop:sumrate`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:prop:sumrate`.
 
 <a id="preliminary_estimates_rate_in_h_minus_one"></a>
 
@@ -155,7 +155,7 @@ Status: proved.
 
 Statement. In Nickl's framework (data $Y_i=\mathscr{G}(\theta_0)(X_i)+\varepsilon_i$ at the true initial condition $\theta_0$ on $\mathcal X=[0,T]\times\Omega$ with uniform design and standard Gaussian noise, rescaled Gaussian series prior with exponent $\gamma$ and $\delta_N=N^{-\gamma/(2\gamma+d)}$, $\tilde\delta_N(\xi)=\delta_N^{(\bar\gamma-\xi)/(\bar\gamma+1)}$), suppose that Conditions 1 and 2 of Nickl (2024) hold with $\gamma$ and $k$ as in his Bernstein von Mises theorem, and that $\bar\gamma<\gamma-d/2$. Let $\bar\theta^{[b]}_N$ be computed from the half sample $Z^{[b]}$ alone, with values in the parameter space and $\|\bar\theta^{[b]}_N\|_{H^{\bar\gamma}}=O_P(1)$. If $\|u_{\bar\theta^{[b]}_N}-u_{\theta_0}\|_{L^2(\mathcal X)}=O_P(\delta_N)$, then $\|\bar\theta^{[b]}_N-\theta_0\|_{H^{-1}}=O_P(\delta_N)$, and this rate in $H^{-1}$ implies $\|\bar\theta^{[b]}_N-\theta_0\|_{H^\xi}=O_P(\tilde\delta_N(\xi))$ for every $-1\le\xi\le\bar\gamma$. The posterior mean computed from $Z^{[b]}$ with the prior at the sample size of that half satisfies the rate in $H^{-1}$ and these rates; for the two dimensional Navier Stokes equations this holds in the setting of Theorem 2.11 of Konen and Nickl (2026) when $\bar\gamma\le11$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:lem:halfmean`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:lem:halfmean`.
 
 <a id="summary_sobolev_rate_under_centering_hypotheses"></a>
 
@@ -167,7 +167,7 @@ Status: proved.
 
 Statement. Assume all hypotheses of the equivalence of the one step efficient score summary $\hat S^{J_N}_N$ with the efficient centering $\hat\theta_N$ (catalog entry equivalence_with_the_efficient_centering): Conditions 1 and 2 of Nickl (2024) with $\gamma$ and $k$ as in his Bernstein von Mises theorem; $2d+\zeta<\kappa<k-d/2$; $\sqrt N\,\tilde\delta_N(0)\tilde\delta_N(\zeta)\to0$ with $\tilde\delta_N(\xi)=\delta_N^{(\bar\gamma-\xi)/(\bar\gamma+1)}$ and $\delta_N=N^{-\gamma/(2\gamma+d)}$; $\gamma<(\bar\gamma+1)(\kappa-d/2)$ unless $\mathbb{I}^*_{\theta_0}\mathbb{I}_{\theta_0}$ is diagonal in the Laplace eigenbasis $(e_j)$ or the preliminary estimates converge at the rate $\delta_N$ in $H^{-1}$; and the Lipschitz dependence of the weights on the linearization point, $\|\mathbb{I}_\vartheta p_N(\bar e_j^{\,\vartheta})-\mathbb{I}_{\theta_0}p_N(\bar e_j^{\,\theta_0})\|_{L^2(\mathcal X)}\le L(B)\|\vartheta-\theta_0\|_{H^\zeta}\|e_j\|_{H^{\kappa+2}}$ for all $\|\vartheta\|_{H^{\bar\gamma}}\le B$ and $j\le J_N$, where $\bar e_j^{\,\vartheta}=T(\mathbb{I}_\vartheta^*\mathbb{I}_\vartheta)^{-1}e_j$. Then for every $-1\le s\le\gamma$, $\|\hat S^{J_N}_N-\theta_0\|_{H^s}=O_P\big(N^{(s+1-\gamma)/(2\gamma+d)}\big)+o_P\big(N^{(s+k+2)/(2\gamma+d)-1/2}\big)$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:cor:sumsuff`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:cor:sumsuff`.
 
 <a id="the_information_operator_of_the_reaction_diffusion_class"></a>
 
@@ -179,7 +179,7 @@ Status: proved.
 
 Statement. Consider the reaction diffusion equation $\partial_tu-\Delta u=f(u)$, $u(0)=\theta$, on the torus $\Omega=[0,1]^d$ with $f\in C_c^\infty(\mathbb{R})$ and $d\le3$ (the class of Theorem 1 of Nickl (2024)), with smooth true initial condition $\theta_0$, $\zeta>d/2$ an index for which his Condition 2D holds, solution map $\mathscr{G}$, linearization $\mathbb{I}_\vartheta$ at $\vartheta$, parameter space the Sobolev space $H^{\bar\gamma}$ with $\bar\gamma>3+d/2$ (Theorem 5 of Nickl (2024) verifies his Condition 2 for this class), and $\mathcal X=[0,T]\times\Omega$. Let $\mathcal{L}$ be the solution operator of the heat equation $\partial_tu=\Delta u$ and $\mathcal{K}_\vartheta=\mathbb{I}_\vartheta^*\mathbb{I}_\vartheta-\mathcal{L}^*\mathcal{L}$, both compressed to $L^2_0(\Omega)$. For every $B>0$ there is a constant $C$, depending on $B$, $f$, $T$ and $d$, such that for all $\vartheta$ and $\vartheta+h$ with $H^{\bar\gamma}$ norms at most $B$: (i) $|\langle\mathcal{K}_\vartheta\phi,\psi\rangle|\le C\|\phi\|_{H^{-1}}\|\psi\|_{H^{-3}}$ for $\phi,\psi\in L^2_0(\Omega)$, so that the symmetric operator $\mathcal{K}_\vartheta$ extends to maps from $H^{-1}_0$ to $H^3_0$ and from $H^{-3}_0$ to $H^1_0$ with norms at most $C$; (ii) $\|\mathscr{G}(\vartheta+h)-\mathscr{G}(\vartheta)-\mathbb{I}_\vartheta h\|_{L^2(\mathcal X)}\le C\|h\|_{L^2}^2$; (iii) the weights of the one step summary satisfy the Lipschitz condition $\|\mathbb{I}_\vartheta p_N(\bar e_j^{\,\vartheta})-\mathbb{I}_{\theta_0}p_N(\bar e_j^{\,\theta_0})\|_{L^2(\mathcal X)}\le L\,\|\vartheta-\theta_0\|_{H^\zeta}\|e_j\|_{H^{\kappa+2}}$ for every $\kappa\ge-1$, with $\bar e_j^{\,\vartheta}=T(\mathbb{I}_\vartheta^*\mathbb{I}_\vartheta)^{-1}e_j$, $p_N$ the projection onto the first $J_N$ Laplace eigenfunctions $e_j$, and $L$ depending on $B$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:lem:rdinfo`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:lem:rdinfo`.
 
 <a id="the_summary_in_sobolev_norms_reaction_diffusion"></a>
 
@@ -191,7 +191,7 @@ Status: proved.
 
 Statement. In the setting of the information operator lemma for the reaction diffusion class (the equation $\partial_tu-\Delta u=f(u)$ with $f\in C_c^\infty(\mathbb{R})$, $d\le3$, parameter space $H^{\bar\gamma}$ with $\bar\gamma>3+d/2$, Conditions 1 and 2 of Nickl (2024) as verified in his Theorem 5, integer exponent $\gamma>2+3d$ of the rescaled Gaussian series prior, smooth true initial condition $\theta_0$, $\delta_N=N^{-\gamma/(2\gamma+d)}$, $J_N\asymp N\delta_N^2$) let $\bar\gamma<\gamma-1$. Then for every choice of the preliminary estimates that the definition of the cross fitted one step summary allows (computed on each half sample, with values in the parameter space and $\|\bar\theta^{[b]}_N-\theta_0\|_{H^\xi}=O_P(\tilde\delta_N(\xi))$ for $0\le\xi\le\bar\gamma$, $\tilde\delta_N(\xi)=\delta_N^{(\bar\gamma-\xi)/(\bar\gamma+1)}$), the projected one step statistic satisfies $\|\hat S^{J_N}_N-\theta_0\|_{L^2}=o_P(\tilde\delta_N(0))$ and $\|\hat S^{J_N}_N-\theta_0\|_{H^{\bar\gamma}}=o_P(1)$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:prop:sumrd`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:prop:sumrd`.
 
 <a id="the_regularized_summary_on_modes_heat_and_stokes"></a>
 
@@ -205,7 +205,7 @@ Statement. Let $\mathscr{G}$ be the solution map of the heat equation $\partial_
 
 (i) $\sqrt N\|\hat S^{\rm reg}_N-\hat\theta_N\|_{H^{-k-2}}\to0$ in probability; (ii) $\mathscr{W}_1\big(\operatorname{Law}(\sqrt N(\theta-\hat S^{\rm reg}_N)\mid Z^{(N)}),\mathcal{N}_{\theta_0}\big)\to0$ in probability for $\theta\sim\Pi^D(\cdot\mid Z^{(N)})$; (iii) $\sqrt N(\hat S^{\rm reg}_N-\theta_0)\to\mathcal{N}_{\theta_0}$ in distribution in $H^{-k-2}$; (iv) for the heat equation with integer $\gamma>3d+2$ and $k>3d$, Nickl's Bernstein von Mises theorem applies, (ii) holds also for $\theta$ drawn from the posterior $\Pi_N$ under the untruncated prior, and the mean $\tilde\theta_N$ of $\Pi_N$ satisfies $\sqrt N\|\hat S^{\rm reg}_N-\tilde\theta_N\|_{H^{-k-2}}\to0$ in probability; (v) for the heat equation, whenever the hypotheses of the equivalence of the cross fitted one step summary $\hat S^{J_N}_N$ with the efficient centering hold (catalog entry equivalence_with_the_efficient_centering), $\sqrt N\|\hat S^{\rm reg}_N-\hat S^{J_N}_N\|_{H^{-k-2}}\to0$ in probability.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:prop:regheat`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:prop:regheat`.
 
 <a id="regularized_summary_fixed_prior_untruncated_posteriors"></a>
 
@@ -219,7 +219,7 @@ Statement. Let the setting be that of the regularized summary on $D=D_N$ modes f
 
 For the rescaled prior $\sigma_{0,j}^2=\lambda_j^{-\gamma}/(N\delta_N^2)$, $\delta_N=N^{-\gamma/(2\gamma+d)}$, $\gamma>d+1$, of the regularized summary on $J_N$ modes (catalog entry the_regularized_summary_on_modes_heat_and_stokes), the conclusions of that statement hold without its condition $\delta_N^2D_N^{2+2/d}\to0$, and its claims (i) to (iii) hold also for $D=\infty$, that is, for the posterior $\Pi_N$ under the untruncated rescaled prior and its mean $\tilde\theta_N$. Hence the last two claims of its part (iv) (that (ii) holds for $\theta$ drawn from $\Pi_N$ and that $\sqrt N\|\hat S^{\rm reg}_N-\tilde\theta_N\|_{H^{-k-2}}\to0$ in probability) hold for the Stokes equations as well, and for the heat equation without its restrictions on $\gamma$ and $k$; and when $\theta_0$ meets both sets of hypotheses, the regularized summaries under the two priors, and if $\alpha>d$ the untruncated posterior means, are $\sqrt N$ equivalent in $H^{-k-2}$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:prop:regfixed`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:prop:regfixed`.
 
 <a id="the_regularized_summary_on_modes_reaction_diffusion"></a>
 
@@ -231,7 +231,7 @@ Status: proved.
 
 Statement. Consider the reaction diffusion equation $\partial_tu-\Delta u=f(u)$, $u(0)=\theta$, on the torus $\Omega=[0,1]^d$ with $f\in C_c^\infty(\mathbb{R})$ and $d\le3$ (the class of Theorem 1 of Nickl (2024)), with the rescaled Gaussian series prior $\Pi$ of integer exponent $\gamma>2+3d$ ($\delta_N=N^{-\gamma/(2\gamma+d)}$, $J_N\asymp N\delta_N^2$), smooth true initial condition $\theta_0$, parameter space $H^{\bar\gamma}$ with $\bar\gamma>3+d/2$, and let $k>3d$, so that Theorem 5 of Nickl (2024) gives Conditions 1 and 2 with $\gamma$ and $k$ as in his Bernstein von Mises theorem. Retain $D=J_N$ modes with the truncated prior $\Sigma_0=\operatorname{diag}(\sigma_{0,j}^2)_{j\le J_N}$, $\sigma_{0,j}^2=\lambda_j^{-\gamma}/(N\delta_N^2)$. The sample is split into halves with index sets $\mathcal I_1,\mathcal I_2$; let the preliminary estimates $\bar\theta^{[b]}_N$ (computed from half $b$, with the rates of the cross fitted one step summary) lie in the span of $e_1,\dots,e_{J_N}$, as their projections do with the same rates. For $b=1,2$ let $\hat S^{{\rm reg},b}_N=\bar\theta^{[b]}_N+(F^b_N+\Sigma_0^{-1})^{-1}\big(\mathbb{I}^*_{\bar\theta^{[b]}_N}[\sum_{i\in\mathcal I_{3-b}}r_i\,\delta_{X_i}]-\Sigma_0^{-1}\bar\theta^{[b]}_N\big)$ with residuals $r_i=Y_i-u_{\bar\theta^{[b]}_N}(X_i)$ and $F^b_N$ the realized information $\mathbb{I}^*_{\bar\theta^{[b]}_N}\mathbb{I}_{\bar\theta^{[b]}_N}$ on the design points $X_i$, $i\in\mathcal I_{3-b}$, compressed to the retained modes, and put $\hat S^{\rm reg}_N=\frac12(\hat S^{{\rm reg},1}_N+\hat S^{{\rm reg},2}_N)$. Let $\hat\theta_N$ be the efficient centering of Nickl's proof, $\mathcal{N}_{\theta_0}=N(0,T(\mathbb{I}_{\theta_0}^*\mathbb{I}_{\theta_0})^{-1})$, $\Pi_N$ the posterior, $\tilde\theta_N$ its mean and $\mathscr{W}_1$ the Wasserstein distance of order one on $H^{-k-2}$. Then, in $P^N_{\theta_0}$ probability: (i) $\sqrt N\|\hat S^{\rm reg}_N-\hat\theta_N\|_{H^{-k-2}}\to0$; (ii) $\mathscr{W}_1(\operatorname{Law}(\sqrt N(\theta-\hat S^{\rm reg}_N)\mid Z^{(N)}),\mathcal{N}_{\theta_0})\to0$ for $\theta\sim\Pi_N$, the mean $\tilde\theta_N$ satisfies $\sqrt N\|\hat S^{\rm reg}_N-\tilde\theta_N\|_{H^{-k-2}}\to0$, and $\sqrt N(\hat S^{\rm reg}_N-\theta_0)\to\mathcal{N}_{\theta_0}$ in distribution in $H^{-k-2}$; (iii) under the hypotheses of the equivalence of the cross fitted one step summary $\hat S^{J_N}_N$ with the efficient centering other than the Lipschitz condition on the weights (which the information operator lemma for this class supplies), $\sqrt N\|\hat S^{\rm reg}_N-\hat S^{J_N}_N\|_{H^{-k-2}}\to0$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:prop:regrd`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:prop:regrd`.
 
 <a id="expected_utility_form_of_the_bernstein_von_mises_limit"></a>
 
@@ -243,7 +243,7 @@ Status: proved.
 
 Statement. For the heat or the Stokes equation on the torus, with semigroup eigenvalues $s_j(t)=e^{-\nu\lambda_jt}$ in the Laplace eigenbasis $(e_j)$ ($\lambda_j\asymp j^{2/d}$), data $Y_i=\mathscr{G}(\theta)(X_i)+\varepsilon_i$ with $X_i$ i.i.d. uniform on $[0,T]\times\Omega$ and $\varepsilon_i\sim N(0,I_W)$, and per mode information $\iota_j=\frac1T\int_0^Ts_j(t)^2\,\mathrm{d}t$, consider the first $J$ modes with prior $\Pi^J=N(0,\Sigma_0)$, $\Sigma_0=\operatorname{diag}(\sigma_{0,j}^2)_{j\le J}$, in the Gaussian experiment that observes $\theta_j+(N\iota_j)^{-1/2}\xi_j$, $j\le J$, with independent standard normal $\xi_j$. Its information matrix is $\operatorname{diag}(N\iota_j)$, the population value of the Gram matrix $\Phi^\top\Phi$ of the design, and it is the $J$ mode experiment of the Bernstein von Mises limit, whose covariance is $T(\mathbb{I}^*\mathbb{I})^{-1}/N=\operatorname{diag}(1/(N\iota_j))$, where $\mathbb{I}$ is the forward map of the equation, which is linear. Write $\kappa_j=N\iota_j\sigma_{0,j}^2$ for the per mode ratio of information to prior precision, and let $I_N=\mathbb{E}^\Pi\big[\log\frac{\mathrm{d}\Pi^J(\cdot\mid Z^{(N)})}{\mathrm{d}\Pi^J}\,\big|\,Z^{(N)}\big]$ be the realized information gain, with $\Pi^J(\cdot\mid Z^{(N)})$ the posterior and $\tilde\theta^J_N$ the posterior mean. Then for every $N$ and $J$, $I_N=\frac12\sum_{j\le J}\big[\log(1+\kappa_j)-\frac{\kappa_j}{1+\kappa_j}\big]+\frac12\tilde\theta_N^{J\top}\Sigma_0^{-1}\tilde\theta^J_N$, and averaging over the prior predictive law gives the Lindley expected information gain $\mathbf{E}\,I_N=\frac12\log\det\big(\mathrm{Id}+\frac NT\mathbb{I}^*\mathbb{I}\,\Sigma_0\big)=\frac12\sum_{j\le J}\log(1+\kappa_j)$. In the linear model with $D=J$ modes, that is, with the realized information $\Phi^\top\Phi$ in place of $\operatorname{diag}(N\iota_j)$, both identities hold conditionally on the design, with the $\kappa_j$ replaced by the eigenvalues of $\Sigma_0^{1/2}\Phi^\top\Phi\,\Sigma_0^{1/2}$. Every mode contributes the strictly positive amount $\frac12\log(1+\kappa_j)$, and every mode has posterior variance $\sigma_{0,j}^2/(1+\kappa_j)$ strictly below its prior variance; the modes with $\kappa_j>1$ are those whose posterior variance falls below half the prior variance. Under the rescaled prior $\sigma_{0,j}^2=\lambda_j^{-\gamma}/(N\delta_N^2)$ with $\delta_N=N^{-\gamma/(2\gamma+d)}$ and $J=J_N\asymp N\delta_N^2$, the number of these is $J^{\rm eff}_N=\#\{j\le J_N:\kappa_j>1\}\asymp N^{\gamma d/((\gamma+1)(2\gamma+d))}=J_N^{\gamma/(\gamma+1)}=o(J_N)$, so the experiment is informative in every retained mode, but strongly informative in only a vanishing fraction of them.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:prop:pr`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:prop:pr`.
 
 <a id="exact_identities_for_any_forward_map"></a>
 
@@ -255,7 +255,7 @@ Status: proved.
 
 Statement. Let $\mathscr{G}$ be a measurable forward map in the model $Y_i=\mathscr{G}(\theta)(X_i)+\varepsilon_i$ (design $X_i$ i.i.d. uniform on $\mathcal X=[0,T]\times\Omega$, noise $\varepsilon_i\sim N(0,I_W)$), and let the prior be a centered Gaussian measure under which the coordinates $\langle\theta,e_j\rangle$ in an orthonormal basis $(e_j)$ are independent with variances $\sigma_{0,j}^2>0$. For a number $J$ of modes let $\theta^J=(\langle\theta,e_j\rangle)_{j\le J}$, let $\Pi^J$ and $\Pi^J(\cdot\mid Z^{(N)})$ be its prior and posterior laws, $\Sigma^J_0=\operatorname{diag}(\sigma_{0,j}^2)_{j\le J}$, $m_N$ and $V_N$ the posterior mean and covariance of $\theta^J$, $I_N=\mathrm{KL}\big(\Pi^J(\cdot\mid Z^{(N)})\,\|\,\Pi^J\big)$ the realized information gain, $\mathbf{P}$ the prior predictive law (parameter $\vartheta\sim\Pi$, then data $Z^{(N)}\sim P^N_\vartheta$) and $\mathbf{E}$ its expectation. Then for every $N$ and $J$: (i) almost surely $I_N=\mathrm{KL}\big(N(m_N,V_N)\,\|\,\Pi^J\big)+\Gamma_N$, where $\Gamma_N=\mathrm{KL}\big(\Pi^J(\cdot\mid Z^{(N)})\,\|\,N(m_N,V_N)\big)\ge0$, and $\Gamma_N\le\mathrm{KL}\big(\Pi^J(\cdot\mid Z^{(N)})\,\|\,G\big)$ for every nondegenerate Gaussian law $G$ on $\mathbb{R}^J$; (ii) if $\int\|\mathscr{G}(\vartheta)\|^2_{L^\infty(\mathcal X)}\,\mathrm{d}\Pi(\vartheta)<\infty$, then $\mathbf{E}\,I_N=I(\theta^J;Z^{(N)})<\infty$ (the mutual information) and $\mathbf{E}\,I_N=\frac12\,\mathbf{E}\log\det\big(\Sigma^J_0V_N^{-1}\big)+\mathbf{E}\,\Gamma_N$. In the linear Gaussian models of the heat and Stokes equations the posterior is $N(m_N,V)$ with $V$ not depending on the data, so $\Gamma_N=0$ and (i) and (ii) reduce to the two displays of the expected utility form of the Bernstein von Mises limit.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:lem:prexact`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:lem:prexact`.
 
 <a id="kullback_leibler_form_of_the_bernstein_von_mises_theorem"></a>
 
@@ -267,7 +267,7 @@ Status: proved.
 
 Statement. In Nickl's framework (torus $\Omega=[0,1]^d$, data $Y_i=\mathscr{G}(\theta)(X_i)+\varepsilon_i$ with $X_i$ i.i.d. uniform on $\mathcal X=[0,T]\times\Omega$ and $\varepsilon_i\sim N(0,I_W)$, rescaled Gaussian series prior $\Pi$ with exponent $\gamma$ and $\delta_N=N^{-\gamma/(2\gamma+d)}$, true initial condition $\theta_0$, linearization $\mathbb{I}_{\theta_0}$ of $\mathscr{G}$ at $\theta_0$), assume the hypotheses of Nickl's Bernstein von Mises theorem (Conditions 1 and 2 of Nickl (2024) with $\gamma$ and $k$ as in his Theorem 2). Let $\mathscr{G}_{\rm lin}(\theta)=\mathscr{G}(\theta_0)+\mathbb{I}_{\theta_0}[\theta-\theta_0]$ and let $\Pi_{\rm lin}(\cdot\mid Z^{(N)})$ be the posterior in the model with $\mathscr{G}_{\rm lin}$ in place of $\mathscr{G}$, with the same prior and the same data. Then $\Pi_{\rm lin}(\cdot\mid Z^{(N)})$ is a Gaussian measure, and $\mathrm{KL}\big(\Pi(\cdot\mid Z^{(N)})\,\big\|\,\Pi_{\rm lin}(\cdot\mid Z^{(N)})\big)\to0$ in $P^N_{\theta_0}$ probability.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:thm:prkl`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:thm:prkl`.
 
 <a id="realized_information_gain_with_efficient_information"></a>
 
@@ -279,7 +279,7 @@ Status: proved.
 
 Statement. Under the hypotheses of the Kullback Leibler form of the Bernstein von Mises theorem (Nickl's Conditions 1 and 2 with $\gamma$ and $k$ as in his Theorem 2, with the prior and forward map as there; $\Pi_{\rm lin}$ the posterior of the model linearized at $\theta_0$), let $J$ be a number of modes, $\theta^J=(\langle\theta,e_j\rangle)_{j\le J}$ with prior $\Pi^J$ and prior variances $\sigma_{0,j}^2$, $m_N$ and $V_N$ the posterior mean and covariance of $\theta^J$, $I_N=\mathrm{KL}(\Pi^J(\cdot\mid Z^{(N)})\,\|\,\Pi^J)$ the realized information gain, and $\Gamma_N=\mathrm{KL}(\Pi^J(\cdot\mid Z^{(N)})\,\|\,N(m_N,V_N))$. Then $\Gamma_N\le\mathrm{KL}\big(\Pi(\cdot\mid Z^{(N)})\,\|\,\Pi_{\rm lin}(\cdot\mid Z^{(N)})\big)$ for every $J$, so $\Gamma_N\to0$ in $P^N_{\theta_0}$ probability uniformly in $J$. For fixed $J$, in $P^N_{\theta_0}$ probability, $NV_N\to\Sigma_J(\theta_0)=\big(T\langle e_j,(\mathbb{I}^*_{\theta_0}\mathbb{I}_{\theta_0})^{-1}e_{j'}\rangle\big)_{j,j'\le J}$, the covariance of the first $J$ coordinates under $\mathcal{N}_{\theta_0}=N(0,T(\mathbb{I}^*_{\theta_0}\mathbb{I}_{\theta_0})^{-1})$, which is positive definite, and $I_N=\frac12\sum_{j\le J}\big[\log(1+\kappa_j)-\frac{\kappa_j}{1+\kappa_j}\big]+\frac12\,m_N^\top(\Sigma^J_0)^{-1}m_N+o_P(1)$, where the $\kappa_j$ are the eigenvalues of $N(\Sigma^J_0)^{1/2}\Sigma_J(\theta_0)^{-1}(\Sigma^J_0)^{1/2}$ and $\Sigma_0^J=\operatorname{diag}(\sigma_{0,j}^2)_{j\le J}$. For the heat and Stokes equations $\Sigma_J(\theta_0)=\operatorname{diag}(1/\iota_j)$ and $\kappa_j=N\iota_j\sigma_{0,j}^2$, where $\iota_j=\frac1T\int_0^Te^{-2\nu\lambda_jt}\,\mathrm{d}t$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:cor:prreal`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:cor:prreal`.
 
 <a id="kullback_leibler_bernstein_von_mises_navier_stokes"></a>
 
@@ -291,7 +291,7 @@ Status: proved.
 
 Statement. Let $\Omega=[0,1]^2$ be the torus, $\nu>0$, let $f$ and the true initial condition $\theta_0$ be smooth divergence free mean zero fields ($f,\theta_0\in\dot H^\infty_\diamond$), $W=\mathbb{R}^2$, and let $\mathscr{G}(\theta)=u_\theta$ be the solution map of the two dimensional Navier Stokes equations $\frac{\mathrm{d}u}{\mathrm{d}t}+\nu Au+B[u,u]=f$, $u(0)=\theta$, on divergence free mean zero fields, with Stokes operator $A=-\Delta$ and $B[u,v]=P[(u\cdot\nabla)v]$ ($P$ the projection onto divergence free fields). Let the data be $Y_i=\mathscr{G}(\theta)(X_i)+\varepsilon_i$ with $X_i$ i.i.d. uniform on $[0,T]\times\Omega$ and $\varepsilon_i\sim N(0,I_W)$, let the prior $\Pi$ be the rescaled Gaussian series prior on $\dot H_\diamond$ with $d=2$ and exponent $\gamma>12$, which is the prior of Theorem 2.11 of Konen and Nickl (2026) with $\alpha=\gamma$, and let $(e_j)$ be a real orthonormal eigenbasis of $A$ in $\dot H_\diamond$ with nondecreasing eigenvalues. Then the conclusions of the Kullback Leibler form of the Bernstein von Mises theorem and of its corollary on the realized information gain hold: the posterior $\Pi_{\rm lin}(\cdot\mid Z^{(N)})$ of the model linearized at $\theta_0$ is Gaussian and $\mathrm{KL}(\Pi(\cdot\mid Z^{(N)})\,\|\,\Pi_{\rm lin}(\cdot\mid Z^{(N)}))\to0$ in $P^N_{\theta_0}$ probability; for every number $J$ of modes the Kullback Leibler divergence $\Gamma_N$ of the posterior of the first $J$ coordinates from the Gaussian law with the same mean and covariance is at most that divergence; and for fixed $J$ the realized information gain is given up to $o_P(1)$ by the Gaussian formula with the efficient information at $\theta_0$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:prop:prklns`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:prop:prklns`.
 
 <a id="entropic_van_trees_bound"></a>
 
@@ -303,7 +303,7 @@ Status: proved.
 
 Statement. Let $\mathscr{G}$ be a measurable forward map in the model $Y_i=\mathscr{G}(\theta)(X_i)+\varepsilon_i$ ($X_i$ i.i.d. uniform on $\mathcal X=[0,T]\times\Omega$, $\varepsilon_i\sim N(0,I_W)$), let the prior $\Pi$ be a centered Gaussian measure under which the coordinates $\langle\theta,e_j\rangle$ are independent with variances $\sigma_{0,j}^2>0$, and assume $\int\|\mathscr{G}(\vartheta)\|^2_{L^\infty(\mathcal X)}\,\mathrm{d}\Pi(\vartheta)<\infty$. Fix the number of modes $J$, let $\theta^J=(\langle\theta,e_j\rangle)_{j\le J}$, $\Sigma^J_0=\operatorname{diag}(\sigma_{0,j}^2)_{j\le J}$, $I_N=\mathrm{KL}(\Pi^J(\cdot\mid Z^{(N)})\,\|\,\Pi^J)$ the realized information gain, $\mathbf{E}$ the expectation under the prior predictive law, and $\mathcal J^J_N(\vartheta)=\frac NT\big(\langle\mathbb{I}_\vartheta e_j,\mathbb{I}_\vartheta e_{j'}\rangle_{L^2(\mathcal X)}\big)_{j,j'\le J}$ the $J$ block of the Fisher information of $N$ observations at $\vartheta$, with $\mathbb{I}_\vartheta$ the linearization of $\mathscr{G}$ at $\vartheta$. Assume that for $\Pi$ almost every $\eta$ in the closed span of $(e_j)_{j>J}$ the map $x\mapsto\mathscr{G}(\eta+\sum_{j\le J}x_je_j)$ from $\mathbb{R}^J$ into $C(\mathcal X)$ is continuously differentiable, with partial derivatives $\mathbb{I}_\vartheta e_j$ at $\vartheta=\eta+\sum_{j\le J}x_je_j$. If $\bar{\mathcal J}^J_N=\int\mathcal J^J_N(\vartheta)\,\mathrm{d}\Pi(\vartheta)$ is finite, then for every $N$, $\mathbf{E}\,I_N=I(\theta^J;Z^{(N)})\le\frac12\log\det\big(\mathrm{Id}+(\Sigma^J_0)^{1/2}\,\bar{\mathcal J}^J_N\,(\Sigma^J_0)^{1/2}\big)$. If moreover the prior is the rescaled Gaussian series prior with exponent $\gamma>d$, and the matrix $\mathcal J^J_N(\vartheta)/N$, which does not depend on $N$, is continuous at $\vartheta=0$ for the supremum norm, bounded by a polynomial in $\|\vartheta\|_\infty$, and invertible at $\vartheta=0$, then for fixed $J$, $\mathbf{E}\,I_N\le\frac12\log\det\big(\mathrm{Id}+(\Sigma^J_0)^{1/2}\,\mathcal J^J_N(0)\,(\Sigma^J_0)^{1/2}\big)+o(1)$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:prop:prvt`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:prop:prvt`.
 
 <a id="reaction_diffusion_expected_gain_at_prior_center"></a>
 
@@ -315,7 +315,7 @@ Status: proved.
 
 Statement. Let $\partial_tu=\Delta u+f(u)$, $u(0)=\theta$, on the torus $\Omega=[0,1]^d$ with $f\in C_c^\infty(\mathbb{R})$ and $d\le3$, observed as in the model $Y_i=\mathscr{G}(\theta)(X_i)+\varepsilon_i$ with $X_i$ i.i.d. uniform on $\mathcal X=[0,T]\times\Omega$ and $\varepsilon_i\sim N(0,1)$; let $(e_j)$ be the real trigonometric basis, of the functions $\sqrt2\cos(2\pi k\cdot x)$ and $\sqrt2\sin(2\pi k\cdot x)$ with eigenvalues $\lambda_j$; let the prior $\Pi$ be the rescaled Gaussian series prior with exponent $\gamma>d$ and variances $\sigma_{0,j}^2=\lambda_j^{-\gamma}/(N\delta_N^2)$, $\delta_N=N^{-\gamma/(2\gamma+d)}$; and let the number of modes $J$ be fixed. Let $I_N$ be the realized information gain for the first $J$ modes and $\mathbf{E}$ the expectation under the prior predictive law. Let $v$ solve $v'=f(v)$, $v(0)=0$, $\chi(t)=\int_0^tf'(v(s))\,\mathrm{d}s$, $\iota^0_j=\frac1T\int_0^Te^{2\chi(t)-2\lambda_jt}\,\mathrm{d}t$ and $\kappa^0_j=N\iota^0_j\sigma_{0,j}^2$ (the information at the center of the prior). Then: (i) $\mathbf{E}\,I_N\le\frac12\sum_{j\le J}\log(1+\kappa^0_j)+o(1)$. (ii) If $f$ vanishes on $[-a,a]$ for some $a>0$, then $\iota^0_j=\iota_j=(1-e^{-2\lambda_jT})/(2\lambda_jT)$, the value for the heat equation with $\nu=1$, and $\mathbf{E}\,I_N=\frac12\sum_{j\le J}\log(1+\kappa^0_j)+o(1)$. (iii) Let $d\ge2$ and let $f$ be as in (ii), with moreover $f\ge0$, $f$ nondecreasing on $(-\infty,b]$ and strictly increasing on $(a,b)$ for some $b>a$. The first mode $e_1$, with $\lambda_1=4\pi^2$, is $\sqrt2\cos(2\pi x_p)$ or $\sqrt2\sin(2\pi x_p)$ for some coordinate $p$; let $\theta_0(x)=A\cos(2\pi x_q)$ with $q\ne p$ and $a<A<b$, and let $T$ be so small that the solution of $w'=f(w)$, $w(0)=A$, stays at most $b$ on $[0,T]$. Then $\|\mathbb{I}_{\theta_0}e_1\|^2_{L^2(\mathcal X)}>T\iota_1$, and for $J=1$, writing $\mathcal J^1_N(\theta_0)=\frac NT\|\mathbb{I}_{\theta_0}e_1\|^2_{L^2(\mathcal X)}$ for the Fisher information at $\theta_0$, $\frac12\log\big(1+\sigma^2_{0,1}\mathcal J^1_N(\theta_0)\big)-\mathbf{E}\,I_N\to\frac12\log\frac{\|\mathbb{I}_{\theta_0}e_1\|^2_{L^2(\mathcal X)}}{T\iota_1}>0$. (iv) Under the hypotheses of (iii), let $\psi(r)=(1-e^{-2\lambda_1r})/(2\lambda_1)$, let $\psi(T-t)f'(u_{\theta_0}(t,x))<2$ for $(t,x)\in\mathcal X$ (as when $T\sup f'<2$), and let $\lambda_j=\lambda_1$ for $j\le J$. Then $\Sigma_J(0)-\Sigma_J(\theta_0)$ is positive definite, where $\Sigma_J(\vartheta)=\big(T\langle e_j,(\mathbb{I}^*_\vartheta\mathbb{I}_\vartheta)^{-1}e_{j'}\rangle\big)_{j,j'\le J}$ is the covariance of the Bernstein von Mises limit in the first $J$ modes and $\Sigma_J(0)=\mathrm{Id}/\iota_1$, and $\frac12\log\det\big(\mathrm{Id}+N\sigma^2_{0,1}\Sigma_J(\theta_0)^{-1}\big)-\mathbf{E}\,I_N\to\frac12\log\det\big(\Sigma_J(0)\Sigma_J(\theta_0)^{-1}\big)>0$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:prop:prrd`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:prop:prrd`.
 
 <a id="quadratic_variation_and_the_sufficient_statistic"></a>
 
@@ -327,7 +327,7 @@ Status: proved.
 
 Statement. In the linear model $Y=\Phi\theta+\varepsilon$ with design matrix $\Phi_{ij}=s_j(t_i)e_j(x_i)$ and unknown noise variance $\varsigma^2$ ($\varepsilon\sim N(0,\varsigma^2\mathrm{Id}_N)$), conditionally on the design the pair $\big(\Phi^\top Y,\ \|Y\|^2\big)$ is sufficient for $(\theta,\varsigma^2)$, and the conditional law of $\theta$ given the pair and $\varsigma^2$ depends on the data only through $\Phi^\top Y$. If instead the observation noise is replaced by an observed diffusion path on $[0,T]$ with unknown diffusion coefficient, $\mathrm{d}Y_t=\mathscr{G}(\theta)(t)\,\mathrm{d}t+\sigma(t)\,\mathrm{d}B_t$, the coefficient is identified by the quadratic variation, the likelihood ratio for $\theta$ is the Girsanov density, and the sufficient statistic for $\theta$ is again the adjoint evolution driven by the data, now with the data measure replaced by $\mathrm{d}Y_t/\sigma^2(t)$.
 
-Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex), label `m:prop:qv`.
+Source: [`source/chapters/ext/m2a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex), label `m:prop:qv`.
 
 <a id="one_step_summary_under_four_abc_criteria"></a>
 
@@ -345,7 +345,7 @@ Then $\hat S_N\in\mathcal S_J$, and: (a) (exact at every $N$) for every $S\in\ma
 
 For criteria (i), (ii) and (iv), part (c) is a statement about the $J$ mode Gaussian projection and not about the exact finite $N$ functionals: the book does not claim, and the hypotheses do not give, $\mathcal H_N(\hat S_N)-\mathcal H_N(Z^{(N)})\to0$ or $\mathcal F_N(\hat S_N)-\mathcal F_N(Z^{(N)})\to0$ for the exact laws, because differential entropy, Kullback Leibler divergence and Fisher information are not continuous along $\mathscr{W}_1$ convergence. Criterion (iii) is the exception, being a second moment functional.
 
-Source: [`source/chapters/ext/m2b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2b.tex), label `m:prop:abcopt`.
+Source: [`source/chapters/ext/m2b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2b.tex), label `m:prop:abcopt`.
 
 <a id="the_adjoint_statistic_is_the_pls_projection"></a>
 
@@ -357,7 +357,7 @@ Status: proved.
 
 Statement. Consider the linear model $Y=\Phi\theta+\varepsilon$ with design matrix $\Phi_{ij}=s_j(t_i)e_j(x_i)$ ($i\le N$, $j\le D$), prior $\theta\sim N(0,\Sigma_0)$ and noise $\varepsilon\sim N(0,\mathrm{Id}_N)$ independent of $\theta$, and treat the raw data $Y\in\mathbb{R}^N$ as the pool of candidate statistics. The first partial least squares (PLS) direction for predicting a coordinate $\theta_j$ from $Y$ is the vector $w\in\mathbb{R}^N$ maximizing $\mathrm{Cov}(\theta_j,w^\top Y)$ subject to $\|w\|=1$, and $\mathrm{Cov}(\theta_j,w^\top Y)=w^\top\mathrm{Cov}(Y,\theta_j)=w^\top\Phi\,\Sigma_0\mathbf{u}_j$, where $\mathbf{u}_j$ is the $j$th unit vector of $\mathbb{R}^D$; so the direction is $\Phi\Sigma_0\mathbf{u}_j/\|\Phi\Sigma_0\mathbf{u}_j\|$ and the corresponding score is proportional to $(\Sigma_0\Phi^\top Y)_j$. Collecting $j\le D$ and absorbing the fixed prior covariance, the PLS scores are exactly the coordinates of the adjoint statistic $\Phi^\top Y$ (the coefficient vector of the time zero value of the backward adjoint solution driven by the data), which is sufficient. In particular a single PLS component per parameter coordinate suffices, and no further components add information.
 
-Source: [`source/chapters/ext/m2b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2b.tex), label `m:prop:pls`.
+Source: [`source/chapters/ext/m2b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2b.tex), label `m:prop:pls`.
 
 <a id="deep_pls_structure_of_the_gbc_summary"></a>
 
@@ -369,7 +369,7 @@ Status: conditional on the uniform Bernstein von Mises assumption (Assumption U)
 
 Statement. Let $\mathscr{G}$ be a nonlinear forward map in Nickl's framework and let the summary be the cross fitted one step efficient score summary $\hat S_N=\hat S^{J_N}_N$ (catalog entry equivalence_with_the_efficient_centering), whose coordinates average over the two folds the preliminary estimate coordinate $\langle e_j,\bar\theta^{[b]}_N\rangle$ plus the average, over the other half sample, of the residual $Y_i-u_{\bar\theta^{[b]}_N}(X_i)$ projected on the direction $\mathbb{I}_{\bar\theta^{[b]}_N}p_N(\bar e_j^{\,\bar\theta^{[b]}_N})(X_i)$. Then: (i) the first stage is a linear projection of the residuals onto the directions $\mathbb{I}_{\bar\theta_N}p_N(\bar e_j)$, that is, a partial least squares step with directions supplied by the linearized forward map rather than estimated from the simulations; (ii) the second stage, the map from the projected scores $s$ to the posterior, is asymptotically the identity plus a scale, namely the conditional quantile map satisfies $Q_j(\tau\mid s)=s_j+z_\tau\sigma_j/\sqrt N+o(N^{-1/2})$, with $z_\tau$ the $\tau$ quantile of the standard normal law and $\sigma_j^2=T\langle e_j,(\mathbb{I}^*_{\theta_0}\mathbb{I}_{\theta_0})^{-1}e_j\rangle$, read in the Wasserstein sense, under the hypotheses of the equivalence of $\hat S_N$ with the efficient centering for the posterior given all of the data, and under Assumption U as well for the posterior given the scores alone; so under these hypotheses the deep part of deep PLS has an asymptotically trivial link.
 
-Source: [`source/chapters/ext/m2b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2b.tex), label `m:prop:dpls`.
+Source: [`source/chapters/ext/m2b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2b.tex), label `m:prop:dpls`.
 
 <a id="jiang_wong_under_bernstein_von_mises"></a>
 
@@ -385,7 +385,7 @@ Assume the uniform Bernstein von Mises assumption for the summary $S_N=\tilde\th
 
 Let $\tau_N=\operatorname{Law}(\sqrt N(\theta-\tilde\theta_N)\mid Z^{(N)})$ be the exact recentered posterior and $\tau^{\rm S}_N=\operatorname{Law}(\sqrt N(\theta-\tilde\theta_N)\mid\tilde\theta_N)$ the recentered posterior given the posterior mean statistic alone, both conditional laws under $\mathbf{P}$. Then $\mathscr{W}_1(\tau^{\rm S}_N,\mathcal{N}_{\tilde\theta_N})\to0$ and $\mathscr{W}_1(\tau_N,\tau^{\rm S}_N)\to0$ in $\mathbf{P}$ probability, and, because $\theta_0\in\Theta_N$, both also hold in $P^N_{\theta_0}$ probability with $\mathcal{N}_{\tilde\theta_N}$ replaced by $\mathcal{N}_{\theta_0}$. The same holds with $\tilde\theta_N$ replaced by the cross fitted one step efficient score statistic $\hat S^{J_N}_N$ (catalog entry equivalence_with_the_efficient_centering) when the assumption above holds with $S_N=\hat S^{J_N}_N$ and the hypotheses of that entry hold. In words: whenever a Bernstein von Mises theorem holds uniformly over prior typical truths, the posterior mean summary, or any summary $\sqrt N$ equivalent to it in $H^{-k-2}$, is asymptotically sufficient in Wasserstein distance of order one at the $\sqrt N$ scale.
 
-Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex), label `m:thm:jwbvm`.
+Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex), label `m:thm:jwbvm`.
 
 <a id="gbc_with_the_posterior_mean_summary"></a>
 
@@ -397,7 +397,7 @@ Status: conditional on the uniform Bernstein von Mises assumption (Assumption U)
 
 Statement. Let data $Z^{(N)}$ come from a forward map and rescaled Gaussian series prior $\Pi$ that satisfy Conditions 1 and 2 of Nickl (2024) with the constants of his Bernstein von Mises theorem, as in the catalog entry jiang_wong_under_bernstein_von_mises, where $T$ is the length of the observation window, $\mathbb{I}_\vartheta$ the linearization of the forward map at $\vartheta$, and $\zeta>d/2$ and $k$ the Sobolev indices of that theorem; let $\Pi_N=\Pi(\cdot\mid Z^{(N)})$ be the posterior, $\tilde\theta_N$ its mean, $V(Z^{(N)})=\mathrm{Var}(\theta\mid Z^{(N)})$ its covariance, $\theta_0$ the true parameter, and $\mathscr{W}_1$ the Wasserstein distance of order one on the negative Sobolev space $H^{-k-2}$. Let $\Pi^{\rm S}_N=\operatorname{Law}(\theta\mid\tilde\theta_N)$, the conditional law, under the joint law of prior and data, of the parameter given the posterior mean statistic alone; it is the target of generative Bayesian computation (GBC) with the posterior mean summary and an exact generator. Then for every $N$ the mean of $\Pi^{\rm S}_N$ equals the posterior mean $\tilde\theta_N$ and its covariance is $E[V(Z^{(N)})\mid\tilde\theta_N]$. If moreover the uniform Bernstein von Mises assumption holds with $S_N=\tilde\theta_N$ (sets $\Theta_N$ of prior mass tending to one that contain $\theta_0$, on which the recentered posterior is uniformly close to its Gaussian limit $N(0,T(\mathbb{I}^*_\vartheta\mathbb{I}_\vartheta)^{-1})$, with the integrability, Lipschitz, moment and conditional clauses (U1) to (U4) stated in that entry), then $\sqrt N\,\mathscr{W}_1(\Pi^{\rm S}_N,\Pi_N)\to0$ in $P^N_{\theta_0}$ probability, and also in probability under the joint law of prior and data; this is the accuracy condition (G1) that the book's transfer theorem places on a GBC posterior.
 
-Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex), label `m:cor:jwgbc`.
+Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex), label `m:cor:jwgbc`.
 
 <a id="sufficiency_gap"></a>
 
@@ -409,7 +409,7 @@ Status: proved.
 
 Statement. In the linear Gaussian model $Y=\Phi\theta+\varepsilon$ with $\theta\sim N(0,\Sigma_0)$ in $\mathbb{R}^D$ and $\varepsilon\sim N(0,\varsigma^2\mathrm{Id})$ independent of $\theta$, let $Z=Y$ be the full data and $S=AY$ any linear statistic. Then the posteriors $\Pi(\cdot\mid Z)$ and $\Pi(\cdot\mid S)$ are Gaussian with covariances $V_Z=\mathrm{Var}(\theta\mid Z)\preceq V_S=\mathrm{Var}(\theta\mid S)$ that do not depend on the data. Let $\mathscr{W}_1$ be the Wasserstein distance of order one on $\mathbb{R}^D$ with the Euclidean norm and $\Delta I=I(\theta;Z)-I(\theta;S)\ge0$ the mutual information deficit. Then: (i) (lower bound, Rao Blackwell) $\mathscr{W}_1(\Pi(\cdot\mid S),\Pi(\cdot\mid Z))\ge\|\xi\|$, where $\xi=E[\theta\mid S]-E[\theta\mid Z]$ is a centered Gaussian vector with covariance $V_S-V_Z$, so that $E\|\xi\|^2=\mathrm{tr}(V_S-V_Z)$ and $\sqrt{\mathrm{tr}(V_S-V_Z)-\|V_S-V_Z\|_{op}}\le E\|\xi\|\le\sqrt{\mathrm{tr}(V_S-V_Z)}$; (ii) (upper bound, transport entropy) $E_Z\,\mathscr{W}_1(\Pi(\cdot\mid Z),\Pi(\cdot\mid S))\le\sqrt{2\|V_S\|_{op}\,\Delta I}$, where $\Delta I=\tfrac12\log\det(V_SV_Z^{-1})$; (iii) the lower bound $\|\xi\|$ of (i) vanishes almost surely, and the upper bound of (ii) vanishes, if and only if $V_S=V_Z$, if and only if $S$ is Bayes sufficient, that is, $\operatorname{Law}(\theta\mid S)=\operatorname{Law}(\theta\mid Z)$ almost surely; for the adjoint statistic $S=\Phi^\top Y$ both vanish identically. Consequently, for any GBC posterior $\hat\Pi$ built on $S$, with generator error $\epsilon_{\rm gen}=\mathscr{W}_1(\hat\Pi,\Pi(\cdot\mid S))$, in expectation over the data $E\,\mathscr{W}_1(\hat\Pi,\Pi(\cdot\mid Z))\ge\sqrt{\mathrm{tr}(V_S-V_Z)-\|V_S-V_Z\|_{op}}-E\,\epsilon_{\rm gen}$ and $E\,\mathscr{W}_1(\hat\Pi,\Pi(\cdot\mid Z))\le E\,\epsilon_{\rm gen}+\sqrt{2\|V_S\|_{op}\,\Delta I}$.
 
-Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex), label `m:thm:gap`.
+Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex), label `m:thm:gap`.
 
 <a id="sufficiency_gap_beyond_the_linear_model"></a>
 
@@ -421,7 +421,7 @@ Status: proved.
 
 Statement. Let a parameter $\theta$, expanded in the Laplace eigenbasis $(e_j)$ with eigenvalues $\lambda_j$, have a prior $\Pi$, let $Z^{(N)}$ be the data and $\mathbf P$ the joint law of parameter and data, and let $k$ be the index of the negative Sobolev space $H^{-k-2}$ in which the posterior is compared with its Gaussian limit. Let $S=S(Z^{(N)})$ be a statistic, fix $D$, and write $\mathscr{W}_{1,w}$ for the Wasserstein distance of order one between laws of the first $D$ coordinates $(\langle e_j,\theta\rangle)_{j\le D}$ in the norm $\|x\|_w^2=\sum_{j\le D}(1+\lambda_j)^{-k-2}x_j^2$ that $H^{-k-2}$ induces on them. Suppose that there are a linear Gaussian model $Y_G=\Phi_G\theta+\varepsilon_G$ on $\mathbb{R}^D$, with prior $N(0,\Sigma_0)$, $\varepsilon_G\sim N(0,\mathrm{Id})$ and posterior $\Pi_G$, a linear statistic $S_G=AY_G$, and a coupling of $(Z^{(N)},S)$ under $\mathbf P$ with $(Y_G,S_G)$ under the Gaussian model, such that $\sqrt N\,E\,\mathscr{W}_{1,w}\big(\Pi(\cdot\mid Z^{(N)}),\Pi_G(\cdot\mid Y_G)\big)\to0$ and $\sqrt N\,E\,\mathscr{W}_{1,w}\big(\Pi(\cdot\mid S),\Pi_G(\cdot\mid S_G)\big)\to0$. Let $V_Z\preceq V_S$ be the posterior covariances of the Gaussian model given $Y_G$ and given $S_G$, $\Delta I=\tfrac12\log\det(V_SV_Z^{-1})$, and take traces and operator norms in $\|\cdot\|_w$, that is, $\mathrm{tr}_wV=\mathrm{tr}(\Lambda_wV\Lambda_w)$ and $\|V\|_{op,w}=\|\Lambda_wV\Lambda_w\|_{op}$ with $\Lambda_w=\operatorname{diag}((1+\lambda_j)^{-(k+2)/2})$. Then the sufficiency gap at the $\sqrt N$ scale, $\Upsilon_N=\sqrt N\,E\,\mathscr{W}_{1,w}\big(\Pi(\cdot\mid S),\Pi(\cdot\mid Z^{(N)})\big)$, satisfies $\Upsilon_N\ge\sqrt{N\,\mathrm{tr}_w(V_S-V_Z)-N\|V_S-V_Z\|_{op,w}}-o(1)$ and $\Upsilon_N\le\sqrt{2N\|V_S\|_{op,w}\,\Delta I}+o(1)$. For the heat and Stokes equations with viscosity $\nu$ and observation window $[0,T]$, in the Gaussian experiment that observes $\theta_j+(N\iota_j)^{-1/2}\xi_j$, $j\le D$, with independent standard normal $\xi_j$, independent priors $\theta_j\sim N(0,\sigma^2_{0,j})$, per mode information $\iota_j=(1-e^{-2\nu\lambda_jT})/(2\nu\lambda_jT)$ and $\kappa_j=N\iota_j\sigma^2_{0,j}$, and with $S$ its first $J'$ coordinates, the hypotheses hold with no error, $N(V_S-V_Z)$ is diagonal with entries $0$ for $j\le J'$ and $N\sigma^2_{0,j}\kappa_j/(1+\kappa_j)$ for $J'<j\le D$, and $\Delta I=\tfrac12\sum_{J'<j\le D}\log(1+\kappa_j)$; with $a_j=(1+\lambda_j)^{-k-2}N\sigma^2_{0,j}\kappa_j/(1+\kappa_j)$ the lower bound is $\big(\sum_{J'<j\le D}a_j-\max_{J'<j\le D}a_j\big)^{1/2}$.
 
-Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex), label `m:prop:gapnl`.
+Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex), label `m:prop:gapnl`.
 
 <a id="sufficiency_gap_admissible_gaussian_models"></a>
 
@@ -435,7 +435,7 @@ Statement. Let data $Z^{(N)}$ come from the forward map and observation model of
 
 Let some summary $S_N$ satisfy clauses (U1) and (U2) of the uniform Bernstein von Mises assumption: there are sets $\Theta_N$ with $\Pi(\Theta_N)\to1$ and $\theta_0\in\Theta_N$ for all large $N$ such that $\sup_{\vartheta\in\Theta_N}E^N_\vartheta\,\mathscr{W}_{1,H^{-k-2}}\big(\operatorname{Law}(\sqrt N(\theta-S_N)\mid Z^{(N)}),\mathcal{N}_\vartheta\big)\to0$, and these discrepancies are uniformly integrable under the prior predictive law. Let $\vartheta\mapsto\Sigma_D(\vartheta)$ be measurable. Then for every such linear Gaussian model and every coupling, $\sqrt N\,E\,\mathscr{W}_{1,w}\big(\Pi(\cdot\mid Z^{(N)}),\Pi_G(\cdot\mid Y_G)\big)\ge\sqrt{2/\pi}\int\mathrm{dist}_w\big(\Sigma_D(\vartheta),NV_Z\big)\,\mathrm{d}\Pi(\vartheta)-o(1)$, with an $o(1)$ that depends neither on the model nor on the coupling. Consequently: (i) if the prior does not depend on $N$, the first hypothesis holds for some Gaussian model only if $\Sigma_D$ is $\Pi$ almost surely constant; (ii) if $E^\Pi\|\theta\|_{H^\zeta}\to0$, as under the rescaled prior with $\gamma$ as in Nickl's theorem, and clause (U3) holds with $0\in\Theta_N$ for all $N$ (Lipschitz dependence of $T(\mathbb{I}^*_\vartheta\mathbb{I}_\vartheta)^{-1}$ and of $\mathcal{N}_\vartheta$ on $\vartheta\in\Theta_N$ in the $H^\zeta$ norm, with the moment and localization clauses stated in the catalog entry jiang_wong_under_bernstein_von_mises), then $\int\mathrm{dist}_w\big(\Sigma_D(\vartheta),\Sigma_D(0)\big)\,\mathrm{d}\Pi(\vartheta)\to0$, and the first hypothesis forces $NV_Z\to\Sigma_D(0)$, the inverse information at the prior mean read in the first $D$ coordinates; in particular a Gaussian model with $NV_Z\to\Sigma_D(\theta_0)$, the covariance of the Bernstein von Mises limit at the truth, satisfies it only if $\Sigma_D(\theta_0)=\Sigma_D(0)$.
 
-Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex), label `m:prop:gapreq`.
+Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex), label `m:prop:gapreq`.
 
 <a id="sufficiency_gap_hypotheses_from_centering_clt"></a>
 
@@ -447,7 +447,7 @@ Status: conditional on clauses (U1) to (U3) of the uniform Bernstein von Mises a
 
 Statement. Let data $Z^{(N)}$, a prior $\Pi$, the joint law $\mathbf P$ of parameter and data, the Gaussian limits $\mathcal{N}_\vartheta=N(0,T(\mathbb{I}^*_\vartheta\mathbb{I}_\vartheta)^{-1})$ on the negative Sobolev space $H^{-k-2}$, the weighted norm $\|x\|_w^2=\sum_{j\le D}(1+\lambda_j)^{-k-2}x_j^2$ on the first $D$ coordinates in the Laplace eigenbasis, the distance $\mathscr{W}_{1,w}$, and the covariance $\Sigma_D(\vartheta)$ of the first $D$ coordinates under $\mathcal{N}_\vartheta$ be as in the catalog entry sufficiency_gap_admissible_gaussian_models, and let $P_D$ map $\theta$ to its first $D$ coordinates. Let a summary $S_N$ satisfy clauses (U1) to (U3) of the uniform Bernstein von Mises assumption (stated in the catalog entry jiang_wong_under_bernstein_von_mises) with $0\in\Theta_N$ for all $N$, and let $E^\Pi\|\theta\|_{H^\zeta}\to0$. Then for every statistic $S=S(Z^{(N)})$, $\mathbf E\,\mathscr{W}_{1,H^{-k-2}}\big(\operatorname{Law}(\sqrt N\theta\mid S),\operatorname{Law}(\sqrt NS_N\mid S)*\mathcal{N}_0\big)\to0$, where $*$ is convolution and $\mathcal{N}_0$ is the Gaussian limit at the prior mean $0$. Let a linear Gaussian model $Y_G=\Phi_G\theta_G+\varepsilon_G$ on $\mathbb{R}^D$, with prior $N(0,\Sigma_0)$, $\varepsilon_G\sim N(0,\mathrm{Id})$ and posterior covariance $V_Z$ given $Y_G$, satisfy $NV_Z\to\Sigma_D(0)$, write $m_G=E[\theta_G\mid Y_G]$, let $S_G=AY_G$ be a linear statistic, and let a coupling of $S$ under $\mathbf P$ with $S_G$ under the Gaussian model satisfy $E\,\mathscr{W}_{1,w}\big(\operatorname{Law}(\sqrt NP_DS_N\mid S),\operatorname{Law}(\sqrt Nm_G\mid S_G)\big)\to0$. Then it extends to a coupling of $(Z^{(N)},S)$ with $(Y_G,S_G)$ under which both hypotheses of the nonlinear sufficiency gap bounds hold: $\sqrt N\,E\,\mathscr{W}_{1,w}\big(\Pi(\cdot\mid Z^{(N)}),\Pi_G(\cdot\mid Y_G)\big)\to0$ and $\sqrt N\,E\,\mathscr{W}_{1,w}\big(\Pi(\cdot\mid S),\Pi_G(\cdot\mid S_G)\big)\to0$.
 
-Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex), label `m:lem:gapred`.
+Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex), label `m:lem:gapred`.
 
 <a id="two_coordinate_model_sufficiency_gap_depends_on_summary"></a>
 
@@ -467,7 +467,7 @@ Statement. Let $\theta\in\mathbb{R}^2$ have the prior $N(0,s_N^2\mathrm{Id})$ wi
 
 (d) let $S'=X_1-X_2^2$, the first coordinate of the maximum likelihood estimator $G^{-1}(X)$, which is also the one step summary from any preliminary estimate with $\bar\theta_2=X_2$, and let $S_G=Y_{G,1}/\sqrt N$ in the Gaussian model at $\theta_\ast=0$, coupled as in (a); then $\sqrt N\,E\,\mathscr{W}_1(\Pi(\cdot\mid S'),\Pi_G(\cdot\mid S_G))\to0$, so both hypotheses hold for $S'$ with this model and coupling.
 
-Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex), label `m:prop:gaptoy`.
+Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex), label `m:prop:gaptoy`.
 
 <a id="effective_dimension_under_dissipation"></a>
 
@@ -485,7 +485,7 @@ Statement. Consider the heat equation, or the Stokes equation on divergence free
 
 (iii) In the Gaussian experiment that observes $\theta_j+(N\iota_j)^{-1/2}\xi_j$ with independent standard normal $\xi_j$ and independent priors $\theta_j\sim N(0,\sigma^2_{0,j})$, a generator that reproduces the posterior center exactly but uses the prior spread for the modes $j>J'$ incurs a Wasserstein penalty, of order one in the Euclidean norm, of at most $\sqrt{2/\pi}\sum_{j>J'}\sigma_{0,j}\big(1-(1+N\iota_j\sigma^2_{0,j})^{-1/2}\big)\le\sqrt{1/(2\pi)}\sum_{j>J'}N\iota_j\sigma^3_{0,j}$, which decays like $(J')^{1-(3\alpha+2)/d}$ when the sum is replaced by its integral.
 
-Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex), label `m:thm:jeff`.
+Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex), label `m:thm:jeff`.
 
 <a id="sufficiency_versus_the_raw_data"></a>
 
@@ -497,7 +497,7 @@ Status: conditional on Assumption U and other hypotheses of the quantile generat
 
 Statement. Let a generator be trained on $M$ i.i.d. simulated pairs to reproduce the conditional law of $\theta$ given the raw observation vector $Y\in\mathbb{R}^N$ (or $\mathbb{R}^{2N}$ for a vector field), with no summary, and let it be required to be accurate uniformly over the class $\mathcal{Q}_\beta(N)$ of conditional quantile maps $(\tau,s)\mapsto Q(\tau\mid s)$ on $[0,1]\times[0,1]^N$ that have Hölder norm of order $\beta$ at most one and are nondecreasing in $\tau$, the inputs having a law on $[0,1]^N$ with a Lebesgue density bounded above by $C_\mu$ and below by a positive constant. Then the number of simulations needed for $\sqrt N\,E\,\mathscr{W}_1(\hat\Pi,\Pi(\cdot\mid Y))\to0$, with $\hat\Pi$ the law the generator reports and $\mathscr{W}_1$ the Wasserstein distance of order one, satisfies $M\ge cN^{(2\beta+N)/(2\beta)}$ for all large $N$, where $c=C_\mu^{-1}$; the right side grows faster than any exponential in $N$. For the heat or Stokes model with prior variances $\sigma^2_{0,j}=\rho^2(\lambda_j/\lambda_1)^{-\alpha}$, viscosity $\nu$, observation window $[0,T]$ and effective dimension $J_{\rm eff}=\#\{j:N\iota_j\sigma^2_{0,j}\ge1\}\asymp N^{d/(2\alpha+2)}(\nu T)^{-d/(2\alpha+2)}$ (catalog entry effective_dimension_under_dissipation), the hybrid generator of part (ii) of that entry with the cut $\min(J_{\rm eff},J_N)$, trained on the sufficient statistic, which uses the Bernstein von Mises structure that the uniform class does not, satisfies the accuracy condition (G1), $\sqrt N\,\mathscr{W}_{1,H^{-k-2}}(\hat\Pi,\Pi_N)\to0$ in $P^N_{\theta_0}$ probability with $\Pi_N$ the posterior, as soon as $J_{\rm eff}/M\to0$, conditionally on the hypotheses of part (ii) of that entry, which include those of the book's Theorem 16.10 and the uniform Bernstein von Mises assumption.
 
-Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex), label `m:thm:raw`.
+Source: [`source/chapters/ext/m2c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex), label `m:thm:raw`.
 
 ## Chapter 16. Transfer, Generators and Localized Training
 
@@ -520,7 +520,7 @@ Then:
 (iv) In the Navier Stokes case of (ii), let $\theta_{N,h}=\theta_0+h/\sqrt N$, and let $\dot H^{\infty}_\diamond$ be the smooth, divergence free, mean zero vector fields on the torus. For every $h\in\dot H^{\infty}_\diamond$, under $P^N_{\theta_{N,h}}$, $\sqrt N(\hat\theta^{G}_N-\theta_{N,h})\to\mathcal{N}_{\theta_0}$ in distribution in $H^{-k-2}$ and $\sqrt N(u_{\hat\theta^{G}_N}-u_{\theta_{N,h}})\to\mu$ in distribution in $\mathscr{C}$; that is, $u_{\hat\theta^{G}_N}$ is a regular estimator sequence of the state at $\theta_0$ whose limit law $\mu$ attains the bound of Theorem 1.2 of Konen and Nickl (2026) (Theorem 2.10 there for a general $\Phi$). Consequently, with $\Phi$ as in (iii) and $\Phi=\operatorname{Id}$ permitted, $\Phi(u_{\hat\theta^{G}_N})$ is efficient among regular estimator sequences by the convolution theorem, and for every bounded, continuous, subconvex loss $\ell:\mathbb{B}\to[0,\infty)$ it attains the local asymptotic minimax bound:
 $$\sup_{J\subset\dot H^{\infty}_\diamond,\ |J|<\infty}\ \liminf_{N\to\infty}\ \max_{h\in J}\ \mathbb{E}^N_{\theta_{N,h}}\,\ell\Big(\sqrt N\big(\Phi(u_{\hat\theta^{G}_N})-\Phi(u_{\theta_{N,h}})\big)\Big)=\mathbb{E}\,\ell\big(\dot\Phi_{u_{\theta_0}}[U]\big),\qquad U\sim\mu.$$
 
-Source: [`source/chapters/ext/m3a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3a.tex), label `m:thm:main`.
+Source: [`source/chapters/ext/m3a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3a.tex), label `m:thm:main`.
 
 <a id="solve_then_simulate_equals_simulate_the_limit"></a>
 
@@ -538,7 +538,7 @@ and, writing $U^\vartheta$ for the solution of the tangent equation linearized a
 $$\mathscr{W}_{1,\mathscr{C}}\Big(\operatorname{Law}\big(\sqrt N(u_\theta-u_{\hat\theta^{G}_N})\mid\theta\sim\widehat\Pi_N\big),\ \operatorname{Law}\big(U^{\hat\theta^{G}_N}\big)\Big)\le o_P(1)+C\varrho_N,$$
 where $C$ depends only on the Lipschitz constant of $\vartheta\mapsto\mathbb{I}_\vartheta$, on the Lipschitz constant of $\vartheta\mapsto\mathcal{N}_\vartheta$ in $\mathscr{W}_{1,H^{-k-2}}$ from (U3), on the norm of $\mathbb{I}_{\theta_0}:H^{-k-2}\to\mathscr{C}$ and on the first moment of $\mathcal{N}_{\theta_0}$ in $H^{-k-2}$.
 
-Source: [`source/chapters/ext/m3a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3a.tex), label `m:cor:commute`.
+Source: [`source/chapters/ext/m3a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3a.tex), label `m:cor:commute`.
 
 <a id="bernstein_von_mises_for_the_identity_skip_quantile_generator"></a>
 
@@ -556,7 +556,7 @@ Hypotheses. (a) Assumption U with $S_N=\hat S_N$, clause (U4) included: there is
 
 Conclusion. If $M=M_N$ satisfies $J_N/M_N\to0$, then $\sqrt N\,\mathscr{W}_{1,H^{-k-2}}(\widehat\Pi_N,\Pi_N)\to0$ in $P^N_{\theta_0}$ probability (condition (G1) of the transfer theorem) and condition (G2) of that theorem holds (mass at most $e^{-bN\delta_N^2}$ off the localization set and $\mathbb{E}^{\widehat\Pi_N}\|\theta\|^q_{H^{\bar\gamma}}=O_P(1)$). Consequently the conclusions of the transfer theorem (catalog entry bvm_for_gbc) hold for the GBC posterior produced by this generator, those of its parts (ii) to (iv) under the additional hypotheses stated there.
 
-Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex), label `m:thm:qnnA`.
+Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex), label `m:thm:qnnA`.
 
 <a id="no_uniform_guarantee_for_quantile_generators"></a>
 
@@ -576,7 +576,7 @@ Consequently, if a GBC generator trained on $M_N$ pairs is required to satisfy t
 $$M_N\ge C_\mu^{-1}N^{(2\beta+J_N)/(2\beta)}=C_\mu^{-1}N^{1+J_N/(2\beta)}\qquad\text{for all large }N,$$
 which grows faster than any polynomial in $N$ as soon as $J_N\to\infty$.
 
-Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex), label `m:thm:qnnB`.
+Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex), label `m:thm:qnnB`.
 
 <a id="quantile_generator_exponent_attained_for_beta_at_most_one"></a>
 
@@ -592,7 +592,7 @@ Let $\beta\in(0,1]$, partition $[0,1]^J$ into $m^J$ cubes of side $h=1/m$ with $
 $$\sup_{Q\in\mathcal{Q}_\beta(J)}\ \sup_{s\in[0,1]^J}\ \mathbb{E}\,\mathscr{W}_{1,\mathbb{R}}\big(\hat P_M(\cdot\mid s),P_{Q,s}\big)\le C(\beta,c_\mu)\,J^{\beta/2}\,M^{-\beta/(2\beta+J)},$$
 with $C(\beta,c_\mu)$ depending only on $\beta$ and $c_\mu$. In particular, at fixed $\beta$ and $J$ a single explicit estimator has risk $O(M^{-\beta/(2\beta+J)})=o(M^{-\beta/(2\beta+J+1)})$, so no lower bound with the exponent $\beta/(2\beta+J+1)$ and a positive constant can hold: it is the summary dimension, and not the summary dimension plus one, that governs the problem.
 
-Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex), label `m:prop:qnnUB`.
+Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex), label `m:prop:qnnUB`.
 
 <a id="quantile_generator_exponent_attained_for_beta_between_one_and_two"></a>
 
@@ -608,7 +608,7 @@ Let $\beta\in(1,2]$ and $J\ge1$. Put $h=\min\{1/8,M^{-1/(2\beta+J)}\}$, $I=\{i\l
 $$\sup_{Q\in\mathcal{Q}_\beta(J)}\mathbb{E}\,\mathscr{W}_{1,\mathbb{R}}\big(\hat P_M(\cdot\mid s_0),P_{Q,s_0}\big)\le C\,M^{-\beta/(2\beta+J)}.$$
 In particular, for every $\beta\le2$, at fixed $\beta$ and $J$ no lower bound with the exponent $\beta/(2\beta+J+1)$ and a positive constant can hold.
 
-Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex), label `m:prop:qnnUB2`.
+Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex), label `m:prop:qnnUB2`.
 
 <a id="a_quantile_fit_is_nearly_monotone_in_its_error"></a>
 
@@ -625,7 +625,7 @@ the distribution function of $\theta+h^\beta V$ for $\theta\sim P_{Q,s_0+hx}$ an
 (ii) if $w(x')\le t$ and $w(x)>3t+4\eta$ then $\delta(x')\le\delta(x)$, and if $w(x')\ge-t$ and $w(x)<-3t-4\eta$ then $\delta(x)\le\delta(x')$;
 (iii) if $w(x)>\eta$ then $\delta(x)\ge\min\{\frac23(w(x)-\eta),1-\tau\}$, and if $w(x)<-\eta$ then $-\delta(x)\ge\min\{\frac23(-w(x)-\eta),\tau\}$.
 
-Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex), label `m:lem:qrep`.
+Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex), label `m:lem:qrep`.
 
 <a id="moment_conditions_force_a_small_fit"></a>
 
@@ -640,7 +640,7 @@ Statement. Let $\beta\in(1,2]$, $J\ge1$, and let $Q:[0,1]\times[0,1]^J\to\mathbb
 Let $g$ be a probability density on $\bar B$ with $g\le g_+$, let $\omega_{J-1}$ be the volume of the unit ball of $\mathbb{R}^{J-1}$ (with $\omega_0=1$), and put $C_R=1+\frac{20}{3}g_+\omega_{J-1}$ and $c_B=12C_R(1+\sqrt J)$. Let $\kappa\ge0$ be such that $|\int\delta g|\le\kappa$ and $|\int\delta(x)x_kg(x)\,\mathrm{d}x|\le\kappa$ for $k=1,\dots,J$. If $\min\{\tau,1-\tau\}>5c_B\kappa$, then
 $$\sup_{x\in\bar B}|w(x)|\le32\,C_R\,\eta+20\,C_R\,c_B\,\kappa.$$
 
-Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex), label `m:lem:qbary`.
+Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex), label `m:lem:qbary`.
 
 <a id="quantile_generator_exponent_attained_for_beta_above_two_with_bounded_densities"></a>
 
@@ -656,7 +656,7 @@ Let $\beta>2$, $J\ge1$ and $\underline c\in(0,1]$. Let $L_\ell$ be the number of
 $$\sup_{Q\in\mathcal{Q}_\beta(J;\underline c)}\mathbb{E}\,\mathscr{W}_{1,\mathbb{R}}\big(\hat P_M(\cdot\mid s_0),P_{Q,s_0}\big)\le C\,M^{-\beta/(2\beta+J)}.$$
 The two maps in the proof of the lower bound (catalog entry no_uniform_guarantee_for_quantile_generators) have $\partial_\tau Q\ge\frac18$, so with that theorem and the case $1<\beta\le2$ (catalog entry quantile_generator_exponent_attained_for_beta_between_one_and_two) the exponent $\beta/(2\beta+J)$ is the minimax exponent over $\mathcal{Q}_\beta(J;\underline c)$ at an interior point for every $\beta>1$ when $\underline c\le\frac18$.
 
-Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex), label `m:prop:qnnUB3`.
+Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex), label `m:prop:qnnUB3`.
 
 <a id="a_polynomial_quantile_fit_when_the_densities_are_bounded"></a>
 
@@ -672,7 +672,7 @@ Let $p$ be a polynomial of degree at most $\ell$, $w=p-T^\ell_\tau$ and $\delta(
 $$c_7=(g_-\omega_Jc_\ell)^{1/2},\qquad\bar\kappa=L_\ell K_\ell\kappa+6K_Th^\beta/\underline c.$$
 If $\min\{\tau,1-\tau\}>2\sqrt2\,\bar\kappa/c_7^3$, then $\sup_{\bar B}|w|\le8\bar\kappa/c_7^4$.
 
-Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex), label `m:lem:qpoly`.
+Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex), label `m:lem:qpoly`.
 
 <a id="no_two_point_bound_gives_a_smaller_exponent"></a>
 
@@ -688,7 +688,7 @@ Let $\beta>0$ and $J\ge1$. There is a constant $c_8>0$ depending only on $\beta$
 $$H^2\big(P^{(1)},P^{(0)}\big)\ge c_8\,c_\mu\,\Delta^{2+J/\beta}.$$
 Consequently, for every such pair and every $M\ge1$ some generator $\hat P_M$ trained on $M$ i.i.d. pairs has $\mathbb{E}\,\mathscr{W}_{1,\mathbb{R}}(\hat P_M(\cdot\mid s_0),P_{Q_i,s_0})\le\{2/(c_8c_\mu M)\}^{\beta/(2\beta+J)}$ for $i=0$ and $i=1$, so that no lower bound drawn from two maps in $\mathcal{Q}_\beta(J)$ has an exponent smaller than $\beta/(2\beta+J)$.
 
-Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex), label `m:prop:qnntwo`.
+Source: [`source/chapters/ext/m3b.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex), label `m:prop:qnntwo`.
 
 <a id="contraction_under_a_network_prior"></a>
 
@@ -706,7 +706,7 @@ in $P^N_{\theta_0}$ probability, and, by interpolation between $H^{-1}$ and $H^1
 $$\Pi\big(\theta:\|\theta-\theta_0\|_{L^2}\le L'(B_N\epsilon_N)^{1/2}\mid Z^{(N)}\big)\to1$$
 in $P^N_{\theta_0}$ probability. The third statement is a rate only when $B_N\epsilon_N\to0$.
 
-Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex), label `m:thm:PR`.
+Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex), label `m:thm:PR`.
 
 <a id="exactness_of_the_one_step_summary"></a>
 
@@ -720,7 +720,7 @@ Statement. In the linear model $Y=\Phi\theta+\varepsilon$, $\varepsilon\sim N(0,
 $$S(Y)=\bar\theta+\Sigma_N\Big(\Phi^\top\big(Y-\Phi\bar\theta\big)/\varsigma^2-\Sigma_0^{-1}\bar\theta\Big).$$
 Then $S(Y)=\Sigma_N\big(F\theta+\Phi^\top\varepsilon/\varsigma^2\big)$ identically in $\bar\theta$: the summary is exactly the posterior mean, and in particular does not depend on the linearization point.
 
-Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex), label `m:lem:exact`.
+Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex), label `m:lem:exact`.
 
 <a id="residual_law_under_a_localized_proposal"></a>
 
@@ -739,7 +739,7 @@ both without further hypotheses. If in addition $\Sigma_0$ and $\Phi^\top\Phi$ c
 $$\beta(c)=\frac1D\sum_{j\le D}\Big|\sqrt{s_j+c^2p_j^2}-1\Big|,$$
 which is $O(\max_jp_j)$ as $c\to0$ and grows like $c\,\frac1D\sum_jp_j$ for large $c$.
 
-Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex), label `m:thm:locbias`.
+Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex), label `m:thm:locbias`.
 
 <a id="localized_design_meets_gbc_accuracy_conditions"></a>
 
@@ -754,7 +754,7 @@ Statement. In the linear model $Y=\Phi\theta+\varepsilon$, $\varepsilon\sim N(0,
 (ii) (finite $M$) with $M=M_N$ simulations and $J=J_N$ retained modes, the rescaled sample covariance of the centered residuals equals $\Sigma_N^{1/2}(\operatorname{Id}+\Delta_M)\Sigma_N^{1/2}$, where $\|\Delta_M\|_{op}=O_P(\sqrt{J_N/M_N}+J_N/M_N)$ does not depend on $c$; hence, when $\Sigma_{N,j}\lesssim\lambda_j/N$ on the retained modes ($\lambda_j$ the Laplace eigenvalues), as for the heat and Stokes equations, and $k>d/2$, $\mathscr{W}_{1,H^{-k-2}}(\widehat\Pi_N,\Pi_N)=O_P\big(N^{-1/2}(\sqrt{J_N/M_N}+J_N/M_N)\big)$, the distance being the Wasserstein distance of order one for the norm $\|x\|^2=\sum_j\lambda_j^{-k-2}x_j^2$ on the coefficients in the first $J$ Laplace modes, so the accuracy condition (G1) $\sqrt N\,\mathscr{W}_{1,H^{-k-2}}(\widehat\Pi_N,\Pi_N)\to0$ holds whenever $J_N/M_N\to0$, at every radius, and the condition (G2) (exponentially small mass off the localization set and moments of every order) holds whenever the exact posterior $N(S(Y),\Sigma_N)$ satisfies its first clause;
 (iii) consequently the transfer theorem (catalog entry bvm_for_gbc) applies verbatim to this algorithm, its accuracy assumption being discharged.
 
-Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex), label `m:cor:locG`.
+Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex), label `m:cor:locG`.
 
 <a id="the_gram_matrix_of_the_whitened_weights"></a>
 
@@ -768,7 +768,7 @@ Statement. Let $\mathcal{X}=[0,T]\times\Omega$ with $X$ uniform on $\mathcal{X}$
 $$G_\phi=B_J+B_JP_J\mathcal{A}Q_J(Q_J\mathcal{A}Q_J)^{-1}Q_J\mathcal{A}P_JB_J,$$
 so that $G_\phi\succeq B_J\succeq\|\mathcal{A}\|^{-1}_{op}\operatorname{Id}$ and $\|G_\phi-B_J\|_{op}\le a^{-3}\|K'_{\bar\vartheta}Q_J\|^2_{op}$.
 
-Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex), label `m:lem:u2pgram`.
+Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex), label `m:lem:u2pgram`.
 
 <a id="no_sub_gaussian_envelope_for_the_whole_residual"></a>
 
@@ -782,7 +782,7 @@ Statement. Let $\mathcal{X}=[0,T]\times\Omega$, $\Omega=[0,1]^d$ the torus, with
 $$\big\|\langle v,W^{(m)}\rangle\big\|^2_{\psi_2\mid Z^{(N)}}\ge2\operatorname{ess\,sup}_x\|\phi(x)^\top v\|^2_W,\qquad\sup_{\|u\|_2=1}\big\|\langle u,W^{(m)}\rangle\big\|^2_{\psi_2\mid Z^{(N)}}\ge2b_J\ge\frac{2\,\mathrm{tr}\,G_\phi}{d_W}.$$
 If $\mathcal{A}$ is bounded and $\mathcal{A}\succeq a\operatorname{Id}$ for some $a>0$, then $\mathrm{tr}\,G_\phi\ge J\|\mathcal{A}\|^{-1}_{op}$. For the heat and Stokes equations, observed from time zero, $G_\phi=\operatorname{Id}_J$ and $\|\langle e_J,W^{(m)}\rangle\|^2_{\psi_2\mid Z^{(N)}}\ge2\|e_J\|^2_{L^\infty}/\iota_J\ge2/\iota_J$, which grows like $\lambda_J$; for the real trigonometric basis the bound is $4/\iota_J$.
 
-Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex), label `m:prop:u2pfalse`.
+Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex), label `m:prop:u2pfalse`.
 
 <a id="whitened_residual_assumption_under_a_localized_proposal"></a>
 
@@ -803,7 +803,7 @@ Then:
 (b) for a nonlinear forward map, Assumption (U2') holds under Conditions 1 and 2 of Nickl (2024) with integer $\gamma>\max(3\zeta+3d/2+2,\eta_0)$ and $k>\max(\zeta+5d/2,\eta_0)$ ($\zeta>d/2$ the index of Condition 2D), $\bar\gamma<\gamma-1$, $\sqrt N\,\tilde\delta_N(0)\tilde\delta_N(\zeta)\to0$, and (I1) to (I3);
 (c) let $\Sigma_0$ be positive definite, $\Sigma_N=(F_{\bar\theta_N}+\Sigma_0^{-1})^{-1}$ with $F_{\bar\theta_N}$ the realized information on $J$ modes, and $a_\star=1$ in case (a); under the hypotheses of (a) or (b), with probability tending to one $N^{-1}\mathcal{D}^{1/2}F_{\bar\theta_N}\mathcal{D}^{1/2}\succeq(a_\star/12)\operatorname{Id}$, and then $\mathcal{V}_N=c^2N\mathcal{D}^{-1/2}\Sigma_N\mathcal{D}^{-1/2}$ has $\|\mathcal{V}_N\|_{op}\le12c^2/a_\star$.
 
-Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex), label `m:thm:u2ploc`.
+Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex), label `m:thm:u2ploc`.
 
 <a id="the_linearization_of_the_reaction_diffusion_class"></a>
 
@@ -815,7 +815,7 @@ Status: proved.
 
 Statement. Let $\Omega=[0,1]^d$ be the torus with $d\le3$, $T>0$, $\mathcal{X}=[0,T]\times\Omega$, and let $u_\vartheta$ solve $\partial_tu-\Delta u=f(u)$, $u(0)=\vartheta$, with $f\in C^\infty_c(\mathbb{R})$ (the setting of Theorem 1 of Nickl (2024), with integer $\gamma>2+3d$), let $\theta_0\in C^\infty$ and $K_f=\sup|f'|$, and let $\mathbb{I}_\vartheta h$ be the solution $U$ of $\partial_tU=\Delta U+f'(u_\vartheta)U$, $U(0)=h$. Let $\mathcal{D}=\operatorname{diag}(1/\iota_j)$ be the heat information diagonal in the Laplace eigenbasis, $\operatorname{Id}+K'_\vartheta=T^{-1}\mathcal{D}^{1/2}\mathbb{I}^*_\vartheta\mathbb{I}_\vartheta\mathcal{D}^{1/2}$, and $\|\mathcal{T}\|_{\ell^2\to L^2}=\sup_{\|g\|_2\le1}(\mathbb{E}|(\mathcal{T}g)(X)|^2)^{1/2}$ with $X$ uniform on $\mathcal{X}$. Consider the conditions, with a constant $a_\star>0$ and, for every $B>0$, constants $L_\star$, $C_\infty$, $C_Q$ that may depend on $B$, for all $\vartheta,\vartheta'$ with $\|\vartheta\|_{H^{\bar\gamma}},\|\vartheta'\|_{H^{\bar\gamma}}\le B$: (I1) $\operatorname{Id}+K'_{\theta_0}$ is bounded on $\ell^2$, $K'_{\theta_0}$ is compact and $\operatorname{Id}+K'_{\theta_0}\succeq a_\star\operatorname{Id}$; (I2) $\|(\mathbb{I}_\vartheta-\mathbb{I}_{\theta_0})\mathcal{D}^{1/2}\|_{\ell^2\to L^2}\le L_\star\|\vartheta-\theta_0\|_{H^\zeta}$; (I3) $\|\mathbb{I}_\vartheta h\|_{L^\infty(\mathcal{X})}\le C_\infty\|h\|_{H^\zeta}$ for all $h\in H^\zeta$; (I4) $\|u_{\vartheta'}-u_\vartheta-\mathbb{I}_\vartheta[\vartheta'-\vartheta]\|_{L^\infty(\mathcal{X})}\le C_Q\|\vartheta'-\vartheta\|^2_{H^\zeta}$. Then (I1) to (I4) hold for every $\zeta>d/2$ and every $\bar\gamma>\max(1,\zeta)$, and $\|\operatorname{Id}+K'_\vartheta\|_{op}$ is bounded by a constant that depends only on $K_f$ and $T$.
 
-Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex), label `m:lem:rdlin`.
+Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex), label `m:lem:rdlin`.
 
 <a id="the_linearization_of_the_navier_stokes_equations"></a>
 
@@ -827,7 +827,7 @@ Status: proved.
 
 Statement. Consider the incompressible Navier Stokes equations on the two dimensional torus, as in Konen and Nickl (2026), with forcing $f\in\dot H^{1}_\diamond$ and initial condition $\theta_0\in\dot H^{2}_\diamond$, where $\dot H^{s}_\diamond$ is the Sobolev space of order $s$ of divergence free, mean zero vector fields; let $u_\vartheta$ be the solution with initial condition $\vartheta$, $\mathbb{I}_\vartheta$ the linearization of $\vartheta\mapsto u_\vartheta$ (the solution of the equation linearized at $u_\vartheta$), $\mathcal{X}=[0,T]\times\mathbb{T}^2$, $\mathcal{D}=\operatorname{diag}(1/\iota_j)$ the Stokes information diagonal and $\operatorname{Id}+K'_\vartheta=T^{-1}\mathcal{D}^{1/2}\mathbb{I}^*_\vartheta\mathbb{I}_\vartheta\mathcal{D}^{1/2}$. Consider the conditions, with a constant $a_\star>0$ and, for every $B>0$, constants $L_\star$, $C_\infty$, $C_Q$ that may depend on $B$, for all $\vartheta,\vartheta'$ with $\|\vartheta\|_{H^{\bar\gamma}},\|\vartheta'\|_{H^{\bar\gamma}}\le B$: (I1) $\operatorname{Id}+K'_{\theta_0}$ is bounded on $\ell^2$, $K'_{\theta_0}$ is compact and $\operatorname{Id}+K'_{\theta_0}\succeq a_\star\operatorname{Id}$; (I2) $\|(\mathbb{I}_\vartheta-\mathbb{I}_{\theta_0})\mathcal{D}^{1/2}\|_{\ell^2\to L^2}\le L_\star\|\vartheta-\theta_0\|_{H^\zeta}$, with $\|\mathcal{T}\|_{\ell^2\to L^2}=\sup_{\|g\|_2\le1}(\mathbb{E}\|(\mathcal{T}g)(X)\|^2)^{1/2}$ for $X$ uniform on $\mathcal{X}$; (I3) $\|\mathbb{I}_\vartheta h\|_{L^\infty(\mathcal{X})}\le C_\infty\|h\|_{H^\zeta}$ for all $h\in H^\zeta$; (I4) $\|u_{\vartheta'}-u_\vartheta-\mathbb{I}_\vartheta[\vartheta'-\vartheta]\|_{L^\infty(\mathcal{X})}\le C_Q\|\vartheta'-\vartheta\|^2_{H^\zeta}$. Then (I2) to (I4) hold with $\zeta=2$ for every $\bar\gamma\ge2$. If moreover $f,\theta_0\in\dot H^{\infty}_\diamond$, as in Theorem 2.11 of Konen and Nickl (2026), then, with (I1), which the book proves for Navier Stokes by the Fredholm alternative, and with Condition 2C (linearization with quadratic remainder) from their Proposition 3.8(iii), every hypothesis on the forward map of part (b) of the theorem on the whitened residual assumption under a localized proposal (catalog entry whitened_residual_assumption_under_a_localized_proposal) holds, with their Condition 2.12 in place of Condition 2 of Nickl (2024) and $\gamma=\alpha>12>3\zeta+3d/2+2$.
 
-Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex), label `m:lem:nslin`.
+Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex), label `m:lem:nslin`.
 
 <a id="centered_and_rescaled_residuals_for_a_nonlinear_forward_map"></a>
 
@@ -841,7 +841,7 @@ Statement. Use the setting of the theorem on the whitened residual assumption un
 $$\Sigma_N^{-1/2}Q\big(P_J\theta^{(m)}-S^{(m)}\big)=\mu_N+W^{(m)}_{g}+W^{(m)}_{r}$$
 with $\mu_N$ determined by $Z^{(N)}$, and under the hypotheses of part (b) of that theorem (Conditions 1 and 2 of Nickl (2024) with integer $\gamma>\max(3\zeta+3d/2+2,\eta_0)$ and $k>\max(\zeta+5d/2,\eta_0)$, $\bar\gamma<\gamma-1$, $\sqrt N\,\tilde\delta_N(0)\tilde\delta_N(\zeta)\to0$, and the linearization conditions (I1) to (I3)) and the quadratic remainder condition (I4) $\|u_{\vartheta'}-u_\vartheta-\mathbb{I}_\vartheta[\vartheta'-\vartheta]\|_{L^\infty(\mathcal{X})}\le C_Q\|\vartheta'-\vartheta\|^2_{H^\zeta}$ on $H^{\bar\gamma}$ balls, the pairs $(W^{(m)}_{g},W^{(m)}_{r})$ satisfy Assumption (U2') with $\operatorname{Id}$ in place of $\operatorname{Id}+\Xi$ (i.i.d. given the data, $\sup_{\|v\|_2=1}\|\langle v,W^{(m)}_{g}\rangle\|_{\psi_2\mid Z^{(N)}}=O_P(1)$, $\mathbb{E}[\|W^{(m)}_{r}\|^2_2\mid Z^{(N)}]\to0$ and $\|\mathbb{E}[W^{(m)}_{g}W^{(m)\top}_{g}\mid Z^{(N)}]-\operatorname{Id}\|_{op}\to0$ in probability), and $\max_m\|W^{(m)}_{r}\|_2\to0$ in probability. If $J_N/M_N\to0$, the head of the localized GBC algorithm, centered at $S(Y)$, produces a law $\widehat\Pi_N$ with $\sqrt N\,\mathscr{W}_{1,H^{-k-2}}\big(\widehat\Pi_N,N(S(Y),\Sigma_N)\big)\to0$ in probability.
 
-Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex), label `m:prop:locres`.
+Source: [`source/chapters/ext/m3c.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex), label `m:prop:locres`.
 
 ## Chapter 17. Heat, Navier Stokes and Schrödinger: Examples and Experiments
 
@@ -855,7 +855,7 @@ Status: proved.
 
 Statement. Let $e_1,\dots,e_D$ be real orthonormal eigenfunctions of the Laplacian on $\mathbb{T}^d$, $-\Delta e_j=\lambda_je_j$, with $\|e_j\|_\infty\le\sqrt2$ for all $j\le D$. Consider the heat equation $\partial_tu=\nu\Delta u$ with $\nu>0$ and initial condition $\theta=\sum_{j\le D}\theta_je_j$, observed at $N$ independent points $(t_i,x_i)$ drawn uniformly from $[0,T]\times\mathbb{T}^d$ with unit variance Gaussian noise, so that $Y=\Phi\theta+\varepsilon$ with design matrix $\Phi_{ij}=e^{-\nu\lambda_jt_i}e_j(x_i)$, $i\le N$, $j\le D$. Put $\iota_j=\frac1T\int_0^Te^{-2\nu\lambda_jt}\,\mathrm{d}t=(1-e^{-2\nu\lambda_jT})/(2\nu\lambda_jT)$ and suppose $N\ge D\log D$. Then, with the absolute constant $c=12$, $\|N^{-1}\Phi^\top\Phi-\operatorname{diag}(\iota_j)\|_{op}\le c\sqrt{D\log D/N}$ with probability at least $1-D^{-1}$. Consequently, on the same event, if $c\sqrt{D\log D/N}<\min_j\iota_j$ then, for a Gaussian prior $N(0,\Sigma_0)$ on $\theta$ with $\Sigma_0$ positive definite, the exact posterior covariance $V_N=(\Phi^\top\Phi+\Sigma_0^{-1})^{-1}$ and its Bernstein von Mises prediction $\bar V_N=(N\operatorname{diag}(\iota_j)+\Sigma_0^{-1})^{-1}$ satisfy $\|NV_N-N\bar V_N\|_{op}\le c\sqrt{D\log D/N}\,\big/\,\big(\min_j\iota_j\,(\min_j\iota_j-c\sqrt{D\log D/N})\big)$.
 
-Source: [`source/chapters/ext/m4a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4a.tex), label `m:prop:gram`.
+Source: [`source/chapters/ext/m4a.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4a.tex), label `m:prop:gram`.
 
 <a id="information_operator_of_nls_about_a_plane_wave"></a>
 
@@ -869,7 +869,7 @@ Statement. Let $\kappa\in\mathbb{R}$, $d\le2$, and let $u$ solve the cubic nonli
 In the stable case $\omega_p^2>0$ (which excludes the block $p=0$, where $\omega_0=0$), with $\omega=\omega_p$ and $r=\omega_p/|p|^2=(1+2\kappa a^2/|p|^2)^{1/2}$: $M_p(t)=\begin{pmatrix}\cos\omega t&r^{-1}\sin\omega t\\-r\sin\omega t&\cos\omega t\end{pmatrix}$ and $\Theta_p(T)=\frac T2\begin{pmatrix}1+r^2&0\\0&1+r^{-2}\end{pmatrix}+\frac{\sin2\omega T}{4\omega}\begin{pmatrix}1-r^2&0\\0&1-r^{-2}\end{pmatrix}+\frac{\sin^2\omega T}{2\omega}(r^{-1}-r)\begin{pmatrix}0&1\\1&0\end{pmatrix}$, so that $\Theta_p(T)=T\operatorname{Id}+O(\kappa a^2T/|p|^2)+O(|p|^{-2})$ as $|p|\to\infty$, and $\det\Theta_p(T)\ge T^2$ for every $p$ and every $T>0$.
 In the unstable case $\omega_p^2<0$ (which happens for $\kappa<0$ and $|p|^2<2|\kappa|a^2$, the modulational or Benjamin Feir instability), with $\gamma=|\omega_p|$ and $\rho=\gamma/|p|^2$: $M_p(t)=\begin{pmatrix}\cosh\gamma t&\rho^{-1}\sinh\gamma t\\\rho\sinh\gamma t&\cosh\gamma t\end{pmatrix}$ and $\Theta_p(T)=\frac T2\begin{pmatrix}1-\rho^2&0\\0&1-\rho^{-2}\end{pmatrix}+\frac{\sinh2\gamma T}{4\gamma}\begin{pmatrix}1+\rho^2&0\\0&1+\rho^{-2}\end{pmatrix}+\frac{\sinh^2\gamma T}{2\gamma}(\rho+\rho^{-1})\begin{pmatrix}0&1\\1&0\end{pmatrix}$; as $\gamma T\to\infty$ the largest eigenvalue of $\Theta_p(T)$ is asymptotic to $(\rho+\rho^{-1})^2e^{2\gamma T}/(8\gamma)$ and its smallest eigenvalue tends to $1/(2\gamma)$.
 
-Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex), label `m:prop:bog`.
+Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex), label `m:prop:bog`.
 
 <a id="bogoliubov_block_determinant_trace_and_smallest_eigenvalue"></a>
 
@@ -887,7 +887,7 @@ Statement. Let $\kappa\in\mathbb{R}$ and $a\in\mathbb{R}$, and consider the cubi
 (v) In the defocusing case $\kappa>0$, $1<r_p^2\le1+2\kappa a^2/\lambda_1$ for $p\ne0$, where $\lambda_1=4\pi^2$ is the smallest nonzero eigenvalue of $-\Delta$ on $\mathbb{T}^d$, and $\inf_p\lambda_{\min}(\Theta_p(T))\ge\dfrac{T\lambda_1}{4(\lambda_1+\kappa a^2)}$ and $\sup_{p\ne0}\lambda_{\max}(\Theta_p(T))\le\dfrac{2T(\lambda_1+\kappa a^2)}{\lambda_1}$.
 (vi) In the focusing band $\omega_p^2<0$, as $\gamma_pT\to\infty$, $\lambda_{\max}(\Theta_p(T))\sim\mathrm{tr}\,\Theta_p(T)\sim(\rho_p+\rho_p^{-1})^2e^{2\gamma_pT}/(8\gamma_p)$ and $\lambda_{\min}(\Theta_p(T))=\det\Theta_p(T)/\lambda_{\max}(\Theta_p(T))\to1/(2\gamma_p)$; the bound $\lambda_{\min}\ge T^2/\mathrm{tr}\,\Theta_p(T)$ still holds but is exponentially small in $\gamma_pT$, and the condition number satisfies $\lambda_{\max}/\lambda_{\min}\sim\frac14(\rho_p+\rho_p^{-1})^2e^{2\gamma_pT}$.
 
-Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex), label `m:lem:bogmin`.
+Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex), label `m:lem:bogmin`.
 
 <a id="linearized_stability_and_condition_2f_analogue_for_the_defocusing_plane_wave"></a>
 
@@ -902,7 +902,7 @@ Statement. Let $\kappa>0$ (defocusing), $d\le2$ and $a\in\mathbb{R}$, let $\Omeg
 (b) $\|\mathbb{I}_{\theta_0}h\|_{L^2(\mathcal{X})}\ge c_\star\|h\|_{L^2(\Omega)}\ge c_\star\|h\|_{H^{-1}(\Omega)}$, which is the estimate of Nickl's Condition 2E (the stability estimate $\|\mathscr{G}(\theta)-\mathscr{G}(\theta_0)\|_{L^2(\mathcal{X})}\ge c\|\theta-\theta_0\|_{H^{-1}}$ for the solution map $\mathscr{G}$) with the linearization $\mathbb{I}_{\theta_0}$ in place of $\mathscr{G}$ and the stronger norm $L^2$ rather than $H^{-1}$;
 (c) the Gaussian measure $\mathcal{N}_{\theta_0}=N\big(0,T(\mathbb{I}_{\theta_0}^*\mathbb{I}_{\theta_0})^{-1}\big)=N\big(0,T\operatorname{diag}\Theta_p(T)^{-1}\big)$ has per block covariance $T\Theta_p(T)^{-1}$ with $\|T\Theta_p(T)^{-1}\|\le T/\lambda_{\min}(\Theta_p(T))\le4(\lambda_1+\kappa a^2)/\lambda_1$ uniformly in $p$ and in $T$, so that $\mathcal{N}_{\theta_0}$ is tight on $H^{-s}(\mathbb{T}^d)$ for every $s>d/2$.
 
-Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex), label `m:cor:condE`.
+Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex), label `m:cor:condE`.
 
 <a id="stability_of_the_cubic_nls_solution_map"></a>
 
@@ -914,7 +914,7 @@ Status: proved.
 
 Statement. Let $\kappa\ne0$ be real, $d\in\{1,2\}$, $\Omega=\mathbb{T}^d$ and $\mathcal{X}=[0,T]\times\Omega$, and let $u,v$ solve $i\partial_tu+\Delta u=\kappa|u|^2u$ on $[0,T]\times\mathbb{T}^d$ with initial data $\theta,\vartheta$ in $H^1$ if $d=1$ and in $H^2$ if $d=2$; write $\mathscr{G}(\theta)=u_\theta$ for the solution map. Suppose $\|u(t)\|_{L^\infty}\le M_\infty$ and $\|v(t)\|_{L^\infty}\le M_\infty$ for $t\le T$, with $M_\infty>0$. Then for $t\le T$, $e^{-6|\kappa|M_\infty^2t}\|\theta-\vartheta\|_{L^2(\Omega)}^2\le\|u(t)-v(t)\|_{L^2(\Omega)}^2\le e^{6|\kappa|M_\infty^2t}\|\theta-\vartheta\|_{L^2(\Omega)}^2$, and, with the unnormalized norm of $L^2(\mathcal{X})$, $\|\mathscr{G}(\theta)-\mathscr{G}(\vartheta)\|_{L^2(\mathcal{X})}^2\ge\dfrac{1-e^{-6|\kappa|M_\infty^2T}}{6|\kappa|M_\infty^2}\|\theta-\vartheta\|_{L^2(\Omega)}^2\ge Te^{-6|\kappa|M_\infty^2T}\|\theta-\vartheta\|_{H^{-1}(\Omega)}^2$. A bound $M_\infty=M_\infty(T,\kappa,B)$ valid for all data in a ball of radius $B$ exists in each of the following cases: (a) $d=1$, either sign of $\kappa$, every ball of $H^1$; (b) $d=2$, $\kappa>0$, every ball of $H^2$ (by Theorem 1.1 of Planchon, Tzvetkov and Visciglia (2017), applied to the $H^2$ norm); (c) $d=2$, $\kappa<0$, the balls of $H^2$ with $2|\kappa|C_2B^2T<1$, where $C_2$ is a constant such that $\||f|^2f\|_{H^2}\le C_2\|f\|_{H^2}^3$. On such a ball Nickl's Condition 2E holds for $\mathscr{G}$ (the stability estimate $\|\mathscr{G}(\theta)-\mathscr{G}(\vartheta)\|_{L^2(\mathcal{X})}\ge c\|\theta-\vartheta\|_{H^{-1}}$), with the stronger norm $L^2$ on the right and the constant $c=T^{1/2}e^{-3|\kappa|M_\infty^2T}$; Condition 2A (uniform $L^\infty$ bounds) holds with the bound $M_\infty$; and the upper bound gives the $L^2$ Lipschitz estimate of Condition 2B, $\|\mathscr{G}(\theta)-\mathscr{G}(\vartheta)\|_{L^2(\mathcal{X})}^2\le\dfrac{e^{6|\kappa|M_\infty^2T}-1}{6|\kappa|M_\infty^2}\|\theta-\vartheta\|_{L^2(\Omega)}^2$.
 
-Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex), label `m:prop:nlsstab`.
+Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex), label `m:prop:nlsstab`.
 
 <a id="linear_schrodinger_transfer"></a>
 
@@ -930,7 +930,7 @@ Statement. Consider the linear Schrödinger equation $i\partial_tu=-\Delta u$ on
 (c) if in addition $\theta_0\in H^\gamma$ and $N\lambda_{D_N}^{-(a+\gamma)}\to0$, then $\sqrt N(\tilde\theta_N-\theta_0)\xrightarrow{d}N(0,\operatorname{Id})$ in $H^{-a}$; the choice $D_N\asymp N^{d/(2\gamma+d)}/\log N$ meets the conditions of (b) and (c) for every $a>d/2$;
 (d) (b) and (c) hold with $u_\theta(t)$, $u_{\tilde\theta_N}(t)$ and $u_{\theta_0}(t)$ in place of $\theta$, $\tilde\theta_N$ and $\theta_0$, at every $t$ and uniformly in $t$, with the same limit $e^{it\Delta}_\#N(0,\operatorname{Id})=N(0,\operatorname{Id})$, and no supremum norm statement holds at any $t$.
 
-Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex), label `m:prop:sch`.
+Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex), label `m:prop:sch`.
 
 <a id="the_transfer_theorem_for_the_linear_schrodinger_equation"></a>
 
@@ -946,7 +946,7 @@ Statement. Work in the setting of the linear Schrödinger transfer result: data 
 (iii) for a map $\Phi:H^{-a}\to\mathbb{B}$ into a Banach space $\mathbb{B}$ that is Hadamard differentiable at $u_{\theta_0}(t)$, $\sqrt N\big(\Phi(u_{\hat\theta^{\mathrm G}_N}(t))-\Phi(u_{\theta_0}(t))\big)\xrightarrow{d}\dot\Phi_{u_{\theta_0}(t)}[W]$ with $W\sim N(0,\operatorname{Id})$, and the ball in $H^{-a}$ about $\hat\theta^{\mathrm G}_N$ of $\widehat\Pi_N$ probability $1-\beta$ contains $\theta_0$ with probability tending to $1-\beta$ under the data law with true initial condition $\theta_0$;
 (iv) under the data law with true initial condition $\theta_0+h/\sqrt N$, for every $h\in H^\gamma$, (i) to (iii) hold with $\theta_0+h/\sqrt N$ in place of $\theta_0$, so that $\hat\theta^{\mathrm G}_N$ is a regular estimator sequence, and for $\psi\in H^a$ the limit $N(0,\|\psi\|_{L^2}^2)$ of $\sqrt N\,\mathrm{Re}\langle\psi,\hat\theta^{\mathrm G}_N-\theta_0\rangle$ is the efficient one, so that $\mathrm{Re}\langle\psi,\hat\theta^{\mathrm G}_N\rangle$ is efficient among regular estimator sequences of $\mathrm{Re}\langle\psi,\theta\rangle$.
 
-Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex), label `m:cor:schtransfer`.
+Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex), label `m:cor:schtransfer`.
 
 <a id="beyond_the_plane_wave"></a>
 
@@ -958,7 +958,7 @@ Status: open.
 
 Statement. Open question. For the cubic nonlinear Schrödinger equation $i\partial_tu+\Delta u=\kappa|u|^2u$ on $\mathbb{T}^d$ ($d\le2$), one computes the information operator $\mathbb{I}_{\theta_0}^*\mathbb{I}_{\theta_0}$ of the linearization (adjoint in unnormalized $L^2([0,T]\times\mathbb{T}^d)$) about a constant background $\theta_0=a$ exactly, mode by mode, through the Bogoliubov dispersion relation. Extend this to a multimode background $u_0$: write $\mathbb{I}_{\theta_0}^*\mathbb{I}_{\theta_0}=T\operatorname{Id}+\mathcal{R}+\mathcal{K}$ with $\mathcal{K}$ compact and $\mathcal{R}$ supported on the four wave resonant manifold $\{(k_1,k_2,k_3,k_4):k_1+k_2=k_3+k_4,\ \lambda_{k_1}+\lambda_{k_2}=\lambda_{k_3}+\lambda_{k_4}\}$, where $\lambda_k=4\pi^2|k|^2$, and characterize the triples $(\kappa,\theta_0,T)$ for which $T\operatorname{Id}+\mathcal{R}$ is uniformly invertible. In the focusing case, prove a Bernstein von Mises theorem for fixed $T$ with constants exponential in the largest modulational growth rate.
 
-Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex), label `m:op:planewave`.
+Source: [`source/chapters/ext/m4d.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex), label `m:op:planewave`.
 
 <a id="lsm_gbc_dictionary_for_optimal_stopping_and_the_inverse_problem"></a>
 
@@ -970,7 +970,7 @@ Status: proved.
 
 Statement. Let $(X_t)$ be a Markov process, $V_{t+1}$ a payoff with $\mathbb{E}V_{t+1}^2<\infty$, $C_t(x)=\mathbb{E}[V_{t+1}\mid X_t=x]$ the continuation value, and $L_1,\dots,L_K$ basis functions such that the $L_k(X_t)$ are square integrable and linearly independent in $L^2$. As the number of simulated paths grows, the Longstaff Schwartz regression coefficients $\hat\beta_t=\operatorname*{arg\,min}_\beta\sum_m\big(V^{(m)}_{t+1}-\sum_k\beta_kL_k(X^{(m)}_t)\big)^2$ converge almost surely to the coefficients of the $L^2$ projection of $C_t$ onto $\mathrm{span}\{L_k\}$ (the strong law for least squares), and $C_t(x)$ is the posterior mean summary $\mathbb{E}[\theta\mid S]$ for the "parameter" $\theta=V_{t+1}$ given the "data" $S=X_t$. Conversely, Step 2 of the generative Bayesian computation (GBC) algorithm (the fit of a generator of the parameter given the summary on the training pairs simulated in Step 1, with $\theta^{(m)}$ drawn from the prior and $Z^{(m)}$ from the model) with the mean regression loss and basis functions of the summary $S_N$ is an LSM regression with the following roles: paths correspond to prior draws $\theta^{(m)}$, the state $X_t$ to the summary $S_N(Z^{(m)})$, the payoff $V_{t+1}$ to $\theta^{(m)}$, and the continuation value to the posterior mean $\mathbb{E}[\theta\mid S_N]$. In the linear Gaussian case (the linear model $Y=\Phi\theta+\varepsilon$ with standard Gaussian noise, a Gaussian prior and $S_N=\Phi^\top Y$ the adjoint statistic), with the design held fixed, the posterior mean is linear in $S_N$, so a linear basis is exact, just as LSM with a linear basis is exact when the continuation value is linear in the state.
 
-Source: [`source/chapters/ext/m4e.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4e.tex), label `m:prop:lsm`.
+Source: [`source/chapters/ext/m4e.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex), label `m:prop:lsm`.
 
 <a id="two_limit_convergence_of_the_regression_summary"></a>
 
@@ -986,7 +986,7 @@ Statement. Let $\Pi$ be a prior on $\theta$, taking values in $\mathbb{R}^D$ or 
 (c) if $S=\hat S^{J_N}_N$ is the one step efficient score statistic (a cross fitted Gauss Newton step from a preliminary estimate, projected on the first $J_N$ modes), then, under Assumption U for $S_N=\hat S^{J_N}_N$ (a uniform Bernstein von Mises statement) and the hypotheses of the proposition equating this statistic with Nickl's efficient centering (among them Conditions 1 and 2 of Nickl (2024) and the rate and Lipschitz weight conditions of that proposition), $\sqrt N\,\|\mathbb{E}[\theta\mid S]-m(Z)\|_{H^{-k-2}}\to0$ in probability, where $k$ is the Sobolev index of Nickl's Bernstein von Mises theorem.
 Consequently, under (a) or (b) the regression summary $\hat m_{K_M,M}(S)$, the center of the GBC posterior built on it, converges to the exact posterior mean $m(Z)$ in the double limit, in $L^2(\operatorname{Law}(S))$, that is, on average over the prior predictive law of the data and not at a fixed observed value; under (c) it agrees with it only to $o(N^{-1/2})$ in $H^{-k-2}$.
 
-Source: [`source/chapters/ext/m4e.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4e.tex), label `m:thm:lsmgbc`.
+Source: [`source/chapters/ext/m4e.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex), label `m:thm:lsmgbc`.
 
 <a id="the_adjoint_statistic_is_a_storvik_statistic"></a>
 
@@ -998,7 +998,29 @@ Status: proved.
 
 Statement. Consider the linear model $Y=\Phi\theta+\varepsilon$ with unit variance Gaussian noise and Gaussian prior $\theta\sim N(0,\Sigma_0)$ on $\mathbb{R}^D$, in which the $i$th row of the design matrix $\Phi$ is $\phi_i^\top$ with $\phi_i=(s_j(t_i)e_j(x_i))_{j\le D}$ ($s_j(t)$ being the time factor of the diagonal linear evolution, for example $e^{-\nu\lambda_jt}$ for the heat equation), and order the observations by time. The sufficient statistic $S_n=\Phi_{1:n}^\top Y_{1:n}$ and the Gram matrix $G_n=\Phi_{1:n}^\top\Phi_{1:n}$ of the first $n$ observations satisfy the recursions $S_{n+1}=S_n+\phi_{n+1}Y_{n+1}$ and $G_{n+1}=G_n+\phi_{n+1}\phi_{n+1}^\top$, and the posterior after $n$ observations is $N\big((G_n+\Sigma_0^{-1})^{-1}S_n,\,(G_n+\Sigma_0^{-1})^{-1}\big)$. Consequently the sequential scheme that carries $(S_n,G_n)$ and, at each step, draws particles independently from this Gaussian is exact: $(S_n,G_n)$ is a deterministic function of the first $n$ observations, each new observation is absorbed by the rank one update above, and every particle is an exact draw from the posterior after $n$ observations.
 
-Source: [`source/chapters/ext/m4e.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4e.tex), label `m:prop:storvik`.
+Source: [`source/chapters/ext/m4e.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex), label `m:prop:storvik`.
+
+<a id="bernstein_von_mises_under_a_network_prior"></a>
+
+### Bernstein von Mises under a network prior: the Gaussian limit of the posterior of the initial condition under the Polson Ročková prior
+
+Open Question 17.17, page 380 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. Open question. Let $\Omega=[0,1]^d$ be the torus (written $\mathbb{T}^d$ when it is the domain of a network), $T>0$ and $\mathcal{X}=[0,T]\times\Omega$. The data are $Z^{(N)}=(Y_i,X_i)_{i\le N}$ with $Y_i=u_\theta(X_i)+\varepsilon_i$, where $u_\theta=\mathscr{G}(\theta)$ is the solution of an evolution equation with initial condition $\theta$ (in the setting of Nickl (2024), $\partial_tu=\Delta u+F(u)$, $u(0)=\theta$), the $X_i$ are i.i.d. uniform on $\mathcal{X}$ and the $\varepsilon_i\sim N(0,I_W)$ are independent of them. Let $\theta_0$ be the true initial condition, $P^N_{\theta_0}$ the law of the data, $\mathbb{I}_{\theta_0}$ the linearization of $\mathscr{G}$ at $\theta_0$, with adjoint $\mathbb{I}^*_{\theta_0}$ taken with respect to $L^2(\Omega)$ and the unnormalized $L^2(\mathcal{X})$, and $\mathcal{N}_{\theta_0}=N\big(0,T(\mathbb{I}^*_{\theta_0}\mathbb{I}_{\theta_0})^{-1}\big)$.
+
+Nickl's Bernstein von Mises theorem (Theorem 2 of Nickl (2024)) is for the Gaussian series prior $\Pi$, the law of $(\sqrt N\delta_N)^{-1}\sum_j\lambda_j^{-\gamma/2}g_je_j$, where $(e_j)$ is the Laplace eigenbasis of $\Omega$ with eigenvalues $\lambda_j\asymp j^{2/d}$, the $g_j$ are i.i.d. $N(0,1)$ and $\delta_N=N^{-\gamma/(2\gamma+d)}$ (its reproducing kernel Hilbert space is $H_0^\gamma$). It assumes, for the forward map on Sobolev balls, (A) uniform $L^\infty$ bounds, (B) $L^2$ Lipschitz continuity, (C) a linearization $\mathbb{I}_{\theta_0}$ with quadratic remainder, (D) $L^\infty$ mapping properties from $H^\zeta$ with $\zeta>d/2$, (E) the stability estimate $\|\mathscr{G}(\theta)-\mathscr{G}(\theta_0)\|_{L^2(\mathcal{X})}\ge c\|\theta-\theta_0\|_{H^{-1}}$ and (F) invertibility of the information operator ($\Delta\mathbb{I}^*_{\theta_0}\mathbb{I}_{\theta_0}$ a homeomorphism of $H^\eta_0$ for $\eta\ge\eta_0$), with integer $\gamma>\max(3\zeta+3d/2+2,\eta_0)$ and $k>\max(\zeta+5d/2,\eta_0)$. Its conclusion is that, with $\tilde\theta_N=\mathbb{E}^\Pi[\theta\mid Z^{(N)}]$ the posterior mean, $\mathscr{W}_1\big(\operatorname{Law}(\sqrt N(\theta-\tilde\theta_N)\mid Z^{(N)}),\mathcal{N}_{\theta_0}\big)\to0$ in $P^N_{\theta_0}$ probability, where $\mathscr{W}_1$ is the Wasserstein distance of order one on $H^{-k-2}(\Omega)$, and $\sqrt N(\tilde\theta_N-\theta_0)\to\mathcal{N}_{\theta_0}$ in distribution in $H^{-k-2}$.
+
+The Polson Ročková prior (Polson and Ročková (2018)) is the spike and slab prior on the weights of deep ReLU networks $\theta:\mathbb{T}^d\to\mathbb{R}$, with hyperpriors on the width and the sparsity and a depth of order $\log N$. The book's theorem on posterior contraction under this prior (catalog entry contraction_under_a_network_prior) states that if the forward map satisfies Conditions 2A, 2B and 2E on $L^\infty$ balls and $\theta_0\in C^\alpha(\mathbb{T}^d)$ with $d/2+1<\alpha<p$, where $p$ is the input dimension of the networks, then with $\epsilon_N=N^{-\alpha/(2\alpha+p)}\log^\delta N$, $\delta>1$, the posterior contracts around $\theta_0$ at the rate $\epsilon_N$ for $\mathscr{G}(\theta)$ in $L^2(\mathcal{X})$ and for $\theta$ in $H^{-1}$, without knowledge of $\alpha$. This gives rates and not the Gaussian limit, coverage or efficiency.
+
+Nickl's proof perturbs the parameter along the direction $p_N(\bar\psi_{\theta_0})/\sqrt N$, where $\psi$ is a test function, $\bar\psi_{\theta_0}=T(\mathbb{I}^*_{\theta_0}\mathbb{I}_{\theta_0})^{-1}\psi$ and $p_N$ is the projection onto the first $J_N\asymp N\delta_N^2$ Laplace modes, and compares the prior with its shift by the Cameron Martin theorem. A network prior has no Cameron Martin theorem, and the shifted network $\theta-t\,p_N(\bar\psi_{\theta_0})/\sqrt N$ is not a network of the same architecture. Wang and Ročková (2020) circumvent this in the direct model (nonparametric regression $Y=f(X)+\varepsilon$), for a constant weight, by absorbing the shift exactly into the intercept of the top layer and by a change of measure bound for the spike and slab weights; for a smooth non constant weight, the case needed here, they assume a no bias condition on the projection of the weight onto the random network features, so that the approximation step for $\bar\psi_{\theta_0}$ is itself open there.
+
+Extend Wang and Ročková (2020) to the inverse problem: prove the conclusion of Theorem 2 of Nickl (2024) as stated above with the Gaussian series prior replaced by the Polson Ročková prior, uniformly over the test functions $\psi$ of the functional limit in a Sobolev ball, by absorbing the perturbation direction $p_N(\bar\psi_{\theta_0})/\sqrt N$ into the last layer. Here the functional limit is the Gaussian limit of the posterior of the linear functional $\langle\psi,\theta\rangle$, and the Sobolev ball is written $U(\kappa+2,1)$ in the book: the ball of radius one in the mean zero Sobolev space $H_0^{\kappa+2}$ (the notation $U(r,B)$ is that of Nickl (2024)), with $\kappa$ the Sobolev index of Nickl's proof, $2d+\zeta<\kappa<k-d/2$. For the inverse problem $\bar\psi_{\theta_0}$ is smooth whenever $\psi$ is, by the mapping properties in Theorem 2.6 of Konen and Nickl (2026), which is the smoothness that the approximation step needs; what remains is the change of measure step and the uniformity in $\psi\in U(\kappa+2,1)$ needed for the functional theorem.
+
+With the contraction theorem above, this would give generative Bayesian computation (GBC) under this adaptive prior all the conclusions of the book's transfer theorem for GBC (catalog entry bvm_for_gbc).
+
+Source: [`source/chapters/ext/m4e.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex), label `m:op:netprior`.
 
 <a id="uniformity"></a>
 
@@ -1010,7 +1032,61 @@ Status: open.
 
 Statement. Open question. Prove the uniform Bernstein von Mises assumption (Assumption U of the book), with the rate $\bar\epsilon_N\to0$ used in the book's theorem on the identity skip quantile generator. Assumption U: for a summary statistic $S_N$, a prior $\Pi$, a true parameter $\theta_0$, observations on $[0,T]\times\mathbb{T}^d$, the linearization $\mathbb{I}_\vartheta$ at $\vartheta$ of the solution map, $\mathcal{N}_\vartheta=N\big(0,T(\mathbb{I}_\vartheta^*\mathbb{I}_\vartheta)^{-1}\big)$, and Sobolev indices $k$ and $\zeta>d/2$ as in Nickl's Bernstein von Mises theorem and Condition 2D, there is a set $\Theta_N$ of parameters such that (U1) $\Pi(\Theta_N)\to1$, $\theta_0\in\Theta_N$ for all large $N$, and $\bar\epsilon_N:=\sup_{\vartheta\in\Theta_N}\mathbb{E}^{\mathbb{N}}_\vartheta\,\mathscr{W}_{1,H^{-k-2}}\big(\operatorname{Law}(\sqrt N(\theta-S_N)\mid Z^{(N)}),\mathcal{N}_\vartheta\big)\to0$, where $\mathbb{E}^{\mathbb{N}}_\vartheta$ is the expectation under the data law with parameter $\vartheta$; (U2) these discrepancies are uniformly integrable under the prior predictive law; (U3) $\vartheta\mapsto T(\mathbb{I}_\vartheta^*\mathbb{I}_\vartheta)^{-1}$ is Lipschitz from $(\Theta_N,\|\cdot\|_{H^\zeta})$ into bounded operators $H^{-k-2}\to H^{-k-4}$ and $\vartheta\mapsto\mathcal{N}_\vartheta$ is Lipschitz from $(\Theta_N,\|\cdot\|_{H^\zeta})$ into the probability measures on $H^{-k-2}$ with the distance $\mathscr{W}_{1,H^{-k-2}}$, both with constants that do not depend on $N$, the first moments $\mathrm{m}_1(\vartheta)=\int\|x\|_{H^{-k-2}}\,\mathrm{d}\mathcal{N}_\vartheta(x)$ satisfy $\int_{\Theta_N^c}\mathrm{m}_1\,\mathrm{d}\Pi\to0$ and $\Pi(\Theta_N^c)\sup_{\Theta_N}\mathrm{m}_1\to0$, $S_N\in\Theta_N$ with probability tending to one, and $\mathbb{E}^\Pi[\|\theta-S_N\|_{H^\zeta}\mid S_N]\to0$; (U4) for every $\theta_0\in\Theta_N$, $\mathbb{E}\big[\mathscr{W}_{1,H^{-k-2}}\big(\operatorname{Law}(\sqrt N(\theta-S_N)\mid Z^{(N)}),\mathcal{N}_{\theta_0}\big)\,\big|\,S_N\big]\to0$ in probability under the data law with true parameter $\theta_0$. The proof is to proceed by tracking the constants of Theorem 2 of Nickl (2024) and Theorem 2.8 of Konen and Nickl (2026) over the localization sets, and the same is asked for the uniform second moment bound used in the book's proposition on the one step summary under four approximate Bayesian computation criteria.
 
-Source: [`source/chapters/ext/m4e.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4e.tex), label `m:op:unif`.
+Source: [`source/chapters/ext/m4e.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex), label `m:op:unif`.
+
+<a id="relinearized_summary"></a>
+
+### Relinearized summary: removing the term in the fourth power of the localization radius by iterating the Gauss Newton step
+
+Open Question 17.19, page 380 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. Open question. Consider the localized generative Bayesian computation (GBC) of the book for the initial condition $\theta$ of a time evolution equation, observed at $N$ independent uniform space time points $X_i$ as $Y_i=u_\theta(X_i)+\varepsilon_i$, with $u_\theta=\mathscr{G}(\theta)$ and noise $\varepsilon_i\sim N(0,I_W)$, with a Gaussian prior of covariance $\Sigma_0$ on $D$ retained Laplace modes. Let $\mathbb{I}_\vartheta$ be the linearization (Jacobian) of $\mathscr{G}$ at $\vartheta$ and $\mathbb{I}_\vartheta^*$ its adjoint. A preliminary estimate $\bar\theta_N$ is computed from the data. With the residuals $r_i=Y_i-u_{\bar\theta_N}(X_i)$, the realized information $F_N=\mathbb{I}^*_{\bar\theta_N}\mathbb{I}_{\bar\theta_N}$ of the $N$ observations on the observed design and the Gauss Newton covariance $\Sigma_N=(F_N+\Sigma_0^{-1})^{-1}$, the summary of the data is the regularized one step Gauss Newton summary $S=\bar\theta_N+\Sigma_N\big(\mathbb{I}^*_{\bar\theta_N}\big[\sum_ir_i\delta_{X_i}\big]-\Sigma_0^{-1}\bar\theta_N\big)$, which linearizes the forward map once, at $\bar\theta_N$. The training parameters $\theta^{(m)}$, $m\le M$, are drawn from the proposal $q_c=N(\bar\theta_N,c^2\Sigma_N)$, where the localization radius $c$ is measured in posterior standard deviations, the training data are simulated from them, and a head (the part of the generator that models the residuals $\theta^{(m)}-S^{(m)}$ of the summary $S^{(m)}$ of the $m$th training data) is fitted from the $M$ pairs.
+
+The book's decomposition of the error of the localized generator reads, under Conditions 2A to 2D of Nickl (2024) and the hypotheses of the book's theorem on the residual law under a localized proposal (a linear Gaussian model whose prior covariance and Gram matrix are diagonalized by one orthonormal basis), and with the residuals centered so that their mean is removed, $\mathcal{E}(c)^2\asymp\beta(c)^2+a_v/c^{v}+b\,c^4$. Here $\mathcal{E}(c)$ is the Wasserstein error of the localized generator, in posterior standard deviations; $v=0$ for the identity head (the head that adds to the summary a Gaussian whose covariance is fitted to the training residuals) and $v=2$ for an affine head (an affine function of the summary fitted by regression, whose slope is estimated from a design of spread $c$); $a_v\asymp D/M$; $b\asymp c_3^2/N$, with $c_3$ the third derivative constant of the log likelihood in the Hessian metric; and $\beta(c)=\frac1D\sum_{j\le D}\big|\sqrt{s_j+c^2p_j^2}-1\big|$, where $p_1,\dots,p_D$ are the eigenvalues of the prior fraction operator $P=\Sigma_N\Sigma_0^{-1}$ (so $p_j$ is the fraction of the posterior precision in direction $j$ supplied by the prior) and $s_j=1-p_j$. The first term is the exact population bias of localization, the second is the Monte Carlo variance of the head, and the third is the leading term of a Taylor expansion of the relinearization error, so the decomposition is an expansion and not a two sided bound: the symbol $\asymp$ matches orders term by term, with constants that are not tracked.
+
+In the linear model $Y=\Phi\theta+\varepsilon$, $\varepsilon\sim N(0,\varsigma^2\operatorname{Id})$, with prior $N(0,\Sigma_0)$, $F=\Phi^\top\Phi/\varsigma^2$ and $\Sigma_N=(F+\Sigma_0^{-1})^{-1}$, the summary $S(Y)=\bar\theta+\Sigma_N\big(\Phi^\top(Y-\Phi\bar\theta)/\varsigma^2-\Sigma_0^{-1}\bar\theta\big)$ equals $\Sigma_N(F\theta+\Phi^\top\varepsilon/\varsigma^2)$ for every point $\bar\theta$: it is the posterior mean and does not depend on the linearization point. The term $b\,c^4$ is therefore purely a nonlinear effect, and it arises because the summary is linearized once, at $\bar\theta_N$. Iterating the Gauss Newton step means repeating the step above from each new iterate in place of $\bar\theta_N$, with the Jacobian recomputed at the iterate from the data alone, at a cost of $D+1$ forward solves per training draw for each extra step; recomputing it at the training parameter $\theta^{(m)}$ would not define a statistic, since that parameter is not available for the observed data. The claim to be confirmed is that the decomposition then reduces to $\beta(c)^2+a_v/c^{v}$, which for the affine head decreases in $c$ until the bias $\beta(c)$ begins to grow, so that the optimal radius moves out to where the localization bias binds, and the achievable error is within $O(\sqrt{D/M})$ of the smallest value of $\beta(c)$, the floor it approaches as $M$ grows. A numerical confirmation exists: in the numerical study of Polson and Sokolov (2026), with a two step Gauss Newton summary for the six mode ($D=6$) two dimensional Navier Stokes problem of the book's experiments, the $c^4$ term disappeared, and the error of the affine head (Wasserstein distance to a Metropolis reference chain, in posterior standard deviations) at $c=6$ fell from $0.37$ to $0.16$ and became flat in $c$.
+
+Confirm this: for the summary obtained by iterating the Gauss Newton step, with the Jacobian recomputed from the data alone at each iterate, show that the $c^4$ term disappears from the decomposition for the converged iterate, find how fast it decays with the number of steps, and determine whether, in a nonlinear problem, the resulting error falls below the error of the Laplace approximation, an error of order $c_3\sqrt{J^3/N}$ in the classical bounds, with $c_3$ a bound on the third derivatives of the log likelihood and $J$ the dimension of the parameter. Here the Laplace approximation is the Gaussian approximation of the posterior at the maximum a posteriori estimate, with covariance the inverse of the negative Hessian of the log posterior density there.
+
+Source: [`source/chapters/ext/m4e.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex), label `m:op:relin`.
+
+<a id="finite_n"></a>
+
+### Finite N: the non Gaussian correction for the Taylor Green problem and a nonasymptotic bound on the GBC posterior error
+
+Open Question 17.20, page 381 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. Open question. Let $\Omega=[0,1]^d$ be the torus, $T>0$ and $\mathcal{X}=[0,T]\times\Omega$. The data are $Z^{(N)}=(Y_i,X_i)_{i\le N}$ with $Y_i=u_\theta(X_i)+\varepsilon_i$, where $u_\theta=\mathscr{G}(\theta)$ solves an evolution equation with initial condition $\theta$, the $X_i$ are i.i.d. uniform on $\mathcal{X}$ and the $\varepsilon_i\sim N(0,I_W)$ are independent of them. Let $\Pi_N$ be the exact posterior of $\theta$, $(e_j)$ the Laplace eigenbasis of $\Omega$ and $S_N$ a summary statistic of the data. Generative Bayesian computation (GBC) simulates $M$ training pairs, a parameter drawn from the prior and the summary of data drawn from the model given that parameter, trains a conditional generator $\widehat G(s,U)$, with $U$ a base random variable independent of everything, so that $\operatorname{Law}(\widehat G(s,U))$ approximates $\operatorname{Law}(\theta\mid S_N(Z)=s)$, in coefficient form $\widehat G(s,U)=\sum_j\widehat Q_j(U_j\mid s)e_j$ with $\widehat Q_j(\cdot\mid s)$ a learned conditional quantile function. The GBC posterior is $\widehat\Pi_N=\operatorname{Law}\big(\widehat G(S_N(Z^{(N)}),U)\big)$ given the observed data $Z^{(N)}$. The true conditional quantile map is $(\tau,s)\mapsto Q_j(\tau\mid s)$, the $\tau$ quantile of the $j$th coefficient $\langle\theta,e_j\rangle$ of $\theta$ given $S_N(Z)=s$.
+
+The book's transfer theorem for GBC (catalog entry bvm_for_gbc) is a $\sqrt N$ statement: if $\sqrt N\,\mathscr{W}_1(\widehat\Pi_N,\Pi_N)\to0$ in probability, where $\mathscr{W}_1$ is the Wasserstein distance of order one on the negative Sobolev space $H^{-k-2}(\Omega)$ of Nickl's Bernstein von Mises theorem, and $\widehat\Pi_N$ concentrates on the localization set of Nickl's proof with bounded moments, then $\widehat\Pi_N$ has the same Gaussian limit as the exact posterior $\Pi_N$, together with the further conclusions about the trajectory, coverage and efficiency listed in that entry.
+
+The book has two finite $N$ checks, and neither is a quantification. The first is linear: the heat equation $\partial_tu=\nu\Delta u$, $u(0)=\theta$ on $\Omega=[0,1]$ with $\nu=0.01$ and $T=1$, a fixed Gaussian prior on the initial condition (not rescaled with $N$), with independent coefficients on the twenty modes $|k|\le20$ of variances $\sigma_{0,k}^2=\rho^2\lambda_k^{-\alpha}$, $\alpha=3$, $\lambda_k=4\pi^2k^2$, and the exact conjugate Gaussian posterior. With the scale $\rho$ calibrated so that the prior standard deviation at $|k|=1$ matches the true initial condition ($\rho=124.0$), the largest relative discrepancy over twenty modes between the exact posterior standard deviation and the Bernstein von Mises scale with the prior precision added, $(N\iota_k+\sigma_{0,k}^{-2})^{-1/2}$, where $\iota_k=(1-e^{-2\nu\lambda_kT})/(2\nu\lambda_kT)$ is the information per mode, is $6.05\times10^{-3}$ at $N=2000$, $1.60\times10^{-3}$ at $N=5\times10^4$ and $7.77\times10^{-4}$ at $N=1.3\times10^6$. The second is nonlinear: two dimensional Navier Stokes on the $2\pi$ periodic torus with $\nu=5\times10^{-3}$ and $T=1$, the initial vorticity in $D=6$ real cosine modes with an independent Gaussian prior, the truth a draw from the prior, and $N=80$ space time points observed with noise standard deviation $0.45$. GBC and the Laplace approximation (the Gaussian approximation of the posterior at the maximum a posteriori estimate) are scored by their Wasserstein distance to a Metropolis reference chain, in units of posterior standard deviation, and two further regimes with $N=25$ points (a larger amplitude, and a wider posterior) were run to look for the crossover at which non Gaussianity of the posterior would favor a simulation based method over the Laplace approximation. The crossover was not found, and neither regime made the posterior measurably less Gaussian than the main run.
+
+Quantify the non Gaussian correction for the Taylor Green problem as a function of $A/\nu$ and $N$, and bound $\mathscr{W}_1(\widehat\Pi_N,\Pi_N)$ nonasymptotically in terms of the generator approximation error for the true conditional quantile map. Here the Taylor Green problem is the inverse problem for the two dimensional Navier Stokes equations $\partial_tu+\nu Au+B[u,u]=f$, $u(0)=\theta$, on the $2\pi$ periodic torus, with viscosity $\nu$, Stokes operator $A=-\Delta$ on divergence free mean zero fields, $B[u,v]=P[(u\cdot\nabla)v]$ ($P$ the projection onto divergence free fields) and $f=0$, with true initial condition $\theta_0=u_{\rm TG}(0)$, where $u_{\rm TG}(t,x)=A\,e^{-2\nu t}(\sin x_1\cos x_2,\,-\cos x_1\sin x_2)$ is the Taylor Green vortex of amplitude $A$, an exact solution for $f=0$. The book measures the ratio of the advective coupling to the viscous decay at wavenumber $k$ in the equation linearized about this vortex as $cA/(\nu|k|)$ with $c\approx0.91$.
+
+The failure of the book's experiments to find the crossover in any regime tested says that the answer cannot be assumed, and suggests the obstruction: the error of the Laplace approximation and the bias of GBC are governed by the same curvature of the forward map, measured in posterior standard deviations, so the two do not move independently.
+
+Source: [`source/chapters/ext/m4e.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex), label `m:op:finiten`.
+
+<a id="model_error"></a>
+
+### Model error: the rate at which the discrepancy amplitude must vanish for the deterministic limit to persist
+
+Open Question 17.21, page 381 of Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1. New in this book.
+
+Status: open.
+
+Statement. Open question. Let $\Omega=[0,1]^d$ be the torus, $T>0$ and $\mathcal{X}=[0,T]\times\Omega$, and let the data be $Y_i=u_\theta(X_i)+\varepsilon_i$ at independent uniform space time points $X_i\in\mathcal{X}$, with Gaussian noise $\varepsilon_i$ and $u_\theta=\mathscr{G}(\theta)$ the solution of an evolution equation with initial condition $\theta$, the true initial condition being $\theta_0$, as in the book's transfer theorem for generative Bayesian computation (GBC) (catalog entry bvm_for_gbc): if the GBC posterior approximates the exact posterior with an error of smaller order than $N^{-1/2}$ in Wasserstein distance and concentrates on the localization set of Nickl's proof, it has the Gaussian limit of the exact posterior for the initial condition, together with the further conclusions about the trajectory, coverage and efficiency listed in that entry. This theorem and the Bernstein von Mises theorems of Nickl (2024) and of Konen and Nickl (2026) on which it rests assume deterministic dynamics without model error: every posterior draw is a solution of the equation and lies on the solution manifold $\mathcal{M}=\{u_\theta\}$, and a trajectory generated with model error does not lie on $\mathcal{M}$. In the state space formulation of Carlin, Polson and Stoffer (1992) the dynamics with model error are $u_{k+1}=u_k+\Delta t\,F(u_k)+\sqrt{\Delta t}\,G\xi_k$, with time step $\Delta t$, $F$ the right hand side of the equation, innovations $\xi_k$ and noise scale $G$. The Gibbs smoother of Carlin, Polson and Stoffer is then the smoother for the initial condition problem: the forward edge $p(u_{k+1}\mid u_k)$ is nonlinear in $u_k$ through $F$, the backward edge is Gaussian in $u_k$, and a single move update samples $u_k$ from their product. As $G\to0$ the chain of transitions collapses to the deterministic solution map and the smoother degenerates to a sampler for $\theta$ alone, which is the setting of Konen and Nickl (2026).
+
+The Bayesian calibration framework of Kennedy and O'Hagan (2001), as made operational by Higdon and coauthors, runs the simulator at a design, fits a Gaussian process emulator of $\theta\mapsto\mathscr{G}(\theta)$, adds a discrepancy process $\delta$ and runs Markov chain Monte Carlo on $(\theta,\delta)$. The identifiability problem between $\theta$ and $\delta$ (Brynjarsdóttir and O'Hagan (2014); Tuo and Wu (2016)) is Condition 2E of Nickl (2024), the stability estimate $\|\mathscr{G}(\theta)-\mathscr{G}(\theta_0)\|_{L^2(\mathcal{X})}\ge c\|\theta-\theta_0\|_{H^{-1}}$, in applied form: when the discrepancy can absorb a perturbation of $\theta$, the information operator is not injective. The natural formulation is hierarchical, with $\delta$ a Gaussian process of amplitude $\sigma_N\to0$; for GBC it is trivial to include $\delta$ in the simulation of the training pairs, and for the theory the admissible rate of $\sigma_N$ is open.
+
+Combine the transfer theorem with a discrepancy process of amplitude $\sigma_N$ and identify the rate at which $\sigma_N$ must tend to zero for the deterministic limit (the Gaussian limit of that theorem for dynamics without model error) to persist, connecting to the Gibbs smoother above and to the particle methods for state space models with static parameters (Storvik (2002); Carvalho, Johannes, Lopes and Polson (2010)). In the linear model without a latent state these particle systems collapse (the sufficient statistic is a deterministic function of the data, all weights are equal and there is nothing to resample), whereas with $G\ne0$ the statistic depends on the sampled path, the weights are no longer equal, and the degeneracy of particles can occur.
+
+Source: [`source/chapters/ext/m4e.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex), label `m:op:modelerror`.
 
 ## Chapter 20. Filters, Gates and Local Rules
 
@@ -1024,7 +1100,7 @@ Status: proved.
 
 Statement. Consider a state space model with a static parameter $\theta$, hidden states $x_t$ and observations $y_t$, with the Markov structure of such a model: $y_{t+1}$ depends on the past only through the essential state $z_t=(x_t,s_t,\theta)$, and $p(x_{t+1}\mid z_t,y_{1:t+1})=p(x_{t+1}\mid z_t,y_{t+1})$. Suppose there are conditional sufficient statistics $s_t$, updated deterministically by $s_{t+1}=S(s_t,x_t,x_{t+1},y_{t+1})$, such that $p(\theta\mid x_{0:t},y_{1:t})=p(\theta\mid s_t)$. Particle learning updates the essential state in four steps: (1) resample $z_t$ with weights proportional to the predictive likelihood $p(y_{t+1}\mid z_t)=\int p(y_{t+1}\mid x_{t+1},\theta)\,p(x_{t+1}\mid x_t,\theta)\,\mathrm{d}x_{t+1}$; (2) propagate $x_{t+1}\sim p(x_{t+1}\mid z_t,y_{t+1})$; (3) update $s_{t+1}=S(s_t,x_t,x_{t+1},y_{t+1})$; (4) draw $\theta\sim p(\theta\mid s_{t+1})$. Let $z_t$ have the law $p(z_t\mid y_{1:t})$. Reweight this law by the predictive likelihood $p(y_{t+1}\mid z_t)$, which is step one at the level of laws, and then apply steps two to four. Then the new essential state $(x_{t+1},s_{t+1},\theta)$ has the law $p(x_{t+1},s_{t+1},\theta\mid y_{1:t+1})$.
 
-Source: [`source/chapters/ext/ch14_pl.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/ch14_pl.tex), label `prop:pl_exact`.
+Source: [`source/chapters/ext/ch14_pl.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/ch14_pl.tex), label `prop:pl_exact`.
 
 <a id="gamma_law_of_the_shot_noise_neuron"></a>
 
@@ -1036,7 +1112,7 @@ Status: proved.
 
 Statement. Let the input spikes $t_k$ form a Poisson process of rate $\lambda>0$ on $\mathbb{R}$. Attach to the $k$th spike a mark $(\tau_k,\kappa_k)$, the marks being independent with a common law $M$ on $(0,\infty)^2$ and independent of the spike times, and given the marks let the amplitude $A_k$ be exponential with rate $\kappa_k$. Let $V=\sum_{t_k\le t}A_k e^{-(t-t_k)/\tau_k}$ be the stationary potential at time $t$. Then for every $\theta>0$, with both sides possibly equal to $+\infty$, $-\log\mathbb{E}\,e^{-\theta V}=\lambda\int\tau\log\big(1+\theta/\kappa\big)\,M(\mathrm{d}\tau,\mathrm{d}\kappa)=\int\log\big(1+\theta/y\big)\,U(\mathrm{d}y)$, where $U$ is the image of the measure $\lambda\tau\,M(\mathrm{d}\tau,\mathrm{d}\kappa)$ under $(\tau,\kappa)\mapsto\kappa$. If $\int\log(1+1/y)\,U(\mathrm{d}y)<\infty$, which is the condition that $U$ be a Thorin measure, then $V$ is a generalized Gamma convolution with Thorin measure $U$ and zero drift, that is, $\mathbb{E}\,e^{-\theta V}=\exp\big(-\int\log(1+\theta/y)\,U(\mathrm{d}y)\big)$ for $\theta>0$. Otherwise $V=\infty$ almost surely. In particular, if all marks equal $(\tau,\kappa)$ then $V$ has the Gamma law with shape $\lambda\tau$ and rate $\kappa$, and if $\tau_k$ and $\kappa_k$ are independent and $\kappa_k$ has law $\nu$ then $U=\lambda\,\mathbb{E}[\tau_k]\,\nu$.
 
-Source: [`source/chapters/ch14_filters.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch14_filters.tex), label `thm:shot_noise_neuron`.
+Source: [`source/chapters/ch14_filters.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch14_filters.tex), label `thm:shot_noise_neuron`.
 
 ## Chapter 21. Kolmogorov, Cybernetics and the Thermodynamics of Information
 
@@ -1050,7 +1126,7 @@ Status: proved.
 
 Statement. Let $\Theta$ be a target and let $M_0$ be a model with $I(\Theta;M_0)=i_0$, where $I$ denotes mutual information. Suppose $M_{k+1}$ is computed from $M_k$ and from fresh randomness independent of $\Theta$. Then $I(\Theta;M_k)\le i_0$ for all $k$. If at each round the update also uses the output of a verifier $V_k$ that depends on $\Theta$ through a channel of capacity $C$ bits per round, so that $I(\Theta;V_k\mid M_k)\le C$, then $I(\Theta;M_k)\le i_0+kC$.
 
-Source: [`source/chapters/ch15_kolmogorov.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch15_kolmogorov.tex), label `prop:recursive_self_learning`.
+Source: [`source/chapters/ch15_kolmogorov.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch15_kolmogorov.tex), label `prop:recursive_self_learning`.
 
 ## Chapter 22. Open Problems and the Bridge to Hilbert's Eighth Problem
 
@@ -1064,7 +1140,7 @@ Status: open.
 
 Statement. This is a program, and its first task is to fix the regime. Consider hard spheres in the Boltzmann Grad limit with Gibbs initial data conditioned on a macroscopic density, velocity and temperature profile, observed through the hydrodynamic fields at a later time with noise of standard deviation $\sigma$. Find a relation between $\sigma$, the Knudsen number and the number of particles under which the deviation of the particle fields from the solution of the limiting fluid equations is small compared with $\sigma$, and prove under it a Bernstein von Mises theorem for smooth functionals of the initial macroscopic profile, with constants that do not depend on the number of particles.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:inferential_sixth`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:inferential_sixth`.
 
 <a id="open_problem_arbitrary_functions_mixed_phase_space"></a>
 
@@ -1076,7 +1152,7 @@ Status: open.
 
 Statement. Give quantitative versions of the method of arbitrary functions (for a real random variable $X$ with a density $g$ of total variation $V<\infty$, $t>0$ and $a\in[0,1]$, $|\mathbb{P}(\{tX\}\in[0,a))-a|\le a(1-a)V/(2t)$, where $\{\cdot\}$ is the fractional part) for mixed phase space systems such as Hénon Heiles, where invariant tori and chaotic regions coexist, with rates in terms of the measure of the chaotic sea.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:poincare`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:poincare`.
 
 <a id="open_problem_optimal_finite_de_finetti_kac"></a>
 
@@ -1088,7 +1164,7 @@ Status: open.
 
 Statement. Quantitative estimates for chaos and entropic chaos in Kac's model are known in several forms. Carlen, Carvalho, Le Roux, Loss and Villani (2010) relate propagation of chaos to entropy and show, in particular, that the entropic rate of convergence to equilibrium can be arbitrarily slow. Hauray and Mischler (2014) compare Kac's chaos, entropic chaos and Fisher information chaos quantitatively, extend the estimates to measures on the Kac spheres, and treat mixtures in the sense of de Finetti, Hewitt and Savage. We do not know whether these estimates are optimal. Find the optimal rate, as a function of the marginal size $k$ and of $N$, in the finite de Finetti theorem for exchangeable laws on the sphere $S^{N-1}(\sqrt N)$ in relative entropy, with examples showing that it cannot be improved, and use it to prove a propagation of chaos theorem for Kac's model whose dependence on $N$ is optimal under explicit hypotheses on the initial law.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:axioms`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:axioms`.
 
 <a id="open_problem_yor_exact_samplers"></a>
 
@@ -1100,7 +1176,7 @@ Status: open.
 
 Statement. Open problem, posed as a program in the book. Kent's theorem writes the hitting time of a level $b$ by a regular one dimensional diffusion, started at a reflecting or entrance boundary $a$, as $\sum_{n\geq1}E_n/\lambda_n$, where $E_1,E_2,\dots$ are independent standard exponential variables and $0<\lambda_1<\lambda_2<\cdots$ are the eigenvalues of minus the generator on $(a,b)$ with Dirichlet condition at $b$ and the reflecting or entrance condition at $a$. For each $n$, the remainder $\sum_{k>n}E_k/\lambda_k$ after the first $n$ terms is a generalized Gamma convolution (a law on $[0,\infty)$ with Laplace transform $s\mapsto e^{-\phi(s)}$, $\phi(s)=cs+\int_{(0,\infty)}\log(1+s/y)\,U(\mathrm{d}y)$, where $c\geq0$ and $U$ is the Thorin measure) with an explicit Thorin measure. The problem is to identify a class of regular diffusions for which this remainder can be sampled exactly with finite expected cost, to prove that the resulting sampler is exact, and to use it to build a library of exact samplers for Brownian functionals.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:yor`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:yor`.
 
 <a id="open_problem_reciprocal_xi_ggc_from_mixture"></a>
 
@@ -1112,7 +1188,7 @@ Status: open.
 
 Statement. Let $\xi(s)=\frac12 s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$, $\Xi(x)=\xi(\frac12+ix)$ and $\Phi(u)=\sum_{n\ge1}\big(2\pi^2n^4e^{9u}-3\pi n^2e^{5u}\big)\exp(-\pi n^2e^{4u})$, so that $\Xi(x)=8\int_0^\infty\Phi(u)\cos(2xu)\,\mathrm{d}u$. The Pólya law is the law of a random variable $X$ with the symmetric density $\Phi(|u|)/\int_{\mathbb{R}}\Phi(|v|)\,\mathrm{d}v$; its moment generating function is $\mathbb{E}e^{sX}=\Xi(-is/2)/\Xi(0)$. By Khintchine's theorem the Pólya law is the law of $UZ$ with $U$ uniform on $[-1,1]$ and $Z\ge0$ independent of $U$. The law of $Z$ is not a generalized Gamma convolution, because $Z$ has finite exponential moments of every order and a nonconstant generalized Gamma convolution does not. The reciprocal of the moment generating function of $UZ$ at $2\sqrt\lambda$ is a different matter. It is $\Xi(0)/\Xi(i\sqrt\lambda)=\prod_n(1+\lambda/\gamma_n^2)^{-1}$, where $\pm\gamma_n$ are the zeros of $\Xi$, and it is the Laplace transform of a generalized Gamma convolution (a law on $[0,\infty)$ with Laplace transform $\exp\{-as-\int_{(0,\infty)}\log(1+s/t)\,U(\mathrm{d}t)\}$, $a\ge0$, $U$ the Thorin measure) if and only if the Riemann hypothesis holds. In that case the Thorin measure is the sum of point masses at the $\gamma_n^2$. Conversely, the logarithmic derivative of the Laplace transform of a generalized Gamma convolution is analytic outside the negative half line, which forces all the $\gamma_n^2$ to be positive. Prove that this function is the Laplace transform of a generalized Gamma convolution by using the mixture representation $X=UZ$ and not the location of the zeros.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:mixtures`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:mixtures`.
 
 <a id="open_problem_perelman_entropy_scale_mixture_manifolds"></a>
 
@@ -1124,7 +1200,7 @@ Status: open.
 
 Statement. For a probability density $u_0$ of finite variance on $\mathbb{R}^n$ let $u_\tau$ solve the heat equation $\partial_\tau u=\Delta u$, and let $W(\tau)=\tau J(u_\tau)+h(u_\tau)-\frac n2\log(4\pi\tau)-n$, where $J(u)=\int|\nabla u|^2/u$ is the Fisher information and $h(u)=-\int u\log u$ the differential entropy; $W$ is nonincreasing. Ni (2004) proved that the analog of $W$ for the linear heat equation on a Riemannian manifold is nonincreasing when the Ricci curvature is nonnegative. Extend the scale mixture proof of the monotonicity of $W$ on $\mathbb{R}^n$ (for initial densities $u_0=\int\varphi_v\,G(\mathrm{d}v)$, mixtures of the centered Gaussian densities $\varphi_v$ with covariance $vI$ under a mixing law $G$, for which $u_\tau=\int\varphi_{v+2\tau}\,G(\mathrm{d}v)$) to Riemannian manifolds with nonnegative Ricci curvature, interpreting the Ricci term as a correction to the subordinated Brownian motion.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:perelman`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:perelman`.
 
 <a id="open_problem_bayesian_answer_to_wallstrom"></a>
 
@@ -1136,7 +1212,7 @@ Status: open.
 
 Statement. Formulate a prior on Nelson's diffusions (diffusions with diffusion constant $\hbar/2m$ whose drift is determined by the density $\rho$ and the phase $S$ of a wave function $\psi=\sqrt\rho\,e^{iS/\hbar}$) that does not itself impose the quantization condition, and identify data that determine the circulation of the drift around the nodes of the density, so that the posterior concentrates on drifts satisfying the quantization condition. Position statistics alone fix the density and, through the continuity equation, only the divergence of the current, so the data must carry more. A solution would give a Bayesian answer to Wallstrom's objection. Wallstrom (1994) observed that the condition that $\psi$ be single valued, which forces the quantization of angular momentum, does not follow from Nelson's equations, which only involve $\rho$ and $\nabla S$; it must be added by hand.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:quantum`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:quantum`.
 
 <a id="open_problem_kac_entropy_production_ggc_mixtures"></a>
 
@@ -1148,7 +1224,7 @@ Status: open.
 
 Statement. Open problem. Consider the Kac walk with $N$ particles and total collision rate $N$: the velocities $v=(v_1,\dots,v_N)$ lie on the sphere $S^{N-1}(\sqrt N)=\{\sum_{i\leq N}v_i^2=N\}$, and at rate $N$ a pair $(i,j)$ is chosen uniformly and an angle $\theta$ uniformly on $[0,2\pi)$, and the pair is rotated by $\theta$. Let $\sigma_N$ be the uniform probability law on the sphere. For a probability density $F$ with respect to $\sigma_N$ let $H_N(F)=\int F\log F\,\mathrm{d}\sigma_N$ be its relative entropy with respect to $\sigma_N$, and let $D_N(F)=-\frac{\mathrm{d}}{\mathrm{d}t}H_N(F_t)\big|_{t=0}$ be the rate at which $H_N$ decreases at time zero along the master equation of the walk, where $F_t$ is the solution started at $F_0=F$. For comparison, Villani's argument gives $D_N(F)\geq2H_N(F)/(N-1)$ for every $F$, and Gao, Wang and Xia state in a 2026 preprint that $2/(N-1)$ is the best constant over all $F$. For a probability density $f$ on $\mathbb{R}$ let $Z_N(f)=\int\prod_{i\leq N}f(v_i)\,\sigma_N(\mathrm{d}v)$ and $F^f_N(v)=Z_N(f)^{-1}\prod_{i\leq N}f(v_i)$. Fix $M>3$ and let $\mathcal{G}_M$ be the set of bounded probability densities $f$ on $\mathbb{R}$ that are normal scale mixtures, $f(v)=\int(2\pi s)^{-1/2}e^{-v^2/(2s)}\,G(\mathrm{d}s)$ with a mixing law $G$ on $[0,\infty)$ that is a generalized Gamma convolution (a law on $[0,\infty)$ with Laplace transform $\exp(-cs-\int_{(0,\infty)}\log(1+s/y)\,U(\mathrm{d}y))$ for some $c\geq0$ and some measure $U$ on $(0,\infty)$ with $\int\log(1+1/y)\,U(\mathrm{d}y)<\infty$, the Thorin measure), and that satisfy $\int v^2f(v)\,\mathrm{d}v=1$ and $\int v^4f(v)\,\mathrm{d}v\leq M$. The question is whether there is $\lambda>0$, depending only on $M$, such that $D_N(F^f_N)\geq\lambda H_N(F^f_N)$ for every $N\geq2$ and every $f\in\mathcal{G}_M$.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:kinetic`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:kinetic`.
 
 <a id="open_problem_ns_posterior_fixed_sensors"></a>
 
@@ -1160,7 +1236,7 @@ Status: open.
 
 Statement. Open problem. Konen and Nickl prove a functional Bernstein von Mises theorem for the posterior of the trajectory of the two dimensional Navier Stokes equations on the torus, with root $N$ consistent prediction of future states in the supremum norm, for a Gaussian prior on the initial condition and $N$ noisy observations at uniformly random points of space and time. The authors know of no corresponding result for sensors at fixed locations or for other priors. The problem is to determine the posterior contraction rate for the initial vorticity from noisy point observations at a fixed array of sensors and times, in terms of the number of sensors, the number of times and the noise level, and to identify the functionals of the initial vorticity that admit a Bernstein von Mises theorem. A companion question is whether the posterior of the initial vorticity can be computed in time polynomial in the data size and the dimension.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:inference`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:inference`.
 
 <a id="open_problem_blowup_posterior_consistency"></a>
 
@@ -1172,7 +1248,7 @@ Status: open.
 
 Statement. Fix a finite horizon and a computable blowup criterion, for example that a norm of the solution of a Galerkin truncation of the equations exceeds a threshold before the horizon. Construct a prior on initial data and forcing for three dimensional Navier Stokes and a sequence of numerical solvers such that the posterior probability of this event is consistent, that is, converges to its true value as the resolution and the amount of data increase, and quantify how the event approximates finite time blowup of the exact solution. Consistency for the blowup of the exact solution itself, under either hypothesis, would require deciding the regularity of the data near the truth, which is the regularity problem.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:blowup`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:blowup`.
 
 <a id="open_problem_onsager_exponents_posterior"></a>
 
@@ -1184,7 +1260,7 @@ Status: open.
 
 Statement. This is a program. At finite Reynolds number the velocity field is smooth, so a Hölder exponent has to be defined through an inertial range statement, such as the scaling $S_p(\ell)\propto\ell^{\zeta_p}$ of the structure functions. Develop a joint posterior for the exponents $\zeta_p$ and the inertial range from measured velocity increments, and use it to ask whether laboratory and numerical data concentrate at, above or below the exponents $\zeta_p=p/3$ of Kolmogorov and Onsager.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:onsager`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:onsager`.
 
 <a id="open_problem_planted_clique_sampler_threshold"></a>
 
@@ -1196,7 +1272,7 @@ Status: open.
 
 Statement. Consider the planted clique problem with a known clique size $k$ in the graph $G(n,\frac12)$. The book records that approximate message passing succeeds for $k\ge(1+\varepsilon)\sqrt{n/e}$, and that from a suitable starting state the Metropolis process cannot find a planted clique of size $k=n^{1/2-\varepsilon}$ in polynomial time. Take as samplers of the posterior over clique locations either Glauber dynamics on vertex sets of size $k$, or Langevin dynamics for a continuous relaxation of the clique indicator, in both cases initialized from the prior. Determine whether such samplers have a computational phase transition at $k=\sqrt{n/e}$, in the sense that they succeed in polynomial time above $(1+\varepsilon)\sqrt{n/e}$ and fail below $(1-\varepsilon)\sqrt{n/e}$.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:phase_transitions`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:phase_transitions`.
 
 <a id="open_problem_learned_schrodinger_bridge_rates"></a>
 
@@ -1208,7 +1284,7 @@ Status: open.
 
 Statement. Prove convergence rates for generative Bayesian computation via learned Schrödinger bridges in terms of the entropic regularization, the number of simulations and the smoothness of the posterior. Rates in the sample size are known for the entropic optimal transport cost estimated from samples, by Genevay, Chizat, Bach, Cuturi and Peyré (2019) and by Mena and Niles Weed (2019). The problem concerns the learned bridge as an estimator of the posterior.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:transport`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:transport`.
 
 <a id="open_problem_heat_bound_bayesian_update"></a>
 
@@ -1220,7 +1296,7 @@ Status: open.
 
 Statement. The Landauer bound bounds the heat dissipated by a physical process in terms of the entropy removed, and the Sagawa Ueda inequality bounds the work in terms of the mutual information acquired. For a Bayesian update from a prior $\mu_0$ to the posterior $\mu_y$, prove a lower bound on the heat dissipated by any physical implementation in terms of $\mathrm{KL}(\mu_y\|\mu_0)$ and the information erased, and compare it with the dissipation of Langevin samplers.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:thermodynamics_of_inference`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:thermodynamics_of_inference`.
 
 <a id="open_problem_polya_law_ferromagnetic_limit"></a>
 
@@ -1232,12 +1308,12 @@ Status: open.
 
 Statement. This is a program whose goal is the Riemann hypothesis. Let $\xi(s)=\frac12 s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$, $\Xi(x)=\xi(\frac12+ix)$ and $\Phi(u)=\sum_{n\ge1}\big(2\pi^2n^4e^{9u}-3\pi n^2e^{5u}\big)\exp(-\pi n^2e^{4u})$, so that $\Xi(x)=8\int_0^\infty\Phi(u)\cos(2xu)\,\mathrm{d}u$. The Pólya law is the law with the symmetric density $\Phi(|u|)/\int_{\mathbb{R}}\Phi(|v|)\,\mathrm{d}v$; its moment generating function is $\Xi(-is/2)/\Xi(0)$. The de Bruijn Newman constant $\Lambda$ is the real number such that $H_t(z)=\int_0^\infty e^{tu^2}\Phi(u)\cos(zu)\,\mathrm{d}u$ has only real zeros if and only if $t\ge\Lambda$, and the Riemann hypothesis is equivalent to $\Lambda\le0$. A symmetric random variable $X$ with $\mathbb{E}e^{bX^2}<\infty$ for every $b>0$ has the Lee Yang property if $z\mapsto\mathbb{E}e^{zX}$ has only purely imaginary zeros; the uniform law on $[-1,1]$ and the Ising spin $\pm1$ have it. Newman's theorem (1974): if $X_1,\dots,X_n$ are independent with the Lee Yang property, $J_{ij}\ge0$ are such that $\exp(\sum_{i<j}J_{ij}x_ix_j)$ is integrable against the product law, and $\mathbb{P}_J$ has density proportional to this exponential with respect to the product law, then $\sum_ia_iX_i$ under $\mathbb{P}_J$ has the Lee Yang property for every choice of positive weights $a_i$. The Riemann hypothesis holds if and only if the Pólya law has the Lee Yang property. Decide whether the Pólya law is the weak limit of a sequence of laws of random variables $X_n$ obtained by such constructions from Ising spins and uniform laws, with $\sup_n\mathbb{E}e^{c|X_n|}<\infty$ for every $c>0$, which is the control that carries the Lee Yang property to the limit by Hurwitz's theorem. A construction would prove the Riemann hypothesis, and a proof that none exists would show that this route to the hypothesis is closed.
 
-Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex), label `prob:bridge`.
+Source: [`source/chapters/ch16_open.tex`](https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex), label `prob:bridge`.
 
 ***
 
 <small>License: Text, figures and PDF: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Code: [MIT](https://opensource.org/license/mit).</small>
 
-<small>This page is generated from the book's repository ([main](https://github.com/VadimSokolov/hilbert6/tree/main)). The numbers and pages are those of the PDF, [version 1.0.0](https://github.com/VadimSokolov/hilbert6/releases/tag/v1.0.0).</small>
+<small>This page is generated from the book's repository ([main](https://github.com/VadimSokolov/hilbert6/tree/main)). The numbers and pages are those of the PDF, [version 1.0.1](https://github.com/VadimSokolov/hilbert6/releases/tag/v1.0.1).</small>
 
 <!-- Generated by bookrepo.py from book.yaml and results.yaml. Edit those files, not this one. -->

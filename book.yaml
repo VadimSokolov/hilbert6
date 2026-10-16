@@ -17,12 +17,12 @@ authors:
 credit_names: ""                 # how a citation names the authors, e.g. "Polson and Sokolov"; empty: built from the family names
 year: 2026
 edition: "1"
-version: "1.0.0"                 # the release tag is v<version>
-date_released: "2026-10-12" # YYYY-MM-DD, set at release
+version: "1.0.1"                 # the release tag is v<version>
+date_released: "2026-10-15" # YYYY-MM-DD, set at release
 publisher: "Independently published"                    # e.g. "Independently published" for a free KDP ISBN
 # no isbn: a free KDP ISBN may be used only on KDP, so it goes on the ISBN line of kdp.md (private) and is printed
 # only in the print edition (kdp.py interior); this file is published (references/publishing.md)
-doi: "10.5281/zenodo.23327515" # this edition's DOI; zenodo.py reserve writes it before the final build
+doi: "10.5281/zenodo.23407620" # this edition's DOI; zenodo.py reserve writes it before the final build
 license_text: CC-BY-4.0          # text, figures and PDF
 license_code: MIT
 repository: https://github.com/VadimSokolov/hilbert6   # the public repository; its name is the slug

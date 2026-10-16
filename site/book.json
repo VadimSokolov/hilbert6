@@ -23,10 +23,10 @@
  "credit_names": "Polson and Sokolov",
  "year": "2026",
  "edition": "1",
- "version": "1.0.0",
- "date_released": "2026-10-12",
+ "version": "1.0.1",
+ "date_released": "2026-10-15",
  "publisher": "Independently published",
- "doi": "10.5281/zenodo.23327515",
+ "doi": "10.5281/zenodo.23407620",
  "concept_doi": "10.5281/zenodo.23327514",
  "language": "en",
  "keywords": [
@@ -56,21 +56,19 @@
   "url": "https://opensource.org/license/mit"
  },
  "release": {
-  "tag": "v1.0.0",
-  "url": "https://github.com/VadimSokolov/hilbert6/releases/tag/v1.0.0"
+  "tag": "v1.0.1",
+  "url": "https://github.com/VadimSokolov/hilbert6/releases/tag/v1.0.1"
  },
  "links": {
   "page": "https://vsokolov.org/books/hilbert6/",
   "page_markdown": "https://vsokolov.org/books/hilbert6/index.html.md",
   "results": "https://vsokolov.org/books/hilbert6/results.html",
   "results_markdown": "https://vsokolov.org/books/hilbert6/results.html.md",
-  "pdf": "https://github.com/VadimSokolov/hilbert6/releases/download/v1.0.0/hilbert6.pdf",
+  "pdf": "https://github.com/VadimSokolov/hilbert6/releases/download/v1.0.1/hilbert6.pdf",
   "repository": "https://github.com/VadimSokolov/hilbert6",
-  "source": "https://github.com/VadimSokolov/hilbert6/tree/v1.0.0",
-  "doi": "https://doi.org/10.5281/zenodo.23327515",
+  "source": "https://github.com/VadimSokolov/hilbert6/tree/v1.0.1",
+  "doi": "https://doi.org/10.5281/zenodo.23407620",
   "concept_doi": "https://doi.org/10.5281/zenodo.23327514",
-  "zenodo": "https://zenodo.org/records/23327515",
-  "doi_badge": "https://zenodo.org/badge/DOI/10.5281/zenodo.23327515.svg",
   "print": "https://www.amazon.com/dp/B0HMV1WFRD",
   "amazon_badge": "https://vsokolov.org/books/available-at-amazon.png",
   "icon_pdf": "https://vsokolov.org/books/icon-pdf.svg",
@@ -78,16 +76,16 @@
   "cover": "https://vsokolov.org/books/hilbert6/cover.jpg"
  },
  "citation": {
-  "text": "Polson and Sokolov (2026), On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation, edition 1, https://doi.org/10.5281/zenodo.23327515.",
-  "bibtex": "@book{polsonsokolov2026hilbert6,\n  author = {Polson, Nick and Sokolov, Vadim},\n  title = {{On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation}},\n  year = {2026},\n  publisher = {Independently published},\n  doi = {10.5281/zenodo.23327515},\n  url = {https://vsokolov.org/books/hilbert6/}\n}",
+  "text": "Polson and Sokolov (2026), On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation, edition 1, https://doi.org/10.5281/zenodo.23407620.",
+  "bibtex": "@book{polsonsokolov2026hilbert6,\n  author = {Polson, Nick and Sokolov, Vadim},\n  title = {{On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation}},\n  year = {2026},\n  publisher = {Independently published},\n  doi = {10.5281/zenodo.23407620},\n  url = {https://vsokolov.org/books/hilbert6/}\n}",
   "bibkey": "polsonsokolov2026hilbert6",
   "example": "Polson and Sokolov (2026), Lemma 15.1"
  },
  "pdf": {
   "file": "hilbert6.pdf",
   "pages": 548,
-  "bytes": 6253170,
-  "sha256": "26563b55de58e469686b13129c44325d3cbca01f4d58abf28a8a5f361ec8ac64"
+  "bytes": 6255068,
+  "sha256": "04d03ea7eb2ed743b3fa1f6d8e7ffe1e1ef84aaa467a717c2aa27b740d4c960a"
  },
  "bundle": {
   "page": "site/index.md",
@@ -99,7 +97,7 @@
  "serve": [
   {
    "path": "cover.jpg",
-   "url": "https://raw.githubusercontent.com/VadimSokolov/hilbert6/v1.0.0/pdf/cover.jpg"
+   "url": "https://raw.githubusercontent.com/VadimSokolov/hilbert6/v1.0.1/pdf/cover.jpg"
   }
  ],
  "chapters": [
@@ -288,7 +286,7 @@
    "last_page": "384",
    "pages": 54,
    "summary_markdown": "https://raw.githubusercontent.com/VadimSokolov/hilbert6/main/summaries/17_heat_navier_stokes_and_schrodinger_examples_and_experiments.md",
-   "summary": "This chapter tests the book's generative Bayesian computation (GBC) for the initial condition of an evolution equation (data assimilation) on three examples: the heat equation, two dimensional Navier Stokes about the Taylor Green vortex, and the Schrödinger equation (linear, and cubic nonlinear, NLS). For the heat equation it computes the information per Fourier mode (the dissipation barrier, or viscous curse) and proves a matrix Bernstein concentration bound for the Gram matrix of a uniform random design with the finite sample Bernstein von Mises error. Experiments compare GBC with exact posteriors, the Laplace approximation, pCN and Metropolis references. Without dissipation it computes the Bogoliubov information blocks of cubic NLS about a plane wave (modulational instability), proves linearized stability (defocusing) and stability of the NLS solution map (for bounded solutions), and proves a Bernstein von Mises transfer theorem for the linear Schrödinger equation; no Bernstein von Mises theorem is proved for cubic NLS. It links GBC to Longstaff Schwartz least squares Monte Carlo and to Storvik sufficient statistic filtering, and lists open problems.\n\n#### From the literature\n\nUsed as black boxes: the Bernstein von Mises theorems for time evolution equations (Nickl 2024) and for two dimensional Navier Stokes data assimilation (Konen and Nickl 2026). Also used: the inverse logarithmic lower bound (Nickl and Titi 2024), the local curvature condition for Langevin sampling (Nickl and Wang 2024), the matrix Bernstein inequality (Tropp 2015), the Taylor Green vortex (Taylor and Green 1937), the functional Bernstein von Mises theorem in Gaussian white noise (Castillo and Nickl 2013), Sobolev norm growth for NLS on two dimensional manifolds (Planchon, Tzvetkov and Visciglia 2017), the pCN sampler (Cotter, Roberts, Stuart and White 2013), the wave kinetic equation from cubic NLS (Deng and Hani 2023), Navier Stokes Fourier from hard spheres (Deng, Hani and Ma 2025) and gradient stability for McKean Vlasov (Castre and Nickl 2026). Connections: least squares Monte Carlo (Longstaff and Schwartz 2001; Clément, Lamberton and Protter 2002), Storvik's filter (Storvik 2002), jump diffusion filtering (Johannes, Polson and Stroud 2009) and Bayesian calibration (Kennedy and O'Hagan 2001; Higdon and coauthors 2004, 2008).\n\n#### New results\n\nOrigin is the book for all entries below; the Notes record which also appear in the authors' unpublished paper on Bayesian estimation on the solution manifold.\n\n- [Gram matrix concentration and the finite N Bernstein von Mises error for the heat equation](https://vsokolov.org/books/hilbert6/results.html#gram_concentration_and_the_finite_bernstein_von_mises_error) (Proposition 17.1, page 332; proved): For the heat equation observed at N uniform random points with D retained modes (eigenfunctions bounded by the square root of 2) and N at least D log D, the normalized Gram matrix of the design is within 12 times the square root of D log D over N of its limit with probability at least 1 minus 1/D, which bounds the finite N error of the Bernstein von Mises covariance. New in this book.\n- [Information operator of the cubic nonlinear Schrödinger equation about a plane wave (Bogoliubov blocks)](https://vsokolov.org/books/hilbert6/results.html#information_operator_of_nls_about_a_plane_wave) (Proposition 17.5, page 356; proved): Linearized about a constant background, the information operator of the cubic nonlinear Schrödinger equation is block diagonal over Fourier modes with explicit 2 by 2 blocks given by the Bogoliubov dispersion relation, equal in the defocusing case to T times the identity plus a compact perturbation that decays like one over the squared wave number and exponentially amplified along one direction in the focusing band. New in this book.\n- [Determinant, trace and smallest eigenvalue of the Bogoliubov information block](https://vsokolov.org/books/hilbert6/results.html#bogoliubov_block_determinant_trace_and_smallest_eigenvalue) (Lemma 17.6, page 359; proved): The determinant of each 2 by 2 Bogoliubov information block is at least T squared because the linearized flow preserves area, which gives explicit lower bounds on its smallest eigenvalue, uniform in the mode in the defocusing case, while in the focusing band the largest eigenvalue grows exponentially and the smallest tends to a finite limit. New in this book.\n- [Linearized stability and the analogue of Condition 2F for the defocusing NLS plane wave](https://vsokolov.org/books/hilbert6/results.html#linearized_stability_and_condition_2f_analogue_for_the_defocusing_plane_wave) (Corollary 17.7, page 362; proved): For the defocusing cubic nonlinear Schrödinger equation linearized at a constant background, the information operator is bounded above and below on L2 and on every Sobolev space with explicit constants uniform in the mode, which gives a linearized stability estimate and bounds, uniformly in the mode and in the time horizon, the covariance of the Gaussian measure that would be the Bernstein von Mises limit; no such theorem is proved for cubic NLS. New in this book.\n- [Stability of the cubic NLS solution map](https://vsokolov.org/books/hilbert6/results.html#stability_of_the_cubic_nls_solution_map) (Proposition 17.8, page 364; proved): For solutions of the cubic nonlinear Schrödinger equation that stay bounded in the supremum norm, the L2 distance of two solutions is bounded above and below by exponential factors times the distance of the initial data (an elementary energy estimate), which gives a stability estimate for the solution map on balls of H1 in one dimension and of H2 in two dimensions, with a smallness condition in the focusing two dimensional case; the supremum norm bound in the defocusing two dimensional case is Theorem 1.1 of Planchon, Tzvetkov and Visciglia (2017). New in this book.\n- [Linear Schrödinger transfer: exact posterior and Bernstein von Mises theorem](https://vsokolov.org/books/hilbert6/results.html#linear_schrodinger_transfer) (Proposition 17.10, page 366; proved): For the linear Schrödinger equation with a truncated Gaussian prior, the posterior is exactly Gaussian with the adjoint summary sufficient, and when the number of modes grows suitably the posterior and the posterior mean (for a smooth enough truth) satisfy a Bernstein von Mises theorem in negative Sobolev spaces with complex white noise as the limit, for the initial condition and for the state at every time but not in the supremum norm. New in this book.\n- [The transfer theorem for the linear Schrödinger equation](https://vsokolov.org/books/hilbert6/results.html#the_transfer_theorem_for_the_linear_schrodinger_equation) (Corollary 17.11, page 370; proved): If a GBC posterior approximates the exact posterior in Wasserstein distance on a negative Sobolev space with an error of smaller order than one over the square root of N, then for the linear Schrödinger equation it has the Gaussian limits for the parameter and for the state at every time, for Hadamard differentiable functionals, for credible balls, and efficiency of linear functionals. New in this book.\n- [Beyond the plane wave: information operator of cubic NLS about a multimode background](https://vsokolov.org/books/hilbert6/results.html#beyond_the_plane_wave) (Open Question 17.12, page 371; open): Open question: extend the exact information operator of cubic NLS from a constant background to a multimode background by separating a part supported on the four wave resonant manifold, decide when it is uniformly invertible, and prove a Bernstein von Mises theorem for a fixed time horizon in the focusing case. New in this book.\n- [LSM is GBC for optimal stopping; GBC is LSM for the inverse problem (Longstaff Schwartz dictionary)](https://vsokolov.org/books/hilbert6/results.html#lsm_gbc_dictionary_for_optimal_stopping_and_the_inverse_problem) (Proposition 17.13, page 372; proved): Longstaff Schwartz least squares regression for American options and the regression step of GBC are the same construction under a dictionary between paths and prior draws, state and summary, payoff and parameter, and continuation value and posterior mean, so that a linear basis is exact for the linear Gaussian model; the almost sure convergence of the regression coefficients is the strong law for least squares, as in the consistency of least squares Monte Carlo (Clément, Lamberton and Protter 2002), and the dictionary is what the book adds. New in this book.\n- [Two limit convergence of the regression summary (least squares Monte Carlo and GBC)](https://vsokolov.org/books/hilbert6/results.html#two_limit_convergence_of_the_regression_summary) (Theorem 17.14, page 373; conditional on the uniform Bernstein von Mises assumption (Assumption U), in case (c) only): The regression step of GBC, least squares of the parameter on a basis of the summary, converges to the posterior mean given the summary as the number of simulations and then the number of basis functions grow, and jointly for a bounded basis (consistency of least squares is classical, Györfi and coauthors 2002, and the book gives a direct proof of the joint limit for a bounded basis); what the book adds is the identification of the limit: it is the exact posterior mean for the posterior mean summary and for the linear adjoint statistic, but only up to an error of smaller order than one over the square root of N for the one step summary, where it also depends on an unproved uniformity assumption. New in this book.\n- [The adjoint statistic is a Storvik statistic](https://vsokolov.org/books/hilbert6/results.html#the_adjoint_statistic_is_a_storvik_statistic) (Proposition 17.15, page 376; proved): In the linear model the adjoint statistic and the Gram matrix of the first n observations are updated recursively, the Gram matrix by a rank one update, so sequential parameter learning in the style of Storvik is exact, with particles drawn independently from the Gaussian posterior and carrying no weights. New in this book.\n- [Uniformity: the uniform Bernstein von Mises assumption and related open hypotheses](https://vsokolov.org/books/hilbert6/results.html#uniformity) (Open Question 17.18, page 380; open): Open question: prove the uniform Bernstein von Mises assumption (Assumption U) on which the book's conditional theorems rest, and the uniform moment bound used for the four approximate Bayesian computation criteria. The book's question also lists related hypotheses it leaves unproved: the training residual assumption for fresh designs, and a comparison of the Gaussian centered at the summary with the posterior for a nonlinear forward map; the error bound of the one step summary for other nonlinear forward maps; a weaker regularity requirement than $\\alpha>12$ for Navier Stokes; the condition of the sufficiency gap proposition for nonlinear forward maps; the expected information gain outside the reaction diffusion class, and the realized information gain formula for a growing number of modes; and whether the exponent of the theorem that no uniform guarantee holds is attained for $\\beta>2$. New in this book.\n\n#### Key terms\n\nheat equation, dissipation barrier, viscous curse, information per mode, Gram matrix concentration, matrix Bernstein inequality, Bernstein von Mises (BvM), generative Bayesian computation (GBC), adjoint sufficient statistic, Navier Stokes, Taylor Green vortex, Stokes limit, Schrödinger (Schrodinger) equation, nonlinear Schrödinger (NLS), plane wave, Bogoliubov blocks, Bogoliubov dispersion relation, modulational (Benjamin Feir) instability, defocusing, focusing, Longstaff Schwartz, least squares Monte Carlo, Storvik filter, Jiang Wong summary, posterior mean summary, negative Sobolev space, Wasserstein distance, Laplace approximation, pCN"
+   "summary": "This chapter tests the book's generative Bayesian computation (GBC) for the initial condition of an evolution equation (data assimilation) on three examples: the heat equation, two dimensional Navier Stokes about the Taylor Green vortex, and the Schrödinger equation (linear, and cubic nonlinear, NLS). For the heat equation it computes the information per Fourier mode (the dissipation barrier, or viscous curse) and proves a matrix Bernstein concentration bound for the Gram matrix of a uniform random design with the finite sample Bernstein von Mises error. Experiments compare GBC with exact posteriors, the Laplace approximation, pCN and Metropolis references. Without dissipation it computes the Bogoliubov information blocks of cubic NLS about a plane wave (modulational instability), proves linearized stability (defocusing) and stability of the NLS solution map (for bounded solutions), and proves a Bernstein von Mises transfer theorem for the linear Schrödinger equation; no Bernstein von Mises theorem is proved for cubic NLS. It links GBC to Longstaff Schwartz least squares Monte Carlo and to Storvik sufficient statistic filtering, and lists open problems.\n\n#### From the literature\n\nUsed as black boxes: the Bernstein von Mises theorems for time evolution equations (Nickl 2024) and for two dimensional Navier Stokes data assimilation (Konen and Nickl 2026). Also used: the inverse logarithmic lower bound (Nickl and Titi 2024), the local curvature condition for Langevin sampling (Nickl and Wang 2024), the matrix Bernstein inequality (Tropp 2015), the Taylor Green vortex (Taylor and Green 1937), the functional Bernstein von Mises theorem in Gaussian white noise (Castillo and Nickl 2013), Sobolev norm growth for NLS on two dimensional manifolds (Planchon, Tzvetkov and Visciglia 2017), the pCN sampler (Cotter, Roberts, Stuart and White 2013), the wave kinetic equation from cubic NLS (Deng and Hani 2023), Navier Stokes Fourier from hard spheres (Deng, Hani and Ma 2025) and gradient stability for McKean Vlasov (Castre and Nickl 2026). Connections: least squares Monte Carlo (Longstaff and Schwartz 2001; Clément, Lamberton and Protter 2002), Storvik's filter (Storvik 2002), jump diffusion filtering (Johannes, Polson and Stroud 2009) and Bayesian calibration (Kennedy and O'Hagan 2001; Higdon and coauthors 2004, 2008).\n\n#### New results\n\nOrigin is the book for all entries below; the Notes record which also appear in the authors' unpublished paper on Bayesian estimation on the solution manifold.\n\n- [Gram matrix concentration and the finite N Bernstein von Mises error for the heat equation](https://vsokolov.org/books/hilbert6/results.html#gram_concentration_and_the_finite_bernstein_von_mises_error) (Proposition 17.1, page 332; proved): For the heat equation observed at N uniform random points with D retained modes (eigenfunctions bounded by the square root of 2) and N at least D log D, the normalized Gram matrix of the design is within 12 times the square root of D log D over N of its limit with probability at least 1 minus 1/D, which bounds the finite N error of the Bernstein von Mises covariance. New in this book.\n- [Information operator of the cubic nonlinear Schrödinger equation about a plane wave (Bogoliubov blocks)](https://vsokolov.org/books/hilbert6/results.html#information_operator_of_nls_about_a_plane_wave) (Proposition 17.5, page 356; proved): Linearized about a constant background, the information operator of the cubic nonlinear Schrödinger equation is block diagonal over Fourier modes with explicit 2 by 2 blocks given by the Bogoliubov dispersion relation, equal in the defocusing case to T times the identity plus a compact perturbation that decays like one over the squared wave number and exponentially amplified along one direction in the focusing band. New in this book.\n- [Determinant, trace and smallest eigenvalue of the Bogoliubov information block](https://vsokolov.org/books/hilbert6/results.html#bogoliubov_block_determinant_trace_and_smallest_eigenvalue) (Lemma 17.6, page 359; proved): The determinant of each 2 by 2 Bogoliubov information block is at least T squared because the linearized flow preserves area, which gives explicit lower bounds on its smallest eigenvalue, uniform in the mode in the defocusing case, while in the focusing band the largest eigenvalue grows exponentially and the smallest tends to a finite limit. New in this book.\n- [Linearized stability and the analogue of Condition 2F for the defocusing NLS plane wave](https://vsokolov.org/books/hilbert6/results.html#linearized_stability_and_condition_2f_analogue_for_the_defocusing_plane_wave) (Corollary 17.7, page 362; proved): For the defocusing cubic nonlinear Schrödinger equation linearized at a constant background, the information operator is bounded above and below on L2 and on every Sobolev space with explicit constants uniform in the mode, which gives a linearized stability estimate and bounds, uniformly in the mode and in the time horizon, the covariance of the Gaussian measure that would be the Bernstein von Mises limit; no such theorem is proved for cubic NLS. New in this book.\n- [Stability of the cubic NLS solution map](https://vsokolov.org/books/hilbert6/results.html#stability_of_the_cubic_nls_solution_map) (Proposition 17.8, page 364; proved): For solutions of the cubic nonlinear Schrödinger equation that stay bounded in the supremum norm, the L2 distance of two solutions is bounded above and below by exponential factors times the distance of the initial data (an elementary energy estimate), which gives a stability estimate for the solution map on balls of H1 in one dimension and of H2 in two dimensions, with a smallness condition in the focusing two dimensional case; the supremum norm bound in the defocusing two dimensional case is Theorem 1.1 of Planchon, Tzvetkov and Visciglia (2017). New in this book.\n- [Linear Schrödinger transfer: exact posterior and Bernstein von Mises theorem](https://vsokolov.org/books/hilbert6/results.html#linear_schrodinger_transfer) (Proposition 17.10, page 366; proved): For the linear Schrödinger equation with a truncated Gaussian prior, the posterior is exactly Gaussian with the adjoint summary sufficient, and when the number of modes grows suitably the posterior and the posterior mean (for a smooth enough truth) satisfy a Bernstein von Mises theorem in negative Sobolev spaces with complex white noise as the limit, for the initial condition and for the state at every time but not in the supremum norm. New in this book.\n- [The transfer theorem for the linear Schrödinger equation](https://vsokolov.org/books/hilbert6/results.html#the_transfer_theorem_for_the_linear_schrodinger_equation) (Corollary 17.11, page 370; proved): If a GBC posterior approximates the exact posterior in Wasserstein distance on a negative Sobolev space with an error of smaller order than one over the square root of N, then for the linear Schrödinger equation it has the Gaussian limits for the parameter and for the state at every time, for Hadamard differentiable functionals, for credible balls, and efficiency of linear functionals. New in this book.\n- [Beyond the plane wave: information operator of cubic NLS about a multimode background](https://vsokolov.org/books/hilbert6/results.html#beyond_the_plane_wave) (Open Question 17.12, page 371; open): Open question: extend the exact information operator of cubic NLS from a constant background to a multimode background by separating a part supported on the four wave resonant manifold, decide when it is uniformly invertible, and prove a Bernstein von Mises theorem for a fixed time horizon in the focusing case. New in this book.\n- [LSM is GBC for optimal stopping; GBC is LSM for the inverse problem (Longstaff Schwartz dictionary)](https://vsokolov.org/books/hilbert6/results.html#lsm_gbc_dictionary_for_optimal_stopping_and_the_inverse_problem) (Proposition 17.13, page 372; proved): Longstaff Schwartz least squares regression for American options and the regression step of GBC are the same construction under a dictionary between paths and prior draws, state and summary, payoff and parameter, and continuation value and posterior mean, so that a linear basis is exact for the linear Gaussian model; the almost sure convergence of the regression coefficients is the strong law for least squares, as in the consistency of least squares Monte Carlo (Clément, Lamberton and Protter 2002), and the dictionary is what the book adds. New in this book.\n- [Two limit convergence of the regression summary (least squares Monte Carlo and GBC)](https://vsokolov.org/books/hilbert6/results.html#two_limit_convergence_of_the_regression_summary) (Theorem 17.14, page 373; conditional on the uniform Bernstein von Mises assumption (Assumption U), in case (c) only): The regression step of GBC, least squares of the parameter on a basis of the summary, converges to the posterior mean given the summary as the number of simulations and then the number of basis functions grow, and jointly for a bounded basis (consistency of least squares is classical, Györfi and coauthors 2002, and the book gives a direct proof of the joint limit for a bounded basis); what the book adds is the identification of the limit: it is the exact posterior mean for the posterior mean summary and for the linear adjoint statistic, but only up to an error of smaller order than one over the square root of N for the one step summary, where it also depends on an unproved uniformity assumption. New in this book.\n- [The adjoint statistic is a Storvik statistic](https://vsokolov.org/books/hilbert6/results.html#the_adjoint_statistic_is_a_storvik_statistic) (Proposition 17.15, page 376; proved): In the linear model the adjoint statistic and the Gram matrix of the first n observations are updated recursively, the Gram matrix by a rank one update, so sequential parameter learning in the style of Storvik is exact, with particles drawn independently from the Gaussian posterior and carrying no weights. New in this book.\n- [Bernstein von Mises under a network prior: the Gaussian limit of the posterior of the initial condition under the Polson Ročková prior](https://vsokolov.org/books/hilbert6/results.html#bernstein_von_mises_under_a_network_prior) (Open Question 17.17, page 380; open): Open question: extend the semiparametric Bernstein von Mises theorem of Wang and Ročková (2020) to the inverse problem, that is, prove the Bernstein von Mises theorem of Nickl (2024) for the initial condition of a time evolution equation with the Gaussian series prior replaced by the Polson Ročková sparse deep ReLU network prior, uniformly over the test functions of the functional limit in a Sobolev ball, by absorbing the perturbation direction of Nickl's proof into the last layer of the network. The book proves only posterior contraction rates for this prior; with the open result, generative Bayesian computation under this adaptive prior would inherit all the conclusions of the book's transfer theorem. New in this book.\n- [Uniformity: the uniform Bernstein von Mises assumption and related open hypotheses](https://vsokolov.org/books/hilbert6/results.html#uniformity) (Open Question 17.18, page 380; open): Open question: prove the uniform Bernstein von Mises assumption (Assumption U) on which the book's conditional theorems rest, and the uniform moment bound used for the four approximate Bayesian computation criteria. The book's question also lists related hypotheses it leaves unproved: the training residual assumption for fresh designs, and a comparison of the Gaussian centered at the summary with the posterior for a nonlinear forward map; the error bound of the one step summary for other nonlinear forward maps; a weaker regularity requirement than $\\alpha>12$ for Navier Stokes; the condition of the sufficiency gap proposition for nonlinear forward maps; the expected information gain outside the reaction diffusion class, and the realized information gain formula for a growing number of modes; and whether the exponent of the theorem that no uniform guarantee holds is attained for $\\beta>2$. New in this book.\n- [Relinearized summary: removing the term in the fourth power of the localization radius by iterating the Gauss Newton step](https://vsokolov.org/books/hilbert6/results.html#relinearized_summary) (Open Question 17.19, page 380; open): Open question: confirm that iterating the Gauss Newton step, with the Jacobian recomputed from the data alone at each iterate, removes the term in the fourth power of the localization radius from the book's error decomposition for localized generative Bayesian computation, find how fast that term decays with the number of steps, and determine whether, in a nonlinear problem, the resulting error falls below the error of the Laplace approximation. The book reports a numerical confirmation for a two step summary in a two dimensional Navier Stokes experiment. New in this book.\n- [Finite N: the non Gaussian correction for the Taylor Green problem and a nonasymptotic bound on the GBC posterior error](https://vsokolov.org/books/hilbert6/results.html#finite_n) (Open Question 17.20, page 381; open): Open question: the transfer of the Bernstein von Mises limit to the generative Bayesian computation (GBC) posterior is a root N statement, and the book's two finite N checks, a linear heat equation example and a six mode Navier Stokes experiment, are not quantifications of the finite N behavior. Quantify the non Gaussian correction for the Taylor Green problem as a function of the ratio of the vortex amplitude to the viscosity and of N, and bound the Wasserstein distance between the GBC posterior and the exact posterior nonasymptotically in terms of the generator approximation error for the true conditional quantile map; the book's experiments did not find, in any regime tested, the crossover at which non Gaussianity would favor a simulation based method over the Laplace approximation, so the answer cannot be assumed. New in this book.\n- [Model error: the rate at which the discrepancy amplitude must vanish for the deterministic limit to persist](https://vsokolov.org/books/hilbert6/results.html#model_error) (Open Question 17.21, page 381; open): Open question: combine the book's transfer theorem for generative Bayesian computation with a discrepancy process whose amplitude tends to zero with the number of observations, and identify the rate at which the amplitude must tend to zero for the deterministic limit to persist, connecting to the Gibbs and particle smoothers for state space models. The book's theorems on the initial condition problem assume deterministic dynamics, and a trajectory generated with model error does not lie on the solution manifold on which the posterior lives. New in this book.\n\n#### Key terms\n\nheat equation, dissipation barrier, viscous curse, information per mode, Gram matrix concentration, matrix Bernstein inequality, Bernstein von Mises (BvM), generative Bayesian computation (GBC), adjoint sufficient statistic, Navier Stokes, Taylor Green vortex, Stokes limit, Schrödinger (Schrodinger) equation, nonlinear Schrödinger (NLS), plane wave, Bogoliubov blocks, Bogoliubov dispersion relation, modulational (Benjamin Feir) instability, defocusing, focusing, Longstaff Schwartz, least squares Monte Carlo, Storvik filter, Jiang Wong summary, posterior mean summary, negative Sobolev space, Wasserstein distance, Laplace approximation, pCN"
   },
   {
    "key": "18",
@@ -418,7 +416,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#polya_gamma_logistic_identity",
    "source": "source/chapters/ch05_mixtures.tex",
    "label": "thm:pg_identity",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch05_mixtures.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch05_mixtures.tex"
   },
   {
    "id": "horseshoe_density_bounds",
@@ -436,7 +434,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#horseshoe_density_bounds",
    "source": "source/chapters/ext/ch05.tex",
    "label": "thm:horseshoe_bounds",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/ch05.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/ch05.tex"
   },
   {
    "id": "gradient_stability_initial_condition_ns2d",
@@ -454,7 +452,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#gradient_stability_initial_condition_ns2d",
    "source": "source/chapters/ext/ch10_nw.tex",
    "label": "prop:gs_ns",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/ch10_nw.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/ch10_nw.tex"
   },
   {
    "id": "bernstein_von_mises_for_generators",
@@ -472,7 +470,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#bernstein_von_mises_for_generators",
    "source": "source/chapters/ch10_ns_inference.tex",
    "label": "prop:bvm_generators",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch10_ns_inference.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch10_ns_inference.tex"
   },
   {
    "id": "the_limit_law_is_nondegenerate",
@@ -490,7 +488,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_limit_law_is_nondegenerate",
    "source": "source/chapters/ext/m1a.tex",
    "label": "m:lem:nondeg",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m1a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m1a.tex"
   },
   {
    "id": "manifold_gain_for_the_heat_equation",
@@ -508,7 +506,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#manifold_gain_for_the_heat_equation",
    "source": "source/chapters/ext/m1a.tex",
    "label": "m:prop:gain",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m1a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m1a.tex"
   },
   {
    "id": "adjoint_representation_of_the_sufficient_statistic",
@@ -526,7 +524,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#adjoint_representation_of_the_sufficient_statistic",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:lem:adjoint",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "exact_sufficiency_linear_case",
@@ -544,7 +542,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#exact_sufficiency_linear_case",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:linsuff",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "equivalence_with_the_efficient_centering",
@@ -562,7 +560,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#equivalence_with_the_efficient_centering",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:suff",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "the_summary_in_sobolev_norms",
@@ -580,7 +578,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_summary_in_sobolev_norms",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:sumrate",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "preliminary_estimates_rate_in_h_minus_one",
@@ -598,7 +596,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#preliminary_estimates_rate_in_h_minus_one",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:lem:halfmean",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "summary_sobolev_rate_under_centering_hypotheses",
@@ -616,7 +614,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#summary_sobolev_rate_under_centering_hypotheses",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:cor:sumsuff",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "the_information_operator_of_the_reaction_diffusion_class",
@@ -634,7 +632,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_information_operator_of_the_reaction_diffusion_class",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:lem:rdinfo",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "the_summary_in_sobolev_norms_reaction_diffusion",
@@ -652,7 +650,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_summary_in_sobolev_norms_reaction_diffusion",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:sumrd",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "the_regularized_summary_on_modes_heat_and_stokes",
@@ -670,7 +668,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_regularized_summary_on_modes_heat_and_stokes",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:regheat",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "regularized_summary_fixed_prior_untruncated_posteriors",
@@ -688,7 +686,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#regularized_summary_fixed_prior_untruncated_posteriors",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:regfixed",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "the_regularized_summary_on_modes_reaction_diffusion",
@@ -706,7 +704,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_regularized_summary_on_modes_reaction_diffusion",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:regrd",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "expected_utility_form_of_the_bernstein_von_mises_limit",
@@ -724,7 +722,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#expected_utility_form_of_the_bernstein_von_mises_limit",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:pr",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "exact_identities_for_any_forward_map",
@@ -742,7 +740,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#exact_identities_for_any_forward_map",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:lem:prexact",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "kullback_leibler_form_of_the_bernstein_von_mises_theorem",
@@ -760,7 +758,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#kullback_leibler_form_of_the_bernstein_von_mises_theorem",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:thm:prkl",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "realized_information_gain_with_efficient_information",
@@ -778,7 +776,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#realized_information_gain_with_efficient_information",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:cor:prreal",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "kullback_leibler_bernstein_von_mises_navier_stokes",
@@ -796,7 +794,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#kullback_leibler_bernstein_von_mises_navier_stokes",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:prklns",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "entropic_van_trees_bound",
@@ -814,7 +812,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#entropic_van_trees_bound",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:prvt",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "reaction_diffusion_expected_gain_at_prior_center",
@@ -832,7 +830,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#reaction_diffusion_expected_gain_at_prior_center",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:prrd",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "quadratic_variation_and_the_sufficient_statistic",
@@ -850,7 +848,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#quadratic_variation_and_the_sufficient_statistic",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:qv",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
   },
   {
    "id": "one_step_summary_under_four_abc_criteria",
@@ -869,7 +867,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#one_step_summary_under_four_abc_criteria",
    "source": "source/chapters/ext/m2b.tex",
    "label": "m:prop:abcopt",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2b.tex"
   },
   {
    "id": "the_adjoint_statistic_is_the_pls_projection",
@@ -887,7 +885,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_adjoint_statistic_is_the_pls_projection",
    "source": "source/chapters/ext/m2b.tex",
    "label": "m:prop:pls",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2b.tex"
   },
   {
    "id": "deep_pls_structure_of_the_gbc_summary",
@@ -906,7 +904,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#deep_pls_structure_of_the_gbc_summary",
    "source": "source/chapters/ext/m2b.tex",
    "label": "m:prop:dpls",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2b.tex"
   },
   {
    "id": "jiang_wong_under_bernstein_von_mises",
@@ -925,7 +923,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#jiang_wong_under_bernstein_von_mises",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:thm:jwbvm",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
   },
   {
    "id": "gbc_with_the_posterior_mean_summary",
@@ -944,7 +942,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#gbc_with_the_posterior_mean_summary",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:cor:jwgbc",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
   },
   {
    "id": "sufficiency_gap",
@@ -962,7 +960,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#sufficiency_gap",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:thm:gap",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
   },
   {
    "id": "sufficiency_gap_beyond_the_linear_model",
@@ -980,7 +978,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#sufficiency_gap_beyond_the_linear_model",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:prop:gapnl",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
   },
   {
    "id": "sufficiency_gap_admissible_gaussian_models",
@@ -999,7 +997,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#sufficiency_gap_admissible_gaussian_models",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:prop:gapreq",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
   },
   {
    "id": "sufficiency_gap_hypotheses_from_centering_clt",
@@ -1018,7 +1016,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#sufficiency_gap_hypotheses_from_centering_clt",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:lem:gapred",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
   },
   {
    "id": "two_coordinate_model_sufficiency_gap_depends_on_summary",
@@ -1036,7 +1034,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#two_coordinate_model_sufficiency_gap_depends_on_summary",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:prop:gaptoy",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
   },
   {
    "id": "effective_dimension_under_dissipation",
@@ -1055,7 +1053,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#effective_dimension_under_dissipation",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:thm:jeff",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
   },
   {
    "id": "sufficiency_versus_the_raw_data",
@@ -1074,7 +1072,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#sufficiency_versus_the_raw_data",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:thm:raw",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
   },
   {
    "id": "bvm_for_gbc",
@@ -1092,7 +1090,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#bvm_for_gbc",
    "source": "source/chapters/ext/m3a.tex",
    "label": "m:thm:main",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3a.tex"
   },
   {
    "id": "solve_then_simulate_equals_simulate_the_limit",
@@ -1111,7 +1109,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#solve_then_simulate_equals_simulate_the_limit",
    "source": "source/chapters/ext/m3a.tex",
    "label": "m:cor:commute",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3a.tex"
   },
   {
    "id": "bernstein_von_mises_for_the_identity_skip_quantile_generator",
@@ -1130,7 +1128,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#bernstein_von_mises_for_the_identity_skip_quantile_generator",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:thm:qnnA",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
   },
   {
    "id": "no_uniform_guarantee_for_quantile_generators",
@@ -1148,7 +1146,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#no_uniform_guarantee_for_quantile_generators",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:thm:qnnB",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
   },
   {
    "id": "quantile_generator_exponent_attained_for_beta_at_most_one",
@@ -1166,7 +1164,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#quantile_generator_exponent_attained_for_beta_at_most_one",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:prop:qnnUB",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
   },
   {
    "id": "quantile_generator_exponent_attained_for_beta_between_one_and_two",
@@ -1184,7 +1182,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#quantile_generator_exponent_attained_for_beta_between_one_and_two",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:prop:qnnUB2",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
   },
   {
    "id": "a_quantile_fit_is_nearly_monotone_in_its_error",
@@ -1202,7 +1200,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#a_quantile_fit_is_nearly_monotone_in_its_error",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:lem:qrep",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
   },
   {
    "id": "moment_conditions_force_a_small_fit",
@@ -1220,7 +1218,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#moment_conditions_force_a_small_fit",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:lem:qbary",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
   },
   {
    "id": "quantile_generator_exponent_attained_for_beta_above_two_with_bounded_densities",
@@ -1238,7 +1236,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#quantile_generator_exponent_attained_for_beta_above_two_with_bounded_densities",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:prop:qnnUB3",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
   },
   {
    "id": "a_polynomial_quantile_fit_when_the_densities_are_bounded",
@@ -1256,7 +1254,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#a_polynomial_quantile_fit_when_the_densities_are_bounded",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:lem:qpoly",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
   },
   {
    "id": "no_two_point_bound_gives_a_smaller_exponent",
@@ -1274,7 +1272,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#no_two_point_bound_gives_a_smaller_exponent",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:prop:qnntwo",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
   },
   {
    "id": "contraction_under_a_network_prior",
@@ -1292,7 +1290,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#contraction_under_a_network_prior",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:thm:PR",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
   },
   {
    "id": "exactness_of_the_one_step_summary",
@@ -1310,7 +1308,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#exactness_of_the_one_step_summary",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:lem:exact",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
   },
   {
    "id": "residual_law_under_a_localized_proposal",
@@ -1328,7 +1326,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#residual_law_under_a_localized_proposal",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:thm:locbias",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
   },
   {
    "id": "localized_design_meets_gbc_accuracy_conditions",
@@ -1346,7 +1344,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#localized_design_meets_gbc_accuracy_conditions",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:cor:locG",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
   },
   {
    "id": "the_gram_matrix_of_the_whitened_weights",
@@ -1364,7 +1362,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_gram_matrix_of_the_whitened_weights",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:lem:u2pgram",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
   },
   {
    "id": "no_sub_gaussian_envelope_for_the_whole_residual",
@@ -1382,7 +1380,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#no_sub_gaussian_envelope_for_the_whole_residual",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:prop:u2pfalse",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
   },
   {
    "id": "whitened_residual_assumption_under_a_localized_proposal",
@@ -1400,7 +1398,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#whitened_residual_assumption_under_a_localized_proposal",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:thm:u2ploc",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
   },
   {
    "id": "the_linearization_of_the_reaction_diffusion_class",
@@ -1418,7 +1416,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_linearization_of_the_reaction_diffusion_class",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:lem:rdlin",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
   },
   {
    "id": "the_linearization_of_the_navier_stokes_equations",
@@ -1436,7 +1434,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_linearization_of_the_navier_stokes_equations",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:lem:nslin",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
   },
   {
    "id": "centered_and_rescaled_residuals_for_a_nonlinear_forward_map",
@@ -1454,7 +1452,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#centered_and_rescaled_residuals_for_a_nonlinear_forward_map",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:prop:locres",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
   },
   {
    "id": "gram_concentration_and_the_finite_bernstein_von_mises_error",
@@ -1472,7 +1470,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#gram_concentration_and_the_finite_bernstein_von_mises_error",
    "source": "source/chapters/ext/m4a.tex",
    "label": "m:prop:gram",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4a.tex"
   },
   {
    "id": "information_operator_of_nls_about_a_plane_wave",
@@ -1490,7 +1488,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#information_operator_of_nls_about_a_plane_wave",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:prop:bog",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
   },
   {
    "id": "bogoliubov_block_determinant_trace_and_smallest_eigenvalue",
@@ -1508,7 +1506,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#bogoliubov_block_determinant_trace_and_smallest_eigenvalue",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:lem:bogmin",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
   },
   {
    "id": "linearized_stability_and_condition_2f_analogue_for_the_defocusing_plane_wave",
@@ -1526,7 +1524,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#linearized_stability_and_condition_2f_analogue_for_the_defocusing_plane_wave",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:cor:condE",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
   },
   {
    "id": "stability_of_the_cubic_nls_solution_map",
@@ -1544,7 +1542,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#stability_of_the_cubic_nls_solution_map",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:prop:nlsstab",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
   },
   {
    "id": "linear_schrodinger_transfer",
@@ -1562,7 +1560,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#linear_schrodinger_transfer",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:prop:sch",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
   },
   {
    "id": "the_transfer_theorem_for_the_linear_schrodinger_equation",
@@ -1580,7 +1578,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_transfer_theorem_for_the_linear_schrodinger_equation",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:cor:schtransfer",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
   },
   {
    "id": "beyond_the_plane_wave",
@@ -1598,7 +1596,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#beyond_the_plane_wave",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:op:planewave",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
   },
   {
    "id": "lsm_gbc_dictionary_for_optimal_stopping_and_the_inverse_problem",
@@ -1616,7 +1614,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#lsm_gbc_dictionary_for_optimal_stopping_and_the_inverse_problem",
    "source": "source/chapters/ext/m4e.tex",
    "label": "m:prop:lsm",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4e.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
   },
   {
    "id": "two_limit_convergence_of_the_regression_summary",
@@ -1635,7 +1633,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#two_limit_convergence_of_the_regression_summary",
    "source": "source/chapters/ext/m4e.tex",
    "label": "m:thm:lsmgbc",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4e.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
   },
   {
    "id": "the_adjoint_statistic_is_a_storvik_statistic",
@@ -1653,7 +1651,25 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_adjoint_statistic_is_a_storvik_statistic",
    "source": "source/chapters/ext/m4e.tex",
    "label": "m:prop:storvik",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4e.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
+  },
+  {
+   "id": "bernstein_von_mises_under_a_network_prior",
+   "name": "Bernstein von Mises under a network prior: the Gaussian limit of the posterior of the initial condition under the Polson Ročková prior",
+   "printed": "Open Question 17.17",
+   "page": "380",
+   "chapter": "17",
+   "status": "open",
+   "status_text": "open",
+   "origin": "book",
+   "origin_text": "New in this book.",
+   "highlight": false,
+   "summary": "Open question: extend the semiparametric Bernstein von Mises theorem of Wang and Ročková (2020) to the inverse problem, that is, prove the Bernstein von Mises theorem of Nickl (2024) for the initial condition of a time evolution equation with the Gaussian series prior replaced by the Polson Ročková sparse deep ReLU network prior, uniformly over the test functions of the functional limit in a Sobolev ball, by absorbing the perturbation direction of Nickl's proof into the last layer of the network. The book proves only posterior contraction rates for this prior; with the open result, generative Bayesian computation under this adaptive prior would inherit all the conclusions of the book's transfer theorem.",
+   "statement": "Open question. Let $\\Omega=[0,1]^d$ be the torus (written $\\mathbb{T}^d$ when it is the domain of a network), $T>0$ and $\\mathcal{X}=[0,T]\\times\\Omega$. The data are $Z^{(N)}=(Y_i,X_i)_{i\\le N}$ with $Y_i=u_\\theta(X_i)+\\varepsilon_i$, where $u_\\theta=\\mathscr{G}(\\theta)$ is the solution of an evolution equation with initial condition $\\theta$ (in the setting of Nickl (2024), $\\partial_tu=\\Delta u+F(u)$, $u(0)=\\theta$), the $X_i$ are i.i.d. uniform on $\\mathcal{X}$ and the $\\varepsilon_i\\sim N(0,I_W)$ are independent of them. Let $\\theta_0$ be the true initial condition, $P^N_{\\theta_0}$ the law of the data, $\\mathbb{I}_{\\theta_0}$ the linearization of $\\mathscr{G}$ at $\\theta_0$, with adjoint $\\mathbb{I}^*_{\\theta_0}$ taken with respect to $L^2(\\Omega)$ and the unnormalized $L^2(\\mathcal{X})$, and $\\mathcal{N}_{\\theta_0}=N\\big(0,T(\\mathbb{I}^*_{\\theta_0}\\mathbb{I}_{\\theta_0})^{-1}\\big)$.\n\nNickl's Bernstein von Mises theorem (Theorem 2 of Nickl (2024)) is for the Gaussian series prior $\\Pi$, the law of $(\\sqrt N\\delta_N)^{-1}\\sum_j\\lambda_j^{-\\gamma/2}g_je_j$, where $(e_j)$ is the Laplace eigenbasis of $\\Omega$ with eigenvalues $\\lambda_j\\asymp j^{2/d}$, the $g_j$ are i.i.d. $N(0,1)$ and $\\delta_N=N^{-\\gamma/(2\\gamma+d)}$ (its reproducing kernel Hilbert space is $H_0^\\gamma$). It assumes, for the forward map on Sobolev balls, (A) uniform $L^\\infty$ bounds, (B) $L^2$ Lipschitz continuity, (C) a linearization $\\mathbb{I}_{\\theta_0}$ with quadratic remainder, (D) $L^\\infty$ mapping properties from $H^\\zeta$ with $\\zeta>d/2$, (E) the stability estimate $\\|\\mathscr{G}(\\theta)-\\mathscr{G}(\\theta_0)\\|_{L^2(\\mathcal{X})}\\ge c\\|\\theta-\\theta_0\\|_{H^{-1}}$ and (F) invertibility of the information operator ($\\Delta\\mathbb{I}^*_{\\theta_0}\\mathbb{I}_{\\theta_0}$ a homeomorphism of $H^\\eta_0$ for $\\eta\\ge\\eta_0$), with integer $\\gamma>\\max(3\\zeta+3d/2+2,\\eta_0)$ and $k>\\max(\\zeta+5d/2,\\eta_0)$. Its conclusion is that, with $\\tilde\\theta_N=\\mathbb{E}^\\Pi[\\theta\\mid Z^{(N)}]$ the posterior mean, $\\mathscr{W}_1\\big(\\operatorname{Law}(\\sqrt N(\\theta-\\tilde\\theta_N)\\mid Z^{(N)}),\\mathcal{N}_{\\theta_0}\\big)\\to0$ in $P^N_{\\theta_0}$ probability, where $\\mathscr{W}_1$ is the Wasserstein distance of order one on $H^{-k-2}(\\Omega)$, and $\\sqrt N(\\tilde\\theta_N-\\theta_0)\\to\\mathcal{N}_{\\theta_0}$ in distribution in $H^{-k-2}$.\n\nThe Polson Ročková prior (Polson and Ročková (2018)) is the spike and slab prior on the weights of deep ReLU networks $\\theta:\\mathbb{T}^d\\to\\mathbb{R}$, with hyperpriors on the width and the sparsity and a depth of order $\\log N$. The book's theorem on posterior contraction under this prior (catalog entry contraction_under_a_network_prior) states that if the forward map satisfies Conditions 2A, 2B and 2E on $L^\\infty$ balls and $\\theta_0\\in C^\\alpha(\\mathbb{T}^d)$ with $d/2+1<\\alpha<p$, where $p$ is the input dimension of the networks, then with $\\epsilon_N=N^{-\\alpha/(2\\alpha+p)}\\log^\\delta N$, $\\delta>1$, the posterior contracts around $\\theta_0$ at the rate $\\epsilon_N$ for $\\mathscr{G}(\\theta)$ in $L^2(\\mathcal{X})$ and for $\\theta$ in $H^{-1}$, without knowledge of $\\alpha$. This gives rates and not the Gaussian limit, coverage or efficiency.\n\nNickl's proof perturbs the parameter along the direction $p_N(\\bar\\psi_{\\theta_0})/\\sqrt N$, where $\\psi$ is a test function, $\\bar\\psi_{\\theta_0}=T(\\mathbb{I}^*_{\\theta_0}\\mathbb{I}_{\\theta_0})^{-1}\\psi$ and $p_N$ is the projection onto the first $J_N\\asymp N\\delta_N^2$ Laplace modes, and compares the prior with its shift by the Cameron Martin theorem. A network prior has no Cameron Martin theorem, and the shifted network $\\theta-t\\,p_N(\\bar\\psi_{\\theta_0})/\\sqrt N$ is not a network of the same architecture. Wang and Ročková (2020) circumvent this in the direct model (nonparametric regression $Y=f(X)+\\varepsilon$), for a constant weight, by absorbing the shift exactly into the intercept of the top layer and by a change of measure bound for the spike and slab weights; for a smooth non constant weight, the case needed here, they assume a no bias condition on the projection of the weight onto the random network features, so that the approximation step for $\\bar\\psi_{\\theta_0}$ is itself open there.\n\nExtend Wang and Ročková (2020) to the inverse problem: prove the conclusion of Theorem 2 of Nickl (2024) as stated above with the Gaussian series prior replaced by the Polson Ročková prior, uniformly over the test functions $\\psi$ of the functional limit in a Sobolev ball, by absorbing the perturbation direction $p_N(\\bar\\psi_{\\theta_0})/\\sqrt N$ into the last layer. Here the functional limit is the Gaussian limit of the posterior of the linear functional $\\langle\\psi,\\theta\\rangle$, and the Sobolev ball is written $U(\\kappa+2,1)$ in the book: the ball of radius one in the mean zero Sobolev space $H_0^{\\kappa+2}$ (the notation $U(r,B)$ is that of Nickl (2024)), with $\\kappa$ the Sobolev index of Nickl's proof, $2d+\\zeta<\\kappa<k-d/2$. For the inverse problem $\\bar\\psi_{\\theta_0}$ is smooth whenever $\\psi$ is, by the mapping properties in Theorem 2.6 of Konen and Nickl (2026), which is the smoothness that the approximation step needs; what remains is the change of measure step and the uniformity in $\\psi\\in U(\\kappa+2,1)$ needed for the functional theorem.\n\nWith the contraction theorem above, this would give generative Bayesian computation (GBC) under this adaptive prior all the conclusions of the book's transfer theorem for GBC (catalog entry bvm_for_gbc).",
+   "url": "https://vsokolov.org/books/hilbert6/results.html#bernstein_von_mises_under_a_network_prior",
+   "source": "source/chapters/ext/m4e.tex",
+   "label": "m:op:netprior",
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
   },
   {
    "id": "uniformity",
@@ -1671,7 +1687,61 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#uniformity",
    "source": "source/chapters/ext/m4e.tex",
    "label": "m:op:unif",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/m4e.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
+  },
+  {
+   "id": "relinearized_summary",
+   "name": "Relinearized summary: removing the term in the fourth power of the localization radius by iterating the Gauss Newton step",
+   "printed": "Open Question 17.19",
+   "page": "380",
+   "chapter": "17",
+   "status": "open",
+   "status_text": "open",
+   "origin": "book",
+   "origin_text": "New in this book.",
+   "highlight": false,
+   "summary": "Open question: confirm that iterating the Gauss Newton step, with the Jacobian recomputed from the data alone at each iterate, removes the term in the fourth power of the localization radius from the book's error decomposition for localized generative Bayesian computation, find how fast that term decays with the number of steps, and determine whether, in a nonlinear problem, the resulting error falls below the error of the Laplace approximation. The book reports a numerical confirmation for a two step summary in a two dimensional Navier Stokes experiment.",
+   "statement": "Open question. Consider the localized generative Bayesian computation (GBC) of the book for the initial condition $\\theta$ of a time evolution equation, observed at $N$ independent uniform space time points $X_i$ as $Y_i=u_\\theta(X_i)+\\varepsilon_i$, with $u_\\theta=\\mathscr{G}(\\theta)$ and noise $\\varepsilon_i\\sim N(0,I_W)$, with a Gaussian prior of covariance $\\Sigma_0$ on $D$ retained Laplace modes. Let $\\mathbb{I}_\\vartheta$ be the linearization (Jacobian) of $\\mathscr{G}$ at $\\vartheta$ and $\\mathbb{I}_\\vartheta^*$ its adjoint. A preliminary estimate $\\bar\\theta_N$ is computed from the data. With the residuals $r_i=Y_i-u_{\\bar\\theta_N}(X_i)$, the realized information $F_N=\\mathbb{I}^*_{\\bar\\theta_N}\\mathbb{I}_{\\bar\\theta_N}$ of the $N$ observations on the observed design and the Gauss Newton covariance $\\Sigma_N=(F_N+\\Sigma_0^{-1})^{-1}$, the summary of the data is the regularized one step Gauss Newton summary $S=\\bar\\theta_N+\\Sigma_N\\big(\\mathbb{I}^*_{\\bar\\theta_N}\\big[\\sum_ir_i\\delta_{X_i}\\big]-\\Sigma_0^{-1}\\bar\\theta_N\\big)$, which linearizes the forward map once, at $\\bar\\theta_N$. The training parameters $\\theta^{(m)}$, $m\\le M$, are drawn from the proposal $q_c=N(\\bar\\theta_N,c^2\\Sigma_N)$, where the localization radius $c$ is measured in posterior standard deviations, the training data are simulated from them, and a head (the part of the generator that models the residuals $\\theta^{(m)}-S^{(m)}$ of the summary $S^{(m)}$ of the $m$th training data) is fitted from the $M$ pairs.\n\nThe book's decomposition of the error of the localized generator reads, under Conditions 2A to 2D of Nickl (2024) and the hypotheses of the book's theorem on the residual law under a localized proposal (a linear Gaussian model whose prior covariance and Gram matrix are diagonalized by one orthonormal basis), and with the residuals centered so that their mean is removed, $\\mathcal{E}(c)^2\\asymp\\beta(c)^2+a_v/c^{v}+b\\,c^4$. Here $\\mathcal{E}(c)$ is the Wasserstein error of the localized generator, in posterior standard deviations; $v=0$ for the identity head (the head that adds to the summary a Gaussian whose covariance is fitted to the training residuals) and $v=2$ for an affine head (an affine function of the summary fitted by regression, whose slope is estimated from a design of spread $c$); $a_v\\asymp D/M$; $b\\asymp c_3^2/N$, with $c_3$ the third derivative constant of the log likelihood in the Hessian metric; and $\\beta(c)=\\frac1D\\sum_{j\\le D}\\big|\\sqrt{s_j+c^2p_j^2}-1\\big|$, where $p_1,\\dots,p_D$ are the eigenvalues of the prior fraction operator $P=\\Sigma_N\\Sigma_0^{-1}$ (so $p_j$ is the fraction of the posterior precision in direction $j$ supplied by the prior) and $s_j=1-p_j$. The first term is the exact population bias of localization, the second is the Monte Carlo variance of the head, and the third is the leading term of a Taylor expansion of the relinearization error, so the decomposition is an expansion and not a two sided bound: the symbol $\\asymp$ matches orders term by term, with constants that are not tracked.\n\nIn the linear model $Y=\\Phi\\theta+\\varepsilon$, $\\varepsilon\\sim N(0,\\varsigma^2\\operatorname{Id})$, with prior $N(0,\\Sigma_0)$, $F=\\Phi^\\top\\Phi/\\varsigma^2$ and $\\Sigma_N=(F+\\Sigma_0^{-1})^{-1}$, the summary $S(Y)=\\bar\\theta+\\Sigma_N\\big(\\Phi^\\top(Y-\\Phi\\bar\\theta)/\\varsigma^2-\\Sigma_0^{-1}\\bar\\theta\\big)$ equals $\\Sigma_N(F\\theta+\\Phi^\\top\\varepsilon/\\varsigma^2)$ for every point $\\bar\\theta$: it is the posterior mean and does not depend on the linearization point. The term $b\\,c^4$ is therefore purely a nonlinear effect, and it arises because the summary is linearized once, at $\\bar\\theta_N$. Iterating the Gauss Newton step means repeating the step above from each new iterate in place of $\\bar\\theta_N$, with the Jacobian recomputed at the iterate from the data alone, at a cost of $D+1$ forward solves per training draw for each extra step; recomputing it at the training parameter $\\theta^{(m)}$ would not define a statistic, since that parameter is not available for the observed data. The claim to be confirmed is that the decomposition then reduces to $\\beta(c)^2+a_v/c^{v}$, which for the affine head decreases in $c$ until the bias $\\beta(c)$ begins to grow, so that the optimal radius moves out to where the localization bias binds, and the achievable error is within $O(\\sqrt{D/M})$ of the smallest value of $\\beta(c)$, the floor it approaches as $M$ grows. A numerical confirmation exists: in the numerical study of Polson and Sokolov (2026), with a two step Gauss Newton summary for the six mode ($D=6$) two dimensional Navier Stokes problem of the book's experiments, the $c^4$ term disappeared, and the error of the affine head (Wasserstein distance to a Metropolis reference chain, in posterior standard deviations) at $c=6$ fell from $0.37$ to $0.16$ and became flat in $c$.\n\nConfirm this: for the summary obtained by iterating the Gauss Newton step, with the Jacobian recomputed from the data alone at each iterate, show that the $c^4$ term disappears from the decomposition for the converged iterate, find how fast it decays with the number of steps, and determine whether, in a nonlinear problem, the resulting error falls below the error of the Laplace approximation, an error of order $c_3\\sqrt{J^3/N}$ in the classical bounds, with $c_3$ a bound on the third derivatives of the log likelihood and $J$ the dimension of the parameter. Here the Laplace approximation is the Gaussian approximation of the posterior at the maximum a posteriori estimate, with covariance the inverse of the negative Hessian of the log posterior density there.",
+   "url": "https://vsokolov.org/books/hilbert6/results.html#relinearized_summary",
+   "source": "source/chapters/ext/m4e.tex",
+   "label": "m:op:relin",
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
+  },
+  {
+   "id": "finite_n",
+   "name": "Finite N: the non Gaussian correction for the Taylor Green problem and a nonasymptotic bound on the GBC posterior error",
+   "printed": "Open Question 17.20",
+   "page": "381",
+   "chapter": "17",
+   "status": "open",
+   "status_text": "open",
+   "origin": "book",
+   "origin_text": "New in this book.",
+   "highlight": false,
+   "summary": "Open question: the transfer of the Bernstein von Mises limit to the generative Bayesian computation (GBC) posterior is a root N statement, and the book's two finite N checks, a linear heat equation example and a six mode Navier Stokes experiment, are not quantifications of the finite N behavior. Quantify the non Gaussian correction for the Taylor Green problem as a function of the ratio of the vortex amplitude to the viscosity and of N, and bound the Wasserstein distance between the GBC posterior and the exact posterior nonasymptotically in terms of the generator approximation error for the true conditional quantile map; the book's experiments did not find, in any regime tested, the crossover at which non Gaussianity would favor a simulation based method over the Laplace approximation, so the answer cannot be assumed.",
+   "statement": "Open question. Let $\\Omega=[0,1]^d$ be the torus, $T>0$ and $\\mathcal{X}=[0,T]\\times\\Omega$. The data are $Z^{(N)}=(Y_i,X_i)_{i\\le N}$ with $Y_i=u_\\theta(X_i)+\\varepsilon_i$, where $u_\\theta=\\mathscr{G}(\\theta)$ solves an evolution equation with initial condition $\\theta$, the $X_i$ are i.i.d. uniform on $\\mathcal{X}$ and the $\\varepsilon_i\\sim N(0,I_W)$ are independent of them. Let $\\Pi_N$ be the exact posterior of $\\theta$, $(e_j)$ the Laplace eigenbasis of $\\Omega$ and $S_N$ a summary statistic of the data. Generative Bayesian computation (GBC) simulates $M$ training pairs, a parameter drawn from the prior and the summary of data drawn from the model given that parameter, trains a conditional generator $\\widehat G(s,U)$, with $U$ a base random variable independent of everything, so that $\\operatorname{Law}(\\widehat G(s,U))$ approximates $\\operatorname{Law}(\\theta\\mid S_N(Z)=s)$, in coefficient form $\\widehat G(s,U)=\\sum_j\\widehat Q_j(U_j\\mid s)e_j$ with $\\widehat Q_j(\\cdot\\mid s)$ a learned conditional quantile function. The GBC posterior is $\\widehat\\Pi_N=\\operatorname{Law}\\big(\\widehat G(S_N(Z^{(N)}),U)\\big)$ given the observed data $Z^{(N)}$. The true conditional quantile map is $(\\tau,s)\\mapsto Q_j(\\tau\\mid s)$, the $\\tau$ quantile of the $j$th coefficient $\\langle\\theta,e_j\\rangle$ of $\\theta$ given $S_N(Z)=s$.\n\nThe book's transfer theorem for GBC (catalog entry bvm_for_gbc) is a $\\sqrt N$ statement: if $\\sqrt N\\,\\mathscr{W}_1(\\widehat\\Pi_N,\\Pi_N)\\to0$ in probability, where $\\mathscr{W}_1$ is the Wasserstein distance of order one on the negative Sobolev space $H^{-k-2}(\\Omega)$ of Nickl's Bernstein von Mises theorem, and $\\widehat\\Pi_N$ concentrates on the localization set of Nickl's proof with bounded moments, then $\\widehat\\Pi_N$ has the same Gaussian limit as the exact posterior $\\Pi_N$, together with the further conclusions about the trajectory, coverage and efficiency listed in that entry.\n\nThe book has two finite $N$ checks, and neither is a quantification. The first is linear: the heat equation $\\partial_tu=\\nu\\Delta u$, $u(0)=\\theta$ on $\\Omega=[0,1]$ with $\\nu=0.01$ and $T=1$, a fixed Gaussian prior on the initial condition (not rescaled with $N$), with independent coefficients on the twenty modes $|k|\\le20$ of variances $\\sigma_{0,k}^2=\\rho^2\\lambda_k^{-\\alpha}$, $\\alpha=3$, $\\lambda_k=4\\pi^2k^2$, and the exact conjugate Gaussian posterior. With the scale $\\rho$ calibrated so that the prior standard deviation at $|k|=1$ matches the true initial condition ($\\rho=124.0$), the largest relative discrepancy over twenty modes between the exact posterior standard deviation and the Bernstein von Mises scale with the prior precision added, $(N\\iota_k+\\sigma_{0,k}^{-2})^{-1/2}$, where $\\iota_k=(1-e^{-2\\nu\\lambda_kT})/(2\\nu\\lambda_kT)$ is the information per mode, is $6.05\\times10^{-3}$ at $N=2000$, $1.60\\times10^{-3}$ at $N=5\\times10^4$ and $7.77\\times10^{-4}$ at $N=1.3\\times10^6$. The second is nonlinear: two dimensional Navier Stokes on the $2\\pi$ periodic torus with $\\nu=5\\times10^{-3}$ and $T=1$, the initial vorticity in $D=6$ real cosine modes with an independent Gaussian prior, the truth a draw from the prior, and $N=80$ space time points observed with noise standard deviation $0.45$. GBC and the Laplace approximation (the Gaussian approximation of the posterior at the maximum a posteriori estimate) are scored by their Wasserstein distance to a Metropolis reference chain, in units of posterior standard deviation, and two further regimes with $N=25$ points (a larger amplitude, and a wider posterior) were run to look for the crossover at which non Gaussianity of the posterior would favor a simulation based method over the Laplace approximation. The crossover was not found, and neither regime made the posterior measurably less Gaussian than the main run.\n\nQuantify the non Gaussian correction for the Taylor Green problem as a function of $A/\\nu$ and $N$, and bound $\\mathscr{W}_1(\\widehat\\Pi_N,\\Pi_N)$ nonasymptotically in terms of the generator approximation error for the true conditional quantile map. Here the Taylor Green problem is the inverse problem for the two dimensional Navier Stokes equations $\\partial_tu+\\nu Au+B[u,u]=f$, $u(0)=\\theta$, on the $2\\pi$ periodic torus, with viscosity $\\nu$, Stokes operator $A=-\\Delta$ on divergence free mean zero fields, $B[u,v]=P[(u\\cdot\\nabla)v]$ ($P$ the projection onto divergence free fields) and $f=0$, with true initial condition $\\theta_0=u_{\\rm TG}(0)$, where $u_{\\rm TG}(t,x)=A\\,e^{-2\\nu t}(\\sin x_1\\cos x_2,\\,-\\cos x_1\\sin x_2)$ is the Taylor Green vortex of amplitude $A$, an exact solution for $f=0$. The book measures the ratio of the advective coupling to the viscous decay at wavenumber $k$ in the equation linearized about this vortex as $cA/(\\nu|k|)$ with $c\\approx0.91$.\n\nThe failure of the book's experiments to find the crossover in any regime tested says that the answer cannot be assumed, and suggests the obstruction: the error of the Laplace approximation and the bias of GBC are governed by the same curvature of the forward map, measured in posterior standard deviations, so the two do not move independently.",
+   "url": "https://vsokolov.org/books/hilbert6/results.html#finite_n",
+   "source": "source/chapters/ext/m4e.tex",
+   "label": "m:op:finiten",
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
+  },
+  {
+   "id": "model_error",
+   "name": "Model error: the rate at which the discrepancy amplitude must vanish for the deterministic limit to persist",
+   "printed": "Open Question 17.21",
+   "page": "381",
+   "chapter": "17",
+   "status": "open",
+   "status_text": "open",
+   "origin": "book",
+   "origin_text": "New in this book.",
+   "highlight": false,
+   "summary": "Open question: combine the book's transfer theorem for generative Bayesian computation with a discrepancy process whose amplitude tends to zero with the number of observations, and identify the rate at which the amplitude must tend to zero for the deterministic limit to persist, connecting to the Gibbs and particle smoothers for state space models. The book's theorems on the initial condition problem assume deterministic dynamics, and a trajectory generated with model error does not lie on the solution manifold on which the posterior lives.",
+   "statement": "Open question. Let $\\Omega=[0,1]^d$ be the torus, $T>0$ and $\\mathcal{X}=[0,T]\\times\\Omega$, and let the data be $Y_i=u_\\theta(X_i)+\\varepsilon_i$ at independent uniform space time points $X_i\\in\\mathcal{X}$, with Gaussian noise $\\varepsilon_i$ and $u_\\theta=\\mathscr{G}(\\theta)$ the solution of an evolution equation with initial condition $\\theta$, the true initial condition being $\\theta_0$, as in the book's transfer theorem for generative Bayesian computation (GBC) (catalog entry bvm_for_gbc): if the GBC posterior approximates the exact posterior with an error of smaller order than $N^{-1/2}$ in Wasserstein distance and concentrates on the localization set of Nickl's proof, it has the Gaussian limit of the exact posterior for the initial condition, together with the further conclusions about the trajectory, coverage and efficiency listed in that entry. This theorem and the Bernstein von Mises theorems of Nickl (2024) and of Konen and Nickl (2026) on which it rests assume deterministic dynamics without model error: every posterior draw is a solution of the equation and lies on the solution manifold $\\mathcal{M}=\\{u_\\theta\\}$, and a trajectory generated with model error does not lie on $\\mathcal{M}$. In the state space formulation of Carlin, Polson and Stoffer (1992) the dynamics with model error are $u_{k+1}=u_k+\\Delta t\\,F(u_k)+\\sqrt{\\Delta t}\\,G\\xi_k$, with time step $\\Delta t$, $F$ the right hand side of the equation, innovations $\\xi_k$ and noise scale $G$. The Gibbs smoother of Carlin, Polson and Stoffer is then the smoother for the initial condition problem: the forward edge $p(u_{k+1}\\mid u_k)$ is nonlinear in $u_k$ through $F$, the backward edge is Gaussian in $u_k$, and a single move update samples $u_k$ from their product. As $G\\to0$ the chain of transitions collapses to the deterministic solution map and the smoother degenerates to a sampler for $\\theta$ alone, which is the setting of Konen and Nickl (2026).\n\nThe Bayesian calibration framework of Kennedy and O'Hagan (2001), as made operational by Higdon and coauthors, runs the simulator at a design, fits a Gaussian process emulator of $\\theta\\mapsto\\mathscr{G}(\\theta)$, adds a discrepancy process $\\delta$ and runs Markov chain Monte Carlo on $(\\theta,\\delta)$. The identifiability problem between $\\theta$ and $\\delta$ (Brynjarsdóttir and O'Hagan (2014); Tuo and Wu (2016)) is Condition 2E of Nickl (2024), the stability estimate $\\|\\mathscr{G}(\\theta)-\\mathscr{G}(\\theta_0)\\|_{L^2(\\mathcal{X})}\\ge c\\|\\theta-\\theta_0\\|_{H^{-1}}$, in applied form: when the discrepancy can absorb a perturbation of $\\theta$, the information operator is not injective. The natural formulation is hierarchical, with $\\delta$ a Gaussian process of amplitude $\\sigma_N\\to0$; for GBC it is trivial to include $\\delta$ in the simulation of the training pairs, and for the theory the admissible rate of $\\sigma_N$ is open.\n\nCombine the transfer theorem with a discrepancy process of amplitude $\\sigma_N$ and identify the rate at which $\\sigma_N$ must tend to zero for the deterministic limit (the Gaussian limit of that theorem for dynamics without model error) to persist, connecting to the Gibbs smoother above and to the particle methods for state space models with static parameters (Storvik (2002); Carvalho, Johannes, Lopes and Polson (2010)). In the linear model without a latent state these particle systems collapse (the sufficient statistic is a deterministic function of the data, all weights are equal and there is nothing to resample), whereas with $G\\ne0$ the statistic depends on the sampled path, the weights are no longer equal, and the degeneracy of particles can occur.",
+   "url": "https://vsokolov.org/books/hilbert6/results.html#model_error",
+   "source": "source/chapters/ext/m4e.tex",
+   "label": "m:op:modelerror",
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
   },
   {
    "id": "exactness_of_the_particle_learning_step",
@@ -1689,7 +1759,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#exactness_of_the_particle_learning_step",
    "source": "source/chapters/ext/ch14_pl.tex",
    "label": "prop:pl_exact",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ext/ch14_pl.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/ch14_pl.tex"
   },
   {
    "id": "gamma_law_of_the_shot_noise_neuron",
@@ -1707,7 +1777,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#gamma_law_of_the_shot_noise_neuron",
    "source": "source/chapters/ch14_filters.tex",
    "label": "thm:shot_noise_neuron",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch14_filters.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch14_filters.tex"
   },
   {
    "id": "recursive_self_learning_information_bound",
@@ -1725,7 +1795,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#recursive_self_learning_information_bound",
    "source": "source/chapters/ch15_kolmogorov.tex",
    "label": "prop:recursive_self_learning",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch15_kolmogorov.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch15_kolmogorov.tex"
   },
   {
    "id": "open_problem_inferential_sixth_problem",
@@ -1743,7 +1813,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_inferential_sixth_problem",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:inferential_sixth",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_arbitrary_functions_mixed_phase_space",
@@ -1761,7 +1831,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_arbitrary_functions_mixed_phase_space",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:poincare",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_optimal_finite_de_finetti_kac",
@@ -1779,7 +1849,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_optimal_finite_de_finetti_kac",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:axioms",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_yor_exact_samplers",
@@ -1797,7 +1867,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_yor_exact_samplers",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:yor",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_reciprocal_xi_ggc_from_mixture",
@@ -1815,7 +1885,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_reciprocal_xi_ggc_from_mixture",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:mixtures",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_perelman_entropy_scale_mixture_manifolds",
@@ -1833,7 +1903,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_perelman_entropy_scale_mixture_manifolds",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:perelman",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_bayesian_answer_to_wallstrom",
@@ -1851,7 +1921,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_bayesian_answer_to_wallstrom",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:quantum",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_kac_entropy_production_ggc_mixtures",
@@ -1869,7 +1939,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_kac_entropy_production_ggc_mixtures",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:kinetic",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_ns_posterior_fixed_sensors",
@@ -1887,7 +1957,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_ns_posterior_fixed_sensors",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:inference",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_blowup_posterior_consistency",
@@ -1905,7 +1975,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_blowup_posterior_consistency",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:blowup",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_onsager_exponents_posterior",
@@ -1923,7 +1993,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_onsager_exponents_posterior",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:onsager",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_planted_clique_sampler_threshold",
@@ -1941,7 +2011,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_planted_clique_sampler_threshold",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:phase_transitions",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_learned_schrodinger_bridge_rates",
@@ -1959,7 +2029,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_learned_schrodinger_bridge_rates",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:transport",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_heat_bound_bayesian_update",
@@ -1977,7 +2047,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_heat_bound_bayesian_update",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:thermodynamics_of_inference",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_polya_law_ferromagnetic_limit",
@@ -1995,7 +2065,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_polya_law_ferromagnetic_limit",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:bridge",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.0/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
   }
  ]
 }

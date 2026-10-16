@@ -1,7 +1,7 @@
 {
  "edition": "1",
  "pdf": {
-  "bytes": 6253170,
+  "bytes": 6255068,
   "file": "pdf/hilbert6.pdf",
   "pages": 548,
   "parts": [
@@ -209,7 +209,7 @@
     "title": "Bibliography"
    }
   ],
-  "sha256": "26563b55de58e469686b13129c44325d3cbca01f4d58abf28a8a5f361ec8ac64"
+  "sha256": "04d03ea7eb2ed743b3fa1f6d8e7ffe1e1ef84aaa467a717c2aa27b740d4c960a"
  },
  "results": {
   "a_polynomial_quantile_fit_when_the_densities_are_bounded": {
@@ -266,6 +266,17 @@
    "printed": "Theorem 16.10",
    "verified_fingerprint": "dcf4fc555d63",
    "verified_on": "2026-10-12"
+  },
+  "bernstein_von_mises_under_a_network_prior": {
+   "environment": "openquestion",
+   "file": "source/chapters/ext/m4e.tex",
+   "fingerprint": "b734f372e405",
+   "label": "m:op:netprior",
+   "number": "17.17",
+   "page": "380",
+   "printed": "Open Question 17.17",
+   "verified_fingerprint": "b734f372e405",
+   "verified_on": "2026-10-13"
   },
   "beyond_the_plane_wave": {
    "environment": "openquestion",
@@ -421,6 +432,17 @@
    "verified_fingerprint": "8888cde1a215",
    "verified_on": "2026-10-12"
   },
+  "finite_n": {
+   "environment": "openquestion",
+   "file": "source/chapters/ext/m4e.tex",
+   "fingerprint": "b3e729ecf4dc",
+   "label": "m:op:finiten",
+   "number": "17.20",
+   "page": "381",
+   "printed": "Open Question 17.20",
+   "verified_fingerprint": "b3e729ecf4dc",
+   "verified_on": "2026-10-13"
+  },
   "gamma_law_of_the_shot_noise_neuron": {
    "environment": "theorem",
    "file": "source/chapters/ch14_filters.tex",
@@ -574,6 +596,17 @@
    "printed": "Proposition 14.5",
    "verified_fingerprint": "dcee3dab4729",
    "verified_on": "2026-10-12"
+  },
+  "model_error": {
+   "environment": "openquestion",
+   "file": "source/chapters/ext/m4e.tex",
+   "fingerprint": "11bddb121b7d",
+   "label": "m:op:modelerror",
+   "number": "17.21",
+   "page": "381",
+   "printed": "Open Question 17.21",
+   "verified_fingerprint": "11bddb121b7d",
+   "verified_on": "2026-10-13"
   },
   "moment_conditions_force_a_small_fit": {
    "environment": "lemma",
@@ -905,6 +938,17 @@
    "verified_fingerprint": "2238978143ef",
    "verified_on": "2026-10-12"
   },
+  "relinearized_summary": {
+   "environment": "openquestion",
+   "file": "source/chapters/ext/m4e.tex",
+   "fingerprint": "0078d5f8b2c0",
+   "label": "m:op:relin",
+   "number": "17.19",
+   "page": "380",
+   "printed": "Open Question 17.19",
+   "verified_fingerprint": "0078d5f8b2c0",
+   "verified_on": "2026-10-13"
+  },
   "residual_law_under_a_localized_proposal": {
    "environment": "theorem",
    "file": "source/chapters/ext/m3c.tex",
@@ -1181,10 +1225,17 @@
    "verified_on": "2026-10-12"
   }
  },
- "updated": "2026-10-13",
+ "updated": "2026-10-15",
  "zenodo": {
   "concept_doi": "10.5281/zenodo.23327514",
   "doi": "10.5281/zenodo.23327515",
+  "draft": {
+   "doi": "10.5281/zenodo.23407620",
+   "html": "https://zenodo.org/deposit/23407620",
+   "id": 23407620,
+   "reserved_on": "2026-10-15",
+   "version": "1.0.1"
+  },
   "html": "https://zenodo.org/records/23327515",
   "latest_id": 23327515,
   "tag": "v1.0.0",

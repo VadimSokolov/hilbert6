@@ -1,7 +1,7 @@
 # Appendix D. A Chronology
 
 <!-- cite:begin -->
-From *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation* by Nick Polson and Vadim Sokolov (2026), appendix D. Cite as Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1, https://doi.org/10.5281/zenodo.23327515. Book page: https://vsokolov.org/books/hilbert6/. Source: https://github.com/VadimSokolov/hilbert6.
+From *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation* by Nick Polson and Vadim Sokolov (2026), appendix D. Cite as Polson and Sokolov (2026), *On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation*, edition 1, https://doi.org/10.5281/zenodo.23407620. Book page: https://vsokolov.org/books/hilbert6/. Source: https://github.com/VadimSokolov/hilbert6.
 <!-- cite:end -->
 
 This appendix is a chronology of 78 dated entries, the events and results discussed in the book, from Gauss's derivation of the normal law of errors from the optimality of the arithmetic mean (1809) to the long time derivations of the Boltzmann equation and of fluid equations from hard spheres by Deng, Hani and Ma (2024 to 2025). It follows several threads in parallel: kinetic theory and the reversibility and recurrence objections (Maxwell, Boltzmann, Loschmidt, Poincaré, Zermelo), Hilbert's problems and the axiomatization of mechanics and probability, Brownian motion, quantum mechanics, ergodic theory, entropy and information (Shannon, Kolmogorov, Sinai, Landauer), the Ising model and the Lee Yang theorem, turbulence and Navier Stokes, Riemann's $\Xi$ function and the de Bruijn Newman constant, and filtering and Bayesian computation. It gives dates and attributions and proves nothing.

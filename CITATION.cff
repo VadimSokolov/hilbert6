@@ -10,9 +10,9 @@ authors:
   given-names: Vadim
   orcid: https://orcid.org/0000-0002-6618-2965
   affiliation: George Mason University
-version: 1.0.0
-doi: 10.5281/zenodo.23327515
-date-released: '2026-10-12'
+version: 1.0.1
+doi: 10.5281/zenodo.23407620
+date-released: '2026-10-15'
 license: CC-BY-4.0
 repository-code: https://github.com/VadimSokolov/hilbert6
 url: https://vsokolov.org/books/hilbert6/
@@ -48,7 +48,7 @@ preferred-citation:
     orcid: https://orcid.org/0000-0002-6618-2965
     affiliation: George Mason University
   year: 2026
-  doi: 10.5281/zenodo.23327515
+  doi: 10.5281/zenodo.23407620
   url: https://vsokolov.org/books/hilbert6/
   publisher:
     name: Independently published
