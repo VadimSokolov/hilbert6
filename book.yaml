@@ -17,12 +17,12 @@ authors:
 credit_names: ""                 # how a citation names the authors, e.g. "Polson and Sokolov"; empty: built from the family names
 year: 2026
 edition: "1"
-version: "1.0.1"                 # the release tag is v<version>
-date_released: "2026-10-15" # YYYY-MM-DD, set at release
+version: "1.1.0"                 # the release tag is v<version>
+date_released: "2026-11-01" # YYYY-MM-DD, set at release
 publisher: "Independently published"                    # e.g. "Independently published" for a free KDP ISBN
 # no isbn: a free KDP ISBN may be used only on KDP, so it goes on the ISBN line of kdp.md (private) and is printed
 # only in the print edition (kdp.py interior); this file is published (references/publishing.md)
-doi: "10.5281/zenodo.23407620" # this edition's DOI; zenodo.py reserve writes it before the final build
+doi: "10.5281/zenodo.23741447" # this edition's DOI; zenodo.py reserve writes it before the final build
 license_text: CC-BY-4.0          # text, figures and PDF
 license_code: MIT
 repository: https://github.com/VadimSokolov/hilbert6   # the public repository; its name is the slug
@@ -50,7 +50,7 @@ description: |
 
   It then adds the inverse passage, from observed fluids back to the states that produced them. Part IV treats the inverse problem of a partial differential equation as Bayesian estimation on its solution manifold. For linear equations the adjoint evolution of the data is a sufficient statistic; for nonlinear equations it is asymptotically sufficient under a uniform Bernstein von Mises statement that the book states and leaves open. The cost of generative computation depends on the dimension that the data can resolve, and examples and experiments cover the heat, Navier Stokes and Schrödinger equations.
 
-  The last part treats inference itself as statistical mechanics: spin systems and Lee Yang zeros, Schrödinger bridges and generative Bayesian computation, gates as approximate nonlinear filters, and the thermodynamics of information. A final chapter lists open problems and builds a bridge to Hilbert's eighth problem through the de Bruijn Newman heat flow. Every chapter closes with exercises, and the Python code behind the computed figures and tables is in the repository.
+  The last part treats inference itself as statistical mechanics: spin systems and Lee Yang zeros, Schrödinger bridges and generative Bayesian computation, gates as approximate nonlinear filters, and the thermodynamics of information. A final chapter lists open problems, builds a bridge to Hilbert's eighth problem through the de Bruijn Newman heat flow, and reads the announced construction of quantum Yang Mills theory as a limit of Gibbs measures: a renormalization group step as a marginal, asymptotic freedom from the area of a Brownian loop, and the mass gap as a support statement. Every chapter closes with exercises, and the Python code behind the computed figures and tables is in the repository.
 source:
   format: latex
   dir: source

@@ -1,7 +1,7 @@
 {
  "edition": "1",
  "pdf": {
-  "bytes": 6255068,
+  "bytes": 6262358,
   "file": "pdf/hilbert6.pdf",
   "pages": 548,
   "parts": [
@@ -209,7 +209,7 @@
     "title": "Bibliography"
    }
   ],
-  "sha256": "04d03ea7eb2ed743b3fa1f6d8e7ffe1e1ef84aaa467a717c2aa27b740d4c960a"
+  "sha256": "a6c6acae25c1652a287a3cf6aedb51bba34940101168939a67837e1951921d89"
  },
  "results": {
   "a_polynomial_quantile_fit_when_the_densities_are_bounded": {
@@ -1225,10 +1225,17 @@
    "verified_on": "2026-10-12"
   }
  },
- "updated": "2026-10-15",
+ "updated": "2026-10-28",
  "zenodo": {
   "concept_doi": "10.5281/zenodo.23327514",
   "doi": "10.5281/zenodo.23407620",
+  "draft": {
+   "doi": "10.5281/zenodo.23741447",
+   "html": "https://zenodo.org/deposit/23741447",
+   "id": 23741447,
+   "reserved_on": "2026-10-28",
+   "version": "1.1.0"
+  },
   "html": "https://zenodo.org/records/23407620",
   "latest_id": 23407620,
   "tag": "v1.0.1",

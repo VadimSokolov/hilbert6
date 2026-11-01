@@ -23,10 +23,10 @@
  "credit_names": "Polson and Sokolov",
  "year": "2026",
  "edition": "1",
- "version": "1.0.1",
- "date_released": "2026-10-15",
+ "version": "1.1.0",
+ "date_released": "2026-11-01",
  "publisher": "Independently published",
- "doi": "10.5281/zenodo.23407620",
+ "doi": "10.5281/zenodo.23741447",
  "concept_doi": "10.5281/zenodo.23327514",
  "language": "en",
  "keywords": [
@@ -44,7 +44,7 @@
   "statistical mechanics"
  ],
  "short_description": "Hilbert's sixth problem from Kolmogorov's axioms and the Boltzmann equation to the Navier Stokes equations, and the inverse passage: Bayesian estimation on the solution manifold of a differential equation, where the adjoint evolution of the data is a sufficient statistic for linear equations.",
- "description": "In 1900 David Hilbert asked for a mathematical treatment of the axioms of physics, beginning with probability and mechanics, and for the limiting processes that lead from the atomistic view to the laws of motion of continua. This book follows that program, with Henri Poincaré as a central figure: Kolmogorov's axioms, de Finetti's theorem and Sanov's large deviation theorem; ergodic theory and the method of types; Brownian motion, entropy and Nelson's stochastic mechanics; kinetic theory, Lanford's theorem and the passage from the Boltzmann equation to the Navier Stokes equations.\n\nIt then adds the inverse passage, from observed fluids back to the states that produced them. Part IV treats the inverse problem of a partial differential equation as Bayesian estimation on its solution manifold. For linear equations the adjoint evolution of the data is a sufficient statistic; for nonlinear equations it is asymptotically sufficient under a uniform Bernstein von Mises statement that the book states and leaves open. The cost of generative computation depends on the dimension that the data can resolve, and examples and experiments cover the heat, Navier Stokes and Schrödinger equations.\n\nThe last part treats inference itself as statistical mechanics: spin systems and Lee Yang zeros, Schrödinger bridges and generative Bayesian computation, gates as approximate nonlinear filters, and the thermodynamics of information. A final chapter lists open problems and builds a bridge to Hilbert's eighth problem through the de Bruijn Newman heat flow. Every chapter closes with exercises, and the Python code behind the computed figures and tables is in the repository.",
+ "description": "In 1900 David Hilbert asked for a mathematical treatment of the axioms of physics, beginning with probability and mechanics, and for the limiting processes that lead from the atomistic view to the laws of motion of continua. This book follows that program, with Henri Poincaré as a central figure: Kolmogorov's axioms, de Finetti's theorem and Sanov's large deviation theorem; ergodic theory and the method of types; Brownian motion, entropy and Nelson's stochastic mechanics; kinetic theory, Lanford's theorem and the passage from the Boltzmann equation to the Navier Stokes equations.\n\nIt then adds the inverse passage, from observed fluids back to the states that produced them. Part IV treats the inverse problem of a partial differential equation as Bayesian estimation on its solution manifold. For linear equations the adjoint evolution of the data is a sufficient statistic; for nonlinear equations it is asymptotically sufficient under a uniform Bernstein von Mises statement that the book states and leaves open. The cost of generative computation depends on the dimension that the data can resolve, and examples and experiments cover the heat, Navier Stokes and Schrödinger equations.\n\nThe last part treats inference itself as statistical mechanics: spin systems and Lee Yang zeros, Schrödinger bridges and generative Bayesian computation, gates as approximate nonlinear filters, and the thermodynamics of information. A final chapter lists open problems, builds a bridge to Hilbert's eighth problem through the de Bruijn Newman heat flow, and reads the announced construction of quantum Yang Mills theory as a limit of Gibbs measures: a renormalization group step as a marginal, asymptotic freedom from the area of a Brownian loop, and the mass gap as a support statement. Every chapter closes with exercises, and the Python code behind the computed figures and tables is in the repository.",
  "license_text": {
   "id": "CC-BY-4.0",
   "name": "CC BY 4.0",
@@ -56,21 +56,19 @@
   "url": "https://opensource.org/license/mit"
  },
  "release": {
-  "tag": "v1.0.1",
-  "url": "https://github.com/VadimSokolov/hilbert6/releases/tag/v1.0.1"
+  "tag": "v1.1.0",
+  "url": "https://github.com/VadimSokolov/hilbert6/releases/tag/v1.1.0"
  },
  "links": {
   "page": "https://vsokolov.org/books/hilbert6/",
   "page_markdown": "https://vsokolov.org/books/hilbert6/index.html.md",
   "results": "https://vsokolov.org/books/hilbert6/results.html",
   "results_markdown": "https://vsokolov.org/books/hilbert6/results.html.md",
-  "pdf": "https://github.com/VadimSokolov/hilbert6/releases/download/v1.0.1/hilbert6.pdf",
+  "pdf": "https://github.com/VadimSokolov/hilbert6/releases/download/v1.1.0/hilbert6.pdf",
   "repository": "https://github.com/VadimSokolov/hilbert6",
-  "source": "https://github.com/VadimSokolov/hilbert6/tree/v1.0.1",
-  "doi": "https://doi.org/10.5281/zenodo.23407620",
+  "source": "https://github.com/VadimSokolov/hilbert6/tree/v1.1.0",
+  "doi": "https://doi.org/10.5281/zenodo.23741447",
   "concept_doi": "https://doi.org/10.5281/zenodo.23327514",
-  "zenodo": "https://zenodo.org/records/23407620",
-  "doi_badge": "https://zenodo.org/badge/DOI/10.5281/zenodo.23407620.svg",
   "print": "https://www.amazon.com/dp/B0HMV1WFRD",
   "amazon_badge": "https://vsokolov.org/books/available-at-amazon.png",
   "icon_pdf": "https://vsokolov.org/books/icon-pdf.svg",
@@ -78,16 +76,16 @@
   "cover": "https://vsokolov.org/books/hilbert6/cover.jpg"
  },
  "citation": {
-  "text": "Polson and Sokolov (2026), On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation, edition 1, https://doi.org/10.5281/zenodo.23407620.",
-  "bibtex": "@book{polsonsokolov2026hilbert6,\n  author = {Polson, Nick and Sokolov, Vadim},\n  title = {{On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation}},\n  year = {2026},\n  publisher = {Independently published},\n  doi = {10.5281/zenodo.23407620},\n  url = {https://vsokolov.org/books/hilbert6/}\n}",
+  "text": "Polson and Sokolov (2026), On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation, edition 1, https://doi.org/10.5281/zenodo.23741447.",
+  "bibtex": "@book{polsonsokolov2026hilbert6,\n  author = {Polson, Nick and Sokolov, Vadim},\n  title = {{On Hilbert's 6th Problem: Probability, Mechanics and Bayesian Computation}},\n  year = {2026},\n  publisher = {Independently published},\n  doi = {10.5281/zenodo.23741447},\n  url = {https://vsokolov.org/books/hilbert6/}\n}",
   "bibkey": "polsonsokolov2026hilbert6",
   "example": "Polson and Sokolov (2026), Lemma 15.1"
  },
  "pdf": {
   "file": "hilbert6.pdf",
   "pages": 548,
-  "bytes": 6255068,
-  "sha256": "04d03ea7eb2ed743b3fa1f6d8e7ffe1e1ef84aaa467a717c2aa27b740d4c960a"
+  "bytes": 6262358,
+  "sha256": "a6c6acae25c1652a287a3cf6aedb51bba34940101168939a67837e1951921d89"
  },
  "bundle": {
   "page": "site/index.md",
@@ -99,7 +97,7 @@
  "serve": [
   {
    "path": "cover.jpg",
-   "url": "https://raw.githubusercontent.com/VadimSokolov/hilbert6/v1.0.1/pdf/cover.jpg"
+   "url": "https://raw.githubusercontent.com/VadimSokolov/hilbert6/v1.1.0/pdf/cover.jpg"
   }
  ],
  "chapters": [
@@ -418,7 +416,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#polya_gamma_logistic_identity",
    "source": "source/chapters/ch05_mixtures.tex",
    "label": "thm:pg_identity",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch05_mixtures.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch05_mixtures.tex"
   },
   {
    "id": "horseshoe_density_bounds",
@@ -436,7 +434,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#horseshoe_density_bounds",
    "source": "source/chapters/ext/ch05.tex",
    "label": "thm:horseshoe_bounds",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/ch05.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/ch05.tex"
   },
   {
    "id": "gradient_stability_initial_condition_ns2d",
@@ -454,7 +452,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#gradient_stability_initial_condition_ns2d",
    "source": "source/chapters/ext/ch10_nw.tex",
    "label": "prop:gs_ns",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/ch10_nw.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/ch10_nw.tex"
   },
   {
    "id": "bernstein_von_mises_for_generators",
@@ -472,7 +470,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#bernstein_von_mises_for_generators",
    "source": "source/chapters/ch10_ns_inference.tex",
    "label": "prop:bvm_generators",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch10_ns_inference.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch10_ns_inference.tex"
   },
   {
    "id": "the_limit_law_is_nondegenerate",
@@ -490,7 +488,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_limit_law_is_nondegenerate",
    "source": "source/chapters/ext/m1a.tex",
    "label": "m:lem:nondeg",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m1a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m1a.tex"
   },
   {
    "id": "manifold_gain_for_the_heat_equation",
@@ -508,7 +506,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#manifold_gain_for_the_heat_equation",
    "source": "source/chapters/ext/m1a.tex",
    "label": "m:prop:gain",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m1a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m1a.tex"
   },
   {
    "id": "adjoint_representation_of_the_sufficient_statistic",
@@ -526,7 +524,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#adjoint_representation_of_the_sufficient_statistic",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:lem:adjoint",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "exact_sufficiency_linear_case",
@@ -544,7 +542,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#exact_sufficiency_linear_case",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:linsuff",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "equivalence_with_the_efficient_centering",
@@ -562,7 +560,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#equivalence_with_the_efficient_centering",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:suff",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "the_summary_in_sobolev_norms",
@@ -580,7 +578,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_summary_in_sobolev_norms",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:sumrate",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "preliminary_estimates_rate_in_h_minus_one",
@@ -598,7 +596,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#preliminary_estimates_rate_in_h_minus_one",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:lem:halfmean",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "summary_sobolev_rate_under_centering_hypotheses",
@@ -616,7 +614,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#summary_sobolev_rate_under_centering_hypotheses",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:cor:sumsuff",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "the_information_operator_of_the_reaction_diffusion_class",
@@ -634,7 +632,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_information_operator_of_the_reaction_diffusion_class",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:lem:rdinfo",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "the_summary_in_sobolev_norms_reaction_diffusion",
@@ -652,7 +650,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_summary_in_sobolev_norms_reaction_diffusion",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:sumrd",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "the_regularized_summary_on_modes_heat_and_stokes",
@@ -670,7 +668,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_regularized_summary_on_modes_heat_and_stokes",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:regheat",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "regularized_summary_fixed_prior_untruncated_posteriors",
@@ -688,7 +686,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#regularized_summary_fixed_prior_untruncated_posteriors",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:regfixed",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "the_regularized_summary_on_modes_reaction_diffusion",
@@ -706,7 +704,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_regularized_summary_on_modes_reaction_diffusion",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:regrd",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "expected_utility_form_of_the_bernstein_von_mises_limit",
@@ -724,7 +722,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#expected_utility_form_of_the_bernstein_von_mises_limit",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:pr",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "exact_identities_for_any_forward_map",
@@ -742,7 +740,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#exact_identities_for_any_forward_map",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:lem:prexact",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "kullback_leibler_form_of_the_bernstein_von_mises_theorem",
@@ -760,7 +758,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#kullback_leibler_form_of_the_bernstein_von_mises_theorem",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:thm:prkl",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "realized_information_gain_with_efficient_information",
@@ -778,7 +776,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#realized_information_gain_with_efficient_information",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:cor:prreal",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "kullback_leibler_bernstein_von_mises_navier_stokes",
@@ -796,7 +794,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#kullback_leibler_bernstein_von_mises_navier_stokes",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:prklns",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "entropic_van_trees_bound",
@@ -814,7 +812,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#entropic_van_trees_bound",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:prvt",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "reaction_diffusion_expected_gain_at_prior_center",
@@ -832,7 +830,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#reaction_diffusion_expected_gain_at_prior_center",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:prrd",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "quadratic_variation_and_the_sufficient_statistic",
@@ -850,7 +848,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#quadratic_variation_and_the_sufficient_statistic",
    "source": "source/chapters/ext/m2a.tex",
    "label": "m:prop:qv",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2a.tex"
   },
   {
    "id": "one_step_summary_under_four_abc_criteria",
@@ -869,7 +867,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#one_step_summary_under_four_abc_criteria",
    "source": "source/chapters/ext/m2b.tex",
    "label": "m:prop:abcopt",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2b.tex"
   },
   {
    "id": "the_adjoint_statistic_is_the_pls_projection",
@@ -887,7 +885,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_adjoint_statistic_is_the_pls_projection",
    "source": "source/chapters/ext/m2b.tex",
    "label": "m:prop:pls",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2b.tex"
   },
   {
    "id": "deep_pls_structure_of_the_gbc_summary",
@@ -906,7 +904,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#deep_pls_structure_of_the_gbc_summary",
    "source": "source/chapters/ext/m2b.tex",
    "label": "m:prop:dpls",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2b.tex"
   },
   {
    "id": "jiang_wong_under_bernstein_von_mises",
@@ -925,7 +923,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#jiang_wong_under_bernstein_von_mises",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:thm:jwbvm",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2c.tex"
   },
   {
    "id": "gbc_with_the_posterior_mean_summary",
@@ -944,7 +942,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#gbc_with_the_posterior_mean_summary",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:cor:jwgbc",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2c.tex"
   },
   {
    "id": "sufficiency_gap",
@@ -962,7 +960,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#sufficiency_gap",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:thm:gap",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2c.tex"
   },
   {
    "id": "sufficiency_gap_beyond_the_linear_model",
@@ -980,7 +978,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#sufficiency_gap_beyond_the_linear_model",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:prop:gapnl",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2c.tex"
   },
   {
    "id": "sufficiency_gap_admissible_gaussian_models",
@@ -999,7 +997,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#sufficiency_gap_admissible_gaussian_models",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:prop:gapreq",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2c.tex"
   },
   {
    "id": "sufficiency_gap_hypotheses_from_centering_clt",
@@ -1018,7 +1016,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#sufficiency_gap_hypotheses_from_centering_clt",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:lem:gapred",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2c.tex"
   },
   {
    "id": "two_coordinate_model_sufficiency_gap_depends_on_summary",
@@ -1036,7 +1034,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#two_coordinate_model_sufficiency_gap_depends_on_summary",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:prop:gaptoy",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2c.tex"
   },
   {
    "id": "effective_dimension_under_dissipation",
@@ -1055,7 +1053,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#effective_dimension_under_dissipation",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:thm:jeff",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2c.tex"
   },
   {
    "id": "sufficiency_versus_the_raw_data",
@@ -1074,7 +1072,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#sufficiency_versus_the_raw_data",
    "source": "source/chapters/ext/m2c.tex",
    "label": "m:thm:raw",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m2c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m2c.tex"
   },
   {
    "id": "bvm_for_gbc",
@@ -1092,7 +1090,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#bvm_for_gbc",
    "source": "source/chapters/ext/m3a.tex",
    "label": "m:thm:main",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3a.tex"
   },
   {
    "id": "solve_then_simulate_equals_simulate_the_limit",
@@ -1111,7 +1109,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#solve_then_simulate_equals_simulate_the_limit",
    "source": "source/chapters/ext/m3a.tex",
    "label": "m:cor:commute",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3a.tex"
   },
   {
    "id": "bernstein_von_mises_for_the_identity_skip_quantile_generator",
@@ -1130,7 +1128,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#bernstein_von_mises_for_the_identity_skip_quantile_generator",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:thm:qnnA",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3b.tex"
   },
   {
    "id": "no_uniform_guarantee_for_quantile_generators",
@@ -1148,7 +1146,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#no_uniform_guarantee_for_quantile_generators",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:thm:qnnB",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3b.tex"
   },
   {
    "id": "quantile_generator_exponent_attained_for_beta_at_most_one",
@@ -1166,7 +1164,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#quantile_generator_exponent_attained_for_beta_at_most_one",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:prop:qnnUB",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3b.tex"
   },
   {
    "id": "quantile_generator_exponent_attained_for_beta_between_one_and_two",
@@ -1184,7 +1182,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#quantile_generator_exponent_attained_for_beta_between_one_and_two",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:prop:qnnUB2",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3b.tex"
   },
   {
    "id": "a_quantile_fit_is_nearly_monotone_in_its_error",
@@ -1202,7 +1200,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#a_quantile_fit_is_nearly_monotone_in_its_error",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:lem:qrep",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3b.tex"
   },
   {
    "id": "moment_conditions_force_a_small_fit",
@@ -1220,7 +1218,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#moment_conditions_force_a_small_fit",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:lem:qbary",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3b.tex"
   },
   {
    "id": "quantile_generator_exponent_attained_for_beta_above_two_with_bounded_densities",
@@ -1238,7 +1236,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#quantile_generator_exponent_attained_for_beta_above_two_with_bounded_densities",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:prop:qnnUB3",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3b.tex"
   },
   {
    "id": "a_polynomial_quantile_fit_when_the_densities_are_bounded",
@@ -1256,7 +1254,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#a_polynomial_quantile_fit_when_the_densities_are_bounded",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:lem:qpoly",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3b.tex"
   },
   {
    "id": "no_two_point_bound_gives_a_smaller_exponent",
@@ -1274,7 +1272,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#no_two_point_bound_gives_a_smaller_exponent",
    "source": "source/chapters/ext/m3b.tex",
    "label": "m:prop:qnntwo",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3b.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3b.tex"
   },
   {
    "id": "contraction_under_a_network_prior",
@@ -1292,7 +1290,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#contraction_under_a_network_prior",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:thm:PR",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3c.tex"
   },
   {
    "id": "exactness_of_the_one_step_summary",
@@ -1310,7 +1308,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#exactness_of_the_one_step_summary",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:lem:exact",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3c.tex"
   },
   {
    "id": "residual_law_under_a_localized_proposal",
@@ -1328,7 +1326,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#residual_law_under_a_localized_proposal",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:thm:locbias",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3c.tex"
   },
   {
    "id": "localized_design_meets_gbc_accuracy_conditions",
@@ -1346,7 +1344,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#localized_design_meets_gbc_accuracy_conditions",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:cor:locG",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3c.tex"
   },
   {
    "id": "the_gram_matrix_of_the_whitened_weights",
@@ -1364,7 +1362,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_gram_matrix_of_the_whitened_weights",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:lem:u2pgram",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3c.tex"
   },
   {
    "id": "no_sub_gaussian_envelope_for_the_whole_residual",
@@ -1382,7 +1380,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#no_sub_gaussian_envelope_for_the_whole_residual",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:prop:u2pfalse",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3c.tex"
   },
   {
    "id": "whitened_residual_assumption_under_a_localized_proposal",
@@ -1400,7 +1398,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#whitened_residual_assumption_under_a_localized_proposal",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:thm:u2ploc",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3c.tex"
   },
   {
    "id": "the_linearization_of_the_reaction_diffusion_class",
@@ -1418,7 +1416,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_linearization_of_the_reaction_diffusion_class",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:lem:rdlin",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3c.tex"
   },
   {
    "id": "the_linearization_of_the_navier_stokes_equations",
@@ -1436,7 +1434,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_linearization_of_the_navier_stokes_equations",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:lem:nslin",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3c.tex"
   },
   {
    "id": "centered_and_rescaled_residuals_for_a_nonlinear_forward_map",
@@ -1454,7 +1452,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#centered_and_rescaled_residuals_for_a_nonlinear_forward_map",
    "source": "source/chapters/ext/m3c.tex",
    "label": "m:prop:locres",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m3c.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m3c.tex"
   },
   {
    "id": "gram_concentration_and_the_finite_bernstein_von_mises_error",
@@ -1472,7 +1470,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#gram_concentration_and_the_finite_bernstein_von_mises_error",
    "source": "source/chapters/ext/m4a.tex",
    "label": "m:prop:gram",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4a.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4a.tex"
   },
   {
    "id": "information_operator_of_nls_about_a_plane_wave",
@@ -1490,7 +1488,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#information_operator_of_nls_about_a_plane_wave",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:prop:bog",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4d.tex"
   },
   {
    "id": "bogoliubov_block_determinant_trace_and_smallest_eigenvalue",
@@ -1508,7 +1506,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#bogoliubov_block_determinant_trace_and_smallest_eigenvalue",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:lem:bogmin",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4d.tex"
   },
   {
    "id": "linearized_stability_and_condition_2f_analogue_for_the_defocusing_plane_wave",
@@ -1526,7 +1524,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#linearized_stability_and_condition_2f_analogue_for_the_defocusing_plane_wave",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:cor:condE",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4d.tex"
   },
   {
    "id": "stability_of_the_cubic_nls_solution_map",
@@ -1544,7 +1542,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#stability_of_the_cubic_nls_solution_map",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:prop:nlsstab",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4d.tex"
   },
   {
    "id": "linear_schrodinger_transfer",
@@ -1562,7 +1560,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#linear_schrodinger_transfer",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:prop:sch",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4d.tex"
   },
   {
    "id": "the_transfer_theorem_for_the_linear_schrodinger_equation",
@@ -1580,7 +1578,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_transfer_theorem_for_the_linear_schrodinger_equation",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:cor:schtransfer",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4d.tex"
   },
   {
    "id": "beyond_the_plane_wave",
@@ -1598,7 +1596,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#beyond_the_plane_wave",
    "source": "source/chapters/ext/m4d.tex",
    "label": "m:op:planewave",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4d.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4d.tex"
   },
   {
    "id": "lsm_gbc_dictionary_for_optimal_stopping_and_the_inverse_problem",
@@ -1616,7 +1614,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#lsm_gbc_dictionary_for_optimal_stopping_and_the_inverse_problem",
    "source": "source/chapters/ext/m4e.tex",
    "label": "m:prop:lsm",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4e.tex"
   },
   {
    "id": "two_limit_convergence_of_the_regression_summary",
@@ -1635,7 +1633,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#two_limit_convergence_of_the_regression_summary",
    "source": "source/chapters/ext/m4e.tex",
    "label": "m:thm:lsmgbc",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4e.tex"
   },
   {
    "id": "the_adjoint_statistic_is_a_storvik_statistic",
@@ -1653,7 +1651,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#the_adjoint_statistic_is_a_storvik_statistic",
    "source": "source/chapters/ext/m4e.tex",
    "label": "m:prop:storvik",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4e.tex"
   },
   {
    "id": "bernstein_von_mises_under_a_network_prior",
@@ -1671,7 +1669,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#bernstein_von_mises_under_a_network_prior",
    "source": "source/chapters/ext/m4e.tex",
    "label": "m:op:netprior",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4e.tex"
   },
   {
    "id": "uniformity",
@@ -1689,7 +1687,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#uniformity",
    "source": "source/chapters/ext/m4e.tex",
    "label": "m:op:unif",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4e.tex"
   },
   {
    "id": "relinearized_summary",
@@ -1707,7 +1705,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#relinearized_summary",
    "source": "source/chapters/ext/m4e.tex",
    "label": "m:op:relin",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4e.tex"
   },
   {
    "id": "finite_n",
@@ -1725,7 +1723,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#finite_n",
    "source": "source/chapters/ext/m4e.tex",
    "label": "m:op:finiten",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4e.tex"
   },
   {
    "id": "model_error",
@@ -1743,7 +1741,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#model_error",
    "source": "source/chapters/ext/m4e.tex",
    "label": "m:op:modelerror",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/m4e.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/m4e.tex"
   },
   {
    "id": "exactness_of_the_particle_learning_step",
@@ -1761,7 +1759,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#exactness_of_the_particle_learning_step",
    "source": "source/chapters/ext/ch14_pl.tex",
    "label": "prop:pl_exact",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ext/ch14_pl.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ext/ch14_pl.tex"
   },
   {
    "id": "gamma_law_of_the_shot_noise_neuron",
@@ -1779,7 +1777,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#gamma_law_of_the_shot_noise_neuron",
    "source": "source/chapters/ch14_filters.tex",
    "label": "thm:shot_noise_neuron",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch14_filters.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch14_filters.tex"
   },
   {
    "id": "recursive_self_learning_information_bound",
@@ -1797,7 +1795,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#recursive_self_learning_information_bound",
    "source": "source/chapters/ch15_kolmogorov.tex",
    "label": "prop:recursive_self_learning",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch15_kolmogorov.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch15_kolmogorov.tex"
   },
   {
    "id": "open_problem_inferential_sixth_problem",
@@ -1815,7 +1813,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_inferential_sixth_problem",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:inferential_sixth",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_arbitrary_functions_mixed_phase_space",
@@ -1833,7 +1831,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_arbitrary_functions_mixed_phase_space",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:poincare",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_optimal_finite_de_finetti_kac",
@@ -1851,7 +1849,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_optimal_finite_de_finetti_kac",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:axioms",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_yor_exact_samplers",
@@ -1869,7 +1867,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_yor_exact_samplers",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:yor",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_reciprocal_xi_ggc_from_mixture",
@@ -1887,7 +1885,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_reciprocal_xi_ggc_from_mixture",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:mixtures",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_perelman_entropy_scale_mixture_manifolds",
@@ -1905,7 +1903,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_perelman_entropy_scale_mixture_manifolds",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:perelman",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_bayesian_answer_to_wallstrom",
@@ -1923,7 +1921,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_bayesian_answer_to_wallstrom",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:quantum",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_kac_entropy_production_ggc_mixtures",
@@ -1941,7 +1939,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_kac_entropy_production_ggc_mixtures",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:kinetic",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_ns_posterior_fixed_sensors",
@@ -1959,7 +1957,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_ns_posterior_fixed_sensors",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:inference",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_blowup_posterior_consistency",
@@ -1977,7 +1975,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_blowup_posterior_consistency",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:blowup",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_onsager_exponents_posterior",
@@ -1995,7 +1993,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_onsager_exponents_posterior",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:onsager",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_planted_clique_sampler_threshold",
@@ -2013,7 +2011,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_planted_clique_sampler_threshold",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:phase_transitions",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_learned_schrodinger_bridge_rates",
@@ -2031,7 +2029,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_learned_schrodinger_bridge_rates",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:transport",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_heat_bound_bayesian_update",
@@ -2049,7 +2047,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_heat_bound_bayesian_update",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:thermodynamics_of_inference",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   },
   {
    "id": "open_problem_polya_law_ferromagnetic_limit",
@@ -2067,7 +2065,7 @@
    "url": "https://vsokolov.org/books/hilbert6/results.html#open_problem_polya_law_ferromagnetic_limit",
    "source": "source/chapters/ch16_open.tex",
    "label": "prob:bridge",
-   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.0.1/source/chapters/ch16_open.tex"
+   "source_url": "https://github.com/VadimSokolov/hilbert6/blob/v1.1.0/source/chapters/ch16_open.tex"
   }
  ]
 }
